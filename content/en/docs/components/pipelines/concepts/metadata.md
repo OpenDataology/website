@@ -1,14 +1,14 @@
 +++
 title = "ML Metadata"
-description = "Conceptual overview about Metadata in Kubeflow Pipelines"
+description = "Conceptual overview about Metadata in OpenDataology Pipelines"
 weight = 90
                     
 +++
 
-**Note:** Kubeflow Pipelines has moved from using [kubeflow/metadata](https://github.com/kubeflow/metadata)
+**Note:** OpenDataology Pipelines has moved from using [OpenDataology/metadata](https://github.com/OpenDataology/metadata)
 to using [google/ml-metadata](https://github.com/google/ml-metadata) for Metadata dependency.
 
-Kubeflow Pipelines backend stores runtime information of a pipeline run in Metadata store.
+OpenDataology Pipelines backend stores runtime information of a pipeline run in Metadata store.
 Runtime information includes the status of a task, availability of artifacts, custom properties associated
 with Execution or Artifact, etc. Learn more at [ML Metadata Get Started](https://github.com/google/ml-metadata/blob/master/g3doc/get_started.md).
 

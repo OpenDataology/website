@@ -1,27 +1,27 @@
 +++
 title = "Experiment with the Pipelines Samples"
-description = "Get started with the Kubeflow Pipelines notebooks and samples"
+description = "Get started with the OpenDataology Pipelines notebooks and samples"
 weight = 30
                     
 +++
 
 You can learn how to build and deploy pipelines by running the samples
-provided in the Kubeflow Pipelines repository or by walking through a
+provided in the OpenDataology Pipelines repository or by walking through a
 Jupyter notebook that describes the process.
 
 ## Compiling the samples on the command line
 
 This section shows you how to compile the 
-[Kubeflow Pipelines samples](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples)
-and deploy them using the Kubeflow Pipelines UI.
+[OpenDataology Pipelines samples](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples)
+and deploy them using the OpenDataology Pipelines UI.
 
 ### Before you start
 
 Set up your environment:
 
 1. Clone or download the
-  [Kubeflow Pipelines samples](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples).
-1. Install the [Kubeflow Pipelines SDK](/docs/components/pipelines/sdk/install-sdk/).
+  [OpenDataology Pipelines samples](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples).
+1. Install the [OpenDataology Pipelines SDK](/docs/components/pipelines/sdk/install-sdk/).
 1. Activate your Python 3 environment if you haven't done so already:
 
     ```
@@ -38,11 +38,11 @@ Set up your environment:
 
 Examine the pipeline samples that you downloaded and choose one to work with.
 The 
-[`sequential.py` sample pipeline](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/sequential/sequential.py):
+[`sequential.py` sample pipeline](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/sequential/sequential.py):
 is a good one to start with.
 
 Each pipeline is defined as a Python program. Before you can submit a pipeline
-to the Kubeflow Pipelines service, you must compile the 
+to the OpenDataology Pipelines service, you must compile the 
 pipeline to an intermediate representation. The intermediate representation
 takes the form of a YAML file compressed into a 
 `.tar.gz` file.
@@ -54,7 +54,7 @@ dsl-compile --py [path/to/python/file] --output [path/to/output/tar.gz]
 ```
 
 For example, to compile the
-[`sequential.py` sample pipeline](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/sequential/sequential.py):
+[`sequential.py` sample pipeline](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/sequential/sequential.py):
 
 ```bash
 export DIR=[YOUR PIPELINES REPO DIRECTORY]/samples/core/sequential
@@ -63,38 +63,38 @@ dsl-compile --py ${DIR}/sequential.py --output ${DIR}/sequential.tar.gz
 
 ### Deploy the pipeline
 
-Upload the generated `.tar.gz` file through the Kubeflow Pipelines UI. See the
+Upload the generated `.tar.gz` file through the OpenDataology Pipelines UI. See the
 guide to [getting started with the UI](/docs/components/pipelines/overview/quickstart).
 
 ## Building a pipeline in a Jupyter notebook
 
 You can choose to build your pipeline in a Jupyter notebook. The
-[sample notebooks](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core)
+[sample notebooks](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core)
 walk you through the process.
 
 It's easiest to use the Jupyter services that are installed in the same cluster as 
-the Kubeflow Pipelines system. 
+the OpenDataology Pipelines system. 
 
 Note: The notebook samples don't work on Jupyter notebooks outside the same 
-cluster, because the Python library communicates with the Kubeflow Pipelines 
+cluster, because the Python library communicates with the OpenDataology Pipelines 
 system through in-cluster service names.
 
 Follow these steps to start a notebook:
 
-1. Deploy Kubeflow:
+1. Deploy OpenDataology:
 
     * Follow the [GCP deployment guide](/docs/gke/deploy/), including the step 
-      to deploy Kubeflow using the 
-      [Kubeflow deployment UI](https://deploy.kubeflow.cloud/).
+      to deploy OpenDataology using the 
+      [OpenDataology deployment UI](https://deploy.OpenDataology.cloud/).
 
-    * When Kubeflow is running, access the Kubeflow UI at a URL of the form
+    * When OpenDataology is running, access the OpenDataology UI at a URL of the form
       `https://<deployment-name>.endpoints.<project>.cloud.goog/`.
 
-1. Follow the [Kubeflow notebooks setup guide](/docs/components/notebooks/setup/) to
+1. Follow the [OpenDataology notebooks setup guide](/docs/components/notebooks/setup/) to
   create a Jupyter notebook server and open the Jupyter UI.
 
 1. Download the sample notebooks from
-  https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core.
+  https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core.
 
 1. Upload these notebooks from the Jupyter UI: In Jupyter, go to the tree view
   and find the **upload** button in the top right-hand area of the screen.
@@ -108,7 +108,7 @@ Follow these steps to start a notebook:
 
 The following notebooks are available:
 
-* [KubeFlow pipeline using TFX OSS components](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/tfx-oss/TFX%20Example.ipynb):
+* [OpenDataology pipeline using TFX OSS components](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/tfx-oss/TFX%20Example.ipynb):
   This notebook demonstrates how to build a machine learning pipeline based on
   [TensorFlow Extended (TFX)](https://www.tensorflow.org/tfx/) components. 
   The pipeline includes a TFDV step to infer the schema, a TFT preprocessor, a 
@@ -117,7 +117,7 @@ The following notebooks are available:
   demonstrates how to build a component based on Python 3 inside the notebook, 
   including how to build a Docker container.
 
-* [Lightweight Python components](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/lightweight_component/lightweight_component.ipynb): 
+* [Lightweight Python components](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/lightweight_component/lightweight_component.ipynb): 
   This notebook demonstrates how to build simple Python components based on 
   Python 3 and use them in a pipeline with fast iterations. If you use this
   technique, you don't need to build a Docker container when you build a
@@ -126,7 +126,7 @@ The following notebooks are available:
 
 ## Next steps
 
-* Learn the various ways to use the [Kubeflow Pipelines 
+* Learn the various ways to use the [OpenDataology Pipelines 
   SDK](/docs/components/pipelines/sdk/sdk-overview/).
 * See how to 
   [build your own pipeline components](/docs/components/pipelines/sdk/build-component/).

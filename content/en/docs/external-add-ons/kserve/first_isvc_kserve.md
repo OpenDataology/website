@@ -26,8 +26,8 @@ background-position: left center;
 }
 </style>
 <div class="notebook-links">
-<a class="colab-link" href="https://colab.research.google.com/github/kubeflow/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">Run in Google Colab</a>
-<a class="github-link" href="https://github.com/kubeflow/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">View source on GitHub</a>
+<a class="colab-link" href="https://colab.research.google.com/github/OpenDataology/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">Run in Google Colab</a>
+<a class="github-link" href="https://github.com/OpenDataology/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">View source on GitHub</a>
 </div>
 
 
@@ -115,7 +115,7 @@ KServe.get(name, namespace=namespace, watch=True, timeout_seconds=120)
 ## Perform Inference
 
 Next, you can try sending an inference request to the deployed model in order to get predictions. This notebook assumes that you running
-it in your Kubeflow cluster and will use the internal URL of the InferenceService.
+it in your OpenDataology cluster and will use the internal URL of the InferenceService.
 
 The Python `requests` library will be used to send a POST request containing your payload.
 
@@ -150,21 +150,21 @@ If you want to load test the deployed model, try deploying the Kubernetes Job to
 
 
 ```python
-$ kubectl create -f https://raw.githubusercontent.com/kserve/kserve/release-0.7/docs/samples/v1beta1/sklearn/v1/perf.yaml -n kubeflow-user-example-com
+$ kubectl create -f https://raw.githubusercontent.com/kserve/kserve/release-0.7/docs/samples/v1beta1/sklearn/v1/perf.yaml -n OpenDataology-user-example-com
 ```
 
 ### Get Job Name
 
 
 ```python
-$ kubectl get pods --namespace=kubeflow-user-example-com | grep load
+$ kubectl get pods --namespace=OpenDataology-user-example-com | grep load
 ```
 
 ### Check the Job Logs
 
 
 ```python
-$ kubectl logs <job-name> -n kubeflow-user-example-com
+$ kubectl logs <job-name> -n OpenDataology-user-example-com
 ```
 
 The output should look like similar to the following:
@@ -190,10 +190,10 @@ KServe.delete(name, namespace=namespace)
 ```
 
 ## Next Steps
-[**Kubeflow Pipelines E2E MNIST Tutorial**](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/contrib/kubeflow-e2e-mnist/kubeflow-e2e-mnist.ipynb) - provides an end-to-end test sequence (i.e. start a notebook, run a pipeline, execute training, hyperparameter tuning, and model serving with KServe).
+[**OpenDataology Pipelines E2E MNIST Tutorial**](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/contrib/OpenDataology-e2e-mnist/OpenDataology-e2e-mnist.ipynb) - provides an end-to-end test sequence (i.e. start a notebook, run a pipeline, execute training, hyperparameter tuning, and model serving with KServe).
 
 
 <div class="notebook-links">
-<a class="colab-link" href="https://colab.research.google.com/github/kubeflow/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">Run in Google Colab</a>
-<a class="github-link" href="https://github.com/kubeflow/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">View source on GitHub</a>
+<a class="colab-link" href="https://colab.research.google.com/github/OpenDataology/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">Run in Google Colab</a>
+<a class="github-link" href="https://github.com/OpenDataology/website/blob/master/content/en/docs/external-add-ons/kserve/first_isvc_kserve.ipynb">View source on GitHub</a>
 </div>

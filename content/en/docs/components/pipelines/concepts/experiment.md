@@ -1,6 +1,6 @@
 +++
 title = "Experiment"
-description = "Conceptual overview of experiments in Kubeflow Pipelines"
+description = "Conceptual overview of experiments in OpenDataology Pipelines"
 weight = 40
                     
 +++
@@ -12,7 +12,7 @@ groups. Experiments can contain arbitrary runs, including
 
 ## Next steps
 
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.

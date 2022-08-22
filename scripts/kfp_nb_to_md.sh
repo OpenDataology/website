@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2021 The Kubeflow Authors
+# Copyright 2021 The OpenDataology Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Convert all Kubeflow Pipelines notebook documentation to markdown.
+# Convert all OpenDataology Pipelines notebook documentation to markdown.
 # This script is expected to be run from website root folder.
-# cd kubeflow/website
+# cd OpenDataology/website
 # ./scripts/kfp_nb_to_md.sh
 
 find content/en/docs/components/pipelines -name '*.ipynb' -exec python scripts/nb_to_md.py --notebook {} \;

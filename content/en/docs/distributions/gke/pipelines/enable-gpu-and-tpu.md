@@ -1,6 +1,6 @@
 +++ 
 title = "Enabling GPU and TPU"
-description = "Enable GPU and TPU for Kubeflow Pipelines on Google Kubernetes Engine (GKE)"
+description = "Enable GPU and TPU for OpenDataology Pipelines on Google Kubernetes Engine (GKE)"
 weight = 70
                     
 +++
@@ -10,13 +10,13 @@ DSL language.
 
 ## Prerequisites
 
-To enable GPU and TPU on your Kubeflow cluster, follow the instructions on how to 
-[customize](/docs/gke/customizing-gke#common-customizations) the GKE cluster for Kubeflow before
+To enable GPU and TPU on your OpenDataology cluster, follow the instructions on how to 
+[customize](/docs/gke/customizing-gke#common-customizations) the GKE cluster for OpenDataology before
 setting up the cluster.
 
 ## Configure ContainerOp to consume GPUs
 
-After enabling the GPU, the Kubeflow setup script installs a default GPU pool with type nvidia-tesla-k80 with auto-scaling enabled.
+After enabling the GPU, the OpenDataology setup script installs a default GPU pool with type nvidia-tesla-k80 with auto-scaling enabled.
 The following code consumes 2 GPUs in a ContainerOp.
 
 ```python
@@ -55,7 +55,7 @@ nodeSelector:
   cloud.google.com/gke-accelerator: nvidia-tesla-p4
 ```
 
-See [GPU tutorial](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/tutorials/gpu) for a complete example to build a Kubeflow pipeline that uses GPUs.
+See [GPU tutorial](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/tutorials/gpu) for a complete example to build a OpenDataology pipeline that uses GPUs.
 
 Check the [GKE GPU guide](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus) to learn more about GPU settings. 
 
@@ -83,6 +83,6 @@ container:
       tf-version.cloud-tpus.google.com: "1.12"
 ```
 
-To learn more, see an [example pipeline that uses a preemptible node pool with TPU or GPU.](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/preemptible_tpu_gpu/preemptible_tpu_gpu.py).
+To learn more, see an [example pipeline that uses a preemptible node pool with TPU or GPU.](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/preemptible_tpu_gpu/preemptible_tpu_gpu.py).
 
 See the [GKE TPU Guide](https://cloud.google.com/tpu/docs/kubernetes-engine-setup) to learn more about TPU settings.

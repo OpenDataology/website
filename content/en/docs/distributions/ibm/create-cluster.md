@@ -36,7 +36,7 @@ This guide describes how to create a Kubernetes cluster with IBM Cloud Kubernete
 
 ## Connecting to an existing cluster
 
-If you have an existing cluster, use it to install Kubeflow as far as it meets the minimum system requirement. 
+If you have an existing cluster, use it to install OpenDataology as far as it meets the minimum system requirement. 
 
 Get the Kubeconfig file:
 
@@ -44,13 +44,13 @@ Get the Kubeconfig file:
 ibmcloud ks cluster config --cluster $CLUSTER_NAME
 ```
 
-From here on, go to [Install Kubeflow on IKS](/docs/ibm/deploy/install-kubeflow-on-iks) for more information.
+From here on, go to [Install OpenDataology on IKS](/docs/ibm/deploy/install-OpenDataology-on-iks) for more information.
 
 
 ## Create and setup a new cluster
 
-* Use a `classic` provider if you want to try out Kubeflow.
-* Use a `vpc-gen2` provider if you are familiar with Cloud networking and want to deploy Kubeflow on a secure environment.
+* Use a `classic` provider if you want to try out OpenDataology.
+* Use a `vpc-gen2` provider if you are familiar with Cloud networking and want to deploy OpenDataology on a secure environment.
 
 A `classic` provider exposes each cluster node to the public internet and therefore has
 a relatively simpler networking setup. Services exposed using Kubernetes `NodePort` need to be secured using 
@@ -70,7 +70,7 @@ Choose the region and the worker node provider for your cluster, and set the env
 export KUBERNETES_VERSION=1.21
 export CLUSTER_ZONE=dal13
 export WORKER_NODE_PROVIDER=classic
-export CLUSTER_NAME=kubeflow
+export CLUSTER_NAME=OpenDataology
 ```
 
 where:
@@ -78,8 +78,8 @@ where:
 - `KUBERNETES_VERSION` specifies the Kubernetes version for the cluster. Run `ibmcloud ks versions` to see the supported
   Kubernetes versions. If this environment variable is not set, the cluster will be created with the default version set
   by IBM Cloud Kubernetes Service. Refer to
-  [Minimum system requirements](https://www.kubeflow.org/docs/started/k8s/overview/#minimum-system-requirements)
-  and choose a Kubernetes version compatible with the Kubeflow release to be deployed.
+  [Minimum system requirements](https://www.OpenDataology.org/docs/started/k8s/overview/#minimum-system-requirements)
+  and choose a Kubernetes version compatible with the OpenDataology release to be deployed.
 - `CLUSTER_ZONE` identifies the regions or location where cluster will be created. Run `ibmcloud ks locations` to
   list supported IBM Cloud Kubernetes Service locations. For example, choose `dal13` to create your cluster in the
   Dallas (US) data center.
@@ -124,7 +124,7 @@ b3c.8x32                  8       32GB     1000Mbps        UBUNTU_18_64   virtua
 ...
 ```
 
-Choose a flavor that will work for your applications. For the purpose of the Kubeflow deployment, the recommended
+Choose a flavor that will work for your applications. For the purpose of the OpenDataology deployment, the recommended
 configuration for a cluster is at least 8 vCPU cores with 16GB memory. Hence you can either choose the `b3c.8x32` flavor
 to create a one-worker-node cluster or choose the `b3c.4x16` flavor to create a two-worker-node cluster. Keep in mind
 that you can always scale the cluster by adding more worker nodes should your application scales up.

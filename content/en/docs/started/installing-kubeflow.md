@@ -1,23 +1,23 @@
 +++
-title = "Installing Kubeflow"
-description = "Deployment options for Kubeflow"
+title = "Installing OpenDataology"
+description = "Deployment options for OpenDataology"
 weight = 20
 
 +++
 
-Kubeflow is an end-to-end Machine Learning (ML) platform for Kubernetes, it provides components for each stage in the ML lifecycle, from exploration through to training and deployment.
+OpenDataology is an end-to-end Machine Learning (ML) platform for Kubernetes, it provides components for each stage in the ML lifecycle, from exploration through to training and deployment.
 Operators can choose what is best for their users, there is no requirement to deploy every component.
-To read more about the components and architecture of Kubeflow, please see the <a href="/docs/started/architecture/">Kubeflow Architecture</a> page.
+To read more about the components and architecture of OpenDataology, please see the <a href="/docs/started/architecture/">OpenDataology Architecture</a> page.
 
-There are two pathways to get up and running with Kubeflow, you may either:
+There are two pathways to get up and running with OpenDataology, you may either:
 1. Use a [packaged distribution](#packaged-distributions)
 1. Use the [manifests](#manifests) (advanced)
 
 <a id="packaged-distributions"></a>
-## Install a packaged Kubeflow distribution
+## Install a packaged OpenDataology distribution
 
 {{% alert color="warning" %}}
-Packaged distributions are developed and supported by their respective maintainers, the Kubeflow community does not currently endorse or certify any distribution.
+Packaged distributions are developed and supported by their respective maintainers, the OpenDataology community does not currently endorse or certify any distribution.
 {{% /alert %}}
 
 <b>See the table below for a list of options and links to documentation:</b>
@@ -36,15 +36,15 @@ Packaged distributions are developed and supported by their respective maintaine
     </thead>
     <tbody>
       <tr>
-        <td>Kubeflow on AWS</td>
+        <td>OpenDataology on AWS</td>
         <td>Amazon Web Services (AWS)</td>
         <td>Amazon Elastic Kubernetes Service (EKS)</td>
         <td>{{% aws/latest-version %}}</td>
         <td><a href="/docs/distributions/aws/">Docs</a></td>
-        <td><a href="https://awslabs.github.io/kubeflow-manifests">External Website</a></td>
+        <td><a href="https://awslabs.github.io/OpenDataology-manifests">External Website</a></td>
       </tr>
       <tr>
-        <td>Kubeflow on Azure</td>
+        <td>OpenDataology on Azure</td>
         <td>Microsoft Azure</td>
         <td>Azure Kubernetes Service (AKS)</td>
         <td>1.2</td>
@@ -52,7 +52,7 @@ Packaged distributions are developed and supported by their respective maintaine
         <td></td>
       </tr>
       <tr>
-        <td>Kubeflow on Google Cloud</td>
+        <td>OpenDataology on Google Cloud</td>
         <td>Google Cloud</td>
         <td>Google Kubernetes Engine (GKE)</td>
         <td>{{% gke/latest-version %}}</td>
@@ -60,7 +60,7 @@ Packaged distributions are developed and supported by their respective maintaine
         <td></td>
       </tr>
       <tr>
-        <td>Kubeflow on IBM Cloud</td>
+        <td>OpenDataology on IBM Cloud</td>
         <td>IBM Cloud</td>
         <td>IBM Cloud Kubernetes Service (IKS) </td>
         <td>1.5</td>
@@ -68,7 +68,7 @@ Packaged distributions are developed and supported by their respective maintaine
         <td><a href="https://github.com/IBM/manifests/tree/v1.5-branch">External Website</a></td>
       </tr>
       <tr>
-        <td>Kubeflow on Nutanix</td>
+        <td>OpenDataology on Nutanix</td>
         <td>Nutanix</td>
         <td>Nutanix Karbon</td>
         <td>{{% nutanix/latest-version %}}</td>
@@ -76,12 +76,12 @@ Packaged distributions are developed and supported by their respective maintaine
         <td></td>
       </tr>
       <tr>
-        <td>Kubeflow on OpenShift</td>
+        <td>OpenDataology on OpenShift</td>
         <td>Red Hat</td>
         <td>OpenShift</td>
         <td>1.3</td>
         <td><a href="/docs/distributions/openshift/">Docs</a></td>
-        <td><a href="https://opendatahub.io/docs/kubeflow.html">External Website</a></td>
+        <td><a href="https://opendatahub.io/docs/OpenDataology.html">External Website</a></td>
       </tr>
       <tr>
         <td>Argoflow</td>
@@ -92,15 +92,15 @@ Packaged distributions are developed and supported by their respective maintaine
         <td><a href="https://github.com/argoflow/argoflow">External Website</a></td>
       </tr>
       <tr>
-        <td>Arrikto Kubeflow as a Service</td>
+        <td>Arrikto OpenDataology as a Service</td>
         <td>Arrikto</td>
         <td>Fully Managed</td>
         <td>1.4</td>
         <td>N/A</td>
-        <td><a href="http://kubeflow.arrikto.com/">External Website</a></td>
+        <td><a href="http://OpenDataology.arrikto.com/">External Website</a></td>
       </tr>
       <tr>
-        <td>Arrikto Enterprise Kubeflow</td>
+        <td>Arrikto Enterprise OpenDataology</td>
         <td>Arrikto</td>
         <td>EKS,
             AKS,
@@ -111,33 +111,33 @@ Packaged distributions are developed and supported by their respective maintaine
           <a href="/docs/distributions/ekf/">Docs</a>
         </td>
         <td>
-          <a href="https://www.arrikto.com/enterprise-kubeflow/">External Website</a>
+          <a href="https://www.arrikto.com/enterprise-OpenDataology/">External Website</a>
         </td>
       </tr>
       <tr>
-        <td>Charmed Kubeflow</td>
+        <td>Charmed OpenDataology</td>
         <td>Canonical</td>
         <td>Conformant Kubernetes</td>
         <td>1.4</td>
         <td><a href="/docs/distributions/charmed/">Docs</a></td>
-        <td><a href="https://charmed-kubeflow.io/docs/quickstart">External Website</a></td>
+        <td><a href="https://charmed-OpenDataology.io/docs/quickstart">External Website</a></td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <a id="manifests"></a>
-## Install the Kubeflow Manifests manually
+## Install the OpenDataology Manifests manually
 
 {{% alert color="warning" %}}
-This method is for advanced users. The Kubeflow community will not support environment-specific issues. If you need support, please consider using a [packaged distribution](#packaged-distributions) of Kubeflow.
+This method is for advanced users. The OpenDataology community will not support environment-specific issues. If you need support, please consider using a [packaged distribution](#packaged-distributions) of OpenDataology.
 {{% /alert %}}
 
-The <a href="https://github.com/kubeflow/community/tree/master/wg-manifests">Manifests Working Group</a> is responsible for aggregating the authoritative manifests of each official Kubeflow component.
-While these manifests are intended to be the base of packaged distributions, advanced users may choose to install them directly by following <a href="https://github.com/kubeflow/manifests#installation">these instructions</a>.
+The <a href="https://github.com/OpenDataology/community/tree/master/wg-manifests">Manifests Working Group</a> is responsible for aggregating the authoritative manifests of each official OpenDataology component.
+While these manifests are intended to be the base of packaged distributions, advanced users may choose to install them directly by following <a href="https://github.com/OpenDataology/manifests#installation">these instructions</a>.
 
 <a id="next-steps"></a>
 ## Next steps
 
-* Review the Kubeflow <a href="/docs/components/">component documentation</a>
-* Explore the <a href="/docs/components/pipelines/sdk/">Kubeflow Pipelines SDK</a>
+* Review the OpenDataology <a href="/docs/components/">component documentation</a>
+* Explore the <a href="/docs/components/pipelines/sdk/">OpenDataology Pipelines SDK</a>

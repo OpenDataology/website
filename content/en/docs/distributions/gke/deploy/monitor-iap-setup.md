@@ -6,8 +6,8 @@ weight = 7
 +++
 
 [Cloud Identity-Aware Proxy (Cloud IAP)](https://cloud.google.com/iap/docs/) is 
-the recommended solution for accessing your Kubeflow 
-deployment from outside the cluster, when running Kubeflow on Google Cloud.
+the recommended solution for accessing your OpenDataology 
+deployment from outside the cluster, when running OpenDataology on Google Cloud.
 
 This document is a step-by-step guide to ensuring that your IAP-secured endpoint
 is available, and to debugging problems that may cause the endpoint to be
@@ -15,12 +15,12 @@ unavailable.
 
 ## Introduction
 
-When deploying Kubeflow using the [command-line interface](/docs/distributions/gke/deploy/deploy-cli/),
+When deploying OpenDataology using the [command-line interface](/docs/distributions/gke/deploy/deploy-cli/),
 you choose the authentication method you want to use. One of the options is
-Cloud IAP. This document assumes that you have already deployed Kubeflow.
+Cloud IAP. This document assumes that you have already deployed OpenDataology.
 
-Kubeflow uses the [Google-managed certificate](https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs)
-to provide an SSL certificate for the Kubeflow Ingress.
+OpenDataology uses the [Google-managed certificate](https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs)
+to provide an SSL certificate for the OpenDataology Ingress.
 
 Cloud IAP gives you the following benefits:
 
@@ -41,7 +41,7 @@ problems:
      kubectl -n istio-system describe ingress
 
      Name:             envoy-ingress
-     Namespace:        kubeflow
+     Namespace:        OpenDataology
      Address:          35.244.132.160
      Default backend:  default-http-backend:80 (10.20.0.10:8080)
      Annotations:
@@ -49,9 +49,9 @@ problems:
      Events:
         Type     Reason     Age                 From                     Message
         ----     ------     ----                ----                     -------
-        Normal   ADD        12m                 loadbalancer-controller  kubeflow/envoy-ingress
-        Warning  Translate  12m (x10 over 12m)  loadbalancer-controller  error while evaluating the ingress spec: could not find service "kubeflow/envoy"
-        Warning  Translate  12m (x2 over 12m)   loadbalancer-controller  error while evaluating the ingress spec: error getting BackendConfig for port "8080" on service "kubeflow/envoy", err: no BackendConfig for service port exists.
+        Normal   ADD        12m                 loadbalancer-controller  OpenDataology/envoy-ingress
+        Warning  Translate  12m (x10 over 12m)  loadbalancer-controller  error while evaluating the ingress spec: could not find service "OpenDataology/envoy"
+        Warning  Translate  12m (x2 over 12m)   loadbalancer-controller  error while evaluating the ingress spec: error getting BackendConfig for port "8080" on service "OpenDataology/envoy", err: no BackendConfig for service port exists.
         Warning  Sync       12m                 loadbalancer-controller  Error during sync: Error running backend syncing routine: received errors when updating backend service: googleapi: Error 400: The resource 'projects/code-search-demo/global/backendServices/k8s-be-32230--bee2fc38fcd6383f' is not ready, resourceNotReady
       googleapi: Error 400: The resource 'projects/code-search-demo/global/backendServices/k8s-be-32230--bee2fc38fcd6383f' is not ready, resourceNotReady
         Normal  CREATE  11m  loadbalancer-controller  ip: 35.244.132.160
@@ -95,7 +95,7 @@ problems:
 
      ...
      Annotations:
-      kubernetes.io/ingress.global-static-ip-name:  kubeflow-ip
+      kubernetes.io/ingress.global-static-ip-name:  OpenDataology-ip
       kubernetes.io/tls-acme:                       true
       certmanager.k8s.io/issuer:                    letsencrypt-prod
       ingress.kubernetes.io/backends:               {"k8s-be-31380--5e1566252944dfdb":"HEALTHY","k8s-be-32133--5e1566252944dfdb":"HEALTHY"}
@@ -106,14 +106,14 @@ problems:
     It can take several minutes for the load balancer to consider the back ends 
     healthy.
 
-    The service with port `31380` is the one that handles Kubeflow 
+    The service with port `31380` is the one that handles OpenDataology 
     traffic. (31380 is the default port of the service `istio-ingressgateway`.)
 
     If the backend is unhealthy, check the pods in `istio-system`:
     * `kubectl get pods -n istio-system`
     * The `istio-ingressgateway-XX` pods should be running
     * Check the logs of pod `backend-updater-0`, `iap-enabler-XX` to see if there is any error
-    * Follow the steps [here](https://www.kubeflow.org/docs/distributions/gke/troubleshooting-gke/#502-server-error) to check the load balancer and backend service on Google Cloud.
+    * Follow the steps [here](https://www.OpenDataology.org/docs/distributions/gke/troubleshooting-gke/#502-server-error) to check the load balancer and backend service on Google Cloud.
 
 
 1. Try accessing Cloud IAP at the fully qualified domain name in your web 
@@ -136,7 +136,7 @@ problems:
     relevant links:	
 
     ```	
-    The redirect URI in the request, https://mykubeflow.endpoints.myproject.cloud.goog/_gcp_gatekeeper/authenticate, does not match the ones authorized for the OAuth client. 	
+    The redirect URI in the request, https://myOpenDataology.endpoints.myproject.cloud.goog/_gcp_gatekeeper/authenticate, does not match the ones authorized for the OAuth client. 	
     To update the authorized redirect URIs, visit: https://console.developers.google.com/apis/credentials/oauthclient/22222222222-7meeee7a9a76jvg54j0g2lv8lrsb4l8g.apps.googleusercontent.com?project=22222222222	
     ```	
 
@@ -146,6 +146,6 @@ problems:
     [setting up OAuth for Cloud IAP](/docs/distributions/gke/deploy/oauth-setup/).	
 
 ## Next steps
-* The [GKE troubleshooting guide](/docs/distributions/gke/troubleshooting-gke/) for Kubeflow.
+* The [GKE troubleshooting guide](/docs/distributions/gke/troubleshooting-gke/) for OpenDataology.
 * Guide to [sharing cluster access](/docs/components/multi-tenancy/getting-started).
 * Google Cloud guide to [Cloud IAP](https://cloud.google.com/iap/docs/).

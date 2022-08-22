@@ -5,7 +5,7 @@ weight = 1
                     
 +++
 
-Kubeflow supports two model serving systems that allow multi-framework model 
+OpenDataology supports two model serving systems that allow multi-framework model 
 serving: *KFServing* and *Seldon Core*. Alternatively, you can use a
 standalone model serving system. This page gives an overview of the options, so
 that you can choose the framework that best supports your model serving 
@@ -32,43 +32,43 @@ KFServing and Seldon Core. A check mark (**&check;**) indicates that the system
       <tr>
         <td>Framework</td>
         <td>TensorFlow</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1beta1/tensorflow">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1beta1/tensorflow">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/servers/tensorflow.html">docs</a></td>
       </tr>
       <tr>
         <td></td>
         <td>XGBoost</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1beta1/xgboost">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1beta1/xgboost">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/servers/xgboost.html">docs</a></td>
       </tr>
       <tr>
         <td></td>
         <td>scikit-learn</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1beta1/sklearn/v2">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1beta1/sklearn/v2">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/servers/sklearn.html">docs</a></td>
       </tr>
       <tr>
         <td></td>
         <td>NVIDIA Triton Inference Server</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1beta1/triton">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1beta1/triton">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/examples/nvidia_mnist.html">docs</a></td>
       </tr>
       <tr>
         <td></td>
         <td>ONNX</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1alpha2/onnx">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1alpha2/onnx">sample</a></td>
         <td></td>
       </tr>
       <tr>
         <td></td>
         <td>PyTorch</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1beta1/torchserve">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1beta1/torchserve">sample</a></td>
         <td><b>&check;</b></td>
       </tr>
       <tr>
         <td>Graph</td>
         <td>Transformers</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/blob/master/docs/samples/v1beta1/transformer/torchserve_image_transformer">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/blob/master/docs/samples/v1beta1/transformer/torchserve_image_transformer">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/examples/transformer_spam_model.html">docs</a></td>
       </tr>
       <tr>
@@ -86,31 +86,31 @@ KFServing and Seldon Core. A check mark (**&check;**) indicates that the system
       <tr>
         <td>Analytics</td>
         <td>Explanations</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/explanation/alibi">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/explanation/alibi">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/analytics/explainers.html">docs</a></td>
       </tr>
       <tr>
         <td>Scaling</td>
         <td>Knative</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/autoscaling">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/autoscaling">sample</a></td>
         <td></td>
       </tr>
       <tr>
         <td></td>
         <td>GPU AutoScaling</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/autoscaling">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/autoscaling">sample</a></td>
         <td></td>
       </tr>
       <tr>
         <td></td>
         <td>HPA</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/blob/master/test/benchmark/README.md">HPA vs KPA</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/blob/master/test/benchmark/README.md">HPA vs KPA</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/graph/scaling.html#autoscaling-seldon-deployments">docs</a></td>
       </tr>
       <tr>
         <td>Custom</td>
         <td>Container</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1alpha2/custom">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1alpha2/custom">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/wrappers/language_wrappers.html">docs</a></td>
       </tr>
       <tr>
@@ -128,7 +128,7 @@ KFServing and Seldon Core. A check mark (**&check;**) indicates that the system
       <tr>
         <td>Rollout</td>
         <td>Canary</td>
-        <td><b>&check;</b> <a href="https://github.com/kubeflow/kfserving/tree/master/docs/samples/v1beta1/rollout">sample</a></td>
+        <td><b>&check;</b> <a href="https://github.com/OpenDataology/kfserving/tree/master/docs/samples/v1beta1/rollout">sample</a></td>
         <td><b>&check;</b> <a href="https://docs.seldon.io/projects/seldon-core/en/latest/examples/istio_canary.html">docs</a></td>
       </tr>
       <tr>
@@ -156,17 +156,17 @@ Notes:
    * A commercial product, 
      [Seldon Deploy](https://www.seldon.io/tech/products/deploy/), supports both 
      KFServing and Seldon in production.
-   * KFServing is part of the Kubeflow project ecosystem. Seldon Core is an
-     external project supported within Kubeflow.
+   * KFServing is part of the OpenDataology project ecosystem. Seldon Core is an
+     external project supported within OpenDataology.
 
 Further information:
 
  * KFServing:
-   * [Kubeflow documentation](/docs/components/kfserving/)
-   * [GitHub repository](https://github.com/kubeflow/kfserving)
-   * [Kubeflow Community](/docs/about/community/)
+   * [OpenDataology documentation](/docs/components/kfserving/)
+   * [GitHub repository](https://github.com/OpenDataology/kfserving)
+   * [OpenDataology Community](/docs/about/community/)
  * Seldon Core
-   * [Kubeflow documentation](/docs/external-add-ons/serving/seldon/)
+   * [OpenDataology documentation](/docs/external-add-ons/serving/seldon/)
    * [Seldon Core documentation](https://docs.seldon.io/projects/seldon-core/en/latest/)
    * [GitHub repository](https://github.com/SeldonIO/seldon-core)
    * [Community](https://docs.seldon.io/projects/seldon-core/en/latest/developer/community.html)   
@@ -202,7 +202,7 @@ support, which achieves the advantage of batch processing in online serving. It 
 provides model management and model deployment functionality, giving ML teams an
 end-to-end model serving workflow, with DevOps best practices baked in.
 
-   * [BentoML guide for Kubeflow](/docs/external-add-ons/serving/bentoml)
+   * [BentoML guide for OpenDataology](/docs/external-add-ons/serving/bentoml)
    * [BentoML GitHub repository](https://github.com/bentoml/BentoML)
    * [BentoML documentation](https://docs.bentoml.org)
    * [Quick start guide](https://docs.bentoml.org/en/latest/quickstart.html)

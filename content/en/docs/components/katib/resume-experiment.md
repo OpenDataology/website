@@ -62,7 +62,7 @@ as described [above](#modify-experiment)
 To control various resume policies, you can specify `.spec.resumePolicy`
 for the experiment.
 Refer to the
-[`ResumePolicy` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L58).
+[`ResumePolicy` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L58).
 
 ### Resume policy: Never
 
@@ -75,7 +75,7 @@ Learn more about Katib concepts
 in the [overview guide](/docs/components/katib/overview/#katib-concepts).
 
 Check the
-[`never-resume.yaml`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/resume-experiment/never-resume.yaml#L18)
+[`never-resume.yaml`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/resume-experiment/never-resume.yaml#L18)
 example for more details.
 
 ### Resume policy: LongRunning
@@ -123,7 +123,7 @@ When you delete the experiment, the suggestion's Deployment, Service,
 PVC and PV are deleted automatically.
 
 Check the
-[`from-volume-resume.yaml`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/resume-experiment/from-volume-resume.yaml#L18)
+[`from-volume-resume.yaml`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/resume-experiment/from-volume-resume.yaml#L18)
 example for more details.
 
 ## Next steps

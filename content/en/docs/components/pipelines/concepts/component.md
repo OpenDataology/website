@@ -1,6 +1,6 @@
 +++
 title = "Component"
-description = "Conceptual overview of components in Kubeflow Pipelines"
+description = "Conceptual overview of components in OpenDataology Pipelines"
 weight = 20
                     
 +++
@@ -30,7 +30,7 @@ named "mytask":
 ## Component definition
 
 A component specification in YAML format describes the component for the
-Kubeflow Pipelines system. A component definition has the following parts:
+OpenDataology Pipelines system. A component definition has the following parts:
 
 * **Metadata:** name, description, etc.
 * **Interface:** input/output specifications (name, type, description, default 
@@ -57,9 +57,9 @@ deserialize the data for use in the downstream component.
 
 ## Next steps
 
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.
 * Build your own 
   [component and pipeline](/docs/components/pipelines/sdk/build-component/).

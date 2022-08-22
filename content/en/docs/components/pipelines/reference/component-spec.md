@@ -1,15 +1,15 @@
 +++
 title = "Component Specification"
-description = "Definition of a Kubeflow Pipelines component"
+description = "Definition of a OpenDataology Pipelines component"
 weight = 10
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
-This specification describes the container component data model for Kubeflow
+This specification describes the container component data model for OpenDataology
 Pipelines. The data model is serialized to a file in YAML format for sharing.
 
 Below are the main parts of the component definition:
@@ -46,12 +46,12 @@ implementation:
 ```
 
 See some examples of real-world 
-[component specifications](https://github.com/kubeflow/pipelines/search?q=filename%3Acomponent.yaml&unscoped_q=filename%3Acomponent.yaml).
+[component specifications](https://github.com/OpenDataology/pipelines/search?q=filename%3Acomponent.yaml&unscoped_q=filename%3Acomponent.yaml).
 
 ## Detailed specification (ComponentSpec)
 
 This section describes the 
-[ComponentSpec](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_structures.py).
+[ComponentSpec](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_structures.py).
 
 ### Metadata
 
@@ -80,8 +80,8 @@ This section describes the
         as hints for pipeline authors and can be used by the pipeline system/UI
         to validate arguments and connections between components. Basic types
         are **String**, **Integer**, **Float**, and **Bool**. See the full list
-        of [types](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/types.py)
-        defined by the Kubeflow Pipelines SDK.
+        of [types](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/types.py)
+        defined by the OpenDataology Pipelines SDK.
     * `optional`: Specifies if input is optional or not. This is of type
         **Bool**, and defaults to **False**. **Only valid for inputs.**
 

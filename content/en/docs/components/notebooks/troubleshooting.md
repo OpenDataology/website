@@ -1,6 +1,6 @@
 +++
 title = "Troubleshooting"
-description = "Problems and solutions for common problems with Kubeflow Notebooks"
+description = "Problems and solutions for common problems with OpenDataology Notebooks"
 weight = 100
                     
 +++

@@ -5,7 +5,7 @@ weight = 2
 
 +++
 
-The Models web app is responsible for allowing the user to manipulate the Model Servers in their Kubeflow cluster. To achieve this it provides a user friendly way to handle the lifecycle of `InferenceService` CRs.
+The Models web app is responsible for allowing the user to manipulate the Model Servers in their OpenDataology cluster. To achieve this it provides a user friendly way to handle the lifecycle of `InferenceService` CRs.
 
 The web app currently works with `v1beta1` versions of `InferenceService` objects.
 
@@ -25,11 +25,11 @@ The web app includes the following resources:
 * A `VirtualService` for exposing the app via the cluster's Istio Ingress
     Gateway
 
-### Kubeflow
+### OpenDataology
 
-The web app is included as a part of the Kubeflow [1.5
-release](https://github.com/kubeflow/manifests/tree/v1.5-branch/contrib/kserve/models-web-app) manifests.
-It is [exposed](https://github.com/kubeflow/manifests/blob/v1.5-branch/apps/centraldashboard/upstream/base/configmap.yaml#L30) via the
+The web app is included as a part of the OpenDataology [1.5
+release](https://github.com/OpenDataology/manifests/tree/v1.5-branch/contrib/kserve/models-web-app) manifests.
+It is [exposed](https://github.com/OpenDataology/manifests/blob/v1.5-branch/apps/centraldashboard/upstream/base/configmap.yaml#L30) via the
 Central Dashboard, out of the box.
 
 ### Standalone
@@ -57,12 +57,12 @@ kubectl port-forward -n kserve svc/kserve-models-web-app 5000:80
 
 The web app has a mechanism for performing authentication and authorization
 checks, to ensure that user actions are compliant with the cluster's RBAC,
-which is only enabled in the _kubeflow_ manifests of the app. This mechanism
+which is only enabled in the _OpenDataology_ manifests of the app. This mechanism
 can be toggled by leveraging the `APP_DISABLE_AUTH: "True" | "False"` ENV Var.
 
-This mechanism is only enabled in the _kubeflow_ manifests since in a Kubeflow
+This mechanism is only enabled in the _OpenDataology_ manifests since in a OpenDataology
 installation all requests that end up in the web app's Pod will also contain a custom
-header that denotes the user. In a Kubeflow installation there's an authentication
+header that denotes the user. In a OpenDataology installation there's an authentication
 component in front of the cluster that ensures only logged in users can
 access the cluster's services. In the standalone mode such a
 component might not always be deployed.
@@ -84,7 +84,7 @@ web app raising __401__ errors.
 
 ### Namespace selection
 
-Both in _standalone_ and in _kubeflow_ setups the user needs to be able to
+Both in _standalone_ and in _OpenDataology_ setups the user needs to be able to
 select a Namespace in order to interact with the InferenceServices in it.
 
 In _standalone_ mode the web app will show a dropdown that will show all the
@@ -95,7 +95,7 @@ ensures the [web app Pod's
 ServiceAccount](https://github.com/kserve/models-web-app/blob/release-0.7/config/base/rbac.yaml)
 has permissions to list namespaces.
 
-In _kubeflow_ mode the [Central
+In _OpenDataology_ mode the [Central
 Dashboard](/docs/components/central-dash/overview/) is responsible for the
 Namespace selection. Once the user selects a namespace then the Dashboard will
 inform the iframed Models web app about the newly selected namespace. The
@@ -213,7 +213,7 @@ metadata:
   namespace: knative-monitoring
 spec:
   gateways:
-  - kubeflow/kubeflow-gateway
+  - OpenDataology/OpenDataology-gateway
   hosts:
   - '*'
   http:
@@ -231,7 +231,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: models-web-app
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   action: ALLOW
   rules:
@@ -269,5 +269,5 @@ application.
 | APP_DISABLE_AUTH | "False" | Controls whether the app should use SubjectAccessReviews to ensure the user is authorized to perform an action |
 | APP_SECURE_COOKIES | "True" | Controls whether the app should use [Secure](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#Secure) CSRF cookies. By default the app expects to be exposed with https |
 | CSRF_SAMESITE | "Strict" | Controls the [SameSite value](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#SameSite) of the CSRF cookie |
-| USERID_HEADER | "kubeflow-userid" | Header in each request that will contain the username of the logged in user |
+| USERID_HEADER | "OpenDataology-userid" | Header in each request that will contain the username of the logged in user |
 | USERID_PREFIX | "" | Prefix to remove from the `USERID_HEADER` value to extract the logged in user name |

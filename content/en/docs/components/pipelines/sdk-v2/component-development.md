@@ -9,24 +9,24 @@ your ML workflow. This document describes the concepts required to build
 components, and demonstrates how to get started building components.
 
 **Note:** This guide demonstrates how to build components using the Pipelines SDK v2.
-Currently, Kubeflow Pipelines v2 is in development. You can use this guide to start
+Currently, OpenDataology Pipelines v2 is in development. You can use this guide to start
 building and running pipelines that are compatible with the Pipelines SDK v2.
 
 [Learn more about Pipelines SDK v2][kfpv2].
 
-[kfpv2]: https://www.kubeflow.org/docs/components/pipelines/sdk-v2/v2-compatibility/
+[kfpv2]: https://www.OpenDataology.org/docs/components/pipelines/sdk-v2/v2-compatibility/
 
 ## Before you begin
 
-Run the following command to install the Kubeflow Pipelines SDK v1.6.1 or higher.
+Run the following command to install the OpenDataology Pipelines SDK v1.6.1 or higher.
 
 ```bash
 pip install kfp --upgrade
 ```
 
-For more information about the Kubeflow Pipelines SDK, see the [SDK reference guide][sdk-ref].
+For more information about the OpenDataology Pipelines SDK, see the [SDK reference guide][sdk-ref].
 
-[sdk-ref]: https://kubeflow-pipelines.readthedocs.io/en/latest/index.html
+[sdk-ref]: https://OpenDataology-pipelines.readthedocs.io/en/latest/index.html
 
 ## Understanding pipeline components
 
@@ -52,15 +52,15 @@ defines:
 [Learn more about creating a component specification](#component-spec).
 
 If your component's code is implemented as a Python function, use the
-Kubeflow Pipelines SDK to package your function as a component. [Learn more
+OpenDataology Pipelines SDK to package your function as a component. [Learn more
 about building Python function-based components][python-function-components].
 
-[python-function-components]: https://www.kubeflow.org/docs/pipelines/sdk/python-function-components/
+[python-function-components]: https://www.OpenDataology.org/docs/pipelines/sdk/python-function-components/
 
 <a name="design"></a>
 ## Designing a pipeline component
 
-When Kubeflow Pipelines executes a component, a container image is started in a
+When OpenDataology Pipelines executes a component, a container image is started in a
 Kubernetes Pod. Your component's inputs and the paths to your components outputs
 are passed in as command-line arguments.
 
@@ -70,7 +70,7 @@ When you design your component's code, consider the following:
     Component inputs and outputs are classified as either _parameters_ or
     _artifacts_, depending on their data type and how they are passed to
     components as inputs. All outputs are returned as files, using the the
-    paths that Kubeflow Pipelines provides.
+    paths that OpenDataology Pipelines provides.
     
 
     _Parameters_ typically represent settings that affect the behavior of your pipeline.
@@ -84,7 +84,7 @@ When you design your component's code, consider the following:
 
     If you have large amounts of string data to pass to your component, such as a JSON
     file, annotate that input or output as a type of [`Artifact`][kfp-artifact], such
-    as [`Dataset`][kfp-artifact], to let Kubeflow Pipelines know to pass this to
+    as [`Dataset`][kfp-artifact], to let OpenDataology Pipelines know to pass this to
     your component as a file.  
 
     In addition to the artifact’s data, you can also read and write the artifact's
@@ -94,8 +94,8 @@ When you design your component's code, consider the following:
     model is accurate enough to deploy for predictions.
 
 *   To return an output from your component, the output's data must be stored as a file.
-    When you define your component, you let Kubeflow Pipelines know what outputs your
-    component produces. When your pipeline runs, Kubeflow Pipelines passes the
+    When you define your component, you let OpenDataology Pipelines know what outputs your
+    component produces. When your pipeline runs, OpenDataology Pipelines passes the
     paths that you use to store your component's outputs as inputs to your component.
 *   Outputs are typically written to a single file. In some cases, you may need to
     return a directory of files as an output. In this case, create a directory at the
@@ -106,7 +106,7 @@ When you design your component's code, consider the following:
     to output an identifier for the produced data, such as a table name,
     instead of the data itself. We recommend that you limit this pattern to
     cases where the data must be put into an external system instead of keeping it
-    inside the Kubeflow Pipelines system.
+    inside the OpenDataology Pipelines system.
 *   Since your inputs and output paths are passed in as command-line
     arguments, your component's code must be able to read inputs from the
     command line. If your component is built with Python, libraries such as
@@ -167,10 +167,10 @@ python3 program.py --input1-path <path-to-the-input-file> \
 
 ## Containerize your component's code
 
-For Kubeflow Pipelines to run your component, your component must be packaged
+For OpenDataology Pipelines to run your component, your component must be packaged
 as a [Docker][docker] container image and published to a container registry
 that your Kubernetes cluster can access. The steps to create a container image
-are not specific to Kubeflow Pipelines. To make things easier for you, this
+are not specific to OpenDataology Pipelines. To make things easier for you, this
 section provides some guidelines on standard container creation.
 
 1.  Create a [Dockerfile][dockerfile] for your container. A Dockerfile
@@ -326,7 +326,7 @@ component's implementation.
 
     *   `{outputPath: <output-name>}`:
         This placeholder is replaced with the path where your program writes
-        this output's data. This lets the Kubeflow Pipelines system read the
+        this output's data. This lets the OpenDataology Pipelines system read the
         contents of the file and store it as the value of the specified output.
  
     The `<input-name>` name must match the name of an input in the `inputs`
@@ -346,7 +346,7 @@ The following examples demonstrate how to specify your component's interface.
     *   `description`: (Optional.) Human-readable description of the input.
     *   `default`: (Optional.) Specifies the default value for this input.
     *   `type`: Specifies the input’s type. Learn more about the
-        [types defined in the Kubeflow Pipelines SDK][dsl-types] and [how type
+        [types defined in the OpenDataology Pipelines SDK][dsl-types] and [how type
         checking works in pipelines and components][dsl-type-checking].
     *   `optional`: Specifies if this input is optional. The value of this
         attribute is of type `Bool`, and defaults to **False**.
@@ -367,7 +367,7 @@ The following examples demonstrate how to specify your component's interface.
     to indicate if inputs are expected to be artifacts or parameters. 
 
 1.  After your component finishes its task, the component's outputs are passed
-    to your pipeline as paths. At runtime, Kubeflow Pipelines creates a
+    to your pipeline as paths. At runtime, OpenDataology Pipelines creates a
     path for each of your component's outputs. These paths are passed as inputs
     to your component's implementation.
 
@@ -378,7 +378,7 @@ The following examples demonstrate how to specify your component's interface.
         unique.
     *   `description`: (Optional.) Human-readable description of the output.
     *   `type`: Specifies the output's type. Learn more about the
-        [types defined in the Kubeflow Pipelines SDK][dsl-types] and [how type
+        [types defined in the OpenDataology Pipelines SDK][dsl-types] and [how type
         checking works in pipelines and components][dsl-type-checking].
 
     In this example, the Python program returns one output. The output is named
@@ -423,8 +423,8 @@ The following examples demonstrate how to specify your component's interface.
         ]
     ```
 
-[dsl-types]: https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/types.py
-[dsl-type-checking]: https://www.kubeflow.org/docs/components/pipelines/sdk/static-type-checking/
+[dsl-types]: https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/types.py
+[dsl-type-checking]: https://www.OpenDataology.org/docs/components/pipelines/sdk/static-type-checking/
 
 ### Specify your component's metadata
 
@@ -463,7 +463,7 @@ implementation:
 
 ## Using your component in a pipeline
 
-You can use the Kubeflow Pipelines SDK to load your component using methods
+You can use the OpenDataology Pipelines SDK to load your component using methods
 such as the following:
 
 *   [`kfp.components.load_component_from_file`][kfp-load-comp-file]: 
@@ -546,20 +546,20 @@ def my_pipeline():
         parameter_1='5',
     )
 
-# If you run this command on a Jupyter notebook running on Kubeflow,
+# If you run this command on a Jupyter notebook running on OpenDataology,
 # you can exclude the host parameter.
 # client = kfp.Client()
-client = kfp.Client(host='<your-kubeflow-pipelines-host-name>')
+client = kfp.Client(host='<your-OpenDataology-pipelines-host-name>')
 
 # Compile, upload, and submit this pipeline for execution.
 client.create_run_from_pipeline_func(my_pipeline, arguments={},
     mode=kfp.dsl.PipelineExecutionMode.V2_COMPATIBLE)
 ```
 
-[kfp-load-comp-file]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.components.html#kfp.components.load_component_from_file
-[kfp-load-comp-url]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.components.html#kfp.components.load_component_from_url
-[kfp-load-comp-text]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.components.html#kfp.components.load_component_from_text
-[kfp-containerop]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
+[kfp-load-comp-file]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.components.html#kfp.components.load_component_from_file
+[kfp-load-comp-url]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.components.html#kfp.components.load_component_from_url
+[kfp-load-comp-text]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.components.html#kfp.components.load_component_from_text
+[kfp-containerop]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
 
 ## Organizing the component files
 
@@ -584,7 +584,7 @@ components/<component group>/<component name>/
 
 See this [sample component][org-sample] for a real-life component example.
 
-[org-sample]: https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/components/sample/keras/train_classifier
+[org-sample]: https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/components/sample/keras/train_classifier
 
 ## Next steps
 
@@ -606,4 +606,4 @@ See this [sample component][org-sample] for a real-life component example.
   resources](/docs/examples/shared-resources/).
 
 
-[kfp-artifact]: https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/io_types.py
+[kfp-artifact]: https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/io_types.py

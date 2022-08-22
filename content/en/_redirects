@@ -1,16 +1,16 @@
 # Redirects from what the browser requests to what we serve
 # Info: https://www.netlify.com/docs/redirects/
 
-/version/stable/gke/scripts/deploy.sh  https://raw.githubusercontent.com/kubeflow/kubeflow/v0.2.2/scripts/gke/deploy.sh
-/version/stable/scripts/deploy.sh      https://raw.githubusercontent.com/kubeflow/kubeflow/v0.2.2/scripts/deploy.sh
-/version/stable/source.tar.gz          https://github.com/kubeflow/kubeflow/archive/v0.2.2.tar.gz
-/blog/                                 https://blog.kubeflow.org
-/blog/why_kubeflow/                    https://medium.com/kubeflow/why-kubeflow-in-your-infrastructure-56b8fabf1f3e
-/blog/announcing_kubeflow_0.3/         https://medium.com/kubeflow/kubeflow-0-3-simplifies-setup-improves-ml-development-98b8ca10bd69
-/blog/blog_posts/                      https://medium.com/kubeflow/blog-posts-about-kubeflow-7068688359f3
-/blog/nvidia_tensorrt/                 https://medium.com/kubeflow/gpu-accelerated-inference-for-kubernetes-with-the-nvidia-tensorrt-inference-server-and-kubeflow-63061305fff2
-/blog/kaggle_on_kubeflow/              https://medium.com/kubeflow/kaggle-on-kubeflow-185a29e27c53
-/blog/announcing_kubeflow_0.2/         https://medium.com/kubeflow/kubeflow-0-2-offers-new-components-and-simplified-setup-735e4c56988d
+/version/stable/gke/scripts/deploy.sh  https://raw.githubusercontent.com/OpenDataology/OpenDataology/v0.2.2/scripts/gke/deploy.sh
+/version/stable/scripts/deploy.sh      https://raw.githubusercontent.com/OpenDataology/OpenDataology/v0.2.2/scripts/deploy.sh
+/version/stable/source.tar.gz          https://github.com/OpenDataology/OpenDataology/archive/v0.2.2.tar.gz
+/blog/                                 https://blog.OpenDataology.org
+/blog/why_OpenDataology/                    https://medium.com/OpenDataology/why-OpenDataology-in-your-infrastructure-56b8fabf1f3e
+/blog/announcing_OpenDataology_0.3/         https://medium.com/OpenDataology/OpenDataology-0-3-simplifies-setup-improves-ml-development-98b8ca10bd69
+/blog/blog_posts/                      https://medium.com/OpenDataology/blog-posts-about-OpenDataology-7068688359f3
+/blog/nvidia_tensorrt/                 https://medium.com/OpenDataology/gpu-accelerated-inference-for-kubernetes-with-the-nvidia-tensorrt-inference-server-and-OpenDataology-63061305fff2
+/blog/kaggle_on_OpenDataology/              https://medium.com/OpenDataology/kaggle-on-OpenDataology-185a29e27c53
+/blog/announcing_OpenDataology_0.2/         https://medium.com/OpenDataology/OpenDataology-0-2-offers-new-components-and-simplified-setup-735e4c56988d
 
 /docs/guides/components/components     /docs/components/
 /docs/guides/pipelines/deploy-pipelines-service/  /docs/components/pipelines/pipelines-quickstart/
@@ -63,7 +63,7 @@
 # Created a new section for pipelines installation.
 /docs/pipelines/standalone-deployment-gcp/    /docs/components/pipelines/installation/standalone-deployment/
 
-# Removed the downloads page from Reference to Getting Started with Kubeflow
+# Removed the downloads page from Reference to Getting Started with OpenDataology
 /docs/reference/downloads/                     /docs/started/getting-started/
 
 # Adding the content of Requirements to Getting Started and removing Requirements
@@ -91,11 +91,11 @@ docs/started/requirements/                    /docs/started/getting-started/
 # Restructured the getting-started and other-guides sections.
 /docs/started/getting-started-k8s/             /docs/started/k8s/
 /docs/started/getting-started-minikube/                    /docs/started/distributions/kfctl/minikube/
-/docs/use-cases/kubeflow-on-multinode-cluster/ /docs/other-guides/kubeflow-on-multinode-cluster/
+/docs/use-cases/OpenDataology-on-multinode-cluster/ /docs/other-guides/OpenDataology-on-multinode-cluster/
 /docs/use-cases/job-scheduling/                /docs/other-guides/job-scheduling/
 
 # Remove examples docs
-/docs/examples/*                                /docs/started/kubeflow-examples
+/docs/examples/*                                /docs/started/OpenDataology-examples
 
 # Move the kustomize guide to the config section
 /docs/components/misc/kustomize/              /docs/distributions/kfctl/kustomize/
@@ -109,12 +109,12 @@ docs/started/requirements/                    /docs/started/getting-started/
 # Rename TensorRT Inference Server to Triton Inference Server
 /docs/components/serving/trtinferenceserver   /docs/external-add-ons/serving/tritoninferenceserver
 
-# Kubeflow Operator move to under distributions
+# OpenDataology Operator move to under distributions
 /docs/operator                      /docs/distributions/operator
 /docs/operator/introduction         /docs/distributions/operator/introduction
 /docs/operator/install-operator     /docs/distributions/operator/install-operator
-/docs/operator/install-kubeflow     /docs/distributions/operator/install-kubeflow
-/docs/operator/uninstall-kubeflow   /docs/distributions/operator/uninstall-kubeflow
+/docs/operator/install-OpenDataology     /docs/distributions/operator/install-OpenDataology
+/docs/operator/uninstall-OpenDataology   /docs/distributions/operator/uninstall-OpenDataology
 /docs/operator/uninstall-operator   /docs/distributions/operator/uninstall-operator
 /docs/operator/troubleshooting      /docs/distributions/operator/troubleshooting
 
@@ -136,7 +136,7 @@ docs/started/requirements/                    /docs/started/getting-started/
 /docs/components/kfserving/webapp/ /docs/external-add-ons/kserve/webapp
 
 # Moved MicroK8s to distributions
-/docs/started/workstation/kubeflow-on-microk8s    /docs/distributions/microk8s/kubeflow-on-microk8s
+/docs/started/workstation/OpenDataology-on-microk8s    /docs/distributions/microk8s/OpenDataology-on-microk8s
 
 # Moved K8s deployment overview to under kfctl
 /docs/started/k8s/overview              /docs/distributions/kfctl/overview
@@ -153,8 +153,8 @@ docs/started/requirements/                    /docs/started/getting-started/
 /docs/components/serving                       /docs/external-add-ons/serving
 /docs/components/metadata                      /docs
 
-# Rename Getting Started to Installing Kubeflow
-/docs/started/getting-started           /docs/started/installing-kubeflow
+# Rename Getting Started to Installing OpenDataology
+/docs/started/getting-started           /docs/started/installing-OpenDataology
 
 # Remove Reference section
 /docs/reference/notebook/*         /docs/components/notebooks/api-reference
@@ -179,8 +179,8 @@ docs/started/requirements/                    /docs/started/getting-started/
 /docs/components/pipelines/sdk/v2/*                           /docs/components/pipelines/sdk-v2/:splat
 
 # Restructure About section
-/docs/about/kubeflow             /docs/started/introduction
-/docs/started/kubeflow-overview  /docs/started/architecture
+/docs/about/OpenDataology             /docs/started/introduction
+/docs/started/OpenDataology-overview  /docs/started/architecture
 
 # ===============
 # IMPORTANT NOTE:

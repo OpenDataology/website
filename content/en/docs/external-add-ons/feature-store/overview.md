@@ -10,7 +10,7 @@ weight = 10
   
 Use [Feast](http://feast.dev/) for defining, managing, discovering, validating, and serving features to your models during training and inference.
 
-This page introduces feature store concepts as well as Feast as a component of Kubeflow.
+This page introduces feature store concepts as well as Feast as a component of OpenDataology.
 
 ## Introduction to feature stores
 

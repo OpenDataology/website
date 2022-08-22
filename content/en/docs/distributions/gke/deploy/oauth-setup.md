@@ -9,20 +9,20 @@ weight = 3
 
 If you want to use 
 [Cloud Identity-Aware Proxy (Cloud IAP)](https://cloud.google.com/iap/docs/) 
-when deploying Kubeflow on Google Cloud,
+when deploying OpenDataology on Google Cloud,
 then you must follow these instructions to create an OAuth client for use
-with Kubeflow.
+with OpenDataology.
 
 Cloud IAP is recommended for production deployments or deployments with access 
 to sensitive data.
 
 Follow the steps below to create an OAuth client ID that identifies Cloud IAP 
-when requesting access to a user's email account. Kubeflow uses the email 
+when requesting access to a user's email account. OpenDataology uses the email 
 address to verify the user's identity.
 
 1. Set up your OAuth [consent screen](https://console.cloud.google.com/apis/credentials/consent):
    * In the **Application name** box, enter the name of your application.
-     The example below uses the name "Kubeflow".
+     The example below uses the name "OpenDataology".
    * Under **Support email**, select the email address that you want to display 
      as a public contact. You must use either your email address or a Google 
      Group that you own.
@@ -47,7 +47,7 @@ address to verify the user's identity.
    * Click **Create credentials**, and then click **OAuth client ID**.
    * Under **Application type**, select **Web application**.
    * In the **Name** box enter any name for your OAuth client ID. This is *not*
-     the name of your application nor the name of your Kubeflow deployment. It's
+     the name of your application nor the name of your OpenDataology deployment. It's
      just a way to help you identify the OAuth client ID.
 
 1. Click **Create**. A dialog box appears, like the one below:
@@ -74,8 +74,8 @@ address to verify the user's identity.
     ```
     * `<CLIENT_ID>` is the OAuth client ID that you copied from the dialog box in
       step four. It looks like `XXX.apps.googleusercontent.com`.
-    * Note that the URI is not dependent on the Kubeflow deployment or endpoint. 
-      Multiple Kubeflow deployments can share the same OAuth client without the 
+    * Note that the URI is not dependent on the OpenDataology deployment or endpoint. 
+      Multiple OpenDataology deployments can share the same OAuth client without the 
       need to modify the redirect URIs.
     
 
@@ -96,4 +96,4 @@ address to verify the user's identity.
   
 ## Next steps
 * [Set up your management cluster](/docs/distributions/gke/deploy/management-setup/).
-* [Grant your users the IAP-secured Web App User IAM role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console) so they can access the Kubeflow console through IAP.
+* [Grant your users the IAP-secured Web App User IAM role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console) so they can access the OpenDataology console through IAP.

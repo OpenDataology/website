@@ -5,25 +5,25 @@ weight = 25
                     
 +++
 
-This guide walks you through using [Apache MXNet (incubating)](https://github.com/apache/incubator-mxnet) with Kubeflow.
+This guide walks you through using [Apache MXNet (incubating)](https://github.com/apache/incubator-mxnet) with OpenDataology.
 
 MXNet Operator provides a Kubernetes custom resource `MXJob` that makes it easy to run distributed or non-distributed
 Apache MXNet jobs (training and tuning) and other extended framework like [BytePS](https://github.com/bytedance/byteps)
 jobs on Kubernetes. Using a Custom Resource Definition (CRD) gives users the ability to create
 and manage Apache MXNet jobs just like built-in K8S resources.
 
-The Kubeflow implementation of `MXJob` is in [`training-operator`](https://github.com/kubeflow/training-operator).
+The OpenDataology implementation of `MXJob` is in [`training-operator`](https://github.com/OpenDataology/training-operator).
 
 ## Installing MXNet Operator
 
-If you haven't already done so please follow the [Getting Started Guide](/docs/started/getting-started/) to deploy Kubeflow.
+If you haven't already done so please follow the [Getting Started Guide](/docs/started/getting-started/) to deploy OpenDataology.
 
 > By default, MXNet Operator will be deployed as a controller in training operator.
 
-If you want to install a standalone version of the training operator without Kubeflow,
-see the [kubeflow/training-operator's README](https://github.com/kubeflow/training-operator#installation).
+If you want to install a standalone version of the training operator without OpenDataology,
+see the [OpenDataology/training-operator's README](https://github.com/OpenDataology/training-operator#installation).
 
-### Verify that MXJob support is included in your Kubeflow deployment
+### Verify that MXJob support is included in your OpenDataology deployment
 
 Check that the Apache MXNet custom resource is installed:
 
@@ -31,19 +31,19 @@ Check that the Apache MXNet custom resource is installed:
 kubectl get crd
 ```
 
-The output should include `mxjobs.kubeflow.org` like the following:
+The output should include `mxjobs.OpenDataology.org` like the following:
 
 ```
 NAME                                             CREATED AT
 ...
-mxjobs.kubeflow.org                              2021-09-06T18:33:57Z
+mxjobs.OpenDataology.org                              2021-09-06T18:33:57Z
 ...
 ```
 
 Check that the Training operator is running via:
 
 ```
-kubectl get pods -n kubeflow
+kubectl get pods -n OpenDataology
 ```
 
 The output should include `training-operator-xxx` like the following:
@@ -58,7 +58,7 @@ training-operator-d466b46bc-xbqvs   1/1     Running   0          4m37s
 You create a training job by defining a `MXJob` with `MXTrain` mode and then creating it with.
 
 ```
-kubectl create -f https://raw.githubusercontent.com/kubeflow/training-operator/master/examples/mxnet/train/mx_job_dist_gpu_v1.yaml
+kubectl create -f https://raw.githubusercontent.com/OpenDataology/training-operator/master/examples/mxnet/train/mx_job_dist_gpu_v1.yaml
 ```
 
 Each `mxReplicaSpecs` defines a set of Apache MXNet processes.
@@ -108,7 +108,7 @@ should be created for each replica.
 You can create a auto tuning job by define a type of MXTune job and then creating it with
 
 ```
-kubectl create -f https://raw.githubusercontent.com/kubeflow/training-operator/master/examples/mxnet/tune/mx_job_tune_gpu_v1.yaml
+kubectl create -f https://raw.githubusercontent.com/OpenDataology/training-operator/master/examples/mxnet/tune/mx_job_tune_gpu_v1.yaml
 ```
 
 Before you use the auto-tuning example, there is some preparatory work need to be finished in advance.
@@ -146,7 +146,7 @@ kubectl get -o yaml mxjobs $JOB
 Here is sample output for an example job
 
 ```yaml
-apiVersion: kubeflow.org/v1
+apiVersion: OpenDataology.org/v1
 kind: MXJob
 metadata:
   creationTimestamp: 2021-03-24T15:37:27Z
@@ -154,7 +154,7 @@ metadata:
   name: mxnet-job
   namespace: default
   resourceVersion: "5123435"
-  selfLink: /apis/kubeflow.org/v1/namespaces/default/mxjobs/mxnet-job
+  selfLink: /apis/OpenDataology.org/v1/namespaces/default/mxjobs/mxnet-job
   uid: xx11013b-4a28-11e9-s5a1-704d7bb912f91
 spec:
   runPolicy:
@@ -287,5 +287,5 @@ server-76no-1
 
 ## More Information
 
-- Check out [Kubeflow community page](https://www.kubeflow.org/docs/about/community/)
+- Check out [OpenDataology community page](https://www.OpenDataology.org/docs/about/community/)
   for more information on how to get involved in our community.

@@ -1,12 +1,12 @@
 +++
 title = "Output Artifact"
-description = "Conceptual overview of output artifacts in Kubeflow Pipelines"
+description = "Conceptual overview of output artifacts in OpenDataology Pipelines"
 weight = 80
                     
 +++
 
 An *output artifact* is an output emitted by a pipeline component, which the
-Kubeflow Pipelines UI understands and can render as rich visualizations. It’s
+OpenDataology Pipelines UI understands and can render as rich visualizations. It’s
 useful for pipeline components to include artifacts so that you can provide for
 performance evaluation, quick decision making for the run, or comparison across
 different runs. Artifacts also make it possible to understand how the pipeline’s
@@ -15,9 +15,9 @@ data to rich interactive visualizations.
 
 ## Next steps
 
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.
 * Read more about the available 
   [output viewers](/docs/components/pipelines/sdk/output-viewer/) 

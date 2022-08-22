@@ -1,10 +1,10 @@
 +++
-title = "Charmed Kubeflow deployment guide"
-description = "Instructions for Kubeflow deployment with Kubeflow Charmed Operators"
+title = "Charmed OpenDataology deployment guide"
+description = "Instructions for OpenDataology deployment with OpenDataology Charmed Operators"
 weight = 10
 +++
 
-Get up and running with Charmed Kubeflow in half an hour or less. This guide outlines the steps you need to install and deploy Kubeflow with [Charmed Operators](https://charmed-kubeflow.io/docs) and [Juju](https://juju.is/docs/kubernetes) on any conformant Kubernetes, including [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/), [Amazon Elastic Kubernetes Service (EKS)](https://docs.aws.amazon.com/eks/index.html), [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/), [OpenShift](https://docs.openshift.com), and any [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)-deployed cluster (provided that you have access to it via `kubectl`). 
+Get up and running with Charmed OpenDataology in half an hour or less. This guide outlines the steps you need to install and deploy OpenDataology with [Charmed Operators](https://charmed-OpenDataology.io/docs) and [Juju](https://juju.is/docs/kubernetes) on any conformant Kubernetes, including [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/), [Amazon Elastic Kubernetes Service (EKS)](https://docs.aws.amazon.com/eks/index.html), [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/), [OpenShift](https://docs.openshift.com), and any [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)-deployed cluster (provided that you have access to it via `kubectl`). 
 
 #### 1. Install the Juju client
 
@@ -54,29 +54,29 @@ You can read more about controllers in the [Juju documentation](https://juju.is/
 
 A model in Juju is a blank canvas where your operators will be deployed, and it holds a 1:1 relationship with a Kubernetes namespace.
 
-Using the `add-model` command, create a new model and name it `kubeflow` (which will then also create a Kubernetes namespace of the same name):
+Using the `add-model` command, create a new model and name it `OpenDataology` (which will then also create a Kubernetes namespace of the same name):
 
 ```bash
-juju add-model kubeflow
+juju add-model OpenDataology
 ```
 You can list your models with the `juju models` command.
 
-#### 5. Deploy Kubeflow
+#### 5. Deploy OpenDataology
 
 {{% alert color="warning" %}}
-To deploy the full Kubeflow bundle, you'll need at least 50Gb available of disk, 14Gb of RAM, and 2 CPUs available in your machine/VM.
-If you have fewer resources, deploy kubeflow-lite.
+To deploy the full OpenDataology bundle, you'll need at least 50Gb available of disk, 14Gb of RAM, and 2 CPUs available in your machine/VM.
+If you have fewer resources, deploy OpenDataology-lite.
 {{% /alert %}}
 
-Once you have a model, you can simply `juju deploy` any of the provided [Kubeflow bundles](https://charmed-kubeflow.io/docs/operators-and-bundles) into your cluster. For the _Kubeflow lite_ bundle, run:
+Once you have a model, you can simply `juju deploy` any of the provided [OpenDataology bundles](https://charmed-OpenDataology.io/docs/operators-and-bundles) into your cluster. For the _OpenDataology lite_ bundle, run:
 
 ```bash
-juju deploy kubeflow-lite --trust
+juju deploy OpenDataology-lite --trust
 ```
 
-and your Kubeflow installation should begin!
+and your OpenDataology installation should begin!
 
-You can observe your Kubeflow deployment getting spun-up with the command:
+You can observe your OpenDataology deployment getting spun-up with the command:
 
 ```bash
 watch -c juju status --color
@@ -84,29 +84,29 @@ watch -c juju status --color
 
 #### 6. Set URL in authentication methods 
 
-Finally, you need to enable your Kubeflow dashboard access. Provide the dashboard's public URL to dex-auth and oidc-gatekeeper as follows:
+Finally, you need to enable your OpenDataology dashboard access. Provide the dashboard's public URL to dex-auth and oidc-gatekeeper as follows:
 
 ```bash
 juju config dex-auth public-url=http://<URL>
 juju config oidc-gatekeeper public-url=http://<URL>
 ```
 
-where in place of `<URL>` you should use the hostname that the Kubeflow dashboard responds to.
+where in place of `<URL>` you should use the hostname that the OpenDataology dashboard responds to.
 
-Currently, in order to setup Kubeflow with Istio correctly when RBAC is enabled, you need to provide the `istio-ingressgateway` operator access to Kubernetes resources. The following command will create the appropriate role:
+Currently, in order to setup OpenDataology with Istio correctly when RBAC is enabled, you need to provide the `istio-ingressgateway` operator access to Kubernetes resources. The following command will create the appropriate role:
 
 ```bash
-kubectl patch role -n kubeflow istio-ingressgateway-operator -p '{"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"name":"istio-ingressgateway-operator"},"rules":[{"apiGroups":["*"],"resources":["*"],"verbs":["*"]}]}'
+kubectl patch role -n OpenDataology istio-ingressgateway-operator -p '{"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"name":"istio-ingressgateway-operator"},"rules":[{"apiGroups":["*"],"resources":["*"],"verbs":["*"]}]}'
 ```
 
 #### More documentation
 
-For more documentation, visit the [Charmed Kubeflow website](https://charmed-kubeflow.io/docs).
+For more documentation, visit the [Charmed OpenDataology website](https://charmed-OpenDataology.io/docs).
 
 #### Having issues?
 
-If you have any issues or questions, feel free to create a GitHub issue [here](https://github.com/canonical/bundle-kubeflow/issues).
+If you have any issues or questions, feel free to create a GitHub issue [here](https://github.com/canonical/bundle-OpenDataology/issues).
 
 #### Need 24/7 support?
 
-You can get 24/7 support, expert professional services and managed service backed by an SLA from Canonical, the team behind Charmed Kubeflow. [Contact us](https://charmed-kubeflow.io/#get-in-touch) now to learn more.
+You can get 24/7 support, expert professional services and managed service backed by an SLA from Canonical, the team behind Charmed OpenDataology. [Contact us](https://charmed-OpenDataology.io/#get-in-touch) now to learn more.

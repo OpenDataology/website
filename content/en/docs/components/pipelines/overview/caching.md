@@ -1,22 +1,22 @@
 +++
 title = "Caching"
-description = "Getting started with Kubeflow Pipelines step caching"
+description = "Getting started with OpenDataology Pipelines step caching"
 weight = 40
                     
 +++
 {{% alpha-status
-feedbacklink="https://github.com/kubeflow/pipelines/issues" %}}
+feedbacklink="https://github.com/OpenDataology/pipelines/issues" %}}
 
-Starting from Kubeflow Pipelines 0.4, Kubeflow Pipelines supports step caching capabilities in both standalone deployment and AI Platform Pipelines.
+Starting from OpenDataology Pipelines 0.4, OpenDataology Pipelines supports step caching capabilities in both standalone deployment and AI Platform Pipelines.
 
 ## Before you start
 
-This guide tells you the basic concepts of Kubeflow Pipelines step caching and how to use it. 
-This guide assumes that you already have Kubeflow Pipelines installed or want to use options in the [Kubeflow Pipelines deployment guide](/docs/components/pipelines/installation/) to deploy Kubeflow Pipelines.
+This guide tells you the basic concepts of OpenDataology Pipelines step caching and how to use it. 
+This guide assumes that you already have OpenDataology Pipelines installed or want to use options in the [OpenDataology Pipelines deployment guide](/docs/components/pipelines/installation/) to deploy OpenDataology Pipelines.
 
 ## What is step caching?
 
-Kubeflow Pipelines caching provides step-level output caching. 
+OpenDataology Pipelines caching provides step-level output caching. 
 And caching is enabled by default for all pipelines submitted through the KFP backend and UI. 
 The exception is pipelines authored using TFX SDK which has its own caching mechanism. 
 The cache key calculation is based on the component (base image, command-line, code), arguments passed to the component (values or artifacts) and any additional customizations. 
@@ -26,13 +26,13 @@ With caching enabled, the system can skip a step that has already been executed 
 
 ## Disabling/enabling caching
 
-Cache is enabled by default after Kubeflow Pipelines 0.4. 
+Cache is enabled by default after OpenDataology Pipelines 0.4. 
 These are instructions on disabling and enabling cache service:
 
-### Configure access to your Kubeflow cluster
+### Configure access to your OpenDataology cluster
 
 Use the following instructions to configure `kubectl` with access to your
-Kubeflow cluster. 
+OpenDataology cluster. 
 
 1.  To check if you have `kubectl` installed, run the following command:
 
@@ -52,7 +52,7 @@ Kubeflow cluster.
 2.  Follow the [guide to configuring access to Kubernetes
     clusters][kubectl-access]. 
 
-### Disabling caching in your Kubeflow Pipelines deployment:
+### Disabling caching in your OpenDataology Pipelines deployment:
 
 1. Make sure `mutatingwebhookconfiguration` exists in your cluster:
 

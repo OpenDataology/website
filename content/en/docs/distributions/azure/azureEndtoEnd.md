@@ -14,13 +14,13 @@ The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?vie
 Azure Kubernetes Service (AKS) on Azure allows you to deploy containerized applications, within which you describe the resources your application needs, and AKS will manage the underlying resources automatically. This workflow is especially efficient at scale.
 
 ### The overall workflow
-This guide takes you through using your Kubeflow deployment to build a machine learning (ML) pipeline on Azure. This guide uses a sample pipeline to detail the process of creating an ML workflow from scratch. You will learn how to create and run a pipeline that processes data, trains a model, and then registers and deploys that model as a webservice.
+This guide takes you through using your OpenDataology deployment to build a machine learning (ML) pipeline on Azure. This guide uses a sample pipeline to detail the process of creating an ML workflow from scratch. You will learn how to create and run a pipeline that processes data, trains a model, and then registers and deploys that model as a webservice.
 
-To build your pipeline, you must create and build containers using Docker images. Containers are used to abstract the dependencies for each step of the pipeline. You can manage your containers using [Azure's portal](https://ms.portal.azure.com/#home), specifically using the Container Registry to store the containers in the cloud. Kubeflow pulls the containers from this registry as they are needed in each step of the pipeline.
+To build your pipeline, you must create and build containers using Docker images. Containers are used to abstract the dependencies for each step of the pipeline. You can manage your containers using [Azure's portal](https://ms.portal.azure.com/#home), specifically using the Container Registry to store the containers in the cloud. OpenDataology pulls the containers from this registry as they are needed in each step of the pipeline.
 
 By following this guide, you will learn how to:
 
-- Set up Kubeflow in an AKS Cluster
+- Set up OpenDataology in an AKS Cluster
 - Create and compile a pipeline that can:
 	- Preprocess data
 	- Train a model
@@ -34,20 +34,20 @@ When your pipeline has finished running, you will be able to see a registered im
 
 ## Set up your environment
 ### Download the project files
-This tutorial uses the Azure Pipelines example in the Kubeflow examples repo. You can optionally use a pipeline of your own, but several key steps may differ.
+This tutorial uses the Azure Pipelines example in the OpenDataology examples repo. You can optionally use a pipeline of your own, but several key steps may differ.
 
-Clone the project files and go to the directory containing the [Azure Pipelines (Tacos and Burritos)](https://github.com/kubeflow/examples/tree/master/pipelines) example:
+Clone the project files and go to the directory containing the [Azure Pipelines (Tacos and Burritos)](https://github.com/OpenDataology/examples/tree/master/pipelines) example:
 ```
-git clone https://github.com/kubeflow/examples.git
+git clone https://github.com/OpenDataology/examples.git
 cd examples/pipelines/azurepipeline
 ```
-As an alternative to cloning, you can download the [Kubeflow examples repository zip file](https://github.com/kubeflow/examples/archive/master.zip).
-## Deploy Kubeflow
+As an alternative to cloning, you can download the [OpenDataology examples repository zip file](https://github.com/OpenDataology/examples/archive/master.zip).
+## Deploy OpenDataology
 If you don't already have one, create an Azure account. If you have not used Azure services before, you can receive up to [1 year of free services and free credits.](https://azure.microsoft.com/en-ca/free/)
 
 > Note: that some of the services used in this guide may not be included in the free services, but can be covered by free credits.
 
-First, install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), then follow the instructions in the [guide to deploying Kubeflow on Azure](https://www.kubeflow.org/docs/azure/deploy/install-kubeflow/).
+First, install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), then follow the instructions in the [guide to deploying OpenDataology on Azure](https://www.OpenDataology.org/docs/azure/deploy/install-OpenDataology/).
 
 > Ensure that the agent size you use has the proper memory and storage requirements. For the Azure Pipelines example, most machine sizes will work, but **premium storage** is required. Use [this guide](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes) to choose the right agent size for your deployment. (We chose an agent size of Standard_D4s_v3.)
 
@@ -66,7 +66,7 @@ To create an ML workspace:
     class="mt-3 mb-3 p-3 border border-info rounded">
 
 ### Create an Azure container registry
-Kubeflow uses Docker images to describe each pipeline step's dependencies. You need to create a container registry to store those images in the cloud so that Kubeflow can pull the images as they are needed.
+OpenDataology uses Docker images to describe each pipeline step's dependencies. You need to create a container registry to store those images in the cloud so that OpenDataology can pull the images as they are needed.
 
 To create a container registry:
 
@@ -185,7 +185,7 @@ When all of the images are pushed successfully, modify the `pipeline.py` file to
 To compile the pipeline, simply open a terminal and navigate to the azurepipeline/code folder. Run the following command to generate a pipeline in the tar.gz format:
 		`python pipeline.py`
 ### Run and deploy
-Upload the pipeline.tar.gz file to the pipelines dashboard on your Kubeflow deployment.
+Upload the pipeline.tar.gz file to the pipelines dashboard on your OpenDataology deployment.
 
 <img src="/docs/azure/images/pipelinedash.PNG"
     alt="Pipeline Dashboard"
@@ -219,4 +219,4 @@ When you are done, make sure you delete your resource group to avoid extra charg
 You can optionally choose to delete individual resources on your clusters using the [Azure cluster docs](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-tutorial-delete-cluster).
 
 ## Next steps
-Build your own pipeline using the [Kubeflow Pipelines SDK](/docs/components/pipelines/sdk/sdk-overview/).
+Build your own pipeline using the [OpenDataology Pipelines SDK](/docs/components/pipelines/sdk/sdk-overview/).

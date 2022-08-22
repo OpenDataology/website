@@ -26,13 +26,13 @@ background-position: left center;
 }
 </style>
 <div class="notebook-links">
-<a class="colab-link" href="https://colab.research.google.com/github/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">Run in Google Colab</a>
-<a class="github-link" href="https://github.com/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">View source on GitHub</a>
+<a class="colab-link" href="https://colab.research.google.com/github/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">Run in Google Colab</a>
+<a class="github-link" href="https://github.com/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">View source on GitHub</a>
 </div>
 
 
 
-A Kubeflow pipeline is a portable and scalable definition of a machine learning
+A OpenDataology pipeline is a portable and scalable definition of a machine learning
 (ML) workflow. Each step in your ML workflow, such as preparing data or
 training a model, is an instance of a pipeline component. This document
 provides an overview of pipeline concepts and best practices, and instructions
@@ -40,7 +40,7 @@ describing how to build an ML pipeline.
 
 ## Before you begin
 
-1.  Run the following command to install the Kubeflow Pipelines SDK. If you run this command in a Jupyter
+1.  Run the following command to install the OpenDataology Pipelines SDK. If you run this command in a Jupyter
     notebook, restart the kernel after installing the SDK. 
 
 
@@ -58,7 +58,7 @@ import kfp.components as comp
 
 ## Understanding pipelines
 
-A Kubeflow pipeline is a portable and scalable definition of an ML workflow,
+A OpenDataology pipeline is a portable and scalable definition of an ML workflow,
 based on containers. A pipeline is composed of a set of input parameters and a
 list of the steps in this workflow. Each step in a pipeline is an instance of a
 component, which is represented as an instance of 
@@ -83,7 +83,7 @@ pipeline's workflow. Pipeline components are defined in
     component.
 
 You can build components by [defining a component specification for a
-containerized application][component-dev], or you can [use the Kubeflow
+containerized application][component-dev], or you can [use the OpenDataology
 Pipelines SDK to generate a component specification for a Python
 function][python-function-component]. You can also [reuse prebuilt components
 in your pipeline][prebuilt-components]. 
@@ -93,7 +93,7 @@ in your pipeline][prebuilt-components].
 Each step in your pipeline's workflow is an instance of a component. When
 you define your pipeline, you specify the source of each step's inputs. Step
 inputs can be set from the pipeline's input arguments, constants, or step
-inputs can depend on the outputs of other steps in this pipeline. Kubeflow
+inputs can depend on the outputs of other steps in this pipeline. OpenDataology
 Pipelines uses these dependencies to define your pipeline's workflow as
 a graph.
 
@@ -138,12 +138,12 @@ that you need to build your pipeline.
     a dataset, the component can be less useful since you can use it only when
     you need to load and transform that dataset. 
 
-*   Reuse components when possible. Kubeflow Pipelines provides [components for
+*   Reuse components when possible. OpenDataology Pipelines provides [components for
     common pipeline tasks and for access to cloud
     services][prebuilt-components].
 
 *   Consider what you need to know to debug your pipeline and research the
-    lineage of the models that your pipeline produces. Kubeflow Pipelines
+    lineage of the models that your pipeline produces. OpenDataology Pipelines
     stores the inputs and outputs of each pipeline step. By interrogating the
     artifacts produced by a pipeline run, you can better understand the
     variations in model quality between runs or track down bugs in your
@@ -157,7 +157,7 @@ dependencies between steps define the pipeline workflow graph.
 
 ### Building pipeline components
 
-Kubeflow pipeline components are containerized applications that perform a
+OpenDataology pipeline components are containerized applications that perform a
 step in your ML workflow. Here are the ways that you can define pipeline
 components:
 
@@ -172,7 +172,7 @@ components:
 
 *   If your component code can be expressed as a Python function, [evaluate if
     your component can be built as a Python function-based
-    component][python-function-component]. The Kubeflow Pipelines SDK makes it
+    component][python-function-component]. The OpenDataology Pipelines SDK makes it
     easier to build lightweight Python function-based components by saving you
     the effort of creating a component specification.
 
@@ -184,7 +184,7 @@ Python function-based component and reuses a prebuilt component.
 
 ### Understanding how data is passed between components
 
-When Kubeflow Pipelines runs a component, a container image is started in a
+When OpenDataology Pipelines runs a component, a container image is started in a
 Kubernetes Pod and your component’s inputs are passed in as command-line
 arguments. When your component has finished, the component's outputs are
 returned as files.
@@ -193,7 +193,7 @@ In your component's specification, you define the components inputs and outputs
 and how the inputs and output paths are passed to your program as command-line
 arguments. You can pass small inputs, such as short strings or numbers, to your
 component by value. Large inputs, such as datasets, must be passed to your
-component as file paths. Outputs are written to the paths that Kubeflow
+component as file paths. Outputs are written to the paths that OpenDataology
 Pipelines provides.
 
 Python function-based components make it easier to build pipeline components
@@ -206,7 +206,7 @@ outputs][python-function-component-data-passing].
 
 ## Getting started building a pipeline
 
-The following sections demonstrate how to get started building a Kubeflow
+The following sections demonstrate how to get started building a OpenDataology
 pipeline by walking through the process of converting a Python script into
 a pipeline.
 
@@ -220,12 +220,12 @@ when designing a pipeline.
     public website. The function extracts the CSV files and then merges them
     into a single file.
 
-[container-op]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.dsl.html#kfp.dsl.ContainerOp
-[component-spec]: https://www.kubeflow.org/docs/components/pipelines/reference/component-spec/
-[python-function-component]: https://www.kubeflow.org/docs/components/pipelines/sdk/python-function-components/
-[component-dev]: https://www.kubeflow.org/docs/components/pipelines/sdk/component-development/
-[python-function-component-data-passing]: https://www.kubeflow.org/docs/components/pipelines/sdk/python-function-components/#understanding-how-data-is-passed-between-components
-[prebuilt-components]: https://www.kubeflow.org/docs/examples/shared-resources/
+[container-op]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.dsl.html#kfp.dsl.ContainerOp
+[component-spec]: https://www.OpenDataology.org/docs/components/pipelines/reference/component-spec/
+[python-function-component]: https://www.OpenDataology.org/docs/components/pipelines/sdk/python-function-components/
+[component-dev]: https://www.OpenDataology.org/docs/components/pipelines/sdk/component-development/
+[python-function-component-data-passing]: https://www.OpenDataology.org/docs/components/pipelines/sdk/python-function-components/#understanding-how-data-is-passed-between-components
+[prebuilt-components]: https://www.OpenDataology.org/docs/examples/shared-resources/
 
 
 ```python
@@ -312,16 +312,16 @@ $ head merged_data.csv
     *   The function's arguments are decorated with the
         [`kfp.components.InputPath`][input-path] and the
         [`kfp.components.OutputPath`][output-path] annotations. These
-        annotations let Kubeflow Pipelines know to provide the path to the
+        annotations let OpenDataology Pipelines know to provide the path to the
         zipped tar file and to create a path where your function stores the
         merged CSV file. 
         
     The following example shows the updated `merge_csv` function.
 
-[web-download-component]: https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/components/web/Download/component.yaml
-[python-function-components]: https://www.kubeflow.org/docs/components/pipelines/sdk/python-function-components/
-[input-path]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html?highlight=inputpath#kfp.components.InputPath
-[output-path]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html?highlight=outputpath#kfp.components.OutputPath
+[web-download-component]: https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/components/web/Download/component.yaml
+[python-function-components]: https://www.OpenDataology.org/docs/components/pipelines/sdk/python-function-components/
+[input-path]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html?highlight=inputpath#kfp.components.InputPath
+[output-path]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html?highlight=outputpath#kfp.components.OutputPath
 
 
 ```python
@@ -344,8 +344,8 @@ def merge_csv(file_path: comp.InputPath('Tarball'),
     in, the path to save the component specification to, and a list of PyPI
     packages that need to be installed in the container at runtime.
 
-[create_component_from_func]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.create_component_from_func
-[container-op]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
+[create_component_from_func]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.create_component_from_func
+[container-op]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
 
 
 ```python
@@ -362,12 +362,12 @@ create_step_merge_csv = kfp.components.create_component_from_func(
     to load the component specification YAML for any components that you are
     reusing in this pipeline.
 
-[load_component_from_url]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html?highlight=load_component_from_url#kfp.components.load_component_from_url
+[load_component_from_url]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html?highlight=load_component_from_url#kfp.components.load_component_from_url
 
 
 ```python
 web_downloader_op = kfp.components.load_component_from_url(
-    'https://raw.githubusercontent.com/kubeflow/pipelines/master/components/contrib/web/Download/component.yaml')
+    'https://raw.githubusercontent.com/OpenDataology/pipelines/master/components/contrib/web/Download/component.yaml')
 ```
 
 2.  Define your pipeline as a Python function. 
@@ -398,7 +398,7 @@ def my_pipeline(url):
 
 ### Compile and run your pipeline
 
-After defining the pipeline in Python as described in the preceding section, use one of the following options to compile the pipeline and submit it to the Kubeflow Pipelines service.
+After defining the pipeline in Python as described in the preceding section, use one of the following options to compile the pipeline and submit it to the OpenDataology Pipelines service.
 
 #### Option 1: Compile and then upload in UI
 
@@ -412,17 +412,17 @@ kfp.compiler.Compiler().compile(
     package_path='pipeline.yaml')
 ```
 
-2.  Upload and run your `pipeline.yaml` using the Kubeflow Pipelines user interface.
+2.  Upload and run your `pipeline.yaml` using the OpenDataology Pipelines user interface.
 See the guide to [getting started with the UI][quickstart].
 
-[quickstart]: https://www.kubeflow.org/docs/components/pipelines/overview/quickstart
+[quickstart]: https://www.OpenDataology.org/docs/components/pipelines/overview/quickstart
 
-#### Option 2: run the pipeline using Kubeflow Pipelines SDK client
+#### Option 2: run the pipeline using OpenDataology Pipelines SDK client
 
-1.  Create an instance of the [`kfp.Client` class][kfp-client] following steps in [connecting to Kubeflow Pipelines using the SDK client][connect-api].
+1.  Create an instance of the [`kfp.Client` class][kfp-client] following steps in [connecting to OpenDataology Pipelines using the SDK client][connect-api].
 
-[kfp-client]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.client.html#kfp.Client
-[connect-api]: https://www.kubeflow.org/docs/components/pipelines/sdk/connect-api
+[kfp-client]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.client.html#kfp.Client
+[connect-api]: https://www.OpenDataology.org/docs/components/pipelines/sdk/connect-api
 
 
 ```python
@@ -449,12 +449,12 @@ client.create_run_from_pipeline_func(
 *   Learn how to [manipulate Kubernetes resources in a
     pipeline][k8s-resources] (Experimental).
 
-[conditional]: https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/tutorials/DSL%20-%20Control%20structures/DSL%20-%20Control%20structures.py
-[recursion]: https://www.kubeflow.org/docs/components/pipelines/sdk/dsl-recursion/
-[k8s-resources]: https://www.kubeflow.org/docs/components/pipelines/sdk/manipulate-resources/
+[conditional]: https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/tutorials/DSL%20-%20Control%20structures/DSL%20-%20Control%20structures.py
+[recursion]: https://www.OpenDataology.org/docs/components/pipelines/sdk/dsl-recursion/
+[k8s-resources]: https://www.OpenDataology.org/docs/components/pipelines/sdk/manipulate-resources/
 
 
 <div class="notebook-links">
-<a class="colab-link" href="https://colab.research.google.com/github/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">Run in Google Colab</a>
-<a class="github-link" href="https://github.com/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">View source on GitHub</a>
+<a class="colab-link" href="https://colab.research.google.com/github/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">Run in Google Colab</a>
+<a class="github-link" href="https://github.com/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/build-pipeline.ipynb">View source on GitHub</a>
 </div>

@@ -1,23 +1,23 @@
 +++
-title = "Deploy Kubeflow cluster"
-description = "Instructions for using kubectl and kpt to deploy Kubeflow on Google Cloud"
+title = "Deploy OpenDataology cluster"
+description = "Instructions for using kubectl and kpt to deploy OpenDataology on Google Cloud"
 weight = 5
 +++
 
 This guide describes how to use `kubectl` and [kpt](https://googlecontainertools.github.io/kpt/) to
-deploy Kubeflow on Google Cloud.
+deploy OpenDataology on Google Cloud.
 
 ## Deployment steps
 
 ### Prerequisites
 
-Before installing Kubeflow on the command line:
+Before installing OpenDataology on the command line:
 
 1. You must have created a management cluster and installed Config Connector.
 
    * If you don't have a management cluster follow the [instructions](/docs/distributions/gke/deploy/management-setup/)
 
-   * Your management cluster will need a namespace setup to administer the Google Cloud project where Kubeflow will be deployed. This step will be included in later step of current page.
+   * Your management cluster will need a namespace setup to administer the Google Cloud project where OpenDataology will be deployed. This step will be included in later step of current page.
 
 1. You need to use Linux or [Cloud Shell](https://cloud.google.com/shell/) for ASM installation. Currently ASM installation doesn't work on macOS because it [comes with an old version of bash](https://cloud.google.com/service-mesh/docs/scripted-install/asm-onboarding#installing_required_tools).
 
@@ -45,17 +45,17 @@ Before installing Kubeflow on the command line:
 
     You can install specific version of kubectl by following instruction (Example: [Install kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)). Latest patch version of kubectl from `v1.17` to `v1.19` works well too.
 
-    Note: Starting from Kubeflow 1.4, it requires `kpt v1.0.0-beta.6` or above to operate in `kubeflow/gcp-blueprints` repository. gcloud hasn't caught up with this kpt version yet, [install kpt](https://kpt.dev/installation/) separately from https://github.com/GoogleContainerTools/kpt/tags for now. Note that kpt requires docker to be installed.
+    Note: Starting from OpenDataology 1.4, it requires `kpt v1.0.0-beta.6` or above to operate in `OpenDataology/gcp-blueprints` repository. gcloud hasn't caught up with this kpt version yet, [install kpt](https://kpt.dev/installation/) separately from https://github.com/GoogleContainerTools/kpt/tags for now. Note that kpt requires docker to be installed.
 
     Note: You also need to [install required tools](https://cloud.google.com/service-mesh/v1.10/docs/scripted-install/asm-onboarding#installing_required_tools) for ASM installation tool `install_asm`.
 
-### Fetch kubeflow/gcp-blueprints and upstream packages
+### Fetch OpenDataology/gcp-blueprints and upstream packages
 
-1. If you have already installed Management cluster, you have `kubeflow/gcp-blueprints` locally. You just need to run `cd kubeflow` to access Kubeflow cluster manifests. Otherwise, you can run the following commands:
+1. If you have already installed Management cluster, you have `OpenDataology/gcp-blueprints` locally. You just need to run `cd OpenDataology` to access OpenDataology cluster manifests. Otherwise, you can run the following commands:
 
     ```bash
-    # Check out Kubeflow v{{% gke/latest-version %}} blueprints
-    git clone https://github.com/kubeflow/gcp-blueprints.git 
+    # Check out OpenDataology v{{% gke/latest-version %}} blueprints
+    git clone https://github.com/OpenDataology/gcp-blueprints.git 
     cd gcp-blueprints
     git checkout tags/v{{% gke/latest-version %}} -b v{{% gke/latest-version %}}
     ```
@@ -63,17 +63,17 @@ Before installing Kubeflow on the command line:
     Alternatively, you can get the package by using `kpt`:
 
     ```bash
-    # Check out Kubeflow v{{% gke/latest-version %}} blueprints
-    kpt pkg get https://github.com/kubeflow/gcp-blueprints.git@v{{% gke/latest-version %}} gcp-blueprints
+    # Check out OpenDataology v{{% gke/latest-version %}} blueprints
+    kpt pkg get https://github.com/OpenDataology/gcp-blueprints.git@v{{% gke/latest-version %}} gcp-blueprints
     cd gcp-blueprints
     ```
 
-1. Run the following command to pull upstream manifests from `kubeflow/manifests` repository.
+1. Run the following command to pull upstream manifests from `OpenDataology/manifests` repository.
 
 
     ```bash
-    # Visit Kubeflow cluster related manifests
-    cd kubeflow
+    # Visit OpenDataology cluster related manifests
+    cd OpenDataology
 
     bash ./pull-upstream.sh
     ```
@@ -88,7 +88,7 @@ Log in to gcloud. You only need to run this command once:
   ```
 
 
-1. Review and fill all the environment variables in `gcp-blueprints/kubeflow/env.sh`, they will be used by `kpt` later on, and some of them will be used in this deployment guide. Review the comment in `env.sh` for the explanation for each environment variable. After defining these environment variables, run:
+1. Review and fill all the environment variables in `gcp-blueprints/OpenDataology/env.sh`, they will be used by `kpt` later on, and some of them will be used in this deployment guide. Review the comment in `env.sh` for the explanation for each environment variable. After defining these environment variables, run:
 
     ```bash
     source env.sh
@@ -105,7 +105,7 @@ Log in to gcloud. You only need to run this command once:
    
 #### kpt setter config
 
-Run the following commands to configure kpt setter for your Kubeflow cluster:
+Run the following commands to configure kpt setter for your OpenDataology cluster:
 
   ```bash
   bash ./kpt-set.sh
@@ -125,11 +125,11 @@ current values by running the following commands:
 
 You can learn more about `list-setters` in [kpt documentation](https://catalog.kpt.dev/list-setters/v0.1/).
 
-#### Authorize Cloud Config Connector for each Kubeflow project
+#### Authorize Cloud Config Connector for each OpenDataology project
 
 In the [Management cluster deployment](/docs/distributions/gke/deploy/management-setup/) we created the Google Cloud service account **serviceAccount:kcc-${KF_PROJECT}@${MGMT_PROJECT}.iam.gserviceaccount.com**
-this is the service account that Config Connector will use to create any Google Cloud resources in `${KF_PROJECT}`. You need to grant this Google Cloud service account sufficient privileges to create the desired resources in Kubeflow project. 
-You only need to perform steps below once for each Kubeflow project, but make sure to do it even when KF_PROJECT and MGMT_PROJECT are the same project.
+this is the service account that Config Connector will use to create any Google Cloud resources in `${KF_PROJECT}`. You need to grant this Google Cloud service account sufficient privileges to create the desired resources in OpenDataology project. 
+You only need to perform steps below once for each OpenDataology project, but make sure to do it even when KF_PROJECT and MGMT_PROJECT are the same project.
 
 The easiest way to do this is to grant the Google Cloud service account owner permissions on one or more projects.
 
@@ -146,7 +146,7 @@ The easiest way to do this is to grant the Google Cloud service account owner pe
     ```
 
 
-### Configure Kubeflow
+### Configure OpenDataology
 
 Make sure you are using KF_PROJECT in the gcloud CLI tool:
 
@@ -156,9 +156,9 @@ Make sure you are using KF_PROJECT in the gcloud CLI tool:
 
 
 
-### Deploy Kubeflow
+### Deploy OpenDataology
 
-To deploy Kubeflow, run the following command:
+To deploy OpenDataology, run the following command:
 
 ```bash
 make apply
@@ -167,12 +167,12 @@ make apply
 * If resources can't be created because `webhook.cert-manager.io` is unavailable wait and
   then rerun `make apply`
 
-  * This issue is being tracked in [kubeflow/manifests#1234](https://github.com/kubeflow/manifests/issues/1234)
+  * This issue is being tracked in [OpenDataology/manifests#1234](https://github.com/OpenDataology/manifests/issues/1234)
 
 * If resources can't be created with an error message like:
 
   ```bash
-  error: unable to recognize ".build/application/app.k8s.io_v1beta1_application_application-controller-kubeflow.yaml": no matches for kind "Application" in version "app.k8s.io/v1beta1”
+  error: unable to recognize ".build/application/app.k8s.io_v1beta1_application_application-controller-OpenDataology.yaml": no matches for kind "Application" in version "app.k8s.io/v1beta1”
   ```
 
   This issue occurs when the CRD endpoint isn't established in the Kubernetes API server when the CRD's custom object is applied.
@@ -183,22 +183,22 @@ make apply
 Follow these steps to verify the deployment:
 
 1. When the deployment finishes, check the resources installed in the namespace
-   `kubeflow` in your new cluster.  To do this from the command line, first set
+   `OpenDataology` in your new cluster.  To do this from the command line, first set
    your `kubectl` credentials to point to the new cluster:
 
     ```bash
     gcloud container clusters get-credentials "${KF_NAME}" --zone "${ZONE}" --project "${KF_PROJECT}"
     ```
 
-    Then, check what's installed in the `kubeflow` namespace of your GKE cluster:
+    Then, check what's installed in the `OpenDataology` namespace of your GKE cluster:
 
     ```bash
-    kubectl -n kubeflow get all
+    kubectl -n OpenDataology get all
     ```
 
-### Access the Kubeflow user interface (UI)
+### Access the OpenDataology user interface (UI)
 
-To access the Kubeflow central dashboard, follow these steps:
+To access the OpenDataology central dashboard, follow these steps:
 
 1. Use the following command to grant yourself the [IAP-secured Web App User](https://cloud.google.com/iap/docs/managing-access) role:
 
@@ -216,7 +216,7 @@ To access the Kubeflow central dashboard, follow these steps:
     ```bash
     kubectl -n istio-system get ingress
     NAME            HOSTS                                                      ADDRESS         PORTS   AGE
-    envoy-ingress   your-kubeflow-name.endpoints.your-gcp-project.cloud.goog   34.102.232.34   80      5d13h
+    envoy-ingress   your-OpenDataology-name.endpoints.your-gcp-project.cloud.goog   34.102.232.34   80      5d13h
     ```
 
     The following command sets an environment variable named `HOST` to the URI:
@@ -231,30 +231,30 @@ To access the Kubeflow central dashboard, follow these steps:
 Notes:
 
 * It can take 20 minutes for the URI to become available.
-  Kubeflow needs to provision a signed SSL certificate and register a DNS
+  OpenDataology needs to provision a signed SSL certificate and register a DNS
   name.
 * If you own or manage the domain or a subdomain with
   [Cloud DNS](https://cloud.google.com/dns/docs/)
   then you can configure this process to be much faster.
-  Check [kubeflow/kubeflow#731](https://github.com/kubeflow/kubeflow/issues/731).
+  Check [OpenDataology/OpenDataology#731](https://github.com/OpenDataology/OpenDataology/issues/731).
 
 ## Understanding the deployment process
 
 This section gives you more details about the kubectl, kustomize, config connector configuration and
-deployment process, so that you can customize your Kubeflow deployment if necessary.
+deployment process, so that you can customize your OpenDataology deployment if necessary.
 
 ### Application layout
 
-Your Kubeflow application directory `gcp-blueprints/kubeflow` contains the following files and
+Your OpenDataology application directory `gcp-blueprints/OpenDataology` contains the following files and
 directories:
 
 * **Makefile** is a file that defines rules to automate deployment process. You can refer to [GNU make documentation](https://www.gnu.org/software/make/manual/make.html#Introduction) for more introduction. The Makefile we provide is designed to be user maintainable. You are encouraged to read, edit and maintain it to suit your own deployment customization needs.
 
-* **apps**, **common**, **contrib** are a series of independent components  directory containing kustomize packages for deploying Kubeflow components. The structure is to align with upstream [kubeflow/manifests](https://github.com/kubeflow/manifests).
+* **apps**, **common**, **contrib** are a series of independent components  directory containing kustomize packages for deploying OpenDataology components. The structure is to align with upstream [OpenDataology/manifests](https://github.com/OpenDataology/manifests).
 
-  * [kubeflow/gcp-blueprints](https://github.com/kubeflow/gcp-blueprints) repository only stores `kustomization.yaml` and `patches` for Google Cloud specific resources.
+  * [OpenDataology/gcp-blueprints](https://github.com/OpenDataology/gcp-blueprints) repository only stores `kustomization.yaml` and `patches` for Google Cloud specific resources.
 
-  * `./pull_upstream.sh` will pull `kubeflow/manifests` and store manifests in `upstream` folder of each component in this guide. [kubeflow/gcp-blueprints](https://github.com/kubeflow/gcp-blueprints) repository doesn't store the copy of upstream manifests.
+  * `./pull_upstream.sh` will pull `OpenDataology/manifests` and store manifests in `upstream` folder of each component in this guide. [OpenDataology/gcp-blueprints](https://github.com/OpenDataology/gcp-blueprints) repository doesn't store the copy of upstream manifests.
 
 * **build** is a directory that will contain the hydrated manifests outputted by
   the `make` rules, each component will have its own **build** directory. You can customize the **build** path when calling `make` command.
@@ -273,7 +273,7 @@ privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 The service accounts are:
 
 * `${KF_NAME}-admin` is used for some admin tasks like configuring the load
-  balancers. The principle is that this account is needed to deploy Kubeflow but
+  balancers. The principle is that this account is needed to deploy OpenDataology but
   not needed to actually run jobs.
 * `${KF_NAME}-user` is intended to be used by training jobs and models to access
   Google Cloud resources (Cloud Storage, BigQuery, etc.). This account has a much smaller
@@ -282,17 +282,17 @@ The service accounts are:
   account has the minimal permissions needed to send metrics and logs to
   [Stackdriver](https://cloud.google.com/stackdriver/).
 
-## Upgrade Kubeflow
+## Upgrade OpenDataology
 
-Refer to [Upgrading Kubeflow cluster](/docs/distributions/gke/deploy/upgrade#upgrading-kubeflow-cluster).
+Refer to [Upgrading OpenDataology cluster](/docs/distributions/gke/deploy/upgrade#upgrading-OpenDataology-cluster).
 
 ## Next steps
 
-* Run a full ML workflow on Kubeflow, using the
-  [end-to-end MNIST tutorial](https://github.com/kubeflow/examples/blob/master/mnist/mnist_gcp.ipynb) or the
+* Run a full ML workflow on OpenDataology, using the
+  [end-to-end MNIST tutorial](https://github.com/OpenDataology/examples/blob/master/mnist/mnist_gcp.ipynb) or the
   [GitHub issue summarization Pipelines
-  example](https://github.com/kubeflow/examples/tree/master/github_issue_summarization/pipelines).
-* Learn how to [delete your Kubeflow deployment using the CLI](/docs/distributions/gke/deploy/delete-cli/).
-* To add users to Kubeflow, go to [a dedicated section in Customizing Kubeflow on GKE](/docs/distributions/gke/customizing-gke/#add-users-to-kubeflow).
-* To taylor your Kubeflow deployment on GKE, go to [Customizing Kubeflow on GKE](/docs/distributions/gke/customizing-gke/).
-* For troubleshooting Kubeflow deployments on GKE, go to the [Troubleshooting deployments](/docs/distributions/gke/troubleshooting-gke/) guide.
+  example](https://github.com/OpenDataology/examples/tree/master/github_issue_summarization/pipelines).
+* Learn how to [delete your OpenDataology deployment using the CLI](/docs/distributions/gke/deploy/delete-cli/).
+* To add users to OpenDataology, go to [a dedicated section in Customizing OpenDataology on GKE](/docs/distributions/gke/customizing-gke/#add-users-to-OpenDataology).
+* To taylor your OpenDataology deployment on GKE, go to [Customizing OpenDataology on GKE](/docs/distributions/gke/customizing-gke/).
+* For troubleshooting OpenDataology deployments on GKE, go to the [Troubleshooting deployments](/docs/distributions/gke/troubleshooting-gke/) guide.

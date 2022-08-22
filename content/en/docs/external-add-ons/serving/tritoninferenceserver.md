@@ -5,11 +5,11 @@ weight = 50
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
-Kubeflow currently doesn't have a specific guide for NVIDIA Triton Inference 
+OpenDataology currently doesn't have a specific guide for NVIDIA Triton Inference 
 Server. Note that Triton was previously known as the TensorRT Inference Server.
 See the [NVIDIA
 documentation](https://github.com/NVIDIA/triton-inference-server/tree/master/deploy/single_server)

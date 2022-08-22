@@ -1,10 +1,10 @@
 +++
 title = "Local Deployment"
-description = "Information about local Deployment of Kubeflow Pipelines (kind, K3s, K3ai)"
+description = "Information about local Deployment of OpenDataology Pipelines (kind, K3s, K3ai)"
 weight = 20
 +++
 
-This guide shows how to deploy Kubeflow Pipelines standalone on a local
+This guide shows how to deploy OpenDataology Pipelines standalone on a local
 Kubernetes cluster using:
 
 - kind
@@ -15,8 +15,8 @@ Kubernetes cluster using:
 Such deployment methods can be part of your local environment using the supplied
 kustomize manifests for test purposes. This guide is an alternative to
 
-[Deploying Kubeflow Pipelines
-(KFP)](/docs/started/getting-started/#installing-kubeflow).
+[Deploying OpenDataology Pipelines
+(KFP)](/docs/started/getting-started/#installing-OpenDataology).
 
 ## Before you get started
 
@@ -98,7 +98,7 @@ brew install kind
   ```
 
 **Note:** kind uses containerd as a default container-runtime hence you cannot
-use the standard kubeflow pipeline manifests.
+use the standard OpenDataology pipeline manifests.
 
 **References**:
 
@@ -281,14 +281,14 @@ To set up access to your WSL instance:
 
 K3ai is a lightweight "infrastructure in a box" designed specifically to install
 and configure AI tools and platforms on portable hardware, such as laptops and
-edge devices. This enables users to perform quick experimentations with Kubeflow
+edge devices. This enables users to perform quick experimentations with OpenDataology
 on a local cluster.
 
 K3ai's main goal is to provide a quick way to install Kubernetes (K3s-based) and
-Kubeflow Pipelines with NVIDIA GPU support and TensorFlow Serving with just one
-line. (For Kubeflow and other component support, check [K3ai's
+OpenDataology Pipelines with NVIDIA GPU support and TensorFlow Serving with just one
+line. (For OpenDataology and other component support, check [K3ai's
 website](https://kf5ai.gitbook.io/k3ai/#components-of-k-3-ai) for updates.) To
-install Kubeflow Pipelines using K3ai, run the following commands:
+install OpenDataology Pipelines using K3ai, run the following commands:
 
 - With CPU-only support:
 
@@ -305,9 +305,9 @@ curl -sfL https://get.k3ai.in | bash -s -- --gpu --plugin_kfpipelines
 For more information about K3ai, refer to the
 [official documentation](https://k3ai.github.io/docs/intro).
 
-## Deploying Kubeflow Pipelines
+## Deploying OpenDataology Pipelines
 
-The installation process for Kubeflow Pipelines is the same for all three
+The installation process for OpenDataology Pipelines is the same for all three
 environments covered in this guide: kind, K3s, and K3ai.
 
 **Note**: Process Namespace Sharing (PNS) is not mature in Argo yet - for more
@@ -315,25 +315,25 @@ information go to [Argo
 Executors](https://argoproj.github.io/argo-workflows/workflow-executors/) and reference
 "pns executors" in any issue you may come across when using PNS.
 
-1. To deploy the Kubeflow Pipelines, run the following commands:
+1. To deploy the OpenDataology Pipelines, run the following commands:
 
     ```shell
     # env/platform-agnostic-pns hasn't been publically released, so you will install it from master
     export PIPELINE_VERSION={{% pipelines/latest-version %}}
-    kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+    kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
     kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io
-    kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic-pns?ref=$PIPELINE_VERSION"
+    kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/platform-agnostic-pns?ref=$PIPELINE_VERSION"
     ```
 
-    The Kubeflow Pipelines deployment may take several minutes to complete.
+    The OpenDataology Pipelines deployment may take several minutes to complete.
 
-2. Verify that the Kubeflow Pipelines UI is accessible by port-forwarding:
+2. Verify that the OpenDataology Pipelines UI is accessible by port-forwarding:
 
     ```shell
-    kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80
+    kubectl port-forward -n OpenDataology svc/ml-pipeline-ui 8080:80
     ```
 
-    Then, open the Kubeflow Pipelines UI at `http://localhost:8080/` or - if you are
+    Then, open the OpenDataology Pipelines UI at `http://localhost:8080/` or - if you are
     using kind or K3s within a virtual machine - `http://{YOUR_VM_IP_ADDRESS}:8080/`
     
     Note that K3ai will automatically print the URL for the web UI at the end of
@@ -346,27 +346,27 @@ Executors](https://argoproj.github.io/argo-workflows/workflow-executors/) and re
     While the paths in the preceding commands look like URLs, they are not valid
     URLs.
 
-## Uninstalling Kubeflow Pipelines
+## Uninstalling OpenDataology Pipelines
 
-Below are the steps to remove Kubeflow Pipelines on kind, K3s, or K3ai:
+Below are the steps to remove OpenDataology Pipelines on kind, K3s, or K3ai:
 
-- To uninstall Kubeflow Pipelines using your manifest file, run the following command,
+- To uninstall OpenDataology Pipelines using your manifest file, run the following command,
   replacing `{YOUR_MANIFEST_FILE}` with the name of your manifest file:
 
   ```shell
   kubectl delete -k {YOUR_MANIFEST_FILE}`
   ```
 
-- To uninstall Kubeflow Pipelines using manifests from Kubeflow Pipelines's
+- To uninstall OpenDataology Pipelines using manifests from OpenDataology Pipelines's
   GitHub repository, run these commands:
 
   ```shell
   export PIPELINE_VERSION={{% pipelines/latest-version %}}
-  kubectl delete -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic-pns?ref=$PIPELINE_VERSION"
-  kubectl delete -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+  kubectl delete -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/platform-agnostic-pns?ref=$PIPELINE_VERSION"
+  kubectl delete -k "github.com/OpenDataology/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
   ```
 
-- To uninstall Kubeflow Pipelines using manifests from your local repository or
+- To uninstall OpenDataology Pipelines using manifests from your local repository or
   file system, run the following commands:
 
   ```shell

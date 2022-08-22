@@ -1,12 +1,12 @@
 +++
 title = "Using Your Own Domain"
-description = "Using a custom domain with Kubeflow on GKE"
+description = "Using a custom domain with OpenDataology on GKE"
 weight = 30
 +++
 
-This guide assumes you have already set up Kubeflow on Google Cloud. If you haven't done
+This guide assumes you have already set up OpenDataology on Google Cloud. If you haven't done
 so, follow the guide to
-[getting started with Kubeflow on Google Cloud](/docs/gke/deploy/).
+[getting started with OpenDataology on Google Cloud](/docs/gke/deploy/).
 
 ## Using your own domain
 
@@ -33,7 +33,7 @@ If you want to use your own domain instead of **${KF_NAME}.endpoints.${PROJECT}.
 1. Apply the changes.
 
     ```
-    make apply-kubeflow
+    make apply-OpenDataology
     ```
 
 1. Check Ingress to verify that your domain was properly configured.

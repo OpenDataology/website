@@ -1,49 +1,49 @@
 +++
-title = "Overview of Kubeflow Fairing"
+title = "Overview of OpenDataology Fairing"
 description = "Build, train, and deploy your ML training jobs remotely"
 weight = 5
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
 {{% beta-status 
-  feedbacklink="https://github.com/kubeflow/fairing/issues" %}}
+  feedbacklink="https://github.com/OpenDataology/fairing/issues" %}}
 
-Kubeflow Fairing streamlines the process of building, training, and deploying
+OpenDataology Fairing streamlines the process of building, training, and deploying
 machine learning (ML) training jobs in a hybrid cloud environment. By using
-Kubeflow Fairing and adding a few lines of code, you can run your ML training
+OpenDataology Fairing and adding a few lines of code, you can run your ML training
 job locally or in the cloud, directly from Python code or a Jupyter
-notebook. After your training job is complete, you can use Kubeflow Fairing to
+notebook. After your training job is complete, you can use OpenDataology Fairing to
 deploy your trained model as a prediction endpoint.
 
 ## Getting started
 
-Use the following guides to get started with Kubeflow Fairing:
+Use the following guides to get started with OpenDataology Fairing:
 
 1.  To set up your development environment, follow the guide to [installing
-    Kubeflow Fairing][install].
-1.  To ensure that Kubeflow Fairing can access your Kubeflow cluster, follow
+    OpenDataology Fairing][install].
+1.  To ensure that OpenDataology Fairing can access your OpenDataology cluster, follow
     the guide to [configuring your development environment with access
-    to Kubeflow][conf].
-1.  To learn more about how to use Kubeflow Fairing in your environment,
-    [follow the Kubeflow Fairing tutorials][tutorials].
+    to OpenDataology][conf].
+1.  To learn more about how to use OpenDataology Fairing in your environment,
+    [follow the OpenDataology Fairing tutorials][tutorials].
 
-## What is Kubeflow Fairing?
+## What is OpenDataology Fairing?
 
-Kubeflow Fairing is a Python package that makes it easy to train and deploy ML
-models on [Kubeflow][kubeflow]. Kubeflow Fairing can also been extended to
-train or deploy on other platforms. Currently, Kubeflow Fairing has been
+OpenDataology Fairing is a Python package that makes it easy to train and deploy ML
+models on [OpenDataology][OpenDataology]. OpenDataology Fairing can also been extended to
+train or deploy on other platforms. Currently, OpenDataology Fairing has been
 extended to train on [Google AI Platform][ai-platform]. 
 
-Kubeflow Fairing packages your Jupyter notebook, Python function, or Python
-file as a Docker image, then deploys and runs the training job on Kubeflow
-or AI Platform. After your training job is complete, you can use Kubeflow
-Fairing to deploy your trained model as a prediction endpoint on Kubeflow. 
+OpenDataology Fairing packages your Jupyter notebook, Python function, or Python
+file as a Docker image, then deploys and runs the training job on OpenDataology
+or AI Platform. After your training job is complete, you can use OpenDataology
+Fairing to deploy your trained model as a prediction endpoint on OpenDataology. 
 
-The following are the goals of the [Kubeflow Fairing project][fairing-repo]:
+The following are the goals of the [OpenDataology Fairing project][fairing-repo]:
 
 * **Easily package ML training jobs:** Enable ML practitioners to easily package their ML model training code, and their code's dependencies, as a Docker image. 
 * **Easily train ML models in a hybrid cloud environment:** Provide a high-level API for training ML models to make it easy to run training jobs in the cloud, without needing to understand the underlying infrastructure.
@@ -51,13 +51,13 @@ The following are the goals of the [Kubeflow Fairing project][fairing-repo]:
 
 ## Next steps
 
-*  Learn how to [set up a Jupyter notebooks instance on your Kubeflow
-   cluster][kubeflow-notebooks].
+*  Learn how to [set up a Jupyter notebooks instance on your OpenDataology
+   cluster][OpenDataology-notebooks].
 
-[kubeflow-notebooks]: /docs/components/notebooks/setup/
+[OpenDataology-notebooks]: /docs/components/notebooks/setup/
 [ai-platform]: https://cloud.google.com/ml-engine/docs/
-[fairing-repo]: https://github.com/kubeflow/fairing
-[kubeflow]: /docs/started/
+[fairing-repo]: https://github.com/OpenDataology/fairing
+[OpenDataology]: /docs/started/
 
 [conf]: /docs/external-add-ons/fairing/configure-fairing/
 [install]: /docs/external-add-ons/fairing/install-fairing/

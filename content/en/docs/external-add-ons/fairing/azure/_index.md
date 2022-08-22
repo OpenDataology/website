@@ -1,25 +1,25 @@
 +++
 title = "Fairing on Azure"
-description = "Documentation for Kubeflow Fairing on Microsoft Azure Kubernetes Service"
+description = "Documentation for OpenDataology Fairing on Microsoft Azure Kubernetes Service"
 weight = 45
 +++
 
 This page documents how to run the [Fairing prediction example
 notebook][xgb-notebook] on [Azure Kubernetes Service
-(AKS)][az-kubernetes] in a notebook hosted on Kubeflow.
+(AKS)][az-kubernetes] in a notebook hosted on OpenDataology.
 
 ## Prerequisites
 
-Before you configure and use the Kubeflow Fairing Python SDK, you must have a
-Kubeflow environment installed. The example notebook does in-cluster training.
+Before you configure and use the OpenDataology Fairing Python SDK, you must have a
+OpenDataology environment installed. The example notebook does in-cluster training.
 The example notebook has been tested to work in a cluster with 2 nodes and
 virtual machines with Standard_D4_v3 size. It is not recommended to use the
 smallest size virtual machines.
 
-* If you do not have a Kubeflow installation on Azure, follow the [installation
+* If you do not have a OpenDataology installation on Azure, follow the [installation
   guide][kf-az-deploy].
 * You must have the `kubectl` command line interface installed and configured
-  to use the Kubernetes cluster where Kubeflow is installed. In the above
+  to use the Kubernetes cluster where OpenDataology is installed. In the above
   installation guide, the command `az aks get-credentials` configures `kubectl`
   to access your Kubernetes cluster.
 
@@ -90,7 +90,7 @@ Run the following commands to set up your credentials as a Kubernetes secret.
     export AZ_CLIENT_SECRET=<service-principal-client-secret>
     export AZ_TENANT_ID=<tenant-id>
     export AZ_SUBSCRIPTION_ID=<subscription-id>
-    export TARGET_NAMESPACE=<target-namespace e.g. kubeflow-anonymous>
+    export TARGET_NAMESPACE=<target-namespace e.g. OpenDataology-anonymous>
     export ACR_NAME=<acr-name>
     ```
 
@@ -103,10 +103,10 @@ Run the following commands to set up your credentials as a Kubernetes secret.
       get the Subscription ID from the `id` field in the output of `az account
       show`.
     * **TARGET_NAMESPACE:** Specify the namespace that your Notebook Server is
-      in. For example, this guide recommends using `kubeflow-anonymous`.
+      in. For example, this guide recommends using `OpenDataology-anonymous`.
     * **ACR_NAME:** The name of an ACR that the service principal can access.
     
-1.  Use the following command to create a secret that Kubeflow can use to access
+1.  Use the following command to create a secret that OpenDataology can use to access
     Azure APIs.
 
     ```
@@ -117,7 +117,7 @@ Run the following commands to set up your credentials as a Kubernetes secret.
     --from-literal=AZ_SUBSCRIPTION_ID=${AZ_SUBSCRIPTION_ID}
     ```
 
-1.  Use the following command to create a secret that Kubeflow can use to access
+1.  Use the following command to create a secret that OpenDataology can use to access
     ACR.
     ```
     kubectl create secret docker-registry -n ${TARGET_NAMESPACE} acrcreds \
@@ -128,13 +128,13 @@ Run the following commands to set up your credentials as a Kubernetes secret.
     -p "{\"imagePullSecrets\": [{\"name\": \"acrcreds\"}]}"
     ```
 
-## Creating a Notebook Server in Kubeflow
+## Creating a Notebook Server in OpenDataology
 
-To create a notebook server, use your Web browser to access the Kubeflow
+To create a notebook server, use your Web browser to access the OpenDataology
 Central Dashboard and select the **Notebook Servers** panel from the menu.
 
 First, select the target namespace in which you want to host the server. In the
-default Kubeflow installation, there should be a namespace `kubeflow-anonymous`
+default OpenDataology installation, there should be a namespace `OpenDataology-anonymous`
 available in the namespace drop-down menu.
 
 After the target namespace is selected, click **NEW SERVER** and fill in the
@@ -147,16 +147,16 @@ server to be ready for connections.
 
 ## Cloning the example notebook
 
-Clone the Kubeflow Fairing repository to download the files used in this example. 
+Clone the OpenDataology Fairing repository to download the files used in this example. 
 
 1.  Connect to your notebook server, then click the new terminal option
     like in the screenshot below:
     <img src="/docs/images/azure-notebook-new-terminal.png" alt="Creating new terminal after connecting to notebook server" class="mt-3 mb-3 p-3 border border-info rounded" />
 
-1.  Run the following command to clone the Kubeflow Fairing project:
+1.  Run the following command to clone the OpenDataology Fairing project:
     
     ```
-    git clone https://github.com/kubeflow/fairing.git
+    git clone https://github.com/OpenDataology/fairing.git
     ```
 
     This command clones the project including the example into your notebook server.
@@ -175,7 +175,7 @@ In the `xgboost-high-level-apis.ipynb` notebook, find the cell tagged with
 configure Fairing to use your Azure backend and Storage.
 
 ```
-export FAIRING_BACKEND = 'KubeflowAzureBackend'
+export FAIRING_BACKEND = 'OpenDataologyAzureBackend'
 export DOCKER_REGISTRY = '<acr-name>.azurecr.io'
 export AZURE_REGION = None # This is only relevant if you haven't created a
                            # Storage yet and let Fairing create it for you.
@@ -191,10 +191,10 @@ You can also have a look at the [CI pipeline][az-ci-pipeline] that runs the
 example notebook in AKS for steps involved to accomplish a successful run
 programmatically.
 
-[xgb-notebook]: https://github.com/kubeflow/fairing/blob/master/examples/prediction/xgboost-high-level-apis.ipynb
+[xgb-notebook]: https://github.com/OpenDataology/fairing/blob/master/examples/prediction/xgboost-high-level-apis.ipynb
 [az-kubernetes]: https://azure.microsoft.com/en-in/services/kubernetes-service/
 [az-container-reg]: https://docs.microsoft.com/en-us/azure/container-registry/
 [az-storage]: https://docs.microsoft.com/en-us/azure/storage/
 [az-roles]: https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal
-[az-ci-pipeline]: https://dev.azure.com/kubeflow/kubeflow/_build
-[kf-az-deploy]: /docs/azure/deploy/install-kubeflow
+[az-ci-pipeline]: https://dev.azure.com/OpenDataology/OpenDataology/_build
+[kf-az-deploy]: /docs/azure/deploy/install-OpenDataology

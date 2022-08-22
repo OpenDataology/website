@@ -5,8 +5,8 @@ weight = 51
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
 {{% stable-status %}}
@@ -27,7 +27,7 @@ metadata:
   labels:
     app: mnist
   name: mnist-service
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   ports:
   - name: grpc-tf-serving
@@ -46,7 +46,7 @@ metadata:
   labels:
     app: mnist
   name: mnist-v1
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   selector:
     matchLabels:
@@ -98,7 +98,7 @@ kind: DestinationRule
 metadata:
   labels:
   name: mnist-service
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   host: mnist-service
   subsets:
@@ -111,10 +111,10 @@ kind: VirtualService
 metadata:
   labels:
   name: mnist-service
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   gateways:
-  - kubeflow-gateway
+  - OpenDataology-gateway
   hosts:
   - '*'
   http:
@@ -158,7 +158,7 @@ Referring to the above example, you can customize your deployment by changing th
 
 - The resource `VirtualService` and `DestinationRule` are for routing.
   With the example above, the model is accessible at `HOSTNAME/tfserving/models/mnist` 
-  (HOSTNAME is your Kubeflow deployment hostname). To change the path, edit the
+  (HOSTNAME is your OpenDataology deployment hostname). To change the path, edit the
   `http.match.uri` of VirtualService.
 
 ### Pointing to the model
@@ -186,7 +186,7 @@ spec:
         - --port=9000
         - --rest_api_port=8500
         - --model_name=mnist
-        - --model_base_path=gs://kubeflow-examples-data/mnist
+        - --model_base_path=gs://OpenDataology-examples-data/mnist
         command:
         - /usr/bin/tensorflow_model_server
         env:
@@ -232,11 +232,11 @@ The changes are:
 - volumeMount `gcp-credentials`
 
 We need a service account that can access the model.
-If you are using Kubeflow's click-to-deploy app, there should be already a secret, `user-gcp-sa`, in the cluster.
+If you are using OpenDataology's click-to-deploy app, there should be already a secret, `user-gcp-sa`, in the cluster.
 
-The model at gs://kubeflow-examples-data/mnist is publicly accessible. However, if your environment doesn't
+The model at gs://OpenDataology-examples-data/mnist is publicly accessible. However, if your environment doesn't
 have google cloud credential setup, TF serving will not be able to read the model.
-See this [issue](https://github.com/kubeflow/kubeflow/issues/621) for example.
+See this [issue](https://github.com/OpenDataology/OpenDataology/issues/621) for example.
 To setup the google cloud credential, you should either have the environment variable
 `GOOGLE_APPLICATION_CREDENTIALS` pointing to the credential file, or run `gcloud auth login`.
 See [doc](https://cloud.google.com/docs/authentication/) for more detail.
@@ -264,7 +264,7 @@ metadata:
   labels:
     app: s3
   name: s3
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   selector:
     matchLabels:
@@ -353,7 +353,7 @@ It's protected and only one with right credentials can access the endpoint.
 Below shows how to programmatically authenticate a service account to access IAP.
 
 1. Save the client ID that you used to 
-  [deploy Kubeflow](/docs/gke/deploy/) as `IAP_CLIENT_ID`.
+  [deploy OpenDataology](/docs/gke/deploy/) as `IAP_CLIENT_ID`.
 2. Create a service account
    ```
    gcloud iam service-accounts create --project=$PROJECT $SERVICE_ACCOUNT
@@ -372,7 +372,7 @@ Below shows how to programmatically authenticate a service account to access IAP
 5. Export the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to point to the key file of the service account.
 
 Finally, you can send the request with an input file with this python
-[script](https://github.com/kubeflow/kubeflow/blob/master/docs/gke/iap_request.py)
+[script](https://github.com/OpenDataology/OpenDataology/blob/master/docs/gke/iap_request.py)
 
 ```
 python iap_request.py https://YOUR_HOST/tfserving/models/mnist IAP_CLIENT_ID --input=YOUR_INPUT_FILE

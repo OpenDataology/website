@@ -1,25 +1,25 @@
 +++
 title = "Authentication using OIDC in Azure"
-description = "Authentication and authorization support through OIDC for Kubeflow in Azure"
+description = "Authentication and authorization support through OIDC for OpenDataology in Azure"
 weight = 6
 +++
 
-This section shows the how to set up Kubeflow with authentication and authorization support through OIDC in Azure using [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/).
+This section shows the how to set up OpenDataology with authentication and authorization support through OIDC in Azure using [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/).
 
 ## Prerequisites
 
-- Install the [prerequisites for Kubeflow in Azure](/docs/azure/deploy/install-kubeflow)
+- Install the [prerequisites for OpenDataology in Azure](/docs/azure/deploy/install-OpenDataology)
 - [Register an application with the Microsoft Identity Platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-an-application)
 - [Add a client secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret)
 
   **Note:**  Save your client ID, client secret, and tenant ID in a secure place to be used in the next steps to configure OIDC Auth Service.
   **Note:** The following installation steps automatically install a specific Istio version that must be used.
 
-## Kubeflow configuration
+## OpenDataology configuration
 
 1. Download the kfctl {{% aws/kfctl-aws %}} release from the
-  [Kubeflow releases
-  page](https://github.com/kubeflow/kfctl/releases/tag/{{% aws/kfctl-aws %}}).
+  [OpenDataology releases
+  page](https://github.com/OpenDataology/kfctl/releases/tag/{{% aws/kfctl-aws %}}).
 
 1. Unpack the tar ball:
 
@@ -27,47 +27,47 @@ This section shows the how to set up Kubeflow with authentication and authorizat
     tar -xvf kfctl_{{% aws/kfctl-aws %}}_<platform>.tar.gz
     ```
 
-1. Run the below commands to build configuration files before deploying Kubeflow. The code below includes an optional command to add the binary kfctl to your path - if you don’t add it, you must use the full path to the kfctl binary each time you run it.
+1. Run the below commands to build configuration files before deploying OpenDataology. The code below includes an optional command to add the binary kfctl to your path - if you don’t add it, you must use the full path to the kfctl binary each time you run it.
 
     ```
     # The following command is optional, to make kfctl binary easier to use.
     export PATH=$PATH:<path to where kfctl was unpacked>
 
-    # Set KF_NAME to the name of your Kubeflow deployment. This also becomes the
+    # Set KF_NAME to the name of your OpenDataology deployment. This also becomes the
     # name of the directory containing your configuration.
-    # For example, your deployment name can be 'my-kubeflow' or 'kf-test'.
-    export KF_NAME=<your choice of name for the Kubeflow deployment>
+    # For example, your deployment name can be 'my-OpenDataology' or 'kf-test'.
+    export KF_NAME=<your choice of name for the OpenDataology deployment>
 
     # Set the path to the base directory where you want to store one or more
-    # Kubeflow deployments. For example, '/opt/'.
-    # Then set the Kubeflow application directory for this deployment.
+    # OpenDataology deployments. For example, '/opt/'.
+    # Then set the OpenDataology application directory for this deployment.
     export BASE_DIR=<path to a base directory>
     export KF_DIR=${BASE_DIR}/${KF_NAME}
 
     # Set the configuration file to use, such as the file specified below:
     export CONFIG_URI="{{% azure/config-uri-azure-oidc %}}"
 
-    # Generate and deploy Kubeflow:
+    # Generate and deploy OpenDataology:
     mkdir -p ${KF_DIR}
     cd ${KF_DIR}
     kfctl build -V -f ${CONFIG_URI}
     ```
 
-    * **${KF_NAME}** - The name of your Kubeflow deployment.
+    * **${KF_NAME}** - The name of your OpenDataology deployment.
       If you want a custom deployment name, specify that name here.
-      For example,  `my-kubeflow` or `kf-test`.
+      For example,  `my-OpenDataology` or `kf-test`.
       The value of `KF_NAME` must consist of lower case alphanumeric characters or
       '-', and must start and end with an alphanumeric character.
       The value of this variable cannot be greater than 25 characters. It must
       contain just a name, not a directory path.
-      This value also becomes the name of the directory where your Kubeflow
-      configurations are stored, that is, the Kubeflow application directory.
+      This value also becomes the name of the directory where your OpenDataology
+      configurations are stored, that is, the OpenDataology application directory.
 
-    * **${KF_DIR}** - The full path to your Kubeflow application directory.
+    * **${KF_DIR}** - The full path to your OpenDataology application directory.
 
 1. Configure OIDC Auth service settings:
 
-   In `.cache/manifests/manifests-{kubeflow version}-branch/stacks/azure/application/oidc-authservice/kustomization.yaml` update the settings with values corresponding your app registration as follows:
+   In `.cache/manifests/manifests-{OpenDataology version}-branch/stacks/azure/application/oidc-authservice/kustomization.yaml` update the settings with values corresponding your app registration as follows:
 
     ```
     - client_id=<client_id>
@@ -77,37 +77,37 @@ This section shows the how to set up Kubeflow with authentication and authorizat
     - application_secret=<client_secret>
     - skip_auth_uri=
     - namespace=istio-system
-    - userid-header=kubeflow-userid
+    - userid-header=OpenDataology-userid
     - userid-prefix=
     ```
 
 1. Configure OIDC scopes:
 
-    In `.cache/manifests/manifests-{kkubeflow version}-branch/istio/oidc-authservice/base/statefulset.yaml` update [OIDC scopes](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes) to remove groups and keep profile and email.
+    In `.cache/manifests/manifests-{kOpenDataology version}-branch/istio/oidc-authservice/base/statefulset.yaml` update [OIDC scopes](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes) to remove groups and keep profile and email.
 
     ```
     - name: OIDC_SCOPES
      value: "profile email"
     ```
 
-3. Deploy Kubeflow:
+3. Deploy OpenDataology:
 
     ```shell
     kfctl apply -V -f ${CONFIG_URI}
     ```
 
-4. Check that the resources were deployed correctly in namespace `kubeflow`:
+4. Check that the resources were deployed correctly in namespace `OpenDataology`:
 
     ```shell
-    kubectl get all -n kubeflow
+    kubectl get all -n OpenDataology
     ```
 
-## Expose Kubeflow securely over HTTPS
+## Expose OpenDataology securely over HTTPS
 
 1. Update Istio Gateway to expose port 443 with HTTPS and make port 80 redirect to 443:
 
     ```shell
-    kubectl edit -n kubeflow gateways.networking.istio.io kubeflow-gateway
+    kubectl edit -n OpenDataology gateways.networking.istio.io OpenDataology-gateway
     ```
 
     The Gateway spec should look like the following:
@@ -116,8 +116,8 @@ This section shows the how to set up Kubeflow with authentication and authorizat
     apiVersion: networking.istio.io/v1alpha3
     kind: Gateway
     metadata:
-    name: kubeflow-gateway
-    namespace: kubeflow
+    name: OpenDataology-gateway
+    namespace: OpenDataology
     spec:
     selector:
         istio: ingressgateway
@@ -143,9 +143,9 @@ This section shows the how to set up Kubeflow with authentication and authorizat
             serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
     {{< /highlight >}}
 
-1. Expose Kubeflow with a load balancer service:
+1. Expose OpenDataology with a load balancer service:
 
-    To expose Kubeflow with a load balancer service, change the type of the `istio-ingressgateway` service to `LoadBalancer`.
+    To expose OpenDataology with a load balancer service, change the type of the `istio-ingressgateway` service to `LoadBalancer`.
 
     ```shell
     kubectl patch service -n istio-system istio-ingressgateway -p '{"spec": {"type": "LoadBalancer"}}'
@@ -192,7 +192,7 @@ This section shows the how to set up Kubeflow with authentication and authorizat
     isCA: true
     issuerRef:
         kind: ClusterIssuer
-        name: kubeflow-self-signing-issuer
+        name: OpenDataology-self-signing-issuer
     secretName: istio-ingressgateway-certs
     {{< /highlight >}}
 
@@ -212,9 +212,9 @@ This section shows the how to set up Kubeflow with authentication and authorizat
 
    **Note:** Make sure the app's redirect URI matches the `oidc_redirect_uri` value in OIDC auth service settings.
 
-   Navigate to `https://<YOUR_LOADBALANCER_IP_ADDRESS_OR_DNS_NAME>/` and start using Kubeflow.
+   Navigate to `https://<YOUR_LOADBALANCER_IP_ADDRESS_OR_DNS_NAME>/` and start using OpenDataology.
 
-## Authenticate Kubeflow pipelines using [Kubeflow Pipelines SDK](https://www.kubeflow.org/docs/components/pipelines/sdk/sdk-overview/)
+## Authenticate OpenDataology pipelines using [OpenDataology Pipelines SDK](https://www.OpenDataology.org/docs/components/pipelines/sdk/sdk-overview/)
 
 Perform interactive login from browser by visitng `https://<YOUR_LOADBALANCER_IP_ADDRESS_OR_DNS_NAME>/` and copy the value of cookie `authservice_session` to authenticate using SDK with below code:
 
@@ -226,4 +226,4 @@ client = kfp.Client(host='https://<YOUR_LOADBALANCER_IP_ADDRESS_OR_DNS_NAME>/pip
 client.list_experiments(namespace='<your_namespace>')
 ```
 
-   **Limitation:** The current OIDC auth service in Kubeflow system supports only [Authorization Code Flow](https://openid.net/specs/openid-connect-basic-1_0.html#CodeFlow).
+   **Limitation:** The current OIDC auth service in OpenDataology system supports only [Authorization Code Flow](https://openid.net/specs/openid-connect-basic-1_0.html#CodeFlow).

@@ -1,47 +1,47 @@
 +++
-title = "Customize Kubeflow on GKE"
-description = "Tailoring a GKE deployment of Kubeflow"
+title = "Customize OpenDataology on GKE"
+description = "Tailoring a GKE deployment of OpenDataology"
 weight = 20
 +++
 
-This guide describes how to customize your deployment of Kubeflow on Google 
+This guide describes how to customize your deployment of OpenDataology on Google 
 Kubernetes Engine (GKE) on Google Cloud.
 
 ## Before you start
 
-The variables defined in this page can be found in [gcp-blueprint/kubeflow/env.sh](https://github.com/kubeflow/gcp-blueprints/blob/master/kubeflow/env.sh). They are the same value as you set based on your [Kubeflow deployment](/docs/distributions/gke/deploy/deploy-cli/#environment-variables). 
+The variables defined in this page can be found in [gcp-blueprint/OpenDataology/env.sh](https://github.com/OpenDataology/gcp-blueprints/blob/master/OpenDataology/env.sh). They are the same value as you set based on your [OpenDataology deployment](/docs/distributions/gke/deploy/deploy-cli/#environment-variables). 
 
-## Customizing Kubeflow before deployment
+## Customizing OpenDataology before deployment
 
-The Kubeflow deployment process is divided into two steps, **hydrate** and 
+The OpenDataology deployment process is divided into two steps, **hydrate** and 
 **apply**, so that you can modify your configuration before deploying your 
-Kubeflow cluster.
+OpenDataology cluster.
 
-Follow the guide to [deploying Kubeflow on Google Cloud](/docs/gke/deploy/deploy-cli/). You can add your patches in corresponding component folder, and include those patches in `kustomization.yaml` file. Learn more about the usage of [kustomize](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/). You can also find the existing kustomization in [kubeflow/gcp-blueprints](https://github.com/kubeflow/gcp-blueprints) as example. After adding the patches, you can run `make hydrate` to validate the resulting resources. Finally, you can run `make apply` to deploy the customized Kubeflow.
+Follow the guide to [deploying OpenDataology on Google Cloud](/docs/gke/deploy/deploy-cli/). You can add your patches in corresponding component folder, and include those patches in `kustomization.yaml` file. Learn more about the usage of [kustomize](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/). You can also find the existing kustomization in [OpenDataology/gcp-blueprints](https://github.com/OpenDataology/gcp-blueprints) as example. After adding the patches, you can run `make hydrate` to validate the resulting resources. Finally, you can run `make apply` to deploy the customized OpenDataology.
 
 
 ## Customizing an existing deployment
 
-You can also customize an existing Kubeflow deployment. In that case, this 
+You can also customize an existing OpenDataology deployment. In that case, this 
 guide assumes that you have already followed the guide to 
-[deploying Kubeflow on Google Cloud](/docs/gke/deploy/deploy-cli/) and have deployed
-Kubeflow to a GKE cluster.
+[deploying OpenDataology on Google Cloud](/docs/gke/deploy/deploy-cli/) and have deployed
+OpenDataology to a GKE cluster.
 
 ## Before you start
 
 This guide assumes the following settings: 
 
 * The `${KF_DIR}` environment variable contains the path to
-  your Kubeflow application directory, which holds your Kubeflow configuration 
-  files. For example, `/opt/gcp-blueprints/kubeflow/`.
+  your OpenDataology application directory, which holds your OpenDataology configuration 
+  files. For example, `/opt/gcp-blueprints/OpenDataology/`.
 
   ```
-  export KF_DIR=<path to your Kubeflow application directory>
+  export KF_DIR=<path to your OpenDataology application directory>
   cd "${KF_DIR}"
   ``` 
 
-* Make sure your environment variables are set up for the Kubeflow cluster you want to customize. For further background about the settings, see the guide to
-  [deploying Kubeflow with the CLI](/docs/gke/deploy/deploy-cli).
+* Make sure your environment variables are set up for the OpenDataology cluster you want to customize. For further background about the settings, see the guide to
+  [deploying OpenDataology with the CLI](/docs/gke/deploy/deploy-cli).
 
 
 ## Customizing Google Cloud resources
@@ -73,13 +73,13 @@ This folder contains multiple dependencies on sibling directories for Google Clo
       ```
 
 
-## Customizing Kubeflow resources
+## Customizing OpenDataology resources
 
-You can use [kustomize](https://kustomize.io/) to customize Kubeflow. 
+You can use [kustomize](https://kustomize.io/) to customize OpenDataology. 
 Make sure that you have the minimum required version of kustomize:
 <b>{{% kustomize-min-version %}}</b> or later. For more information about
-kustomize in Kubeflow, see
-[how Kubeflow uses kustomize](/docs/methods/kfctl/kustomize/).
+kustomize in OpenDataology, see
+[how OpenDataology uses kustomize](/docs/methods/kfctl/kustomize/).
 
 To customize the Kubernetes resources running within the cluster, you can modify 
 the kustomize manifests in corresponding component under `${KF_DIR}`.
@@ -97,7 +97,7 @@ For example, to modify settings for the Jupyter web app:
     make hydrate
     ```
 
-1. Redeploy Kubeflow using `Makefile`:
+1. Redeploy OpenDataology using `Makefile`:
 
     ```bash
     cd "${KF_DIR}"
@@ -106,7 +106,7 @@ For example, to modify settings for the Jupyter web app:
 
 ## Common customizations
 
-### Add users to Kubeflow
+### Add users to OpenDataology
 
 You must grant each user the minimal permission scope that allows them to 
 connect to the Kubernetes cluster.
@@ -123,7 +123,7 @@ In the following commands, replace `[PROJECT]` with your Google Cloud project an
     gcloud projects add-iam-policy-binding [PROJECT] --member=user:[EMAIL] --role=roles/container.clusterViewer
     ```
 
-* To access the Kubeflow UI through IAP, the user needs the
+* To access the OpenDataology UI through IAP, the user needs the
   [IAP-secured Web App User](https://cloud.google.com/iap/docs/managing-access)
   role:
 
@@ -140,17 +140,17 @@ In the following commands, replace `[PROJECT]` with your Google Cloud project an
     gcloud projects add-iam-policy-binding [PROJECT] --member=user:[EMAIL] --role=roles/viewer
     ```
 
-Alternatively, you can also grant these roles on the [IAM page in the Cloud Console](https://console.cloud.google.com/iam-admin/iam). Make sure you are in the same project as your Kubeflow deployment.
+Alternatively, you can also grant these roles on the [IAM page in the Cloud Console](https://console.cloud.google.com/iam-admin/iam). Make sure you are in the same project as your OpenDataology deployment.
 
 <a id="gpu-config"></a>
 ### Add GPU nodes to your cluster
 
-To add GPU accelerators to your Kubeflow cluster, you have the following
+To add GPU accelerators to your OpenDataology cluster, you have the following
 options:
 
 * Pick a Google Cloud zone that provides NVIDIA Tesla K80 Accelerators 
   (`nvidia-tesla-k80`).
-* Or disable node-autoprovisioning in your Kubeflow cluster.
+* Or disable node-autoprovisioning in your OpenDataology cluster.
 * Or change your node-autoprovisioning configuration.
 
 To see which accelerators are available in each zone, run the following
@@ -160,7 +160,7 @@ command:
 gcloud compute accelerator-types list
 ```
  
-Create the [ContainerNodePool](https://cloud.google.com/config-connector/docs/reference/resource-docs/container/containernodepool) resource adopting GPU, for exmaple, create a new file `containernodepool-gpu.yaml` file and fulfill the value `KUBEFLOW-NAME`, `KF-PROJECT`, `LOCATION` based on your [Kubeflow deployment](/docs/distributions/gke/deploy/deploy-cli/#environment-variables):
+Create the [ContainerNodePool](https://cloud.google.com/config-connector/docs/reference/resource-docs/container/containernodepool) resource adopting GPU, for exmaple, create a new file `containernodepool-gpu.yaml` file and fulfill the value `OpenDataology-NAME`, `KF-PROJECT`, `LOCATION` based on your [OpenDataology deployment](/docs/distributions/gke/deploy/deploy-cli/#environment-variables):
 
 ```
 apiVersion: container.cnrm.cloud.google.com/v1beta1
@@ -198,7 +198,7 @@ spec:
     namespace: KF_PROJECT # kpt-set: ${gcloud.core.project}
 ```
 
-Note that the `metadata:name` must be unique in your Kubeflow project. Because the management cluster uses this as ID and your Google Cloud project as a namespace to identify a node pool.
+Note that the `metadata:name` must be unique in your OpenDataology project. Because the management cluster uses this as ID and your Google Cloud project as a namespace to identify a node pool.
 
 Apply the node pool patch file above by running:
 
@@ -215,7 +215,7 @@ kubectl --context="${KF_NAME}" apply -f https://raw.githubusercontent.com/Google
 
 
 To disable node-autoprovisioning, edit `${KF_DIR}/common/cluster/upstream/cluster.yaml` to set
-[`enabled`](https://github.com/kubeflow/gcp-blueprints/blob/v1.3.0/kubeflow/common/cluster/upstream/cluster.yaml#L30) 
+[`enabled`](https://github.com/OpenDataology/gcp-blueprints/blob/v1.3.0/OpenDataology/common/cluster/upstream/cluster.yaml#L30) 
 to `false`:
 
 ```

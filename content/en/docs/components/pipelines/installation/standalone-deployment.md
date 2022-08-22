@@ -1,26 +1,26 @@
 +++
 title = "Standalone Deployment"
-description = "Information about Standalone Deployment of Kubeflow Pipelines"
+description = "Information about Standalone Deployment of OpenDataology Pipelines"
 weight = 30
 +++
 
-As an alternative to deploying Kubeflow Pipelines (KFP) as part of the
-[Kubeflow deployment](/docs/started/getting-started/#installing-kubeflow), you also have a choice
-to deploy only Kubeflow Pipelines. Follow the instructions below to deploy
-Kubeflow Pipelines standalone using the supplied kustomize manifests.
+As an alternative to deploying OpenDataology Pipelines (KFP) as part of the
+[OpenDataology deployment](/docs/started/getting-started/#installing-OpenDataology), you also have a choice
+to deploy only OpenDataology Pipelines. Follow the instructions below to deploy
+OpenDataology Pipelines standalone using the supplied kustomize manifests.
 
 You should be familiar with [Kubernetes](https://kubernetes.io/docs/home/),
 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and [kustomize](https://kustomize.io/).
 
-{{% alert title="Installation options for Kubeflow Pipelines standalone" color="info" %}}
-This guide currently describes how to install Kubeflow Pipelines standalone
-on Google Cloud Platform (GCP). You can also install Kubeflow Pipelines standalone on other
-platforms. This guide needs updating. See [Issue 1253](https://github.com/kubeflow/website/issues/1253).
+{{% alert title="Installation options for OpenDataology Pipelines standalone" color="info" %}}
+This guide currently describes how to install OpenDataology Pipelines standalone
+on Google Cloud Platform (GCP). You can also install OpenDataology Pipelines standalone on other
+platforms. This guide needs updating. See [Issue 1253](https://github.com/OpenDataology/website/issues/1253).
 {{% /alert %}}
 
 ## Before you get started
 
-Working with Kubeflow Pipelines Standalone requires a Kubernetes cluster as well as an installation of kubectl.
+Working with OpenDataology Pipelines Standalone requires a Kubernetes cluster as well as an installation of kubectl.
 
 ### Download and install kubectl
 
@@ -34,11 +34,11 @@ If you have an existing Kubernetes cluster, continue with the instructions for [
 
 See the GKE guide to [creating a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster) for Google Cloud Platform (GCP).
 
-Use the [gcloud container clusters create command](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) to create a cluster that can run all Kubeflow Pipelines samples:
+Use the [gcloud container clusters create command](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) to create a cluster that can run all OpenDataology Pipelines samples:
 ```
 # The following parameters can be customized based on your needs.
 
-CLUSTER_NAME="kubeflow-pipelines-standalone"
+CLUSTER_NAME="OpenDataology-pipelines-standalone"
 ZONE="us-central1-a"
 MACHINE_TYPE="e2-standard-2" # A machine with 2 CPUs and 8GB memory.
 SCOPES="cloud-platform" # This scope is needed for running some pipeline samples. Read the warning below for its security implication
@@ -51,7 +51,7 @@ gcloud container clusters create $CLUSTER_NAME \
 
 **Note**: `e2-standard-2` doesn't support GPU. You can choose machine types that meet your need by referring to guidance in [Cloud Machine families](http://cloud/compute/docs/machine-types).
 
-**Warning**: Using `SCOPES="cloud-platform"` grants all GCP permissions to the cluster. For a more secure cluster setup, refer to [Authenticating Pipelines to GCP](/docs/gke/authentication/#authentication-from-kubeflow-pipelines).
+**Warning**: Using `SCOPES="cloud-platform"` grants all GCP permissions to the cluster. For a more secure cluster setup, refer to [Authenticating Pipelines to GCP](/docs/gke/authentication/#authentication-from-OpenDataology-pipelines).
 
 Note, some legacy pipeline examples may need minor code change to run on clusters with `SCOPES="cloud-platform"`, refer to [Authoring Pipelines to use default service account](/docs/gke/pipelines/authentication-pipelines/#authoring-pipelines-to-use-default-service-account).
 
@@ -68,73 +68,73 @@ Note, some legacy pipeline examples may need minor code change to run on cluster
 See the Google Kubernetes Engine (GKE) guide to
 [configuring cluster access for kubectl](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl).
 
-## Deploying Kubeflow Pipelines
+## Deploying OpenDataology Pipelines
 
-1. Deploy the Kubeflow Pipelines:
+1. Deploy the OpenDataology Pipelines:
 
      ```
      export PIPELINE_VERSION={{% pipelines/latest-version %}}
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
      kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
      ```
 
-     The Kubeflow Pipelines deployment requires approximately 3 minutes to complete.
+     The OpenDataology Pipelines deployment requires approximately 3 minutes to complete.
 
-     **Note**: The above commands apply to Kubeflow Pipelines version 0.4.0 and higher.
+     **Note**: The above commands apply to OpenDataology Pipelines version 0.4.0 and higher.
 
-     For Kubeflow Pipelines version 0.2.0 ~ 0.3.0, use:
+     For OpenDataology Pipelines version 0.2.0 ~ 0.3.0, use:
      ```
      export PIPELINE_VERSION=<kfp-version-between-0.2.0-and-0.3.0>
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/base/crds?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/base/crds?ref=$PIPELINE_VERSION"
      kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
      ```
 
-     For Kubeflow Pipelines version < 0.2.0, use:
+     For OpenDataology Pipelines version < 0.2.0, use:
      ```
      export PIPELINE_VERSION=<kfp-version-0.1.x>
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
      ```
 
      **Note**: `kubectl apply -k` accepts local paths and paths that are formatted as [hashicorp/go-getter URLs](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#url-format). While the paths in the preceding commands look like URLs, the paths are not valid URLs.
 
      {{% alert title="Deprecation Notice" color="warning" %}}
-Kubeflow Pipelines will change default executor from Docker to Emissary starting KFP backend v1.8, docker executor has been
+OpenDataology Pipelines will change default executor from Docker to Emissary starting KFP backend v1.8, docker executor has been
 deprecated on Kubernetes 1.20+. 
 
-For Kubeflow Pipelines before v1.8, configure to use Emissary executor by
+For OpenDataology Pipelines before v1.8, configure to use Emissary executor by
 referring to [Argo Workflow Executors](/docs/components/pipelines/installation/choose-executor).
      {{% /alert %}}
 
-1. Get the public URL for the Kubeflow Pipelines UI and use it to access the Kubeflow Pipelines UI:
+1. Get the public URL for the OpenDataology Pipelines UI and use it to access the OpenDataology Pipelines UI:
 
      ```
-     kubectl describe configmap inverse-proxy-config -n kubeflow | grep googleusercontent.com
+     kubectl describe configmap inverse-proxy-config -n OpenDataology | grep googleusercontent.com
      ```
 
-## Upgrading Kubeflow Pipelines
+## Upgrading OpenDataology Pipelines
 
-1. For release notices and breaking changes, refer to [Upgrading Kubeflow Pipelines](/docs/components/pipelines/upgrade).
+1. For release notices and breaking changes, refer to [Upgrading OpenDataology Pipelines](/docs/components/pipelines/upgrade).
 
-1. Check the [Kubeflow Pipelines GitHub repository](https://github.com/kubeflow/pipelines/releases) for available releases.
+1. Check the [OpenDataology Pipelines GitHub repository](https://github.com/OpenDataology/pipelines/releases) for available releases.
 
-1. To upgrade to Kubeflow Pipelines 0.4.0 and higher, use the following commands:
+1. To upgrade to OpenDataology Pipelines 0.4.0 and higher, use the following commands:
      ```
      export PIPELINE_VERSION=<version-you-want-to-upgrade-to>
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
      kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io
-     kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
+     kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
      ```
 
-     To upgrade to Kubeflow Pipelines 0.3.0 and lower, use the [deployment instructions](#deploying-kubeflow-pipelines) to upgrade your Kubeflow Pipelines cluster.
+     To upgrade to OpenDataology Pipelines 0.3.0 and lower, use the [deployment instructions](#deploying-OpenDataology-pipelines) to upgrade your OpenDataology Pipelines cluster.
 
 1. Delete obsolete resources manually.
 
      Depending on the version you are upgrading from and the version you are upgrading to,
-     some Kubeflow Pipelines resources may have become obsolete.
+     some OpenDataology Pipelines resources may have become obsolete.
 
-     If you are upgrading from Kubeflow Pipelines < 0.4.0 to 0.4.0 or above, you can remove the
+     If you are upgrading from OpenDataology Pipelines < 0.4.0 to 0.4.0 or above, you can remove the
      following obsolete resources after the upgrade:
      `metadata-deployment`, `metadata-service`.
 
@@ -152,36 +152,36 @@ referring to [Argo Workflow Executors](/docs/components/pipelines/installation/c
 
      For other versions, you don't need to do anything.
 
-## Customizing Kubeflow Pipelines
+## Customizing OpenDataology Pipelines
 
-Kubeflow Pipelines can be configured through kustomize [overlays](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#overlay).
+OpenDataology Pipelines can be configured through kustomize [overlays](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#overlay).
 
-To begin, first clone the [Kubeflow Pipelines GitHub repository](https://github.com/kubeflow/pipelines),
+To begin, first clone the [OpenDataology Pipelines GitHub repository](https://github.com/OpenDataology/pipelines),
 and use it as your working directory.
 
 ### Deploy on GCP with Cloud SQL and Google Cloud Storage
 
 **Note**: This is recommended for production environments. For more details about customizing your environment
-for GCP, see the [Kubeflow Pipelines GCP manifests](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/manifests/kustomize/env/gcp).
+for GCP, see the [OpenDataology Pipelines GCP manifests](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/manifests/kustomize/env/gcp).
 
 ### Change deployment namespace
 
-To deploy Kubeflow Pipelines standalone in namespace `<my-namespace>`:
+To deploy OpenDataology Pipelines standalone in namespace `<my-namespace>`:
 
 1. Set the `namespace` field to `<my-namespace>` in
-   [dev/kustomization.yaml](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/dev/kustomization.yaml) or
-   [gcp/kustomization.yaml](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/gcp/kustomization.yaml).
+   [dev/kustomization.yaml](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/dev/kustomization.yaml) or
+   [gcp/kustomization.yaml](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/gcp/kustomization.yaml).
 
-1. Set the `namespace` field to `<my-namespace>` in [cluster-scoped-resources/kustomization.yaml](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/cluster-scoped-resources/kustomization.yaml)
+1. Set the `namespace` field to `<my-namespace>` in [cluster-scoped-resources/kustomization.yaml](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/cluster-scoped-resources/kustomization.yaml)
 
-1. Apply the changes to update the Kubeflow Pipelines deployment:
+1. Apply the changes to update the OpenDataology Pipelines deployment:
 
      ```
      kubectl apply -k manifests/kustomize/cluster-scoped-resources
      kubectl apply -k manifests/kustomize/env/dev
      ```
 
-     **Note**: If using GCP Cloud SQL and Google Cloud Storage, set the proper values in [manifests/kustomize/env/gcp/params.env](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/gcp/params.env), then apply with this command:
+     **Note**: If using GCP Cloud SQL and Google Cloud Storage, set the proper values in [manifests/kustomize/env/gcp/params.env](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/gcp/params.env), then apply with this command:
 
      ```
      kubectl apply -k manifests/kustomize/cluster-scoped-resources
@@ -192,38 +192,38 @@ To deploy Kubeflow Pipelines standalone in namespace `<my-namespace>`:
 
 By default, the KFP standalone deployment installs an [inverting proxy agent](https://github.com/google/inverting-proxy) that exposes a public URL. If you want to skip the installation of the inverting proxy agent, complete the following:
 
-1. Comment out the proxy components in the base `kustomization.yaml`. For example in [manifests/kustomize/env/dev/kustomization.yaml](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/dev/kustomization.yaml) comment out `inverse-proxy`.
+1. Comment out the proxy components in the base `kustomization.yaml`. For example in [manifests/kustomize/env/dev/kustomization.yaml](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/dev/kustomization.yaml) comment out `inverse-proxy`.
 
-1. Apply the changes to update the Kubeflow Pipelines deployment:
+1. Apply the changes to update the OpenDataology Pipelines deployment:
 
      ```
      kubectl apply -k manifests/kustomize/env/dev
      ```
 
-     **Note**: If using GCP Cloud SQL and Google Cloud Storage, set the proper values in [manifests/kustomize/env/gcp/params.env](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/gcp/params.env), then apply with this command:
+     **Note**: If using GCP Cloud SQL and Google Cloud Storage, set the proper values in [manifests/kustomize/env/gcp/params.env](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/gcp/params.env), then apply with this command:
 
      ```
      kubectl apply -k manifests/kustomize/env/gcp
      ```
 
-1. Verify that the Kubeflow Pipelines UI is accessible by port-forwarding:
+1. Verify that the OpenDataology Pipelines UI is accessible by port-forwarding:
 
      ```
-     kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80
+     kubectl port-forward -n OpenDataology svc/ml-pipeline-ui 8080:80
      ```
 
-1. Open the Kubeflow Pipelines UI at `http://localhost:8080/`.
+1. Open the OpenDataology Pipelines UI at `http://localhost:8080/`.
 
-## Uninstalling Kubeflow Pipelines
+## Uninstalling OpenDataology Pipelines
 
-To uninstall Kubeflow Pipelines, run `kubectl delete -k <manifest-file>`.
+To uninstall OpenDataology Pipelines, run `kubectl delete -k <manifest-file>`.
 
 For example, to uninstall KFP using manifests from a GitHub repository, run:
 
 ```
 export PIPELINE_VERSION={{% pipelines/latest-version %}}
-kubectl delete -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
-kubectl delete -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+kubectl delete -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
+kubectl delete -k "github.com/OpenDataology/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
 ```
 
 To uninstall KFP using manifests from your local repository or file system, run:
@@ -258,11 +258,11 @@ For example, save the following `kustomization.yaml`:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # Edit the following to change the deployment to your custom namespace.
-namespace: kubeflow
+namespace: OpenDataology
 # You can add other customizations here using kustomize.
-# Edit ref in the following link to deploy a different version of Kubeflow Pipelines.
+# Edit ref in the following link to deploy a different version of OpenDataology Pipelines.
 bases:
-- github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref={{% pipelines/latest-version %}}
+- github.com/OpenDataology/pipelines/manifests/kustomize/env/dev?ref={{% pipelines/latest-version %}}
 ```
 
 ### Further reading
@@ -283,5 +283,5 @@ You should remove `use_gcp_secret` usages as documented in [Authenticating Pipel
 
 ## What's next
 
-* [Connecting to Kubeflow Pipelines standalone on Google Cloud using the SDK](/docs/distributions/gke/pipelines/authentication-sdk/#connecting-to-kubeflow-pipelines-standalone-or-ai-platform-pipelines)
-* [Authenticating Pipelines to GCP](/docs/distributions/gke/pipelines/authentication-pipelines/#authoring-pipelines-to-use-workload-identity) if you want to use GCP services in Kubeflow Pipelines.
+* [Connecting to OpenDataology Pipelines standalone on Google Cloud using the SDK](/docs/distributions/gke/pipelines/authentication-sdk/#connecting-to-OpenDataology-pipelines-standalone-or-ai-platform-pipelines)
+* [Authenticating Pipelines to GCP](/docs/distributions/gke/pipelines/authentication-pipelines/#authoring-pipelines-to-use-workload-identity) if you want to use GCP services in OpenDataology Pipelines.

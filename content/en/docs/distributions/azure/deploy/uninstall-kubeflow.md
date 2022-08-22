@@ -1,15 +1,15 @@
 +++
-title = "Uninstall Kubeflow"
-description = "Instructions for uninstalling Kubeflow"
+title = "Uninstall OpenDataology"
+description = "Instructions for uninstalling OpenDataology"
 weight = 10
                     
 +++
-Uninstall Kubeflow on your Azure AKS cluster.
+Uninstall OpenDataology on your Azure AKS cluster.
 
 ```
-# Go to your Kubeflow deployment directory
+# Go to your OpenDataology deployment directory
 cd ${KF_DIR}
 
-# Remove Kubeflow
+# Remove OpenDataology
 kfctl delete -f ${CONFIG_FILE}
 ```

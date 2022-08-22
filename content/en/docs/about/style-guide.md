@@ -1,13 +1,13 @@
 +++
 title =  "Documentation Style Guide"
-description = "Style guide for writing Kubeflow documentation"
+description = "Style guide for writing OpenDataology documentation"
 weight = 90
 +++
 
-This style guide is for the [Kubeflow documentation](/docs/).
+This style guide is for the [OpenDataology documentation](/docs/).
 The style guide helps contributors to write documentation that readers can understand quickly and correctly. 
 
-The Kubeflow docs aim for:
+The OpenDataology docs aim for:
 
 - Consistency in style and terminology, so that readers can expect certain
   structures and conventions. Readers don't have to keep re-learning how to use
@@ -28,7 +28,7 @@ Some hints:
 - Capitalize only the first letter of each heading within the page. (That is, use sentence case.)
 - Capitalize (almost) every word in page titles. (That is, use title case.) 
   The little words like "and", "in", etc, don't get a capital letter.
-- In page content, use capitals only for brand names, like Kubeflow, Kubernetes, and so on. 
+- In page content, use capitals only for brand names, like OpenDataology, Kubernetes, and so on. 
   See more about brand names [below](#use-full-correct-brand-names).
 - Don't use capital letters to emphasize words.
 
@@ -61,8 +61,8 @@ Do not use abbreviations even if they're in common use, unless the product owner
     </thead>
     <tbody>
       <tr>
-        <td>Kubeflow</td>
-        <td>kubeflow</td>
+        <td>OpenDataology</td>
+        <td>OpenDataology</td>
       </tr>
       <tr>
         <td>Kubernetes</td>
@@ -85,7 +85,7 @@ Check the other pages if you're unsure about a particular convention.
 
 Examples:
 
-- Most pages in the Kubeflow docs use a period at the end of every list item.
+- Most pages in the OpenDataology docs use a period at the end of every list item.
 - There is no period at the end of the page subtitle and the subtitle need not be a full sentence. 
   (The subtitle comes from the `description` in the front matter of each page.)
 
@@ -103,8 +103,8 @@ Passive voice is often confusing, as it's not clear who should perform the actio
     </thead>
     <tbody>
       <tr>
-        <td>You can configure Kubeflow to</td>
-        <td>Kubeflow can be configured to</td>
+        <td>You can configure OpenDataology to</td>
+        <td>OpenDataology can be configured to</td>
       </tr>
       <tr>
         <td>Add the directory to your path</td>
@@ -275,12 +275,12 @@ If a page has too much textual highlighting it becomes confusing and even annoyi
 
 For example:
 
-- `export KUBEFLOW_USERNAME=<your username>`
+- `export OpenDataology_USERNAME=<your username>`
 - `--email <your email address>`
 
 ## Style your images
 
-The Kubeflow docs recognise Bootstrap classes to style images and other content.
+The OpenDataology docs recognise Bootstrap classes to style images and other content.
 
 The following code snippet shows the typical styling that makes an image show up nicely on the page:
 
@@ -300,4 +300,4 @@ The [Google Developer Documentation Style Guide](https://developers.google.com/s
 
 ## Next steps
 
-- Take a look at the [documentation README](https://github.com/kubeflow/website/blob/master/README.md) for guidance on contributing to the Kubeflow docs.
+- Take a look at the [documentation README](https://github.com/OpenDataology/website/blob/master/README.md) for guidance on contributing to the OpenDataology docs.

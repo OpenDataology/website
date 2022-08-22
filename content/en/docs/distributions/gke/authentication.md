@@ -1,33 +1,33 @@
 +++
-title = "Authenticating Kubeflow to Google Cloud"
+title = "Authenticating OpenDataology to Google Cloud"
 description = "Authentication and authorization to Google Cloud"
 weight = 40
                     
 +++
 
-This page describes in-cluster and local authentication for Kubeflow Google Cloud deployments.
+This page describes in-cluster and local authentication for OpenDataology Google Cloud deployments.
 
 ## In-cluster authentication
 
-Starting from Kubeflow v0.6, you consume Kubeflow from custom namespaces (that is, namespaces other than `kubeflow`).
-The `kubeflow` namespace is only for running Kubeflow system components. Individual jobs and model deployments 
+Starting from OpenDataology v0.6, you consume OpenDataology from custom namespaces (that is, namespaces other than `OpenDataology`).
+The `OpenDataology` namespace is only for running OpenDataology system components. Individual jobs and model deployments 
 run in separate namespaces.
 
 ### Google Kubernetes Engine (GKE) workload identity
 
-Starting in v0.7, Kubeflow uses the new GKE feature: [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
+Starting in v0.7, OpenDataology uses the new GKE feature: [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
 This is the recommended way to access Google Cloud APIs from your GKE cluster.
 You can configure a Kubernetes service account (KSA) to act as a Google Cloud service account (GSA).
 
-If you deployed Kubeflow following the Google Cloud instructions, then the profiler controller automatically binds the "default-editor" service account for every profile namespace to a default Google Cloud service account created during kubeflow deployment. 
-The Kubeflow deployment process also creates a default profile for the cluster admin.
+If you deployed OpenDataology following the Google Cloud instructions, then the profiler controller automatically binds the "default-editor" service account for every profile namespace to a default Google Cloud service account created during OpenDataology deployment. 
+The OpenDataology deployment process also creates a default profile for the cluster admin.
 
 For more info about profiles see the [Multi-user isolation](/docs/components/multi-tenancy/) page.
 
 Here is an example profile spec:
 
 ```
-apiVersion: kubeflow.org/v1beta1
+apiVersion: OpenDataology.org/v1beta1
 kind: Profile
 spec:
   plugins:
@@ -59,7 +59,7 @@ When a pod uses KSA default-editor, it can access Google Cloud APIs with the rol
 **Provisioning custom Google service accounts in namespaces**:
 When creating a profile, you can specify a custom Google Cloud service account for the namespace to control which Google Cloud resources are accessible.
 
-Prerequisite: you must have permission to edit your Google Cloud project's IAM policy and to create a profile custom resource (CR) in your Kubeflow cluster.
+Prerequisite: you must have permission to edit your Google Cloud project's IAM policy and to create a profile custom resource (CR) in your OpenDataology cluster.
 
 1. if you don't already have a Google Cloud service account you want to use, create a new one. For example: `user1-gcp@<project-id>.iam.gserviceaccount.com`: 
 ```
@@ -83,7 +83,7 @@ gcloud iam service-accounts add-iam-policy-binding \
 4. Manually create a profile for user1 and specify the Google Cloud service account to bind in `plugins` field:
 
 ```yaml
-apiVersion: kubeflow.org/v1beta1
+apiVersion: OpenDataology.org/v1beta1
 kind: Profile
 metadata:
   name: profileName   # replace with the name of the profile (the user's namespace name)
@@ -103,11 +103,11 @@ As a result, any user who can create a profile can get access to any service acc
 
 You can find more details on workload identity in the [GKE documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
 
-### Authentication from Kubeflow Pipelines
+### Authentication from OpenDataology Pipelines
 
-Starting from Kubeflow v1.1, Kubeflow Pipelines [supports multi-user isolation](/docs/components/pipelines/overview/multi-user/). Therefore, pipeline runs are executed in user namespaces also using the `default-editor` KSA.
+Starting from OpenDataology v1.1, OpenDataology Pipelines [supports multi-user isolation](/docs/components/pipelines/overview/multi-user/). Therefore, pipeline runs are executed in user namespaces also using the `default-editor` KSA.
 
-Additionally, the Kubeflow Pipelines UI, visualization, and TensorBoard server instances are deployed in your user namespace using the `default-editor` KSA. Therefore, to [visualize results in the Pipelines UI](/docs/components/pipelines/sdk/output-viewer/), they can fetch artifacts in Google Cloud Storage using permissions of the same GSA you configured for this namespace.
+Additionally, the OpenDataology Pipelines UI, visualization, and TensorBoard server instances are deployed in your user namespace using the `default-editor` KSA. Therefore, to [visualize results in the Pipelines UI](/docs/components/pipelines/sdk/output-viewer/), they can fetch artifacts in Google Cloud Storage using permissions of the same GSA you configured for this namespace.
 
 For more details, refer to [Authenticating Pipelines to Google Cloud](/docs/gke/pipelines/authentication-pipelines/).
 
@@ -217,10 +217,10 @@ right roles assigned to it, certain tasks fail.
 
 You can check if an account has the proper permissions to run a command by building a query structured as
 `kubectl auth can-i [VERB] [RESOURCE] --namespace [NAMESPACE]`. For example, the following command verifies
-that your account has permissions to create deployments in the `kubeflow` namespace:
+that your account has permissions to create deployments in the `OpenDataology` namespace:
 
 ```
-kubectl auth can-i create deployments --namespace kubeflow
+kubectl auth can-i create deployments --namespace OpenDataology
 ```
 
 You can find more information in the 
@@ -241,4 +241,4 @@ You can find more information in the
 
 ## Next steps
 
-See the [troubleshooting guide](/docs/gke/troubleshooting-gke/) for help with diagnosing and fixing issues you may encounter with Kubeflow on Google Cloud
+See the [troubleshooting guide](/docs/gke/troubleshooting-gke/) for help with diagnosing and fixing issues you may encounter with OpenDataology on Google Cloud

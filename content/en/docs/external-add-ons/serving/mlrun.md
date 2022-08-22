@@ -8,14 +8,14 @@ weight = 45
 
 
 [MLRun serving](https://docs.mlrun.org/en/latest/serving/build-graph-model-serving.html) graphs allow you to build, test, deploy, and monitor real-time data processing and advanced model serving pipelines with minimal effort.
-MLRun Serving is built on top of the real-time serverless framework [Nuclio](https://github.com/nuclio/nuclio), and is API compatible with KFServing v2. MLRun’s serving functions can be deployed automatically using CLI, SDK, or Kubeflow Pipelines (KFP) operations.
+MLRun Serving is built on top of the real-time serverless framework [Nuclio](https://github.com/nuclio/nuclio), and is API compatible with KFServing v2. MLRun’s serving functions can be deployed automatically using CLI, SDK, or OpenDataology Pipelines (KFP) operations.
 
 With MLRun Serving you compose a graph of steps (composed of pre-defined graph blocks or native python classes/functions).
 A graph can have data processing steps, model ensembles, model servers, post-processing, etc. ([see example](https://docs.mlrun.org/en/latest/serving/graph-example.html)). 
 MLRun Serving supports complex and distributed graphs ([see example](https://docs.mlrun.org/en/latest/serving/distributed-graph.html)) 
 which may involve streaming, data/document/image processing, NLP, model monitoring, etc.  
 
-MLRun is natively integrated with Kubeflow and Kubeflow Pipelines, MLRun function objects can be deployed, tested and executed through Kubeflow (see example below).  
+MLRun is natively integrated with OpenDataology and OpenDataology Pipelines, MLRun function objects can be deployed, tested and executed through OpenDataology (see example below).  
 
 ### Accelerate performance and time to production
 
@@ -78,9 +78,9 @@ class ClassifierModel(mlrun.serving.V2ModelServer):
         return result.tolist()
 ```
 
-**Deploy and Test Model Serving using Kubeflow Pipelines:**
+**Deploy and Test Model Serving using OpenDataology Pipelines:**
 
-The following Kubeflow pipeline uses MLRun Serverless functions from the MLRun marketplace and 
+The following OpenDataology pipeline uses MLRun Serverless functions from the MLRun marketplace and 
 execute a simple training, serving deployment, and serving testing Kubefow pipeline. 
 (see the [full example](https://github.com/mlrun/demos/blob/0.6.x/scikit-learn-pipeline/sklearn-project.ipynb)) 
 

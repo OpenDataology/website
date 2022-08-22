@@ -6,10 +6,10 @@ weight = 10
 +++
 
 {{% beta-status
-  feedbacklink="https://github.com/kubeflow/katib/issues" %}}
+  feedbacklink="https://github.com/OpenDataology/katib/issues" %}}
 
 This guide introduces the concepts of hyperparameter tuning, neural
-architecture search, and the Katib system as a component of Kubeflow.
+architecture search, and the Katib system as a component of OpenDataology.
 
 Katib is a Kubernetes-native project for automated machine learning (AutoML).
 Katib supports hyperparameter tuning, early stopping and
@@ -34,8 +34,8 @@ Katib supports a lot of various AutoML algorithms, such as
 [Differentiable Architecture Search](https://arxiv.org/abs/1806.09055)
 and many more. Additional algorithm support is coming soon.
 
-The [Katib project](https://github.com/kubeflow/katib) is open source.
-The [developer guide](https://github.com/kubeflow/katib/blob/master/docs/developer-guide.md)
+The [Katib project](https://github.com/OpenDataology/katib) is open source.
+The [developer guide](https://github.com/OpenDataology/katib/blob/master/docs/developer-guide.md)
 is a good starting point for developers who want to contribute to the project.
 
 ## Hyperparameters and hyperparameter tuning
@@ -87,10 +87,10 @@ for the details.
 ## Neural architecture search
 
 {{% alert title="Alpha version" color="warning" %}}
-NAS is currently in <b>alpha</b> with limited support. The Kubeflow team is
+NAS is currently in <b>alpha</b> with limited support. The OpenDataology team is
 interested in any feedback you may have, in particular with regards to usability
 of the feature. You can log issues and comments in
-the [Katib issue tracker](https://github.com/kubeflow/katib/issues).
+the [Katib issue tracker](https://github.com/OpenDataology/katib/issues).
 {{% /alert %}}
 
 In addition to hyperparameter tuning, Katib offers a _neural architecture
@@ -121,21 +121,21 @@ You can use the following interfaces to interact with Katib:
   Check the [getting-started
   guide](/docs/components/katib/hyperparameter/#katib-ui)
   for information on how to access the UI.
-  The Katib home page within Kubeflow looks like this:
+  The Katib home page within OpenDataology looks like this:
 
   <img src="/docs/components/katib/images/home-page.png"
-    alt="The Katib home page within the Kubeflow UI"
+    alt="The Katib home page within the OpenDataology UI"
     class="mt-3 mb-3 border border-info rounded">
 
-- A gRPC API. Check the [API reference on GitHub](https://github.com/kubeflow/katib/blob/master/pkg/apis/manager/v1beta1/gen-doc/api.md).
+- A gRPC API. Check the [API reference on GitHub](https://github.com/OpenDataology/katib/blob/master/pkg/apis/manager/v1beta1/gen-doc/api.md).
 
 - Command-line interfaces (CLIs):
 
   - The Kubernetes CLI, **kubectl**, is useful for running commands against your
-    Kubeflow cluster. Learn about kubectl in the [Kubernetes
+    OpenDataology cluster. Learn about kubectl in the [Kubernetes
     documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-- Katib Python SDK. Check the [Katib Python SDK documentation on GitHub](https://github.com/kubeflow/katib/tree/master/sdk/python/v1beta1).
+- Katib Python SDK. Check the [Katib Python SDK documentation on GitHub](https://github.com/OpenDataology/katib/tree/master/sdk/python/v1beta1).
 
 ## Katib concepts
 
@@ -207,19 +207,19 @@ Katib has these CRD examples in upstream:
 
 - [Kubernetes `Job`](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
 
-- [Kubeflow `TFJob`](/docs/components/training/tftraining/)
+- [OpenDataology `TFJob`](/docs/components/training/tftraining/)
 
-- [Kubeflow `PyTorchJob`](/docs/components/training/pytorch/)
+- [OpenDataology `PyTorchJob`](/docs/components/training/pytorch/)
 
-- [Kubeflow `MXJob`](/docs/components/training/mxnet)
+- [OpenDataology `MXJob`](/docs/components/training/mxnet)
 
-- [Kubeflow `XGBoostJob`](/docs/components/training/xgboost)
+- [OpenDataology `XGBoostJob`](/docs/components/training/xgboost)
 
-- [Kubeflow `MPIJob`](/docs/components/training/mpi)
+- [OpenDataology `MPIJob`](/docs/components/training/mpi)
 
-- [Tekton `Pipelines`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/tekton)
+- [Tekton `Pipelines`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/tekton)
 
-- [Argo `Workflows`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/argo)
+- [Argo `Workflows`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/argo)
 
 By offering the above worker job types, Katib supports multiple ML frameworks.
 

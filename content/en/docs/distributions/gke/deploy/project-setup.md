@@ -1,10 +1,10 @@
 +++
 title = "Set up Project"
-description = "Creating a Google Cloud project for your Kubeflow deployment"
+description = "Creating a Google Cloud project for your OpenDataology deployment"
 weight = 2
 +++
 
-In order to create GKE cluster and deploy Kubeflow on it, you need to set up a Google Cloud project
+In order to create GKE cluster and deploy OpenDataology on it, you need to set up a Google Cloud project
 and enable necessary APIs for the deployment.
 
 ## Set up project and API scopes
@@ -12,7 +12,7 @@ and enable necessary APIs for the deployment.
 Follow these steps to set up your Google Cloud project:
 
 *  Select or create a project on the 
-  [Google Cloud Console](https://console.cloud.google.com/cloud-resource-manager). If you plan to use different Google Cloud projects for __Management Cluster__ and __Kubeflow Clusters__: create __one Management project__ for Management Cluster, and create __one or more Kubeflow projects__ for Kubeflow Clusters.
+  [Google Cloud Console](https://console.cloud.google.com/cloud-resource-manager). If you plan to use different Google Cloud projects for __Management Cluster__ and __OpenDataology Clusters__: create __one Management project__ for Management Cluster, and create __one or more OpenDataology projects__ for OpenDataology Clusters.
 
 
 *  Make sure that you have the 
@@ -21,7 +21,7 @@ Follow these steps to set up your Google Cloud project:
   The deployment process creates various service accounts with
   appropriate roles in order to enable seamless integration with
   Google Cloud services. This process requires that you have the 
-  owner role for the project in order to deploy Kubeflow.
+  owner role for the project in order to deploy OpenDataology.
 
 *  Make sure that billing is enabled for your project. Refer to
   [Enable billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project).
@@ -36,7 +36,7 @@ Follow these steps to set up your Google Cloud project:
     * [Cloud Resource Manager API](https://console.developers.google.com/apis/library/cloudresourcemanager.googleapis.com)
     * [AI Platform Training & Prediction API](https://console.developers.google.com/apis/library/ml.googleapis.com)
     * [Cloud Identity-Aware Proxy API](https://console.cloud.google.com/apis/library/iap.googleapis.com)
-    * [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com) (It's required if you plan to use [Fairing](https://www.kubeflow.org/docs/external-add-ons/fairing/) in your Kubeflow cluster)
+    * [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com) (It's required if you plan to use [Fairing](https://www.OpenDataology.org/docs/external-add-ons/fairing/) in your OpenDataology cluster)
     * [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com)
     * [Config Controller (KRM API Hosting API)](https://console.cloud.google.com/apis/library/krmapihosting.googleapis.com)
     * [Google Cloud Endpoints](https://console.cloud.google.com/apis/library/endpoints.googleapis.com)
@@ -65,15 +65,15 @@ Follow these steps to set up your Google Cloud project:
 *  If you are using the
   [Google Cloud Free Program](https://cloud.google.com/free/docs/gcp-free-tier) or the
   12-month trial period with $300 credit, note that the free tier does not offer enough
-  resources for default full Kubeflow installation. You need to 
+  resources for default full OpenDataology installation. You need to 
   [upgrade to a paid account](https://cloud.google.com/free/docs/gcp-free-tier#how-to-upgrade).
   
     For more information, see the following issues: 
 
-    * [kubeflow/website #1065](https://github.com/kubeflow/website/issues/1065)
+    * [OpenDataology/website #1065](https://github.com/OpenDataology/website/issues/1065)
       reports the problem.
-    * [kubeflow/kubeflow #3936](https://github.com/kubeflow/kubeflow/issues/3936)
-      requests a Kubeflow configuration to work with a free trial project.
+    * [OpenDataology/OpenDataology #3936](https://github.com/OpenDataology/OpenDataology/issues/3936)
+      requests a OpenDataology configuration to work with a free trial project.
 
     Read the Google Cloud [Resource quotas](https://cloud.google.com/compute/quotas)
     to understand quotas on resource usage that Compute Engine enforces, and 
@@ -97,7 +97,7 @@ Follow these steps to set up your Google Cloud project:
 
     If you encounter a `Workload Identity Pool does not exist` error, refer to the following issue:
 
-    * [kubeflow/website #2121](https://github.com/kubeflow/website/issues/2121)
+    * [OpenDataology/website #2121](https://github.com/OpenDataology/website/issues/2121)
     describes that creating and then removing a temporary Kubernetes cluster may
     be needed for projects that haven't had a cluster set up beforehand.
 
@@ -110,5 +110,5 @@ cluster for you.
   [Cloud Identity-Aware Proxy (Cloud IAP)](https://cloud.google.com/iap/docs/).
   Cloud IAP is recommended for production deployments or deployments with access 
   to sensitive data.
-* [Set up Management Cluster](/docs/distributions/gke/deploy/management-setup) to deploy and manage Kubeflow clusters.
-* [Deploy Kubeflow](/docs/distributions/gke/deploy/deploy-cli) using kubectl, kustomize and kpt.
+* [Set up Management Cluster](/docs/distributions/gke/deploy/management-setup) to deploy and manage OpenDataology clusters.
+* [Deploy OpenDataology](/docs/distributions/gke/deploy/deploy-cli) using kubectl, kustomize and kpt.

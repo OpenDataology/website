@@ -5,11 +5,11 @@ weight = 110
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
-This page describes how to write recursive functions in the domain specific language (DSL) provided by the Kubeflow Pipelines SDK.
+This page describes how to write recursive functions in the domain specific language (DSL) provided by the OpenDataology Pipelines SDK.
 
 ## Motivation
 Recursion is a feature that is supported by almost all languages to express complex semantics in a succinct way. 
@@ -21,7 +21,7 @@ block to be executed and exited based on dynamic conditions.
 
 ### Decorator
 
-Decorate the recursive function with [kfp.dsl.graph_component](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/_component.py)
+Decorate the recursive function with [kfp.dsl.graph_component](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/_component.py)
 as illustrated below. The decorator does not require any arguments.
 ```python
 import kfp.dsl as dsl
@@ -45,17 +45,17 @@ def pipeline():
 ```
 
 ### Function signature
-Define the function signature as a standard Python function. The input parameters are [PipelineParams](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/_pipeline_param.py).
+Define the function signature as a standard Python function. The input parameters are [PipelineParams](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/_pipeline_param.py).
 
 ### Function body
-Similar to the pipeline function body, you can instantiate components, create [conditions](https://github.com/kubeflow/pipelines/blob/f8b0f5bf0cc0b5aceb8aedfd21e93156e363ea48/sdk/python/kfp/dsl/_ops_group.py#L110),
+Similar to the pipeline function body, you can instantiate components, create [conditions](https://github.com/OpenDataology/pipelines/blob/f8b0f5bf0cc0b5aceb8aedfd21e93156e363ea48/sdk/python/kfp/dsl/_ops_group.py#L110),
 use the input parameters from the function signature, and specify dependencies explicitly among components. 
 In the example above, one condition is created inside the recursive function and 
 two components *op_a* and *op_b* are created inside the condition.   
 
 ### Call the recursive function in the pipeline function
 You can pass pipeline/component output to the recursive function and specify the dependencies explicitly with *after()* function, similar to
-the [ContainerOp](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/_container_op.py). In the example above, the output of *op_a* 
+the [ContainerOp](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/dsl/_container_op.py). In the example above, the output of *op_a* 
 defined in the pipeline is passed to the recursive function and the *task_factory_c* component is specified to depend on the *graph_op_a*. 
 The recursive function can also be explicitly specified to depend on the ContainerOps. For example, *graph_op_a* depends on *op_b* in the pipeline.
 
@@ -88,9 +88,9 @@ def pipeline():
 function signature will not be checked.
 * Since the output of the recursive functions cannot be dynamically resolved, the downstream ContainerOps cannot
 access the output from the recursive functions.
-* A known [issue](https://github.com/kubeflow/pipelines/issues/1065) is that the recursion fails to work when there are 
+* A known [issue](https://github.com/OpenDataology/pipelines/issues/1065) is that the recursion fails to work when there are 
 multiple recursive function calls in the function body.
 
 ## Next steps
 
-* See [recursion sample](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/recursion/recursion.py)
+* See [recursion sample](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/recursion/recursion.py)

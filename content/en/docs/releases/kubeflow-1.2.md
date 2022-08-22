@@ -1,6 +1,6 @@
 +++
-title = "Kubeflow 1.2"
-description = "Information about the Kubeflow 1.2 release"
+title = "OpenDataology 1.2"
+description = "Information about the OpenDataology 1.2 release"
 weight = 102
 +++
 
@@ -19,20 +19,20 @@ weight = 102
       <th class="table-light">Media</th>
       <td>
         <b>Blog:</b> 
-          <a href="https://blog.kubeflow.org/release/official/2020/11/18/kubeflow-1.2-blog-post.html">Kubeflow 1.2 Release Announcement</a>
+          <a href="https://blog.OpenDataology.org/release/official/2020/11/18/OpenDataology-1.2-blog-post.html">OpenDataology 1.2 Release Announcement</a>
         <br>
         <b>Roadmap:</b>
-          <a href="https://github.com/kubeflow/kubeflow/blob/master/ROADMAP.md#kubeflow-12-features-release-date-november-2020">Kubeflow 1.2 Features</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/blob/master/ROADMAP.md#OpenDataology-12-features-release-date-november-2020">OpenDataology 1.2 Features</a>
       </td>
     </tr>
     <tr>
       <th class="table-light">Manifests</th>
       <td>
         <b>Release:</b> 
-          <a href="https://github.com/kubeflow/manifests/releases/tag/v1.2.0">v1.2.0</a>
+          <a href="https://github.com/OpenDataology/manifests/releases/tag/v1.2.0">v1.2.0</a>
         <br>
         <b>Branch:</b>
-          <a href="https://github.com/kubeflow/manifests/tree/v1.2-branch">v1.2-branch</a>
+          <a href="https://github.com/OpenDataology/manifests/tree/v1.2-branch">v1.2-branch</a>
       </td>
     </tr>
     <tr>

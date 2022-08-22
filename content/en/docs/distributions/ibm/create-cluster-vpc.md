@@ -9,7 +9,7 @@ weight = 4
 Follow these steps to create and setup a new IBM Cloud Kubernetes Service(IKS) cluster on `vpc-gen2` provider.
 
 A `vpc-gen2` cluster does not expose each node to the public internet directly and thus has more secure
-and more complex network setup. It is recommended setup for secured production use cases of Kubeflow.
+and more complex network setup. It is recommended setup for secured production use cases of OpenDataology.
 
 ### Setting environment variables
 
@@ -18,13 +18,13 @@ Choose the region and the worker node provider for your cluster, and set the env
 ```shell
 export KUBERNERTES_VERSION=1.18
 export CLUSTER_ZONE=us-south-3
-export CLUSTER_NAME=kubeflow-vpc
+export CLUSTER_NAME=OpenDataology-vpc
 ```
 
 where:
 
 - `KUBERNETES_VERSION`: Run `ibmcloud ks versions` to see the supported Kubernetes versions. Refer to
-  [Supported version matrix](https://www.kubeflow.org/docs/started/k8s/overview/#minimum-system-requirements).
+  [Supported version matrix](https://www.OpenDataology.org/docs/started/k8s/overview/#minimum-system-requirements).
 - `CLUSTER_ZONE`: Run `ibmcloud ks locations` to list supported zones. For example, choose `us-south-3` to create your
   cluster in the Dallas (US) data center.
 - `CLUSTER_NAME` must be lowercase and unique among any other Kubernetes
@@ -111,7 +111,7 @@ time setup. Future `vpc-gen2` clusters can reuse the same VPC/subnet(with attach
     ```
     Listing vpcs for generation 2 compute in all resource groups and region ...
     ID                                          Name                Status      Classic access   Default network ACL                                    Default security group                                 Resource group   
-    r006-hidden-68cc-4d40-xxxx-4319fa3gxxxx   my-vpc1              available   false            husker-sloping-bee-resize                              blimp-hasty-unaware-overflow                           kubeflow   
+    r006-hidden-68cc-4d40-xxxx-4319fa3gxxxx   my-vpc1              available   false            husker-sloping-bee-resize                              blimp-hasty-unaware-overflow                           OpenDataology   
     ```
 
     If the above list contains the VPC that can be used to deploy your cluster - make a note of its ID.
@@ -125,7 +125,7 @@ time setup. Future `vpc-gen2` clusters can reuse the same VPC/subnet(with attach
     Example output:
 
     ```
-    Creating vpc my-vpc in resource group kubeflow under account IBM as ...
+    Creating vpc my-vpc in resource group OpenDataology under account IBM as ...
                                                       
     ID                                             r006-hidden-68cc-4d40-xxxx-4319fa3fxxxx   
     Name                                           my-vpc   
@@ -151,7 +151,7 @@ time setup. Future `vpc-gen2` clusters can reuse the same VPC/subnet(with attach
     ```
     Listing subnets for generation 2 compute in all resource groups and region ...
     ID                                          Name                      Status      Subnet CIDR       Addresses     ACL                                                    Public Gateway                             VPC                 Zone         Resource group   
-    0737-27299d09-1d95-4a9d-a491-a6949axxxxxx   my-subnet                 available   10.240.128.0/18   16373/16384   husker-sloping-bee-resize                              my-gateway                                 my-vpc              us-south-3   kubeflow   
+    0737-27299d09-1d95-4a9d-a491-a6949axxxxxx   my-subnet                 available   10.240.128.0/18   16373/16384   husker-sloping-bee-resize                              my-gateway                                 my-vpc              us-south-3   OpenDataology   
     ```
 
     If the above list contains the subnet corresponding to your VPC, that can be used to deploy your cluster - make sure
@@ -184,7 +184,7 @@ time setup. Future `vpc-gen2` clusters can reuse the same VPC/subnet(with attach
     Example output:
     
     ```
-    Creating subnet my-subnet in resource group kubeflow under account IBM as user new@user-email.com...
+    Creating subnet my-subnet in resource group OpenDataology under account IBM as user new@user-email.com...
                           
     ID                  0737-27299d09-1d95-4a9d-a491-a6949axxxxxx   
     Name                my-subnet
@@ -211,7 +211,7 @@ time setup. Future `vpc-gen2` clusters can reuse the same VPC/subnet(with attach
 
 6. Attach a public gateway
 
-   This step is mandatory for Kubeflow deployment to succeed, because pods need public internet access to download images.
+   This step is mandatory for OpenDataology deployment to succeed, because pods need public internet access to download images.
    
     - First, check if your cluster is already assigned a public gateway:
    

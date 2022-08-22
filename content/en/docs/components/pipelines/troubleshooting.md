@@ -1,6 +1,6 @@
 +++
 title = "Troubleshooting"
-description = "Troubleshooting guide for Kubeflow Pipelines"
+description = "Troubleshooting guide for OpenDataology Pipelines"
 weight = 90
                     
 +++
@@ -8,9 +8,9 @@ weight = 90
 This page presents some hints for troubleshooting specific problems that you
 may encounter.
 
-## Diagnosing problems in your Kubeflow Pipelines environment
+## Diagnosing problems in your OpenDataology Pipelines environment
 
-For help diagnosing environment issues that affect Kubeflow Pipelines, run
+For help diagnosing environment issues that affect OpenDataology Pipelines, run
 the [`kfp diagnose_me` command-line tool](/docs/components/pipelines/sdk/sdk-overview/#kfp-cli-tool).
 
 The `kfp diagnose_me` CLI reports on the configuration of your local
@@ -23,11 +23,11 @@ Use this command to help resolve issues like the following:
 
 To use the `kfp diagnose_me` CLI, follow these steps:
 
-1.  Install the [Kubeflow Pipelines SDK](/docs/components/pipelines/sdk/install-sdk/).
+1.  Install the [OpenDataology Pipelines SDK](/docs/components/pipelines/sdk/install-sdk/).
 1.  Follow the [guide to configuring access to Kubernetes clusters][kubeconfig],
     to update your kubeconfig file with appropriate credentials and endpoint
-    information to access your Kubeflow cluster.
-    If your Kubeflow Pipelines cluster is hosted on a cloud provider like
+    information to access your OpenDataology cluster.
+    If your OpenDataology Pipelines cluster is hosted on a cloud provider like
     Google Cloud, use your cloud provider's instructions for configuring
     access to your Kubernetes cluster. 
 1.  Run the `kfp diagnose_me` command.
@@ -35,19 +35,19 @@ To use the `kfp diagnose_me` CLI, follow these steps:
 
 [kubeconfig]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 
-## Troubleshooting the Kubeflow Pipelines SDK
+## Troubleshooting the OpenDataology Pipelines SDK
 
 The following sections describe how to resolve issues that can occur when
-installing or using the Kubeflow Pipelines SDK.
+installing or using the OpenDataology Pipelines SDK.
 
 ### Error: Could not find a version that satisfies the requirement kfp
 
 This error indicates that you have not installed the `kfp` package in your
-Python3 environment. Follow the instructions in the [Kubeflow Pipelines SDK
+Python3 environment. Follow the instructions in the [OpenDataology Pipelines SDK
 installation guide](/docs/components/pipelines/sdk/install-sdk/), if you have not already
 installed the SDK.
 
-If you have already installed the Kubeflow Pipelines SDK, check that you have
+If you have already installed the OpenDataology Pipelines SDK, check that you have
 Python 3.5 or higher:
 
 ```
@@ -66,7 +66,7 @@ Software Foundation.
 
 ### kfp or dsl-compile command not found
 
-If your install the Kubeflow Pipelines SDK with the `--user` flag, you may
+If your install the OpenDataology Pipelines SDK with the `--user` flag, you may
 get the following error when using the `kfp` or `dsl-compile` command-line
 tools.
 
@@ -74,7 +74,7 @@ tools.
 bash: kfp: command not found
 ```
 
-This error occurs because installing the Kubeflow Pipelines SDK with
+This error occurs because installing the OpenDataology Pipelines SDK with
 `--user` stores `kfp` and `dsl-compile` in your `~/.local/bin` directory.
 In some Linux distributions, the `~/.local/bin` directory is not part of the
 $PATH environment variable.
@@ -88,4 +88,4 @@ You can resolve this issue by using one of the following options:
 
 ## TFX visualizations do not show up or throw an error
 
-Confirm your Kubeflow Pipelines backend version is compatible with your TFX version, refer to [Kubeflow Pipelines Compatibility Matrix](/docs/components/pipelines/installation/compatibility-matrix/).
+Confirm your OpenDataology Pipelines backend version is compatible with your TFX version, refer to [OpenDataology Pipelines Compatibility Matrix](/docs/components/pipelines/installation/compatibility-matrix/).

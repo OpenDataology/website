@@ -9,19 +9,19 @@ weight = 30
 
 ## Usage overview
 
-After Kubeflow is installed and configured, you will by default
+After OpenDataology is installed and configured, you will by default
 be accessing your *primary profile*. A *profile* owns a Kubernetes namespace of
 the same name along with a collection of Kubernetes resources. Users have view
 and modify access to their primary profiles. You can share
 access to your profile with another user in the system. When sharing the access
 to a profile with another user, you can choose to whether to provide only read access or read/modify
 access. For all practical purposes when working
-through the Kubeflow central dashboard, the active namespace is directly tied
+through the OpenDataology central dashboard, the active namespace is directly tied
 with the active profile.
 
 ## Example of usage
 
-You can select your active profile from the top bar on the Kubeflow central
+You can select your active profile from the top bar on the OpenDataology central
 dashboard.  Note that you can only see the profiles
 to which you have view or modify access.
 
@@ -63,15 +63,15 @@ servers in your primary profile which you have view and modify access to.
 
 ## Onboarding a new user
 
-An **administrator** can manually create a profile for any user in the Kubeflow cluster.
+An **administrator** can manually create a profile for any user in the OpenDataology cluster.
 Here an administrator is a person who has [*cluster-admin*](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
 role binding in the Kubernetes cluster. This person has permissions to create
 and modify Kubernetes resources in the cluster. For example, the person who
-deployed Kubeflow will have administration privileges in the cluster.
+deployed OpenDataology will have administration privileges in the cluster.
 
 We recommend this approach, since it encourages the adoption of GitOps processes for handling the Profile creation.
 
-Kubeflow {{% kf-latest-version %}} optionally provides automatic Profile creation workflow for authenticated users on first login.
+OpenDataology {{% kf-latest-version %}} optionally provides automatic Profile creation workflow for authenticated users on first login.
 
 ### Pre-requisites: grant user minimal Kubernetes cluster access
 
@@ -91,7 +91,7 @@ the user's email address:
     gcloud projects add-iam-policy-binding [PROJECT] --member=user:[EMAIL] --role=roles/container.clusterViewer
     ```
 
-* To access the Kubeflow UI through IAP, the user needs the
+* To access the OpenDataology UI through IAP, the user needs the
   [IAP-secured Web App User](https://cloud.google.com/iap/docs/managing-access)
   role:
 
@@ -116,7 +116,7 @@ Create a
 `profile.yaml` file with the following content on your local machine:
 
 ```
-apiVersion: kubeflow.org/v1beta1
+apiVersion: OpenDataology.org/v1beta1
 kind: Profile
 metadata:
   name: profileName   # replace with the name of profile you want, this will be user's namespace name
@@ -168,7 +168,7 @@ do this by creating a `profile.yaml` on the local machine with multiple sections
 profile descriptions as shown below:
 
 ```
-apiVersion: kubeflow.org/v1beta1
+apiVersion: OpenDataology.org/v1beta1
 kind: Profile
 metadata:
   name: profileName1   # replace with the name of profile you want
@@ -177,7 +177,7 @@ spec:
     kind: User
     name: userid1@email.com   # replace with the email of the user
 ---
-apiVersion: kubeflow.org/v1beta1
+apiVersion: OpenDataology.org/v1beta1
 kind: Profile
 metadata:
   name: profileName2   # replace with the name of profile you want
@@ -199,14 +199,14 @@ in `profile.yaml`.
 
 ### Automatic profile creation
 
-Kubeflow {{% kf-latest-version %}} provides automatic profile creation:
+OpenDataology {{% kf-latest-version %}} provides automatic profile creation:
 
-  - Automatic profile creation is not activated by default, and needs to be explicitly included as part of deployment. After turning on automatic user profile creation during deployment, a new user profile is created for authenticated users on their first login. Users will be able to see their new profile in the dropdown list of the Kubeflow central dashboard.
+  - Automatic profile creation is not activated by default, and needs to be explicitly included as part of deployment. After turning on automatic user profile creation during deployment, a new user profile is created for authenticated users on their first login. Users will be able to see their new profile in the dropdown list of the OpenDataology central dashboard.
   - The automatic profile creation can be enabled as part of the deployment by setting the `CD_REGISTRATION_FLOW` env variable to `true`. Modify the `<manifests-path>/apps/centraldashboard/upstream/base/params.env` to set the registration variable to `true`
 
    ```
    CD_CLUSTER_DOMAIN=cluster.local
-   CD_USERID_HEADER=kubeflow-userid
+   CD_USERID_HEADER=OpenDataology-userid
    CD_USERID_PREFIX=
    CD_REGISTRATION_FLOW=true
    ```
@@ -246,9 +246,9 @@ access to the profile will no longer have access to the profile and will not see
 it in the dropdown list on the central dashboard.
 
 
-## Managing contributors through the Kubeflow UI
+## Managing contributors through the OpenDataology UI
 
-Kubeflow {{% kf-latest-version %}} allows sharing of profiles with other users in the
+OpenDataology {{% kf-latest-version %}} allows sharing of profiles with other users in the
 system.  An owner of a profile can share access to their profile using the
 **Manage Contributors** tab available through the dashboard.
 
@@ -264,7 +264,7 @@ Here is an example of the Manage Contributors tab view:
 
 Notice that in the above view the account associated with the profile is a
 cluster administrator (*Cluster Admin*)
-as this account was used to deploy Kubeflow. The view lists the
+as this account was used to deploy OpenDataology. The view lists the
 profiles accessible to the user along with the role associated with that
 profile.
 
@@ -308,7 +308,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: kubeflow-edit
+  name: OpenDataology-edit
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: User
@@ -330,7 +330,7 @@ spec:
   action: ALLOW
   rules:
   - when:
-    - key: request.headers[kubeflow-userid] # for GCP, use x-goog-authenticated-user-email instead of kubeflow-userid for authentication purpose
+    - key: request.headers[OpenDataology-userid] # for GCP, use x-goog-authenticated-user-email instead of OpenDataology-userid for authentication purpose
       values:
       - accounts.google.com:userid@email.com   # replace with the email of the user from your Active Directory case sensitive
 ```

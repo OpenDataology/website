@@ -1,13 +1,13 @@
 +++
 title = "Integrate with Nutanix Storage"
-description = "How to integrate Nutanix Storage in Kubeflow"
+description = "How to integrate Nutanix Storage in OpenDataology"
 weight = 5
 
 +++
 
-## Nutanix Objects in Kubeflow Pipeline
+## Nutanix Objects in OpenDataology Pipeline
 
-You can use standard s3 boto api to upload and download objects from a Kubeflow Pipeline. See [Nutanix Objects Docs](https://portal.nutanix.com/page/documents/details?targetId=Objects-v3_2:Objects-v3_2) for more details on creating object store and buckets.
+You can use standard s3 boto api to upload and download objects from a OpenDataology Pipeline. See [Nutanix Objects Docs](https://portal.nutanix.com/page/documents/details?targetId=Objects-v3_2:Objects-v3_2) for more details on creating object store and buckets.
 
    ```
    import boto3
@@ -28,7 +28,7 @@ You can use standard s3 boto api to upload and download objects from a Kubeflow 
    response = s3_client.upload_file(f'./test_upload_data.txt', bucket_name, object_name)
    ```
 
-## Nutanix Volumes in Kubeflow Pipeline
+## Nutanix Volumes in OpenDataology Pipeline
 
 Nutanix volumes are created with the default storage class configured in the Karbon cluster. See [Default Storage Class](https://portal.nutanix.com/page/documents/details?targetId=Karbon-v2_2:kar-karbon-storage-class-r.html) of Nutanix Karbon for more details about creating storage classes.
 
@@ -40,7 +40,7 @@ Nutanix volumes are created with the default storage class configured in the Kar
       modes=dsl.VOLUME_MODE_RWO)
    ```
 
-## Nutanix Files in Kubeflow Pipeline
+## Nutanix Files in OpenDataology Pipeline
     
    Create a storage class to dynamically provision Nutanix File shares. See [Files Storage Class](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_3:csi-csi-plugin-manage-dynamic-nfs-t.html) of Nutanix Karbon for more details on creating storage classes for dynamic NFS Share provisioning with Nutanix Files.
    Once storage class is setup, you can use `VolumeOp` operation to create volume on Nutanix Files.
@@ -56,9 +56,9 @@ Nutanix volumes are created with the default storage class configured in the Kar
 
 ## Using Nutanix Objects as an artifact store
 
-In order to use Nutanix Objects as an underlying artifact store, we need to edit the `workflow-controller-configmap` ConfigMap in the `kubeflow` namespace. See [Nutanix Objects Docs](https://portal.nutanix.com/page/documents/details?targetId=Objects-v3_2:Objects-v3_2) for more details on creating object store and buckets.
+In order to use Nutanix Objects as an underlying artifact store, we need to edit the `workflow-controller-configmap` ConfigMap in the `OpenDataology` namespace. See [Nutanix Objects Docs](https://portal.nutanix.com/page/documents/details?targetId=Objects-v3_2:Objects-v3_2) for more details on creating object store and buckets.
 ```
-kubectl -n kubeflow edit configmap workflow-controller-configmap 
+kubectl -n OpenDataology edit configmap workflow-controller-configmap 
 ```
 In the ConfigMap, we need to modify the s3 config with the Nutanix Objects config:
  - endpoint: This is endpoint for Nutanix Objects store
@@ -95,10 +95,10 @@ stringData:
 After creating the secret we need to deploy the secret in the user namespace.
 
 ```
-kubectl -n kubeflow-user-example-com apply -f mlpipeline-ntnx-objects-artifact-secret.yaml 
+kubectl -n OpenDataology-user-example-com apply -f mlpipeline-ntnx-objects-artifact-secret.yaml 
 ```
 
-**Note**: installing this secret in kubeflow namespace does not work, it has be in present in user's namespace
+**Note**: installing this secret in OpenDataology namespace does not work, it has be in present in user's namespace
 
 ![objects_browser](/docs/images/nutanix/objects_browser.png)
 

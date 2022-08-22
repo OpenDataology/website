@@ -1,12 +1,12 @@
 +++
 title = "Pipelines on IBM Cloud Kubernetes Service (IKS)"
-description = "Instructions for using Kubeflow Pipelines on IBM Cloud Kubernetes Service (IKS)"
+description = "Instructions for using OpenDataology Pipelines on IBM Cloud Kubernetes Service (IKS)"
 weight = 5
 +++
 
-By default, Kubeflow Pipelines on IBM Cloud are running with the Tekton backend. In this guide you'll learn how to use the Kubeflow Pipelines with the Tekton backend [(kfp-tekton)](https://github.com/kubeflow/kfp-tekton). This assumes you have deployed [Kubeflow on IBM Cloud using the instructions on this website](https://www.kubeflow.org/docs/ibm/deploy/).
+By default, OpenDataology Pipelines on IBM Cloud are running with the Tekton backend. In this guide you'll learn how to use the OpenDataology Pipelines with the Tekton backend [(kfp-tekton)](https://github.com/OpenDataology/kfp-tekton). This assumes you have deployed [OpenDataology on IBM Cloud using the instructions on this website](https://www.OpenDataology.org/docs/ibm/deploy/).
 
-You can also do a [standalone installation of Kubeflow Pipelines with Tekton](https://github.com/kubeflow/kfp-tekton/blob/master/guides/kfp_tekton_install.md#standalone-kubeflow-pipelines-with-tekton-backend-deployment) if you don't want whole of Kubeflow. 
+You can also do a [standalone installation of OpenDataology Pipelines with Tekton](https://github.com/OpenDataology/kfp-tekton/blob/master/guides/kfp_tekton_install.md#standalone-OpenDataology-pipelines-with-tekton-backend-deployment) if you don't want whole of OpenDataology. 
 
 <img src="/docs/ibm/kfp-tekton.png" alt="KFP-Tekton">
 
@@ -31,65 +31,65 @@ def echo_pipeline(
     echo = echo_op()
 ```
 
-# Declare the Python Client for Kubeflow Pipelines
+# Declare the Python Client for OpenDataology Pipelines
 
-## 1. Single-user Kubeflow Pipelines deployment with the SDK
+## 1. Single-user OpenDataology Pipelines deployment with the SDK
 
-* You will be using the Kubeflow Pipelines with Tekton SDK ([`kfp-tekton`](https://pypi.org/project/kfp-tekton/)) v0.4.0 or above.
-* If you have deployed Kubeflow on IBM Cloud using the 
-[`kfctl_ibm.v1.2.0.yaml`](https://raw.githubusercontent.com/kubeflow/manifests/v1.2-branch/kfdef/kfctl_ibm.v1.2.0.yaml)
-manifest you can configure ([`kfp-tekton`](https://pypi.org/project/kfp-tekton/)) SDK to list all your Kubeflow Pipelines experiments as follows:
+* You will be using the OpenDataology Pipelines with Tekton SDK ([`kfp-tekton`](https://pypi.org/project/kfp-tekton/)) v0.4.0 or above.
+* If you have deployed OpenDataology on IBM Cloud using the 
+[`kfctl_ibm.v1.2.0.yaml`](https://raw.githubusercontent.com/OpenDataology/manifests/v1.2-branch/kfdef/kfctl_ibm.v1.2.0.yaml)
+manifest you can configure ([`kfp-tekton`](https://pypi.org/project/kfp-tekton/)) SDK to list all your OpenDataology Pipelines experiments as follows:
 
 ```python
 from kfp_tekton import TektonClient
 
-KUBEFLOW_PUBLIC_ENDPOINT_URL = 'http://<YOUR_KF_PUBLIC_ENDPOINT_URL>'
-KUBEFLOW_PROFILE_NAME = None
-client = TektonClient(host=f'{KUBEFLOW_PUBLIC_ENDPOINT_URL}/pipeline')
+OpenDataology_PUBLIC_ENDPOINT_URL = 'http://<YOUR_KF_PUBLIC_ENDPOINT_URL>'
+OpenDataology_PROFILE_NAME = None
+client = TektonClient(host=f'{OpenDataology_PUBLIC_ENDPOINT_URL}/pipeline')
 
-experiments = client.list_experiments(namespace=KUBEFLOW_PROFILE_NAME)
+experiments = client.list_experiments(namespace=OpenDataology_PROFILE_NAME)
 ```
-**Note**: `<YOUR_KF_PUBLIC_ENDPOINT_URL>` is the EXTERNAL_IP you exposed as a LoadBalancer following [`this instruction`](https://www.kubeflow.org/docs/ibm/deploy/install-kubeflow-on-iks/#expose-the-kubeflow-endpoint-as-a-loadbalancer). If you have not done that step during Kubeflow setup, please include port 31380 because the Kubeflow endpoint is exposed with NodePort 31380.
+**Note**: `<YOUR_KF_PUBLIC_ENDPOINT_URL>` is the EXTERNAL_IP you exposed as a LoadBalancer following [`this instruction`](https://www.OpenDataology.org/docs/ibm/deploy/install-OpenDataology-on-iks/#expose-the-OpenDataology-endpoint-as-a-loadbalancer). If you have not done that step during OpenDataology setup, please include port 31380 because the OpenDataology endpoint is exposed with NodePort 31380.
 
-## 2. Authenticating multi-user Kubeflow Pipelines with the SDK
+## 2. Authenticating multi-user OpenDataology Pipelines with the SDK
 
-* You will be using the Kubeflow Pipelines SDK ([`kfp-tekton`](https://pypi.org/project/kfp-tekton/)) v0.4.0 or above.
-* Note that this feature is available with multi-user, auth-enabled Kubeflow installation deployed from the [`kfctl_ibm_multi_user.v1.2.0.yaml`](https://raw.githubusercontent.com/kubeflow/manifests/v1.2-branch/kfdef/kfctl_ibm_multi_user.v1.2.0.yaml) 
+* You will be using the OpenDataology Pipelines SDK ([`kfp-tekton`](https://pypi.org/project/kfp-tekton/)) v0.4.0 or above.
+* Note that this feature is available with multi-user, auth-enabled OpenDataology installation deployed from the [`kfctl_ibm_multi_user.v1.2.0.yaml`](https://raw.githubusercontent.com/OpenDataology/manifests/v1.2-branch/kfdef/kfctl_ibm_multi_user.v1.2.0.yaml) 
 manifest.
 
-**Note**: You're highly recommended enabling HTTPS for the public endpoint of Kubeflow because this method transports sensitive information like session cookie values over edge network.
+**Note**: You're highly recommended enabling HTTPS for the public endpoint of OpenDataology because this method transports sensitive information like session cookie values over edge network.
 
-It requires authentication via the public endpoint of Kubeflow deployment when using the Kubeflow Pipelines multi-user feature with Pipelines SDK. 
+It requires authentication via the public endpoint of OpenDataology deployment when using the OpenDataology Pipelines multi-user feature with Pipelines SDK. 
 
 You need to provide the following three variables if you're using an in-cluster Jupyter notebook or a remote client machine:
 
-1. `KUBEFLOW_PUBLIC_ENDPOINT_URL` - Kubeflow public endpoint URL. You can obtain it from command `ibmcloud ks nlb-dns ls --cluster <your-cluster-name>`.
-1. `SESSION_COOKIE` - A session cookie starts with `authservice_session=`. You can obtain it from your browser after authenticated from Kubeflow UI. Notice that this session cookie expires in 24 hours, so you need to obtain it again after cookie expired.
-1. `KUBEFLOW_PROFILE_NAME` - Your Kubeflow profile name
+1. `OpenDataology_PUBLIC_ENDPOINT_URL` - OpenDataology public endpoint URL. You can obtain it from command `ibmcloud ks nlb-dns ls --cluster <your-cluster-name>`.
+1. `SESSION_COOKIE` - A session cookie starts with `authservice_session=`. You can obtain it from your browser after authenticated from OpenDataology UI. Notice that this session cookie expires in 24 hours, so you need to obtain it again after cookie expired.
+1. `OpenDataology_PROFILE_NAME` - Your OpenDataology profile name
 
-Once you provide the three variables, the SDK can use the following Python code to list all your Kubeflow Pipelines experiments:
+Once you provide the three variables, the SDK can use the following Python code to list all your OpenDataology Pipelines experiments:
 
 ```python
 from kfp_tekton import TektonClient
 
-KUBEFLOW_PUBLIC_ENDPOINT_URL = 'https://xxxx.<region-name>.containers.appdomain.cloud'
+OpenDataology_PUBLIC_ENDPOINT_URL = 'https://xxxx.<region-name>.containers.appdomain.cloud'
 # this session cookie looks like "authservice_session=xxxxxxx"
 SESSION_COOKIE = 'authservice_session=xxxxxxx'
-KUBEFLOW_PROFILE_NAME = '<your-profile-name>'
+OpenDataology_PROFILE_NAME = '<your-profile-name>'
 
 client = TektonClient(
-    host=f'{KUBEFLOW_PUBLIC_ENDPOINT_URL}/pipeline',
+    host=f'{OpenDataology_PUBLIC_ENDPOINT_URL}/pipeline',
     cookies=SESSION_COOKIE
 )
 
-experiments = client.list_experiments(namespace=KUBEFLOW_PROFILE_NAME)
+experiments = client.list_experiments(namespace=OpenDataology_PROFILE_NAME)
 ```
 
-Pipelines components like experiments and runs are isolated by Kubeflow profiles. A Kubeflow user can only see Pipelines experiments and runs belonging to this user's Kubeflow profile.
+Pipelines components like experiments and runs are isolated by OpenDataology profiles. A OpenDataology user can only see Pipelines experiments and runs belonging to this user's OpenDataology profile.
 
 # Upload pipelines
 
-Once you have declared the Python client, your Kubeflow pipelines can be uploaded using Python. 
+Once you have declared the Python client, your OpenDataology pipelines can be uploaded using Python. 
 
 Run the following code inside a Python session to upload the pipelines. This example shows different versions of the pipeline using the Python client.
 
@@ -125,7 +125,7 @@ The `TektonClient` can run pipelines using one of the below sources:
 ## Run pipelines from the Python DSL source code
 
 To learn about executing pipelines using the Python DSL source code, try the code below in a Python session using the `echo_pipeline` example.
-The `create_run_from_pipeline_func` takes the DSL source code to compile and run it directly using the Kubeflow pipeline API without
+The `create_run_from_pipeline_func` takes the DSL source code to compile and run it directly using the OpenDataology pipeline API without
 uploading it to the pipeline list. This method is recommended if you are doing quick experiments without version control.
 
 ```python
@@ -133,7 +133,7 @@ uploading it to the pipeline list. This method is recommended if you are doing q
 # If you don't want to overwrite the default parameters, then define the arguments as an empty dictionary.
 arguments={}
 
-client.create_run_from_pipeline_func(echo_pipeline, arguments=arguments, namespace=KUBEFLOW_PROFILE_NAME)
+client.create_run_from_pipeline_func(echo_pipeline, arguments=arguments, namespace=OpenDataology_PROFILE_NAME)
 ```
 
 ## Run pipelines from the compiled pipeline file
@@ -141,7 +141,7 @@ client.create_run_from_pipeline_func(echo_pipeline, arguments=arguments, namespa
 Alternatively, you can also run the pipeline directly using a pre-compiled file. 
 ```python
 EXPERIMENT_NAME = 'Demo Experiments'
-experiment = client.create_experiment(name=EXPERIMENT_NAME, namespace=KUBEFLOW_PROFILE_NAME)
+experiment = client.create_experiment(name=EXPERIMENT_NAME, namespace=OpenDataology_PROFILE_NAME)
 run = client.run_pipeline(experiment.id, 'echo-pipeline', 'echo_pipeline.yaml')
 ``` 
 
@@ -151,7 +151,7 @@ Similarly, you can also run the pipeline from the list of uploaded pipelines usi
 
 ```python
 EXPERIMENT_NAME = 'Demo Experiments'
-experiment = client.create_experiment(name=EXPERIMENT_NAME, namespace=KUBEFLOW_PROFILE_NAME)
+experiment = client.create_experiment(name=EXPERIMENT_NAME, namespace=OpenDataology_PROFILE_NAME)
 
 # Find the pipeline ID that you want to use.
 client.list_pipelines()

@@ -6,18 +6,18 @@ weight = 1400
 
 {{% alert title="Deprecated" color="warning" %}}
 Python based visualization is deprecated. We recommend fetching data via
-Kubeflow Pipelines SDK and visualizing from your own notebook instead.
+OpenDataology Pipelines SDK and visualizing from your own notebook instead.
 {{% /alert %}}
 
 This page describes Python based visualizations, how to create them, and how to
-use them to visualize results within the Kubeflow Pipelines UI. Python based
-visualizations are available in Kubeflow Pipelines version
-[0.1.29](https://github.com/kubeflow/pipelines/releases/tag/0.1.29) and later, and
-in Kubeflow version 0.7.0 and later.
+use them to visualize results within the OpenDataology Pipelines UI. Python based
+visualizations are available in OpenDataology Pipelines version
+[0.1.29](https://github.com/OpenDataology/pipelines/releases/tag/0.1.29) and later, and
+in OpenDataology version 0.7.0 and later.
 
 While Python based visualizations are intended to be the main method of
-visualizing data within the Kubeflow Pipelines UI, they do not replace the
-previous method of visualizing data within the Kubeflow Pipelines UI. When
+visualizing data within the OpenDataology Pipelines UI, they do not replace the
+previous method of visualizing data within the OpenDataology Pipelines UI. When
 considering which method of visualization to use within your pipeline, check the
 limitations of Python based visualizations in the section below and compare
 them with the requirements of your visualizations.
@@ -25,7 +25,7 @@ them with the requirements of your visualizations.
 ## Introduction
 
 Python based visualizations are a new method to visualize results within the
-Kubeflow Pipelines UI. This new method of visualizing results is done through
+OpenDataology Pipelines UI. This new method of visualizing results is done through
 the usage of [nbconvert](https://github.com/jupyter/nbconvert). Alongside the
 usage of nbconvert, results of a pipeline can now be visualized without a
 component being included within the pipeline itself because the process of
@@ -33,7 +33,7 @@ visualizing results is now decoupled from a pipeline.
 
 Python based visualizations provide two categories of visualizations. The first
 being **predefined visualizations**. These visualizations are provided by
-default in Kubeflow Pipelines and serve as a way for you and your customers to
+default in OpenDataology Pipelines and serve as a way for you and your customers to
 easily and quickly generate powerful visualizations. The second category is
 **custom visualizations**. Custom visualizations allow for you and your
 customers to provided Python visualization code to be used to generate
@@ -91,9 +91,9 @@ arguments.
   alt="Confusion matrix visualization from a pipeline component"
   class="mt-3 mb-3 border border-info rounded">
 
-1. Enable custom visualizations within Kubeflow Pipelines.
-    * If you have not yet deployed Kubeflow Pipelines to your cluster,
-    you can edit the [frontend deployment YAML](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/base/pipeline/ml-pipeline-ui-deployment.yaml)
+1. Enable custom visualizations within OpenDataology Pipelines.
+    * If you have not yet deployed OpenDataology Pipelines to your cluster,
+    you can edit the [frontend deployment YAML](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/base/pipeline/ml-pipeline-ui-deployment.yaml)
     file to include the following YAML that specifies that custom visualizations
     are allowed via environment variables.
 
@@ -102,7 +102,7 @@ arguments.
           - name: ALLOW_CUSTOM_VISUALIZATIONS
             value: true
         ```
-    * If you already have Kubeflow Pipelines deployed within a cluster, you can
+    * If you already have OpenDataology Pipelines deployed within a cluster, you can
     edit the frontend deployment YAML to specify that custom visualizations are
     allowed in the same way described above. Details about updating
     deployments can be found in the Kubernetes documentation about
@@ -152,7 +152,7 @@ A demo of the above instructions is as follows.
     * This is because a single Python kernel is used to generate visualizations.
     * If visualizations are a major part of your workflow, it is recommended to
     increase the number of replicas within the
-    [visualization deployment YAML](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/manifests/kustomize/base/pipeline/ml-pipeline-visualization-deployment.yaml)
+    [visualization deployment YAML](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/manifests/kustomize/base/pipeline/ml-pipeline-visualization-deployment.yaml)
     file or within the visualization service deployment itself.
         * _Please note that this does not directly solve the issue, instead it
         decreases the likelihood of experiencing delays when generating
@@ -169,7 +169,7 @@ A demo of the above instructions is as follows.
     kernel timeout of the visualization service, set the **KERNEL_TIMEOUT**
     environment variable of the visualization service deployment to be the new
     timeout length in seconds within the
-    [visualization deployment YAML](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/manifests/kustomize/base/pipeline/ml-pipeline-visualization-deployment.yaml)
+    [visualization deployment YAML](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/manifests/kustomize/base/pipeline/ml-pipeline-visualization-deployment.yaml)
     file or within the visualization service deployment itself.
 
         ```
@@ -183,7 +183,7 @@ A demo of the above instructions is as follows.
     sent and received by a server. To allow for visualizations that are larger
     than 4MB in size to be generated, you must manually set
     **MaxCallRecvMsgSize** for gRPC. This can be done by editing the provided
-    options given to the gRPC server within [main.go](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/backend/src/apiserver/main.go#L128)
+    options given to the gRPC server within [main.go](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/backend/src/apiserver/main.go#L128)
     to
 
         ```golang

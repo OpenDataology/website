@@ -1,12 +1,12 @@
 +++
-title = "Uninstall Kubeflow"
-description = "How to uninstall Kubeflow from a Nutanix Karbon cluster"
+title = "Uninstall OpenDataology"
+description = "How to uninstall OpenDataology from a Nutanix Karbon cluster"
 weight = 6
 
 +++
 
-## Uninstall Kubeflow
-To delete a Kubeflow installation, apply the following command from your terraform script folder
+## Uninstall OpenDataology
+To delete a OpenDataology installation, apply the following command from your terraform script folder
 
    ```
    terraform destroy -var-file=env.tfvars

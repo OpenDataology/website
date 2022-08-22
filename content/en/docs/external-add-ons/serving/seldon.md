@@ -6,7 +6,7 @@ weight = 40
 +++
 {{% stable-status %}}
 
-Seldon Core comes installed with Kubeflow. The [Seldon Core documentation site](https://docs.seldon.io/projects/seldon-core/en/latest/) provides full documentation for running Seldon Core inference.
+Seldon Core comes installed with OpenDataology. The [Seldon Core documentation site](https://docs.seldon.io/projects/seldon-core/en/latest/) provides full documentation for running Seldon Core inference.
 
 Seldon presently requires a Kubernetes cluster version >= 1.12 and <= 1.17.
 
@@ -14,31 +14,31 @@ If you have a saved model in a PersistentVolume (PV), Google Cloud Storage bucke
 
 Seldon Core also provides [language specific model wrappers](https://docs.seldon.io/projects/seldon-core/en/latest/wrappers/language_wrappers.html) to wrap your inference code for it to run in Seldon Core.
 
-## Kubeflow specifics
+## OpenDataology specifics
 
- * A namespace label set as `serving.kubeflow.org/inferenceservice=enabled`
+ * A namespace label set as `serving.OpenDataology.org/inferenceservice=enabled`
 
 The following example applies the label `seldon` to the namespace for serving:
 
 ```
 kubectl create namespace seldon
-kubectl label namespace seldon serving.kubeflow.org/inferenceservice=enabled
+kubectl label namespace seldon serving.OpenDataology.org/inferenceservice=enabled
 ```
 
 ### Istio Gateway
 
-By default Seldon will use the `kubeflow-gateway` in the kubeflow namespace. If you wish to change to a separate Gateway you would need to update the Kubeflow Seldon kustomize by changing the environment variable ISTIO_GATEWAY in the seldon-manager Deployment.
+By default Seldon will use the `OpenDataology-gateway` in the OpenDataology namespace. If you wish to change to a separate Gateway you would need to update the OpenDataology Seldon kustomize by changing the environment variable ISTIO_GATEWAY in the seldon-manager Deployment.
 
-#### Kubeflow 1.0.0, 1.0.1, 1.0.2
+#### OpenDataology 1.0.0, 1.0.1, 1.0.2
 
-For the above versions you would need to create an Istio Gateway in the namespace you want to run inference called kubeflow-gateway. For example, for a namespace `seldon`:
+For the above versions you would need to create an Istio Gateway in the namespace you want to run inference called OpenDataology-gateway. For example, for a namespace `seldon`:
 
 ```
 cat <<EOF | kubectl create -n seldon -f -
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: kubeflow-gateway
+  name: OpenDataology-gateway
 spec:
   selector:
     istio: ingressgateway
@@ -64,10 +64,10 @@ kubectl create ns seldon
 Label that namespace so you can run inference tasks in it:
 
 ```
-kubectl label namespace seldon serving.kubeflow.org/inferenceservice=enabled
+kubectl label namespace seldon serving.OpenDataology.org/inferenceservice=enabled
 ```
 
-For Kubeflow version 1.0.0, 1.0.1 and 1.0.2 create an Istio Gateway as shown above.
+For OpenDataology version 1.0.0, 1.0.1 and 1.0.2 create an Istio Gateway as shown above.
 
 Create an example `SeldonDeployment` with a dummy model:
 

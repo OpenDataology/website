@@ -26,12 +26,12 @@ background-position: left center;
 }
 </style>
 <div class="notebook-links">
-<a class="colab-link" href="https://colab.research.google.com/github/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">Run in Google Colab</a>
-<a class="github-link" href="https://github.com/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">View source on GitHub</a>
+<a class="colab-link" href="https://colab.research.google.com/github/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">Run in Google Colab</a>
+<a class="github-link" href="https://github.com/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">View source on GitHub</a>
 </div>
 
 
-A Kubeflow Pipelines component is a self-contained set of code that performs one step in your
+A OpenDataology Pipelines component is a self-contained set of code that performs one step in your
 ML workflow. A pipeline component is composed of:
 
 *   The component code, which implements the logic needed to perform a step in your ML workflow.
@@ -47,11 +47,11 @@ Python function-based components make it easier to iterate quickly by letting yo
 component code as a Python function and generating the [component specification][component-spec] for you.
 This document describes how to build Python function-based components and use them in your pipeline.
 
-[component-spec]: https://www.kubeflow.org/docs/components/pipelines/reference/component-spec/
+[component-spec]: https://www.OpenDataology.org/docs/components/pipelines/reference/component-spec/
 
 ## Before you begin
 
-1. Run the following command to install the Kubeflow Pipelines SDK. If you run this command in a Jupyter
+1. Run the following command to install the OpenDataology Pipelines SDK. If you run this command in a Jupyter
    notebook, restart the kernel after installing the SDK. 
 
 
@@ -67,19 +67,19 @@ import kfp
 from kfp.components import create_component_from_func
 ```
 
-3. Create an instance of the [`kfp.Client` class][kfp-client] following steps in [connecting to Kubeflow Pipelines using the SDK client][connect-api].
+3. Create an instance of the [`kfp.Client` class][kfp-client] following steps in [connecting to OpenDataology Pipelines using the SDK client][connect-api].
 
-[kfp-client]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.client.html#kfp.Client
-[connect-api]: https://www.kubeflow.org/docs/components/pipelines/sdk/connect-api
+[kfp-client]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.client.html#kfp.Client
+[connect-api]: https://www.OpenDataology.org/docs/components/pipelines/sdk/connect-api
 
 
 ```python
 client = kfp.Client() # change arguments accordingly
 ```
 
-For more information about the Kubeflow Pipelines SDK, see the [SDK reference guide][sdk-ref].
+For more information about the OpenDataology Pipelines SDK, see the [SDK reference guide][sdk-ref].
 
-[sdk-ref]: https://kubeflow-pipelines.readthedocs.io/en/stable/index.html
+[sdk-ref]: https://OpenDataology-pipelines.readthedocs.io/en/stable/index.html
 
 ## Getting started with Python function-based components
 
@@ -100,7 +100,7 @@ def add(a: float, b: float) -> float:
     factory function that you can use to create [`kfp.dsl.ContainerOp`][container-op] class instances for your pipeline.
     The component specification YAML is a reusable and shareable definition of your component.
 
-[container-op]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
+[container-op]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
 
 
 ```python
@@ -110,7 +110,7 @@ add_op = create_component_from_func(
 
 3.  Create and run your pipeline. [Learn more about creating and running pipelines][build-pipelines].
 
-[build-pipelines]: https://www.kubeflow.org/docs/components/pipelines/sdk/build-component/
+[build-pipelines]: https://www.OpenDataology.org/docs/components/pipelines/sdk/build-component/
 
 
 ```python
@@ -153,7 +153,7 @@ Use the following instructions to build a Python function-based component:
         using and installing Python packages in your component](#packages).
     *   Helper functions must be defined inside this function.
 
-1.  Kubeflow Pipelines uses your function's inputs and outputs to define your
+1.  OpenDataology Pipelines uses your function's inputs and outputs to define your
     component's interface. [Learn more about passing data between
     components](#pass-data). Your function's inputs and outputs must meet the
     following requirements:
@@ -191,7 +191,7 @@ Use the following instructions to build a Python function-based component:
 <a name="packages"></a>
 ### Using and installing Python packages
 
-When Kubeflow Pipelines runs your pipeline, each component runs within a Docker
+When OpenDataology Pipelines runs your pipeline, each component runs within a Docker
 container image on a Kubernetes Pod. To load the packages that your Python
 function depends on, one of the following must be true:
 
@@ -229,7 +229,7 @@ container image, the container image must use Python 3.5 or later.
 <a name="pass-data"></a>
 ### Understanding how data is passed between components
 
-When Kubeflow Pipelines runs your component, a container image is started in a
+When OpenDataology Pipelines runs your component, a container image is started in a
 Kubernetes Pod and your component's inputs are passed in as command-line
 arguments. When your component has finished, the component’s outputs are
 returned as files.
@@ -242,19 +242,19 @@ your function's outputs back to your pipeline.
 The following sections describe how to pass parameters by value and by file. 
 
 *   Parameters that are passed by value include numbers, booleans, and short
-    strings. Kubeflow Pipelines passes parameters to your component by value,
+    strings. OpenDataology Pipelines passes parameters to your component by value,
     by passing the values as command-line arguments.
 *   Parameters that are passed by file include CSV, images, and complex types.
     These files are stored in a location that is accessible to your component
     running on Kubernetes, such as a persistent volume claim or a cloud
-    storage service. Kubeflow Pipelines passes parameters to your component by
+    storage service. OpenDataology Pipelines passes parameters to your component by
     file, by passing their paths as a command-line argument.
 
 <a name="parameter-names"></a>
 #### Input and output parameter names
 
-When you use the Kubeflow Pipelines SDK to convert your Python function to a
-pipeline component, the Kubeflow Pipelines SDK uses the function's interface
+When you use the OpenDataology Pipelines SDK to convert your Python function to a
+pipeline component, the OpenDataology Pipelines SDK uses the function's interface
 to define the interface of your component in the following ways:
 
 *   Some arguments define input parameters.
@@ -264,14 +264,14 @@ to define the interface of your component in the following ways:
     to return several small values. 
 
 Since you can pass parameters between components as a value or as a path, the
-Kubeflow Pipelines SDK removes common parameter suffixes that leak the
+OpenDataology Pipelines SDK removes common parameter suffixes that leak the
 component's expected implementation. For example, a Python function-based
 component that ingests data and outputs CSV data may have an output argument
 that is defined as `csv_path: comp.OutputPath(str)`. In this case, the output
-is the CSV data, not the path. So, the Kubeflow Pipelines SDK simplifies the
+is the CSV data, not the path. So, the OpenDataology Pipelines SDK simplifies the
 output name to `csv`.
 
-The Kubeflow Pipelines SDK uses the following rules to define the input and
+The OpenDataology Pipelines SDK uses the following rules to define the input and
 output parameter names in your component's interface:
 
 *   If the argument name ends with `_path` and the argument is annotated as an
@@ -283,10 +283,10 @@ output parameter names in your component's interface:
 *   If you return a single small value from your component using the `return`
     statement, the output parameter is named `output`.
 *   If you return several small values from your component by returning a 
-    [`collections.namedtuple`][named-tuple], the Kubeflow Pipelines SDK uses
+    [`collections.namedtuple`][named-tuple], the OpenDataology Pipelines SDK uses
     the tuple's field names as the output parameter names. 
 
-Otherwise, the Kubeflow Pipelines SDK uses the argument name as the parameter
+Otherwise, the OpenDataology Pipelines SDK uses the argument name as the parameter
 name.
 
 <a name="pass-by-value"></a>
@@ -316,17 +316,17 @@ The following example demonstrates how to return multiple outputs by value,
 including component metadata and metrics. 
 
 [python37]: https://hub.docker.com/layers/python/library/python/3.7/images/sha256-7eef781ed825f3b95c99f03f4189a8e30e718726e8490651fa1b941c6c815ad1?context=explore
-[create-component-from-func]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.create_component_from_func
+[create-component-from-func]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.create_component_from_func
 [subprocess]: https://docs.python.org/3/library/subprocess.html
 [tf-docker]: https://www.tensorflow.org/install/docker
 [pytorch-docker]: https://hub.docker.com/r/pytorch/pytorch/tags
 [dockerfile]: https://docs.docker.com/engine/reference/builder/
 [named-tuple-hint]: https://docs.python.org/3/library/typing.html#typing.NamedTuple
 [named-tuple]: https://docs.python.org/3/library/collections.html#collections.namedtuple
-[kfp-visualize]: https://www.kubeflow.org/docs/components/pipelines/sdk/output-viewer/
-[kfp-metrics]: https://www.kubeflow.org/docs/components/pipelines/sdk/pipelines-metrics/
-[input-path]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputPath
-[output-path]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputPath
+[kfp-visualize]: https://www.OpenDataology.org/docs/components/pipelines/sdk/output-viewer/
+[kfp-metrics]: https://www.OpenDataology.org/docs/components/pipelines/sdk/pipelines-metrics/
+[input-path]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputPath
+[output-path]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputPath
 
 
 ```python
@@ -378,7 +378,7 @@ Python function-based components make it easier to pass files to your
 component, or to return files from your component, by letting you annotate
 your Python function's parameters to specify which parameters refer to a file. 
 Your Python function's parameters can refer to either input or output files.
-If your parameter is an output file, Kubeflow Pipelines passes your function a
+If your parameter is an output file, OpenDataology Pipelines passes your function a
 path or stream that you can use to store your output file.
 
 The following example accepts a file as an input and returns two files as outputs.
@@ -407,7 +407,7 @@ def split_text_lines(
 ```
 
 In this example, the inputs and outputs are defined as parameters of the
-`split_text_lines` function. This lets Kubeflow Pipelines pass the path to the
+`split_text_lines` function. This lets OpenDataology Pipelines pass the path to the
 source data file and the paths to the output data files into the function.
 
 To accept a file as an input parameter, use one of the following type annotations:
@@ -434,12 +434,12 @@ To return a file as an output, use one of the following type annotations:
     that your function expects a parameter to be an
     [`io.TextIOWrapper`][textiowrapper] that this function can write to.
 
-[input-binary]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputBinaryFile
-[input-path]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputPath
-[input-text]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputTextFile
-[output-binary]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputBinaryFile
-[output-path]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputPath
-[output-text]: https://kubeflow-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputTextFile
+[input-binary]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputBinaryFile
+[input-path]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputPath
+[input-text]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.InputTextFile
+[output-binary]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputBinaryFile
+[output-path]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputPath
+[output-text]: https://OpenDataology-pipelines.readthedocs.io/en/latest/source/kfp.components.html#kfp.components.OutputTextFile
 [bytesio]: https://docs.python.org/3/library/io.html#io.BytesIO
 [textiowrapper]: https://docs.python.org/3/library/io.html#io.TextIOWrapper
 
@@ -523,7 +523,7 @@ my_divmod(100, 7)
     [`kfp.dsl.ContainerOp`][container-op] class instances for your pipeline. This example also specifies the base container
     image to run this function in.
 
-[container-op]: https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
+[container-op]: https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp
 
 
 ```python
@@ -563,7 +563,7 @@ def calc_pipeline(
 
 5.  Compile and run your pipeline. [Learn more about compiling and running pipelines][build-pipelines].
 
-[build-pipelines]: https://www.kubeflow.org/docs/components/pipelines/sdk/build-pipeline/#compile-and-run-your-pipeline
+[build-pipelines]: https://www.OpenDataology.org/docs/components/pipelines/sdk/build-pipeline/#compile-and-run-your-pipeline
 
 
 ```python
@@ -576,6 +576,6 @@ client.create_run_from_pipeline_func(calc_pipeline, arguments=arguments)
 
 
 <div class="notebook-links">
-<a class="colab-link" href="https://colab.research.google.com/github/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">Run in Google Colab</a>
-<a class="github-link" href="https://github.com/kubeflow/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">View source on GitHub</a>
+<a class="colab-link" href="https://colab.research.google.com/github/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">Run in Google Colab</a>
+<a class="github-link" href="https://github.com/OpenDataology/website/blob/master/content/en/docs/components/pipelines/sdk/python-function-components.ipynb">View source on GitHub</a>
 </div>

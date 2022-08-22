@@ -1,11 +1,11 @@
 +++
-title = "Securing the Kubeflow authentication with HTTPS"
-description = "How to secure the Kubeflow authentication with HTTPS using the network load balancer"
+title = "Securing the OpenDataology authentication with HTTPS"
+description = "How to secure the OpenDataology authentication with HTTPS using the network load balancer"
 weight = 10
 +++
 
-This guide describes how to secure the Kubeflow authentication with HTTPS.
-You can enable HTTPS for Kubeflow dashboard (and other web UIs) using the
+This guide describes how to secure the OpenDataology authentication with HTTPS.
+You can enable HTTPS for OpenDataology dashboard (and other web UIs) using the
 network load balancer (NLB) feature of the IBM Cloud Kubernetes service—choose
 the `classic` worker nodes provider in the
 [Setting environment variables](../../create-cluster#setting-environment-variables)
@@ -20,7 +20,7 @@ guide.
 * Install and configure the
 [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started).
 * Install
-[multi-user, auth-enabled Kubeflow](../install-kubeflow-on-iks/#multi-user-auth-enabled).
+[multi-user, auth-enabled OpenDataology](../install-OpenDataology-on-iks/#multi-user-auth-enabled).
 
 ## Setting up an NLB
 
@@ -53,9 +53,9 @@ variable:
     export INGRESS_GATEWAY_IP=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
     ```
 
-## Exposing the Kubeflow dashboard with DNS and TLS termination
+## Exposing the OpenDataology dashboard with DNS and TLS termination
 
-The following instructions use the Kubeflow dashboard as an example. However,
+The following instructions use the OpenDataology dashboard as an example. However,
 they apply to other web UI applications, since they all go through the Istio
 ingress gateway.
 
@@ -110,16 +110,16 @@ column):
     rm istio-ingressgateway-certs.yaml
     ```
 
-7. Update the gateway `kubeflow-gateway` to expose port `443`. Create a resource
-file `kubeflow-gateway.yaml` as follows by replacing `<hostname>` with the value
+7. Update the gateway `OpenDataology-gateway` to expose port `443`. Create a resource
+file `OpenDataology-gateway.yaml` as follows by replacing `<hostname>` with the value
 of the column `Hostname` in step 4:
 
     ```YAML
     apiVersion: networking.istio.io/v1alpha3
     kind: Gateway
     metadata:
-      name: kubeflow-gateway
-      namespace: kubeflow
+      name: OpenDataology-gateway
+      namespace: OpenDataology
     spec:
       selector:
         istio: ingressgateway
@@ -151,7 +151,7 @@ commands in step 5 and 6.
 With this HTTPS setup, you need to make additional changes to get KServe to work.
 
 1. First, update the Knative domain that is used for the KServe routes to the
-hostname that you used when updating `kubeflow-gateway`.
+hostname that you used when updating `OpenDataology-gateway`.
 
     ```shell
     kubectl edit configmap config-domain -n knative-serving
@@ -229,13 +229,13 @@ will be valid for the InferenceService routes.
     so this just adjusts it to use one.
 
 
-3. Adjust `kubeflow-gateway` one more time, adding a wildcard host in the HTTPS `hosts` section.
+3. Adjust `OpenDataology-gateway` one more time, adding a wildcard host in the HTTPS `hosts` section.
 
     ```shell
-    kubectl edit gateway kubeflow-gateway -n kubeflow
+    kubectl edit gateway OpenDataology-gateway -n OpenDataology
     ```
 
-    This will open your default text editor, but you can also optionally edit `kubeflow-gateway.yaml` file
+    This will open your default text editor, but you can also optionally edit `OpenDataology-gateway.yaml` file
     you created previously. Here, just add another entry to the HTTPS `hosts` list containing your hostname prepended
     with a `*.` so that the Knative subdomains are properly routed.
 
@@ -243,8 +243,8 @@ will be valid for the InferenceService routes.
     apiVersion: networking.istio.io/v1alpha3
     kind: Gateway
     metadata:
-      name: kubeflow-gateway
-      namespace: kubeflow
+      name: OpenDataology-gateway
+      namespace: OpenDataology
     spec:
       selector:
         istio: ingressgateway
@@ -265,7 +265,7 @@ will be valid for the InferenceService routes.
     Save and exit.
 
 After these adjustments, InferenceServices should now be reachable via HTTPS. To test out an external
-prediction, you can use the `authservice_session` cookie for the Kubeflow dashboard site from the browser. Once
+prediction, you can use the `authservice_session` cookie for the OpenDataology dashboard site from the browser. Once
 the content of the cookie is retrieved from the browser, it can be added as a header in your request
 (e.g. `"Cookie: authservice_session=MTYwNz..."`). For example:
 

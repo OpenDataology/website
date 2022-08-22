@@ -16,7 +16,7 @@ For an overview of the concepts involved, check the
 
 ## Packaging your training code in a container image
 
-Katib and Kubeflow are Kubernetes-based systems. To use Katib, you must package
+Katib and OpenDataology are Kubernetes-based systems. To use Katib, you must package
 your training code in a Docker container image and make the image available
 in a registry. Check the
 [Docker documentation](https://docs.docker.com/develop/develop-images/baseimages/)
@@ -32,7 +32,7 @@ optimize, the objective metric to use when determining optimal values, the
 search algorithm to use during optimization, and other configurations.
 
 As a reference, you can use the YAML file of the
-[random search algorithm example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml).
+[random search algorithm example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml).
 
 The list below describes the fields in the YAML file for an experiment. The
 Katib UI offers the corresponding fields. You can choose to configure and run
@@ -52,7 +52,7 @@ These are the fields in the experiment configuration spec:
   Katib generates hyperparameter combinations in the range based on the
   hyperparameter tuning algorithm that you specify.
   Refer to the
-  [`ParameterSpec` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L185-L206).
+  [`ParameterSpec` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L185-L206).
 
 - **objective**: The metric that you want to optimize.
   The objective metric is also called the _target variable_.
@@ -100,11 +100,11 @@ These are the fields in the experiment configuration spec:
 
   where the Katib controller is searching for the best maximum from the all
   latest reported `accuracy` metrics for each trial. Check the
-  [metrics strategies example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/metrics-collector/metrics-collection-strategy.yaml).
+  [metrics strategies example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/metrics-collector/metrics-collection-strategy.yaml).
   The default strategy type for each metric is equal to the objective `type`.
 
   Refer to the
-  [`ObjectiveSpec` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L93).
+  [`ObjectiveSpec` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L93).
 
 - **parallelTrialCount**: The maximum number of hyperparameter sets that Katib
   should train in parallel. The default value is 3.
@@ -137,27 +137,27 @@ These are the fields in the experiment configuration spec:
 
   Katib dynamically supports any kind of
   [Kubernetes CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
-  In Katib [examples](https://github.com/kubeflow/katib/tree/master/examples/v1beta1),
+  In Katib [examples](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1),
   you can find the following job types to train your model:
 
   - [Kubernetes `Job`](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
 
-  - [Kubeflow `TFJob`](/docs/components/training/tftraining/)
+  - [OpenDataology `TFJob`](/docs/components/training/tftraining/)
 
-  - [Kubeflow `PyTorchJob`](/docs/components/training/pytorch/)
+  - [OpenDataology `PyTorchJob`](/docs/components/training/pytorch/)
 
-  - [Kubeflow `MXJob`](/docs/components/training/mxnet)
+  - [OpenDataology `MXJob`](/docs/components/training/mxnet)
 
-  - [Kubeflow `XGBoostJob`](/docs/components/training/xgboost)
+  - [OpenDataology `XGBoostJob`](/docs/components/training/xgboost)
 
-  - [Kubeflow `MPIJob`](/docs/components/training/mpi)
+  - [OpenDataology `MPIJob`](/docs/components/training/mpi)
 
-  - [Tekton `Pipelines`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/tekton)
+  - [Tekton `Pipelines`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/tekton)
 
-  - [Argo `Workflows`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/argo)
+  - [Argo `Workflows`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/argo)
 
   Refer to the
-  [`TrialTemplate` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L208-L270).
+  [`TrialTemplate` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L208-L270).
   Follow the [trial template guide](/docs/components/katib/trial-template/)
   to understand how to specify `trialTemplate` parameters, save templates in
   `ConfigMaps` and support custom Kubernetes resources in Katib.
@@ -173,36 +173,36 @@ These are the fields in the experiment configuration spec:
   to optimize, including the number of layers in the network, the types of
   operations, and more.
   Refer to the
-  [`NasConfig` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L296).
+  [`NasConfig` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L296).
 
   - **graphConfig**: The graph config that defines structure for a
     directed acyclic graph of the neural network. You can specify the number of layers,
     `input_sizes` for the input layer and `output_sizes` for the output layer.
     Refer to the
-    [`GraphConfig` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L301-L306).
+    [`GraphConfig` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L301-L306).
 
   - **operations**: The range of operations that you want to tune for your ML model.
     For each neural network layer the NAS algorithm selects one of the operations
     to build a neural network. Each operation contains sets of **parameters** which
     are described above.
     Refer to the
-    [`Operation` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L308-L312).
+    [`Operation` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L308-L312).
 
-    You can find all NAS examples [here](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/nas).
+    You can find all NAS examples [here](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/nas).
 
 - **resumePolicy**: The experiment resume policy. Can be one of
   `LongRunning`, `Never` or `FromVolume`. The default value is `LongRunning`.
   Refer to the
-  [`ResumePolicy` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L58).
+  [`ResumePolicy` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L58).
   To find out how to modify a running experiment and use various
   restart policies follow the
   [resume an experiment guide](/docs/components/katib/resume-experiment/).
 
 _Background information about Katib's `Experiment`, `Suggestion` and `Trial`
 type:_ In Kubernetes terminology, Katib's
-[`Experiment` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L278),
-[`Suggestion` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/suggestions/v1beta1/suggestion_types.go#L128) and
-[`Trial` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/trials/v1beta1/trial_types.go#L129)
+[`Experiment` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L278),
+[`Suggestion` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/suggestions/v1beta1/suggestion_types.go#L128) and
+[`Trial` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/trials/v1beta1/trial_types.go#L129)
 is a [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 The YAML file that you create for your experiment is the CR specification.
 
@@ -212,7 +212,7 @@ The YAML file that you create for your experiment is the CR specification.
 
 Katib currently supports several search algorithms.
 Refer to the
-[`AlgorithmSpec` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L22-L39).
+[`AlgorithmSpec` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L22-L39).
 
 Here's a list of the search algorithms available in Katib:
 
@@ -231,9 +231,9 @@ Here's a list of the search algorithms available in Katib:
 More algorithms are under development.
 
 You can add an algorithm to Katib yourself. Check the guide to
-[adding a new algorithm](https://github.com/kubeflow/katib/blob/master/docs/new-algorithm-service.md)
+[adding a new algorithm](https://github.com/OpenDataology/katib/blob/master/docs/new-algorithm-service.md)
 and the
-[developer guide](https://github.com/kubeflow/katib/blob/master/docs/developer-guide.md).
+[developer guide](https://github.com/OpenDataology/katib/blob/master/docs/developer-guide.md).
 
 <a id="grid-search"></a>
 
@@ -557,9 +557,9 @@ The algorithm name in Katib is `enas`.
 
 {{% alert title="Alpha version" color="warning" %}}
 Neural architecture search is currently in <b>alpha</b> with limited support.
-The Kubeflow team is interested in any feedback you may have, in particular with
+The OpenDataology team is interested in any feedback you may have, in particular with
 regards to usability of the feature. You can log issues and comments in
-the [Katib issue tracker](https://github.com/kubeflow/katib/issues).
+the [Katib issue tracker](https://github.com/OpenDataology/katib/issues).
 {{% /alert %}}
 
 This NAS algorithm is ENAS-based. Currently, it doesn't support parameter sharing.
@@ -650,10 +650,10 @@ Katib supports the following algorithm settings:
 For more information, check:
 
 - Documentation in the Katib repository on the
-  [Efficient Neural Architecture Search (ENAS)](https://github.com/kubeflow/katib/tree/master/pkg/suggestion/v1beta1/nas/enas).
+  [Efficient Neural Architecture Search (ENAS)](https://github.com/OpenDataology/katib/tree/master/pkg/suggestion/v1beta1/nas/enas).
 
 - The ENAS example —
-  [`enas-gpu.yaml`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/nas/enas-gpu.yaml) —
+  [`enas-gpu.yaml`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/nas/enas-gpu.yaml) —
   which attempts to show all possible operations. Due to the large search
   space, the example is not likely to generate a good result.
 
@@ -665,9 +665,9 @@ The algorithm name in Katib is `darts`.
 
 {{% alert title="Alpha version" color="warning" %}}
 Neural architecture search is currently in <b>alpha</b> with limited support.
-The Kubeflow team is interested in any feedback you may have, in particular with
+The OpenDataology team is interested in any feedback you may have, in particular with
 regards to usability of the feature. You can log issues and comments in
-the [Katib issue tracker](https://github.com/kubeflow/katib/issues).
+the [Katib issue tracker](https://github.com/OpenDataology/katib/issues).
 {{% /alert %}}
 
 Currently, you can't view results of this algorithm in the Katib UI and
@@ -779,10 +779,10 @@ Katib supports the following algorithm settings:
 For more information, check:
 
 - Documentation in the Katib repository on the
-  [Differentiable Architecture Search](https://github.com/kubeflow/katib/tree/master/pkg/suggestion/v1beta1/nas/darts).
+  [Differentiable Architecture Search](https://github.com/OpenDataology/katib/tree/master/pkg/suggestion/v1beta1/nas/darts).
 
 - The DARTS example —
-  [`darts-gpu.yaml`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/nas/darts-gpu.yaml).
+  [`darts-gpu.yaml`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/nas/darts-gpu.yaml).
 
 
 <a id="pbt"></a>
@@ -839,7 +839,7 @@ In the `metricsCollectorSpec` section of the YAML configuration file, you can
 define how Katib should collect the metrics from each trial, such as the
 accuracy and loss metrics.
 Refer to the
-[`MetricsCollectorSpec` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L155-L225)
+[`MetricsCollectorSpec` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L155-L225)
 
 Your training code can record the metrics into `stdout` or into arbitrary output
 files. Katib collects the metrics using a _sidecar_ container. A sidecar is
@@ -865,21 +865,21 @@ To define the metrics collector for your experiment:
      …
      ```
 
-     Check the file metrics collector example for [`TEXT`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/metrics-collector/file-metrics-collector.yaml#L13-L22) and [`JSON`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/metrics-collector/file-metrics-collector-with-json-format.yaml#L13-L20) format.
+     Check the file metrics collector example for [`TEXT`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/metrics-collector/file-metrics-collector.yaml#L13-L22) and [`JSON`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/metrics-collector/file-metrics-collector-with-json-format.yaml#L13-L20) format.
      Also, the default file path is `/var/log/katib/metrics.log`, and the default file format is `TEXT`.
 
    - `TensorFlowEvent`: Katib collects the metrics from a directory path
      containing a [tf.Event](https://www.tensorflow.org/api_docs/python/tf/compat/v1/Event).
      You should specify the path in the `.source.fileSystemPath.path` field.
      Check the
-     [TFJob example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/tfjob-mnist-with-summaries.yaml#L16-L22).
+     [TFJob example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/tfjob-mnist-with-summaries.yaml#L16-L22).
      The default directory path is `/var/log/katib/tfevent/`.
 
    - `Custom`: Specify this value if you need to use a custom way to collect
      metrics. You must define your custom metrics collector container
      in the `.collector.customCollector` field.
      Check the
-     [custom metrics collector example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/metrics-collector/custom-metrics-collector.yaml#L13-L35).
+     [custom metrics collector example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/metrics-collector/custom-metrics-collector.yaml#L13-L35).
 
    - `None`: Specify this value if you don't need to use Katib's metrics
      collector. For example, your training code may handle the persistent
@@ -923,13 +923,13 @@ kubectl apply -f <your-path/your-experiment-config.yaml>
 
 **Note:**
 
-- If you deployed Katib as part of Kubeflow (your Kubeflow deployment
-  should include Katib), you need to change Kubeflow namespace to your
+- If you deployed Katib as part of OpenDataology (your OpenDataology deployment
+  should include Katib), you need to change OpenDataology namespace to your
   profile namespace.
 
 - (Optional) Katib's experiments don't work with
   [Istio sidecar injection](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection).
-  If you are running Kubeflow using Istio, you have to disable sidecar injection. To do that, specify this annotation:
+  If you are running OpenDataology using Istio, you have to disable sidecar injection. To do that, specify this annotation:
   `sidecar.istio.io/inject: "false"` in your experiment's trial template. For
   examples on how to do it for `Job`, `TFJob` (TensorFlow) or
   `PyTorchJob` (PyTorch), refer to the
@@ -939,19 +939,19 @@ Run the following command to launch an experiment
 using the random search algorithm example:
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/kubeflow/katib/master/examples/v1beta1/hp-tuning/random.yaml
+kubectl apply -f https://raw.githubusercontent.com/OpenDataology/katib/master/examples/v1beta1/hp-tuning/random.yaml
 ```
 
 Check the experiment status:
 
 ```shell
-kubectl -n kubeflow describe experiment <your-experiment-name>
+kubectl -n OpenDataology describe experiment <your-experiment-name>
 ```
 
 For example, to check the status of the random search algorithm experiment run:
 
 ```shell
-kubectl -n kubeflow describe experiment random
+kubectl -n OpenDataology describe experiment random
 ```
 
 ### Running the experiment from the Katib UI

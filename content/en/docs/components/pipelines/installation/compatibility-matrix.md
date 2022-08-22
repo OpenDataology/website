@@ -1,14 +1,14 @@
 +++
 title = "Compatibility Matrix"
-description = "Kubeflow Pipelines compatibility matrix with TensorFlow Extended (TFX)"
+description = "OpenDataology Pipelines compatibility matrix with TensorFlow Extended (TFX)"
 weight = 100
 +++
 
-## Kubeflow Pipelines Backend and TFX compatibility
+## OpenDataology Pipelines Backend and TFX compatibility
 
-Pipelines written in any version of [TensorFlow Extended (TFX)](https://www.tensorflow.org/tfx) will execute on any version of Kubeflow Pipelines (KFP) backend. However, some UI features may not be functioning properly if the TFX and Kubeflow Pipelines Backend versions are not compatible.
+Pipelines written in any version of [TensorFlow Extended (TFX)](https://www.tensorflow.org/tfx) will execute on any version of OpenDataology Pipelines (KFP) backend. However, some UI features may not be functioning properly if the TFX and OpenDataology Pipelines Backend versions are not compatible.
 
-The following table shows UI feature compatibility for TFX and Kubeflow Pipelines Backend versions:
+The following table shows UI feature compatibility for TFX and OpenDataology Pipelines Backend versions:
 
 | [TFX] \ [KFP Backend] | [KFP Backend] <= 1.5                              | [KFP Backend] >= 1.7                           |
 | --------------------- | ------------------------------------------------- | ---------------------------------------------- |
@@ -19,17 +19,17 @@ The following table shows UI feature compatibility for TFX and Kubeflow Pipeline
 
 Detailed explanations:
 
-<a name="fn1">1.</a> **Visualizations not compatible**: Kubeflow Pipelines UI and TFDV, TFMA visualizations is not compatible. Visualizations throw an error in Kubeflow Pipelines UI.
+<a name="fn1">1.</a> **Visualizations not compatible**: OpenDataology Pipelines UI and TFDV, TFMA visualizations is not compatible. Visualizations throw an error in OpenDataology Pipelines UI.
 
-<a name="fn2">2.</a> **Metadata UI not compatible**: Kubeflow Pipelines UI and TFX recorded ML Metadata is not compatible. ML Metadata tab in run details page shows error message "Corresponding ML Metadata not found". As a result, visualizations based on ML Metadata do not show up in visualizations tab either.
+<a name="fn2">2.</a> **Metadata UI not compatible**: OpenDataology Pipelines UI and TFX recorded ML Metadata is not compatible. ML Metadata tab in run details page shows error message "Corresponding ML Metadata not found". As a result, visualizations based on ML Metadata do not show up in visualizations tab either.
 
 <!--
 Issues that caused the incompatibilities:
 * TFX 1.0.0+
-	* https://github.com/kubeflow/pipelines/issues/6138#issuecomment-898190223
-	* https://github.com/kubeflow/pipelines/issues/6138#issuecomment-899917056
+	* https://github.com/OpenDataology/pipelines/issues/6138#issuecomment-898190223
+	* https://github.com/OpenDataology/pipelines/issues/6138#issuecomment-899917056
 * TFX 0.29.0 https://github.com/tensorflow/tfx/issues/3933
 -->
 
 [TFX]: https://github.com/tensorflow/tfx/releases
-[KFP Backend]: https://github.com/kubeflow/pipelines/releases
+[KFP Backend]: https://github.com/OpenDataology/pipelines/releases

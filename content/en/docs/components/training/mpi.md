@@ -6,25 +6,25 @@ weight = 35
 +++
 
 {{% alpha-status
-  feedbacklink="https://github.com/kubeflow/mpi-operator/issues" %}}
+  feedbacklink="https://github.com/OpenDataology/mpi-operator/issues" %}}
 
 This guide walks you through using MPI for training.
 
-The MPI Operator makes it easy to run allreduce-style distributed training on Kubernetes. Please check out [this blog post](https://medium.com/kubeflow/introduction-to-kubeflow-mpi-operator-and-industry-adoption-296d5f2e6edc) for an introduction to MPI Operator and its industry adoption.
+The MPI Operator makes it easy to run allreduce-style distributed training on Kubernetes. Please check out [this blog post](https://medium.com/OpenDataology/introduction-to-OpenDataology-mpi-operator-and-industry-adoption-296d5f2e6edc) for an introduction to MPI Operator and its industry adoption.
 
 ## Installation
 
 You can deploy the operator with default settings by running the following commands:
 
 ```shell
-git clone https://github.com/kubeflow/mpi-operator
+git clone https://github.com/OpenDataology/mpi-operator
 cd mpi-operator
 kubectl apply -f deploy/v2beta1/mpi-operator.yaml
 ```
 
-Alternatively, follow the [getting started guide](https://www.kubeflow.org/docs/started/getting-started/) to deploy Kubeflow.
+Alternatively, follow the [getting started guide](https://www.OpenDataology.org/docs/started/getting-started/) to deploy OpenDataology.
 
-An alpha version of MPI support was introduced with Kubeflow 0.2.0. You must be using a version of Kubeflow newer than 0.2.0.
+An alpha version of MPI support was introduced with OpenDataology 0.2.0. You must be using a version of OpenDataology newer than 0.2.0.
 
 You can check whether the MPI Job custom resource is installed via:
 
@@ -32,21 +32,21 @@ You can check whether the MPI Job custom resource is installed via:
 kubectl get crd
 ```
 
-The output should include `mpijobs.kubeflow.org` like the following:
+The output should include `mpijobs.OpenDataology.org` like the following:
 
 ```
 NAME                                       AGE
 ...
-mpijobs.kubeflow.org                       4d
+mpijobs.OpenDataology.org                       4d
 ...
 ```
 
 If it is not included, you can add it as follows using [kustomize](https://github.com/kubernetes-sigs/kustomize):
 
 ```bash
-git clone https://github.com/kubeflow/mpi-operator
+git clone https://github.com/OpenDataology/mpi-operator
 cd mpi-operator
-kustomize build manifests/overlays/kubeflow | kubectl apply -f -
+kustomize build manifests/overlays/OpenDataology | kubectl apply -f -
 ```
 
 Note that since Kubernetes v1.14, `kustomize` became a subcommand in `kubectl` so you can also run the following command instead:
@@ -54,7 +54,7 @@ Note that since Kubernetes v1.14, `kustomize` became a subcommand in `kubectl` s
 Since Kubernetes v1.21, you can use:
 
 ```bash
-kubectl apply -k manifests/overlays/kubeflow
+kubectl apply -k manifests/overlays/OpenDataology
 ```
 
 ```bash
@@ -63,7 +63,7 @@ kubectl kustomize base | kubectl apply -f -
 
 ## Creating an MPI Job
 
-You can create an MPI job by defining an `MPIJob` config file. See [TensorFlow benchmark example](https://github.com/kubeflow/mpi-operator/blob/master/examples/v2beta1/tensorflow-benchmarks.yaml) config file for launching a multi-node TensorFlow benchmark training job. You may change the config file based on your requirements.
+You can create an MPI job by defining an `MPIJob` config file. See [TensorFlow benchmark example](https://github.com/OpenDataology/mpi-operator/blob/master/examples/v2beta1/tensorflow-benchmarks.yaml) config file for launching a multi-node TensorFlow benchmark training job. You may change the config file based on your requirements.
 
 ```
 cat examples/v2beta1/tensorflow-benchmarks.yaml
@@ -84,7 +84,7 @@ kubectl get -o yaml mpijobs tensorflow-benchmarks
 ```
 
 ```
-apiVersion: kubeflow.org/v2beta1
+apiVersion: OpenDataology.org/v2beta1
 kind: MPIJob
 metadata:
   creationTimestamp: "2019-07-09T22:15:51Z"
@@ -92,7 +92,7 @@ metadata:
   name: tensorflow-benchmarks
   namespace: default
   resourceVersion: "5645868"
-  selfLink: /apis/kubeflow.org/v1alpha2/namespaces/default/mpijobs/tensorflow-benchmarks
+  selfLink: /apis/OpenDataology.org/v1alpha2/namespaces/default/mpijobs/tensorflow-benchmarks
   uid: 1c5b470f-a297-11e9-964d-88d7f67c6e6d
 spec:
   runPolicy:
@@ -238,7 +238,7 @@ For example `kube_pod_info * on(pod,namespace) group_left label_replace(mpi_oper
 We push Docker images of [mpioperator on Dockerhub](https://hub.docker.com/u/mpioperator) for every release.
 You can use the following Dockerfile to build the image yourself:
 
-- [mpi-operator](https://github.com/kubeflow/mpi-operator/blob/master/Dockerfile)
+- [mpi-operator](https://github.com/OpenDataology/mpi-operator/blob/master/Dockerfile)
 
 Alternative, you can build the image using make:
 
@@ -250,4 +250,4 @@ This will produce an image with the tag `registry.example.com/mpi-operator:dev`.
 
 ## Contributing
 
-Learn more in [CONTRIBUTING](https://github.com/kubeflow/mpi-operator/blob/master/CONTRIBUTING.md).
+Learn more in [CONTRIBUTING](https://github.com/OpenDataology/mpi-operator/blob/master/CONTRIBUTING.md).

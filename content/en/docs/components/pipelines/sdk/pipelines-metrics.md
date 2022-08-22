@@ -5,23 +5,23 @@ weight = 90
                     
 +++
 
-This page shows you how to export metrics from a Kubeflow Pipelines component. 
+This page shows you how to export metrics from a OpenDataology Pipelines component. 
 For details about how to build a component, see the guide to 
 [building your own component](/docs/components/pipelines/sdk/component-development/).
  
 ## Overview of metrics
 
-Kubeflow Pipelines supports the export of scalar metrics. You can write a list
+OpenDataology Pipelines supports the export of scalar metrics. You can write a list
 of metrics to a local file to describe the performance of the model. The
 pipeline agent uploads the local file as your run-time metrics. You can view the
 uploaded metrics as a visualization in the **Runs** page for a particular
-experiment in the Kubeflow Pipelines UI.
+experiment in the OpenDataology Pipelines UI.
  
 ## Export the metrics dictionary
 
 
 To enable metrics, your component must have an output called `MLPipeline Metrics` and return a JSON-serialized metrics dictionary.
-Otherwise the Kubeflow Pipelines UI will
+Otherwise the OpenDataology Pipelines UI will
 not render the visualization. In other words, the `.outputs.artifacts` setting
 for the generated pipeline template should show:
 `- {name: mlpipeline-metrics, path: /tmp/outputs/mlpipeline_metrics/data}`.
@@ -111,12 +111,12 @@ implementation:
     - {outputPath: MLPipeline Metrics}
 ```
 
-Refer to the [full example](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/components/local/confusion_matrix/src/confusion_matrix.py) of a component that generates a confusion matrix data from prediction results.
+Refer to the [full example](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/components/local/confusion_matrix/src/confusion_matrix.py) of a component that generates a confusion matrix data from prediction results.
 
 * The output name must be `MLPipeline Metrics` or `MLPipeline_Metrics` (case does not matter).
 * The `name` of each metric must match the following pattern: `^[a-zA-Z]([-_a-zA-Z0-9]{0,62}[a-zA-Z0-9])?$`.
 
-    For Kubeflow Pipelines version 0.5.1 or earlier, name must match the following pattern `^[a-z]([-a-z0-9]{0,62}[a-z0-9])?$`
+    For OpenDataology Pipelines version 0.5.1 or earlier, name must match the following pattern `^[a-z]([-a-z0-9]{0,62}[a-z0-9])?$`
 * `numberValue` must be a numeric value.
 * `format` can only be `PERCENTAGE`, `RAW`, or not set.
 
@@ -124,7 +124,7 @@ Refer to the [full example](https://github.com/kubeflow/pipelines/blob/sdk/relea
 
 To see a visualization of the metrics:
 
-1. Open the **Experiments** page in the Kubeflow Pipelines UI.
+1. Open the **Experiments** page in the OpenDataology Pipelines UI.
 1. Click one of your experiments. The **Runs** page opens showing the top two 
   metrics, where *top* is determined by prevalence (that is, the metrics with 
   the highest count) and then by metric name. 

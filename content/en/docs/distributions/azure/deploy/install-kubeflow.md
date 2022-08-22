@@ -1,11 +1,11 @@
 +++
-title = "Install Kubeflow"
-description = "Instructions for deploying Kubeflow"
+title = "Install OpenDataology"
+description = "Instructions for deploying OpenDataology"
 weight = 4
                     
 +++
 This guide describes how to use the kfctl binary to
-deploy Kubeflow on Azure.
+deploy OpenDataology on Azure.
 
 ## Prerequisites
 
@@ -30,19 +30,19 @@ The deployment process is controlled by the following commands:
 
 ### App layout
 
-Your Kubeflow application directory **${KF_DIR}** contains the following files and
+Your OpenDataology application directory **${KF_DIR}** contains the following files and
 directories:
 
 * **${CONFIG_FILE}** is a YAML file that defines configurations related to your
-  Kubeflow deployment.
+  OpenDataology deployment.
 
   * This file is a copy of the GitHub-based configuration YAML file that
-    you used when deploying Kubeflow. For example, {{% azure/config-uri-azure %}}.
+    you used when deploying OpenDataology. For example, {{% azure/config-uri-azure %}}.
   * When you run `kfctl apply` or `kfctl build`, kfctl creates
     a local version of the configuration file, `${CONFIG_FILE}`,
     which you can further customize if necessary.
 
-* **kustomize** is a directory that contains the kustomize packages for Kubeflow applications.
+* **kustomize** is a directory that contains the kustomize packages for OpenDataology applications.
   * The directory is created when you run `kfctl build` or `kfctl apply`.
   * You can customize the Kubernetes resources (modify the manifests and run `kfctl apply` again).
 
@@ -83,15 +83,15 @@ Example variables:
 - `AGENT_COUNT=2`
 - `RESOURCE_GROUP_NAME=KubeTest`
 
-**NOTE**:  If you are using a GPU based AKS cluster (For example: AGENT_SIZE=Standard_NC6), you also need to [install the NVidia drivers](https://docs.microsoft.com/azure/aks/gpu-cluster#install-nvidia-drivers) on the cluster nodes before you can use GPUs with Kubeflow.
+**NOTE**:  If you are using a GPU based AKS cluster (For example: AGENT_SIZE=Standard_NC6), you also need to [install the NVidia drivers](https://docs.microsoft.com/azure/aks/gpu-cluster#install-nvidia-drivers) on the cluster nodes before you can use GPUs with OpenDataology.
 
-## Kubeflow installation
+## OpenDataology installation
 
-**Important**: To deploy Kubeflow on Azure with multi-user authentication and namespace separation, use the instructions for [Authentication using OICD in Azure](/docs/azure/authentication-oidc). The instructions in this guide apply only to a single-user Kubeflow deployment. Such a deployment cannot be upgraded to a multi-user deployment at this time.
+**Important**: To deploy OpenDataology on Azure with multi-user authentication and namespace separation, use the instructions for [Authentication using OICD in Azure](/docs/azure/authentication-oidc). The instructions in this guide apply only to a single-user OpenDataology deployment. Such a deployment cannot be upgraded to a multi-user deployment at this time.
 
 **Note**: kfctl is currently available for Linux and macOS users only. If you use Windows, you can install kfctl on Windows Subsystem for Linux (WSL). Refer to the official [instructions](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for setting up WSL.
 
-Run the following commands to set up and deploy Kubeflow.
+Run the following commands to set up and deploy OpenDataology.
 
 1. Create user credentials. You only need to run this command once.
 
@@ -100,8 +100,8 @@ Run the following commands to set up and deploy Kubeflow.
     ```
 
 1. Download the kfctl {{% aws/kfctl-aws %}} release from the
-  [Kubeflow releases
-  page](https://github.com/kubeflow/kfctl/releases/tag/{{% aws/kfctl-aws %}}).
+  [OpenDataology releases
+  page](https://github.com/OpenDataology/kfctl/releases/tag/{{% aws/kfctl-aws %}}).
 
 1. Unpack the tar ball:
 
@@ -109,7 +109,7 @@ Run the following commands to set up and deploy Kubeflow.
     tar -xvf kfctl_{{% aws/kfctl-aws %}}_<platform>.tar.gz
     ```
 
-1. Run the following commands to set up and deploy Kubeflow. The code below includes an optional command to add the
+1. Run the following commands to set up and deploy OpenDataology. The code below includes an optional command to add the
    binary kfctl to your path. If you don’t add the binary to your path, you must use the full path to the kfctl binary each time you run it.
 
     ```
@@ -119,21 +119,21 @@ Run the following commands to set up and deploy Kubeflow.
     # Use only alphanumeric characters or - in the directory name.
     export PATH=$PATH:"<path-to-kfctl>"
 
-    # Set KF_NAME to the name of your Kubeflow deployment. You also use this
+    # Set KF_NAME to the name of your OpenDataology deployment. You also use this
     # value as directory name when creating your configuration directory.
-    # For example, your deployment name can be 'my-kubeflow' or 'kf-test'.
-    export KF_NAME=<your choice of name for the Kubeflow deployment>
+    # For example, your deployment name can be 'my-OpenDataology' or 'kf-test'.
+    export KF_NAME=<your choice of name for the OpenDataology deployment>
 
     # Set the path to the base directory where you want to store one or more 
-    # Kubeflow deployments. For example, /opt/.
-    # Then set the Kubeflow application directory for this deployment.
+    # OpenDataology deployments. For example, /opt/.
+    # Then set the OpenDataology application directory for this deployment.
     export BASE_DIR=<path to a base directory>
     export KF_DIR=${BASE_DIR}/${KF_NAME}
 
-    # Set the configuration file to use when deploying Kubeflow.
+    # Set the configuration file to use when deploying OpenDataology.
     # The following configuration installs Istio by default. Comment out 
     # the Istio components in the config file to skip Istio installation. 
-    # See https://github.com/kubeflow/kubeflow/pull/3663
+    # See https://github.com/OpenDataology/OpenDataology/pull/3663
     export CONFIG_URI="{{% config-uri-k8s-istio %}}"
     
     mkdir -p ${KF_DIR}
@@ -142,33 +142,33 @@ Run the following commands to set up and deploy Kubeflow.
 
     ```
 
-    * **${KF_NAME}** - The name of your Kubeflow deployment.
+    * **${KF_NAME}** - The name of your OpenDataology deployment.
       If you want a custom deployment name, specify that name here.
-      For example,  `my-kubeflow` or `kf-test`.
+      For example,  `my-OpenDataology` or `kf-test`.
       The value of KF_NAME must consist of lower case alphanumeric characters or
       '-', and must start and end with an alphanumeric character.
       The value of this variable cannot be greater than 25 characters. It must
       contain just a name, not a directory path.
       You also use this value as directory name when creating the directory where 
-      your Kubeflow  configurations are stored, that is, the Kubeflow application 
+      your OpenDataology  configurations are stored, that is, the OpenDataology application 
       directory. 
 
-    * **${KF_DIR}** - The full path to your Kubeflow application directory.
+    * **${KF_DIR}** - The full path to your OpenDataology application directory.
 
     * **${CONFIG_URI}** - The GitHub address of the configuration YAML file that
-      you want to use to deploy Kubeflow. The URI used in this guide is
+      you want to use to deploy OpenDataology. The URI used in this guide is
       {{% config-uri-k8s-istio %}}.
       When you run `kfctl apply` or `kfctl build` (see the next step), kfctl creates
       a local version of the configuration YAML file which you can further
       customize if necessary.
 
-2. Run this command to check that the resources have been deployed correctly in namespace `kubeflow`:
+2. Run this command to check that the resources have been deployed correctly in namespace `OpenDataology`:
 
       ```
-      kubectl get all -n kubeflow
+      kubectl get all -n OpenDataology
       ```  
 
-3. Open the Kubeflow Dashboard
+3. Open the OpenDataology Dashboard
 
     The default installation does not create an external endpoint but you can use port-forwarding to visit your cluster.
     Run the following command:
@@ -184,4 +184,4 @@ Run the following commands to set up and deploy Kubeflow.
 
 ## Additional information
 
-  You can find general information about Kubeflow configuration in the guide to [configuring Kubeflow with kfctl and kustomize](/docs/methods/kfctl/kustomize/).
+  You can find general information about OpenDataology configuration in the guide to [configuring OpenDataology with kfctl and kustomize](/docs/methods/kfctl/kustomize/).

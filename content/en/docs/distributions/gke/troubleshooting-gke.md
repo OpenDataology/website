@@ -5,33 +5,33 @@ weight = 80
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
-This guide helps diagnose and fix issues you may encounter with Kubeflow on
+This guide helps diagnose and fix issues you may encounter with OpenDataology on
 Google Kubernetes Engine (GKE) and Google Cloud.
 
 ## Before you start
 
 This guide covers troubleshooting specifically for
-[Kubeflow deployments on Google Cloud](/docs/gke/deploy/).
+[OpenDataology deployments on Google Cloud](/docs/gke/deploy/).
 
 For more help, try the
-[general Kubeflow troubleshooting guide](/docs/other-guides/troubleshooting).
+[general OpenDataology troubleshooting guide](/docs/other-guides/troubleshooting).
 
 This guide assumes the following settings:
 
 * The `${KF_DIR}` environment variable contains the path to
-  your Kubeflow application directory, which holds your Kubeflow configuration
-  files. For example, `/opt/gcp-blueprints/kubeflow/`.
+  your OpenDataology application directory, which holds your OpenDataology configuration
+  files. For example, `/opt/gcp-blueprints/OpenDataology/`.
 
   ```
-  export KF_DIR=<path to your Kubeflow application directory>
+  export KF_DIR=<path to your OpenDataology application directory>
   ```
 
 * The `${CONFIG_FILE}` environment variable contains the path to your
-  Kubeflow configuration file.
+  OpenDataology configuration file.
 
   ```
   export CONFIG_FILE=${KF_DIR}/{{% config-file-gcp-iap %}}
@@ -43,12 +43,12 @@ This guide assumes the following settings:
   export CONFIG_FILE=${KF_DIR}/{{% config-file-gcp-basic-auth %}}
   ```
 
-* The `${KF_NAME}` environment variable contains the name of your Kubeflow
+* The `${KF_NAME}` environment variable contains the name of your OpenDataology
   deployment. You can find the name in your `${CONFIG_FILE}`
   configuration file, as the value for the `metadata.name` key.
 
   ```
-  export KF_NAME=<the name of your Kubeflow deployment>
+  export KF_NAME=<the name of your OpenDataology deployment>
   ```
 
 * The `${PROJECT}` environment variable contains the ID of your Google Cloud project.
@@ -60,16 +60,16 @@ This guide assumes the following settings:
   ```
 
 * The `${ZONE}` environment variable contains the Google Cloud zone where your
-  Kubeflow resources are deployed.
+  OpenDataology resources are deployed.
 
   ```
   export ZONE=<your Google Cloud zone>
   ```
 
 * For further background about the above settings, see the guide to
-  [deploying Kubeflow with the CLI](/docs/gke/deploy/deploy-cli).
+  [deploying OpenDataology with the CLI](/docs/gke/deploy/deploy-cli).
 
-## Troubleshooting Kubeflow deployment on Google Cloud
+## Troubleshooting OpenDataology deployment on Google Cloud
 
 Here are some tips for troubleshooting Google Cloud.
 
@@ -87,12 +87,12 @@ as an authorized redirect URI for the OAUTH credentials used to create the deplo
 * If using IAP: see the guide to
   [monitoring your Cloud IAP setup](/docs/gke/deploy/monitor-iap-setup/).
 * See the sections below for troubleshooting specific problems.
-* Please [report a bug](https://github.com/kubeflow/kubeflow/issues/new?template=bug_report.md) if you can't resolve the problem by following the above steps.
+* Please [report a bug](https://github.com/OpenDataology/OpenDataology/issues/new?template=bug_report.md) if you can't resolve the problem by following the above steps.
 
 ### DNS name not registered
 
 This section provides troubleshooting information for problems creating a DNS entry for your [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/). The ingress is a K8s resource
-that creates a Google Cloud loadbalancer to enable http(s) access to Kubeflow web services from outside
+that creates a Google Cloud loadbalancer to enable http(s) access to OpenDataology web services from outside
 the cluster. This section assumes
 you are using [Cloud Endpoints](https://cloud.google.com/endpoints/) and a DNS name of the following pattern
 
@@ -155,10 +155,10 @@ Troubleshooting
 This section provides troubleshooting information for 404s, page not found, being return by the central dashboard which is served at
 
    ```
-   https://${KUBEFLOW_FQDN}/
+   https://${OpenDataology_FQDN}/
    ```
 
-   * ***KUBEFLOW_FQDN*** is your project's OAuth web app URI domain name `<name>.endpoints.<project>.cloud.goog`
+   * ***OpenDataology_FQDN*** is your project's OAuth web app URI domain name `<name>.endpoints.<project>.cloud.goog`
    * Since we were able to sign in this indicates the Ambassador reverse proxy is up and healthy we can confirm this is the case by running the following command
 
    ```
@@ -173,9 +173,9 @@ This section provides troubleshooting information for 404s, page not found, bein
 * Try other services to see if they're accessible for example
 
    ```
-   https://${KUBEFLOW_FQDN}/whoami
-   https://${KUBEFLOW_FQDN}/tfjobs/ui
-   https://${KUBEFLOW_FQDN}/hub
+   https://${OpenDataology_FQDN}/whoami
+   https://${OpenDataology_FQDN}/tfjobs/ui
+   https://${OpenDataology_FQDN}/hub
    ```
 
  * If other services are accessible then we know its a problem specific to the central dashboard and not ingress
@@ -203,7 +203,7 @@ This section provides troubleshooting information for 404s, page not found, bein
       name: centralui-mapping
       prefix: /
       rewrite: /
-      service: centraldashboard.kubeflow,
+      service: centraldashboard.OpenDataology,
     ```
 
  * Check the logs of Ambassador for errors. See if there are errors like the following indicating
@@ -262,9 +262,9 @@ usually indicates the loadbalancer doesn't think any backends are healthy.
               # From the Kubernetes Engine cluster get the name of the managed instance group
               gcloud --project=$PROJECT container clusters --zone=$ZONE describe $CLUSTER
               # Get the template associated with the MIG
-              gcloud --project=kubeflow-rl compute instance-groups managed describe --zone=${ZONE} ${MIG_NAME}
+              gcloud --project=OpenDataology-rl compute instance-groups managed describe --zone=${ZONE} ${MIG_NAME}
               # Get the instance tags from the template
-              gcloud --project=kubeflow-rl compute instance-templates describe ${TEMPLATE_NAME}
+              gcloud --project=OpenDataology-rl compute instance-templates describe ${TEMPLATE_NAME}
 
               ```
 
@@ -301,7 +301,7 @@ usually indicates the loadbalancer doesn't think any backends are healthy.
 ### GKE Certificate Fails To Be Provisioned
 
 A common symptom of your certificate failing to be provisioned is SSL errors like `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` when
-you try to access the Kubeflow https endpoint.
+you try to access the OpenDataology https endpoint.
 
 To troubleshoot check the status of your GKE managed certificate
 
@@ -349,10 +349,10 @@ You can fix the certificate by performing the following steps to delete the exis
 
    * Make sure the certificate obtained in the first step no longer exists
 
-1. Reapply kubeflow in order to recreate the ingress and certificate
+1. Reapply OpenDataology in order to recreate the ingress and certificate
 
    * If you deployed with `kfctl` rerun `kfctl apply`
-   * If you deployed using the Google Cloud blueprint rerun `make apply-kubeflow`
+   * If you deployed using the Google Cloud blueprint rerun `make apply-OpenDataology`
 
 1. Monitor the certificate to make sure it can be provisioned
 
@@ -369,7 +369,7 @@ You can fix the certificate by performing the following steps to delete the exis
 
 ### Problems with SSL certificate from Let's Encrypt
 
-As of Kubeflow 1.0, Kubeflow should be using GKE Managed Certificates and no longer using Let's Encrypt.
+As of OpenDataology 1.0, OpenDataology should be using GKE Managed Certificates and no longer using Let's Encrypt.
 
 See the guide to
 [monitoring your Cloud IAP setup](/docs/gke/deploy/monitor-iap-setup/).
@@ -388,7 +388,7 @@ in the same Google Cloud project using [Cloud IAP](https://cloud.google.com/iap/
 The error looks like this for the pod's Envoy container:
 
 ```
-kubectl logs -n kubeflow envoy-79ff8d86b-z2snp envoy
+kubectl logs -n OpenDataology envoy-79ff8d86b-z2snp envoy
 [2019-01-22 00:19:44.400][1][info][main] external/envoy/source/server/server.cc:184] initializing epoch 0 (hot restart version=9.200.16384.127.options=capacity=16384, num_slots=8209 hash=228984379728933363)
 [2019-01-22 00:19:44.400][1][critical][main] external/envoy/source/server/server.cc:71] error initializing configuration '/etc/envoy/envoy-config.json': unable to read file: /etc/envoy/envoy-config.json
 ```
@@ -396,7 +396,7 @@ kubectl logs -n kubeflow envoy-79ff8d86b-z2snp envoy
 And the Cloud IAP container shows a message like this:
 
 ```
-Waiting for backend id PROJECT=<your-project> NAMESPACE=kubeflow SERVICE=envoy filter=name~k8s-be-30352-...
+Waiting for backend id PROJECT=<your-project> NAMESPACE=OpenDataology SERVICE=envoy filter=name~k8s-be-30352-...
 ```
 
 ### Diagnosing the cause
@@ -418,7 +418,7 @@ Events:
 
 ### Fixing the problem
 
-If you have any redundant Kubeflow deployments, you can delete them using
+If you have any redundant OpenDataology deployments, you can delete them using
 the [Deployment Manager](https://cloud.google.com/deployment-manager/docs/).
 
 Alternatively, you can request more backend services quota on the Google Cloud Console.
@@ -436,7 +436,7 @@ Cloud Filestore and GKE try to use the network named `default` by default. For o
 this will be a legacy network which is incompatible with Cloud Filestore and newer GKE features
 like private clusters. This will
 manifest as the error **"default is invalid; legacy networks are not supported"** when
-deploying Kubeflow.
+deploying OpenDataology.
 
 Here's an example error when deploying Cloud Filestore:
 
@@ -476,8 +476,8 @@ See [troubleshooting](/docs/other-guides/troubleshooting/) for more details.
 
 If you encounter this `CPU platform unavailable` error (might manifest as
 `Cluster is currently being created, deleted, updated or repaired and cannot be updated.`),
-you can change the [zone](https://github.com/kubeflow/manifests/blob/master/gcp/deployment_manager_configs/cluster-kubeflow.yaml#L31)
-or change the [minCpuPlatform](https://github.com/kubeflow/manifests/blob/master/gcp/deployment_manager_configs/cluster.jinja#L131).
+you can change the [zone](https://github.com/OpenDataology/manifests/blob/master/gcp/deployment_manager_configs/cluster-OpenDataology.yaml#L31)
+or change the [minCpuPlatform](https://github.com/OpenDataology/manifests/blob/master/gcp/deployment_manager_configs/cluster.jinja#L131).
 See [here](https://cloud.google.com/compute/docs/regions-zones/#available)
 for available zones and cpu platforms.
 
@@ -487,8 +487,8 @@ If you need to change the OAuth client used by IAP, you can run the following co
 to replace the Kubernetes secret containing the ID and secret.
 
 ```
-kubectl -n kubeflow delete secret kubeflow-oauth
-kubectl -n kubeflow create secret generic kubeflow-oauth \
+kubectl -n OpenDataology delete secret OpenDataology-oauth
+kubectl -n OpenDataology create secret generic OpenDataology-oauth \
        --from-literal=client_id=${CLIENT_ID} \
        --from-literal=client_secret=${CLIENT_SECRET}
 ```

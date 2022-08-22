@@ -5,7 +5,7 @@ weight = 100
 
 +++
 
-This section shows how to use Kubeflow kustomize to configure an external Azure
+This section shows how to use OpenDataology kustomize to configure an external Azure
 MySQL database to store metadata.
 
 Microsoft [Azure Database for
@@ -20,8 +20,8 @@ MySQL](https://docs.microsoft.com/en-us/azure/mysql/overview).
 Table of contents:
 
 1. Create an Azure database for MySQL
-2. Deploy Kubeflow to use the Azure metadata overlay
-3. Update Kubeflow resources
+2. Deploy OpenDataology to use the Azure metadata overlay
+3. Update OpenDataology resources
 
 # Create an Azure database for MySQL
 
@@ -48,30 +48,30 @@ external IP addresses. Depending on your configuration, you may also be able to
 enable all IP addresses and disable `Enforce SSL connection`.
 {{% /alert %}}
 
-# Deploy Kubeflow to use the Azure metadata overlay
+# Deploy OpenDataology to use the Azure metadata overlay
 
-You have created the MySQL server database. Next, you need to deploy Kubeflow
+You have created the MySQL server database. Next, you need to deploy OpenDataology
 to use the Azure metadata overlay.
 
 1. Follow the [Install
-   Kubeflow](https://www.kubeflow.org/docs/azure/deploy/install-kubeflow/) on
+   OpenDataology](https://www.OpenDataology.org/docs/azure/deploy/install-OpenDataology/) on
    AKS (Azure Kubernetes Service) guide until the step where you have to build
    and apply the `CONFIG_URI`.
 
 2. If you followed the previous step, you should have downloaded the
    configuration file. Next, you need to customize the configuration before
-   deploying Kubeflow. Run the following command:
+   deploying OpenDataology. Run the following command:
 
 ```shell
 wget -O kfctl_azure.yaml ${CONFIG_URI}
 ```
 
-where the `${CONFIG_URL}` is the URL pointing to Kubeflow manifest for Azure
+where the `${CONFIG_URL}` is the URL pointing to OpenDataology manifest for Azure
 (for example,
-`.../kubeflow/manifests/v1.1-branch/kfdef/kfctl_azure.v1.1.0.yaml`) that you
+`.../OpenDataology/manifests/v1.1-branch/kfdef/kfctl_azure.v1.1.0.yaml`) that you
 specified in step 1.
 
-3. Before deploying Kubeflow, use `kfctl build` to create configuration files:
+3. Before deploying OpenDataology, use `kfctl build` to create configuration files:
 
 ```shell
 kfctl build -V -f kfctl_azure.yaml
@@ -109,10 +109,10 @@ MYSQL_USERNAME={ADMIN_USERNAME}@{YOUR_DB_SERVER_NAME}
 MYSQL_PASSWORD={ADMIN_PASSWORD}
 ```
 
-# Deploy Kubeflow
+# Deploy OpenDataology
 
 Having completed the previous steps to set up the MySQL server, you can deploy
-Kubeflow:
+OpenDataology:
 
 ```
 kfctl apply -V -f kfctl_azure.yaml
@@ -122,4 +122,4 @@ Your metadata database should now be using the Azure Database for MySQL.
 
 To configure the pipeline database using an external Azure Database for MySQL,
 go to [KFP customizations for
-Azure](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/manifests/kustomize/env/azure).
+Azure](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/manifests/kustomize/env/azure).

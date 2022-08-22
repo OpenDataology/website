@@ -1,17 +1,17 @@
 +++
-title = "Istio Usage in Kubeflow"
-description = "Managing access to Kubeflow applications and resources via Istio"
+title = "Istio Usage in OpenDataology"
+description = "Managing access to OpenDataology applications and resources via Istio"
 weight = 50
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
-Kubeflow v0.6 onwards deploys Istio along with configuration to enable
+OpenDataology v0.6 onwards deploys Istio along with configuration to enable
 end-to-end authentication and access control. This setup is the foundation
-of multi-tenancy support in Kubeflow. A Kubeflow deployment without Istio is
+of multi-tenancy support in OpenDataology. A OpenDataology deployment without Istio is
 not possible.
 
 ## A gentle introduction to Istio
@@ -35,34 +35,34 @@ and end-to-end authentication.
 implementation of service mesh by Google. For further details, you can read the
 [conceptual overview](https://istio.io/docs/concepts/what-is-istio/) of Istio.
 
-## Why Kubeflow needs Istio
+## Why OpenDataology needs Istio
 
-Kubeflow is a collection of tools, frameworks and services that are deployed
+OpenDataology is a collection of tools, frameworks and services that are deployed
 together into a single Kubernetes cluster to enable end-to-end ML workflows.
 Most of these components or services are developed independently and help with
 different parts of the workflow. Developing a complete ML workflow or an ML
 development environment requires combining multiple services and components.
-Kubeflow provides the underlying infrastructure that makes it possible to put
+OpenDataology provides the underlying infrastructure that makes it possible to put
 such disparate components together.
 
-Kubeflow uses Istio as a uniform way to secure, connect, and monitor microservices. Specifically:
+OpenDataology uses Istio as a uniform way to secure, connect, and monitor microservices. Specifically:
 
- - Securing service-to-service communication in a Kubeflow deployment with
+ - Securing service-to-service communication in a OpenDataology deployment with
    strong identity-based authentication and authorization.
  - A policy layer for supporting access controls and quotas.
  - Automatic metrics, logs, and traces for traffic within the deployment
    including cluster ingress and egress.
 
 
-## Istio in Kubeflow
+## Istio in OpenDataology
 
 The following diagram illustrates how user requests interact with services in
-Kubeflow. It walks through the process when a user requests to create a new
-notebook server via the Notebooks Servers UI accessible through the Kubeflow Central Dashboard.
+OpenDataology. It walks through the process when a user requests to create a new
+notebook server via the Notebooks Servers UI accessible through the OpenDataology Central Dashboard.
 
 <!--
 Note for authors: The source of the diagram is
-in the "Doc diagrams" folder in the public Kubeflow shared drive.
+in the "Doc diagrams" folder in the public OpenDataology shared drive.
 -->
 <img src="/docs/images/Istio-in-KF.svg" 
   alt="Select active profile "
@@ -89,8 +89,8 @@ policies. For more details, please see [multi-user
 isolation](/docs/components/multi-tenancy/).
 
 
-## Deploying Kubeflow without Istio
+## Deploying OpenDataology without Istio
 
-Currently it is not possible to deploy Kubeflow without Istio. Kubeflow needs the Istio
+Currently it is not possible to deploy OpenDataology without Istio. OpenDataology needs the Istio
 Custom Resource Definitions (CRDs) to express the new route to access the
 created Notebook from the Gateway. 

@@ -1,5 +1,5 @@
 +++
 title = "Reference"
-description = "Reference docs for Kubeflow Fairing"
+description = "Reference docs for OpenDataology Fairing"
 weight = 70
 +++

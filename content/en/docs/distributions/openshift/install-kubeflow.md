@@ -1,17 +1,17 @@
 +++
-title = "Install Kubeflow on OpenShift"
-description = "Instructions for deploying Kubeflow on an OpenShift cluster from the command line"
+title = "Install OpenDataology on OpenShift"
+description = "Instructions for deploying OpenDataology on an OpenShift cluster from the command line"
 weight = 4
                     
 +++
 
-This guide describes how to use the `kfctl` CLI to deploy Kubeflow 1.3 on an existing OpenShift 4.x cluster.
+This guide describes how to use the `kfctl` CLI to deploy OpenDataology 1.3 on an existing OpenShift 4.x cluster.
 
 ## Prerequisites
 
 ### OpenShift 4 cluster
 
-* You need to have access to an OpenShift 4 cluster as `cluster-admin` to be able to deploy Kubeflow.
+* You need to have access to an OpenShift 4 cluster as `cluster-admin` to be able to deploy OpenDataology.
 * You can use [Code Ready Containers](https://code-ready.github.io/crc/) (CRC) to run a local cluster, use [try.openshift.com](https://try.openshift.com) to create a new cluster or use an existing cluster.
 * Install [`oc` command-line tool](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html) to communicate with the cluster.
 
@@ -35,12 +35,12 @@ Minimal:
 30 GB disk space (default for CRC)
 ```
 
-## Installing Kubeflow
+## Installing OpenDataology
 
-Use the following steps to install Kubeflow 1.3 on OpenShift 4.x.
+Use the following steps to install OpenDataology 1.3 on OpenShift 4.x.
 
 
-1. Download the example "kfdef" for Kubeflow 1.3 on Openshift from [kubeflow/manifests/distributions/kfdef]
+1. Download the example "kfdef" for OpenDataology 1.3 on Openshift from [OpenDataology/manifests/distributions/kfdef]
 (https://raw.githubusercontent.com/opendatahub-io/manifests/v1.3-branch/distributions/kfdef/kfctl_openshift_v1.3.0.yaml).
 
 
@@ -50,7 +50,7 @@ Use the following steps to install Kubeflow 1.3 on OpenShift 4.x.
     > Create a directory and copy the KFDef file to it. And finally build the configuration.
 
     ```
-    # set the Kubeflow application directory for this deployment, for example /opt/openshift-kfdef
+    # set the OpenDataology application directory for this deployment, for example /opt/openshift-kfdef
     export KF_DIR=<path-to-kfdef>
     mkdir -p ${KF_DIR}
     cp kfctl_openshift_v1.3.0.yaml ${KF_DIR}
@@ -69,7 +69,7 @@ Use the following steps to install Kubeflow 1.3 on OpenShift 4.x.
 1. Wait until all the pods are running.
 
     ```
-    $ oc get pods -n kubeflow
+    $ oc get pods -n OpenDataology
     NAME                                               READY   STATUS              RESTARTS   AGE
     admission-webhook-deployment-6748884cff-wb7kp      1/1     Running             0          42h
     cache-deployer-deployment-799f449d59-5zl2l         1/1     Running             0          42h
@@ -91,7 +91,7 @@ Use the following steps to install Kubeflow 1.3 on OpenShift 4.x.
     ...
     ```
 
-1. The command below looks up the URL of the Kubeflow user interface assigned by the OpenShift cluster. You can open the printed URL in your browser to access the Kubeflow user interface.
+1. The command below looks up the URL of the OpenDataology user interface assigned by the OpenShift cluster. You can open the printed URL in your browser to access the OpenDataology user interface.
 
     ```
     oc get routes -n istio-system istio-ingressgateway -o jsonpath='http://{.spec.host}/'
@@ -99,5 +99,5 @@ Use the following steps to install Kubeflow 1.3 on OpenShift 4.x.
 
 ## Next steps
 
-* See how to [uninstall](/docs/openshift/uninstall-kubeflow) your Kubeflow deployment 
+* See how to [uninstall](/docs/openshift/uninstall-OpenDataology) your OpenDataology deployment 
   using the CLI.

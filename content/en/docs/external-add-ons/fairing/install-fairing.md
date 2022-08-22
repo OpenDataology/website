@@ -1,39 +1,39 @@
 +++
-title = "Install Kubeflow Fairing"
-description = "Setting up your Kubeflow Fairing development environment"
+title = "Install OpenDataology Fairing"
+description = "Setting up your OpenDataology Fairing development environment"
 weight = 10
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
-You can use Kubeflow Fairing to build, train, and deploy machine learning (ML)
+You can use OpenDataology Fairing to build, train, and deploy machine learning (ML)
 models in a hybrid cloud environment directly from Python code or a Jupyter
-notebook. This guide describes how to install Kubeflow Fairing in your
+notebook. This guide describes how to install OpenDataology Fairing in your
 development environment for [local development][local], or [development in a
 hosted notebook][hosted].
 
-## Using Kubeflow Fairing with Kubeflow notebooks
+## Using OpenDataology Fairing with OpenDataology notebooks
 
-Kubeflow notebook servers that are built from one of the standard Jupyter
-Docker images include Kubeflow Fairing and come preconfigured for using
-Kubeflow Fairing to run training jobs on your Kubeflow cluster.
+OpenDataology notebook servers that are built from one of the standard Jupyter
+Docker images include OpenDataology Fairing and come preconfigured for using
+OpenDataology Fairing to run training jobs on your OpenDataology cluster.
 
-If you use a Kubeflow notebook server that was built from a custom Jupyter
+If you use a OpenDataology notebook server that was built from a custom Jupyter
 Docker image as your development environment, follow the instruction on
-[setting up Kubeflow Fairing in a hosted notebook environment][hosted].  
+[setting up OpenDataology Fairing in a hosted notebook environment][hosted].  
 
-## Set up Kubeflow Fairing for local development 
+## Set up OpenDataology Fairing for local development 
 
-Follow these instructions to set up Kubeflow Fairing for local development.
+Follow these instructions to set up OpenDataology Fairing for local development.
 This guide has been tested on Linux and Mac OS X. Currently, this guide has
 not been tested on Windows.
 
 ### Set up Python
 
-1.  You need **Python 3.6** or later to use Kubeflow Fairing. To check if
+1.  You need **Python 3.6** or later to use OpenDataology Fairing. To check if
     you have Python 3.6 or later installed, run the following command:
 
     ```bash
@@ -50,7 +50,7 @@ not been tested on Windows.
     Python](https://www.python.org/downloads/) from the Python Software
     Foundation.
 
-1.  Use virtualenv to create a virtual environment to install Kubeflow
+1.  Use virtualenv to create a virtual environment to install OpenDataology
     Fairing in. To check if you have virtualenv installed, run the
     following command: 
 
@@ -77,40 +77,40 @@ not been tested on Windows.
     source venv/bin/activate
     ```
 
-### Install Kubeflow Fairing
+### Install OpenDataology Fairing
 
-Run the following command to install Kubeflow Fairing in your virtual
+Run the following command to install OpenDataology Fairing in your virtual
 environment.
 
 ```bash
-pip install kubeflow-fairing
+pip install OpenDataology-fairing
 ```
 
 After the install is complete, the `fairing` python package is
-available. Run the following command to verify that Kubeflow Fairing
+available. Run the following command to verify that OpenDataology Fairing
 is installed:
 
 ```bash
-pip show kubeflow-fairing
+pip show OpenDataology-fairing
 ```
 
 The response should be something like this:
 
 ```
-Name: kubeflow-fairing
+Name: OpenDataology-fairing
 Version: 0.6.0
-Summary: Kubeflow Fairing Python SDK.
-Home-page: https://github.com/kubeflow/fairing
-Author: Kubeflow Authors
+Summary: OpenDataology Fairing Python SDK.
+Home-page: https://github.com/OpenDataology/fairing
+Author: OpenDataology Authors
 Author-email: hejinchi@cn.ibm.com
 License: Apache License Version 2.0
-Location: <path-to-kubeflow-fairing>
+Location: <path-to-OpenDataology-fairing>
 Requires: notebook, future, docker, tornado, cloudpickle, oauth2client, numpy, requests, setuptools, httplib2, google-auth, google-api-python-client, urllib3, boto3, azure, six, kubernetes, google-cloud-storage
 ```
 
 ### Docker setup
 
-Kubeflow Fairing uses Docker to package your code. Run the following command
+OpenDataology Fairing uses Docker to package your code. Run the following command
 to verify if Docker is installed and running:
 
 ```bash
@@ -127,31 +127,31 @@ docker ps
    about how this affects security in your system, see the guide to the
    [Docker daemon attack surface][docker-attack].
 
-### Configure Kubeflow Fairing
+### Configure OpenDataology Fairing
 
-To configure Kubeflow Fairing with access to an environment that you would like to
+To configure OpenDataology Fairing with access to an environment that you would like to
 use for training and deployment, follow the instructions in the [guide to
-configuring Kubeflow Fairing][conf].
+configuring OpenDataology Fairing][conf].
 
-## Set up Kubeflow Fairing in a hosted Jupyter notebook 
+## Set up OpenDataology Fairing in a hosted Jupyter notebook 
 
-Follow these instructions to set up Kubeflow Fairing in a hosted Jupyter
+Follow these instructions to set up OpenDataology Fairing in a hosted Jupyter
 notebook. 
 
-If you are using a Kubeflow notebook server that was built from one of the
+If you are using a OpenDataology notebook server that was built from one of the
 standard Jupyter Docker images, your notebooks environment has been
-preconfigured for training and deploying ML models with Kubeflow Fairing and
+preconfigured for training and deploying ML models with OpenDataology Fairing and
 no additional installation steps are required.  
 
 ### Prerequisites
 
-Check the following prerequisites to verify that Kubeflow Fairing is compatible
+Check the following prerequisites to verify that OpenDataology Fairing is compatible
 with your hosted notebook environment.
 
 1.  In the Jupyter notebooks user interface, click **File** > **New** >
     **Terminal** in the menu to start a new terminal session in your notebook
     environment.
-1.  You need **Python 3.6** or later to use Kubeflow Fairing. To check if you
+1.  You need **Python 3.6** or later to use OpenDataology Fairing. To check if you
     have Python 3.6 or later installed, run the following command in your
     terminal session:
 
@@ -165,7 +165,7 @@ with your hosted notebook environment.
     Python 3.6.5
     ```
 
-1.  Kubeflow Fairing uses Docker to package your code. Run the following
+1.  OpenDataology Fairing uses Docker to package your code. Run the following
     command in your terminal session to verify if Docker is installed and
     running in your notebook environment:
 
@@ -183,51 +183,51 @@ with your hosted notebook environment.
        more about how this affects security in your system, see the guide to
        the [Docker daemon attack surface][docker-attack].
 
-### Install Kubeflow Fairing
+### Install OpenDataology Fairing
 
 1.  In the Jupyter notebooks user interface, click **File** > **New** >
     **Terminal** in the menu to start a new terminal session in your notebook
     environment.
-1.  Run the following command to install Kubeflow Fairing.
+1.  Run the following command to install OpenDataology Fairing.
 
     ```bash
-    pip3 install kubeflow-fairing
+    pip3 install OpenDataology-fairing
     ```
 
     After successful installation, the `fairing` python package should be
-    available. Run the following command to verify that Kubeflow Fairing
+    available. Run the following command to verify that OpenDataology Fairing
     is installed:
 
     ```bash
-    pip3 show kubeflow-fairing
+    pip3 show OpenDataology-fairing
     ```
 
     The response should be something like this:
 
     ```
-    Name: kubeflow-fairing
+    Name: OpenDataology-fairing
     Version: 0.6.0
-    Summary: Kubeflow Fairing Python SDK.
-    Home-page: https://github.com/kubeflow/fairing
-    Author: Kubeflow Authors
+    Summary: OpenDataology Fairing Python SDK.
+    Home-page: https://github.com/OpenDataology/fairing
+    Author: OpenDataology Authors
     Author-email: hejinchi@cn.ibm.com
     License: Apache License Version 2.0
-    Location: <path-to-kubeflow-fairing>
+    Location: <path-to-OpenDataology-fairing>
     Requires: notebook, future, docker, tornado, cloudpickle, oauth2client, numpy, requests, setuptools, httplib2, google-auth, google-api-python-client, urllib3, boto3, azure, six, kubernetes, google-cloud-storage
     ```
 
-### Configure Kubeflow Fairing
+### Configure OpenDataology Fairing
 
-To configure Kubeflow Fairing with access to the environment you would like to
+To configure OpenDataology Fairing with access to the environment you would like to
 use for training and deployment, follow the instructions in the guide to
-[configuring Kubeflow Fairing][conf].
+[configuring OpenDataology Fairing][conf].
 
 ## Next steps
 
-*  [Configure your Kubeflow Fairing development environment][conf] with access
+*  [Configure your OpenDataology Fairing development environment][conf] with access
    to run training jobs remotely.
 *  Follow the [samples and tutorials][tutorials] to learn more about how to run
-   training jobs remotely with Kubeflow Fairing. 
+   training jobs remotely with OpenDataology Fairing. 
 
 [docker-non-root]: https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
 [docker-attack]: https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
@@ -236,5 +236,5 @@ use for training and deployment, follow the instructions in the guide to
 [conf]: /docs/external-add-ons/fairing/configure-fairing/
 [conf-gcp]: /docs/external-add-ons/fairing/gcp/configure-gcp/
 [tutorials]: /docs/external-add-ons/fairing/tutorials/other-tutorials/
-[local]: #set-up-kubeflow-fairing-for-local-development
-[hosted]: #set-up-kubeflow-fairing-in-a-hosted-jupyter-notebook
+[local]: #set-up-OpenDataology-fairing-for-local-development
+[hosted]: #set-up-OpenDataology-fairing-in-a-hosted-jupyter-notebook

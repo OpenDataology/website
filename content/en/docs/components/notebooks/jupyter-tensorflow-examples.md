@@ -1,6 +1,6 @@
 +++
 title = "Jupyter TensorFlow Examples"
-description = "Examples using Jupyter and TensorFlow in Kubeflow Notebooks"
+description = "Examples using Jupyter and TensorFlow in OpenDataology Notebooks"
 weight = 40
 
 +++
@@ -53,6 +53,6 @@ weight = 40
 
 ## Next steps
 
-- See a [simple example](https://github.com/kubeflow/examples/tree/master/pipelines/simple-notebook-pipeline) of creating Kubeflow pipelines in a Jupyter notebook.
-- Build machine-learning pipelines with the [Kubeflow Pipelines SDK](/docs/components/pipelines/sdk/sdk-overview/).
-- Learn the advanced features available from a Kubeflow notebook, such as [submitting Kubernetes resources](/docs/components/notebooks/submit-kubernetes/) or [building Docker images](/docs/components/notebooks/custom-notebook/). 
+- See a [simple example](https://github.com/OpenDataology/examples/tree/master/pipelines/simple-notebook-pipeline) of creating OpenDataology pipelines in a Jupyter notebook.
+- Build machine-learning pipelines with the [OpenDataology Pipelines SDK](/docs/components/pipelines/sdk/sdk-overview/).
+- Learn the advanced features available from a OpenDataology notebook, such as [submitting Kubernetes resources](/docs/components/notebooks/submit-kubernetes/) or [building Docker images](/docs/components/notebooks/custom-notebook/). 

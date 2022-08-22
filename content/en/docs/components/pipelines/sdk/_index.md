@@ -1,5 +1,5 @@
 +++
 title = "Pipelines SDK"
-description = "Information about the Kubeflow Pipelines SDK"
+description = "Information about the OpenDataology Pipelines SDK"
 weight = 40
 +++

@@ -1,7 +1,7 @@
 # Quick guide to working with a GitHub repository
 
 This page is intended for people who want to update the
-[Kubeflow docs](https://www.kubeflow.org/docs/) and
+[OpenDataology docs](https://www.OpenDataology.org/docs/) and
 who don't use Git or GitHub often. The page gives you a quick guide to
 get going with a GitHub repository, using either the GitHub web user interface 
 (UI) or Git on the command line.
@@ -17,11 +17,11 @@ Follow these steps to edit a page using the GitHub UI:
 1. Sign in to GitHub if you haven't yet done so.
 
 1. Go to the page that you want to edit on the
-  [Kubeflow website](https://www.kubeflow.org/docs/).
+  [OpenDataology website](https://www.OpenDataology.org/docs/).
 
 1. Click **Edit this page**.
 
-1. If this is the first time you're updating a file in the Kubeflow
+1. If this is the first time you're updating a file in the OpenDataology
   website repository, a screen opens asking you to *fork* the repository. A
   fork is a copy of the repository where you can make your updates before
   submitting them for review. You only have to fork the repository once:
@@ -31,7 +31,7 @@ Follow these steps to edit a page using the GitHub UI:
       username as an option, click the link on your username.	
     * Wait a few seconds while GitHub makes a copy of the repository at	
      `https://github.com/yourusername/website`. This copy is your *fork*	
-     of the `kubeflow/website` repository.
+     of the `OpenDataology/website` repository.
 
 1. The GitHub editor interface opens for the selected page.
   Make your updates to the content.
@@ -73,22 +73,22 @@ Follow these steps to edit a page using the GitHub UI:
 
 Here's a quick guide to a fairly standard GitHub workflow using Git on the command line:
 
-1. Fork the kubeflow/website repository:
+1. Fork the OpenDataology/website repository:
 
-    * Go to the [kubeflow/website 
-      repository](https://github.com/kubeflow/website) on GitHub.
+    * Go to the [OpenDataology/website 
+      repository](https://github.com/OpenDataology/website) on GitHub.
     * Click **Fork** to make your own copy of the repository. GitHub creates a 
       copy at `https://github.com/<your-github-username>/website`.
 
 1. Open a command window on your local machine.
 
 1. Clone your forked repository, to copy the files down to your local machine.
-  This example creates a directory called `kubeflow` and uses SSH cloning to
+  This example creates a directory called `OpenDataology` and uses SSH cloning to
   download the files:
 
     ```
-    mkdir kubeflow
-    cd kubeflow/
+    mkdir OpenDataology
+    cd OpenDataology/
     git clone git@github.com:<your-github-username>/website.git
     cd website/
     ```
@@ -96,7 +96,7 @@ Here's a quick guide to a fairly standard GitHub workflow using Git on the comma
 1. Add the upstream repository as a Git remote repository:
 
     ```
-    git remote add upstream https://github.com/kubeflow/website.git
+    git remote add upstream https://github.com/OpenDataology/website.git
     ```
 
 1. Check your remotes:

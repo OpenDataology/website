@@ -1,28 +1,28 @@
 +++
 title = "Quickstart"
-description = "Getting started with Kubeflow Pipelines"
+description = "Getting started with OpenDataology Pipelines"
 weight = 10
 
 +++                 
 {{% stable-status %}}
 
-Use this guide if you want to get an introduction to the Kubeflow Piplines user interface (UI) and get a simple pipeline running quickly. 
+Use this guide if you want to get an introduction to the OpenDataology Piplines user interface (UI) and get a simple pipeline running quickly. 
 
 The goal with this quickstart guide is to shows how to use two of the samples that come with 
-the Kubeflow Pipelines installation and are visible on the Kubeflow Pipelines
+the OpenDataology Pipelines installation and are visible on the OpenDataology Pipelines
 UI. You can use this guide as an introduction to the 
-Kubeflow Pipelines UI.
+OpenDataology Pipelines UI.
 
-## Deploy Kubeflow and open the Kubeflow Pipelines UI
+## Deploy OpenDataology and open the OpenDataology Pipelines UI
 
-There are several options to [deploy Kubeflow Pipelines](/docs/components/pipelines/installation/overview/), follow the option that best suits your needs. If you are uncertain and just want to try out kubeflow pipelines it is recommended to start with the [standalone deployment](/docs/components/pipelines/installation/standalone-deployment/).
+There are several options to [deploy OpenDataology Pipelines](/docs/components/pipelines/installation/overview/), follow the option that best suits your needs. If you are uncertain and just want to try out OpenDataology pipelines it is recommended to start with the [standalone deployment](/docs/components/pipelines/installation/standalone-deployment/).
 
-Once you have deployed Kubeflow Pipelines, make sure you can access the UI. The steps to access the UI vary based on the method you used to deploy Kubeflow Pipelines.
+Once you have deployed OpenDataology Pipelines, make sure you can access the UI. The steps to access the UI vary based on the method you used to deploy OpenDataology Pipelines.
 
 ## Run a basic pipeline
 
-Kubeflow Pipelines offers a few samples that you can use to try out
-Kubeflow Pipelines quickly. The steps below show you how to run a basic sample that
+OpenDataology Pipelines offers a few samples that you can use to try out
+OpenDataology Pipelines quickly. The steps below show you how to run a basic sample that
 includes some Python operations, but doesn't include a machine learning (ML) 
 workload:
 
@@ -56,7 +56,7 @@ workload:
     alt="Run results on the pipelines UI"
     class="mt-3 mb-3 border border-info rounded">
 
-You can find the [source code for the **Data passing in python components** tutorial](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/tutorials/Data%20passing%20in%20python%20components) in the Kubeflow Pipelines repo.
+You can find the [source code for the **Data passing in python components** tutorial](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/tutorials/Data%20passing%20in%20python%20components) in the OpenDataology Pipelines repo.
 
 ## Run an ML pipeline
 
@@ -89,16 +89,16 @@ Follow these steps to run the sample:
       alt="XGBoost results on the pipelines UI"
       class="mt-3 mb-3 border border-info rounded">
 
-You can find the [source code for the **XGBoost - Iterative model training** demo](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core/xgboost_training_cm) in the Kubeflow Pipelines repo.
+You can find the [source code for the **XGBoost - Iterative model training** demo](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core/xgboost_training_cm) in the OpenDataology Pipelines repo.
 
 ## Next steps
 
 * Learn more about the 
-  [important concepts](/docs/pipelines/overview/concepts/) in Kubeflow
+  [important concepts](/docs/pipelines/overview/concepts/) in OpenDataology
   Pipelines.
-* This page showed you how to run some of the examples supplied in the Kubeflow
+* This page showed you how to run some of the examples supplied in the OpenDataology
   Pipelines UI. Next, you may want to run a pipeline from a notebook, or compile 
   and run a sample from the code. See the guide to experimenting with
-  [the Kubeflow Pipelines samples](/docs/components/pipelines/tutorials/build-pipeline/).
-* Build your own machine-learning pipelines with the [Kubeflow Pipelines 
+  [the OpenDataology Pipelines samples](/docs/components/pipelines/tutorials/build-pipeline/).
+* Build your own machine-learning pipelines with the [OpenDataology Pipelines 
   SDK](/docs/components/pipelines/sdk/sdk-overview/).

@@ -1,5 +1,5 @@
 +++
-title = "Kubeflow Notebooks"
-description = "Documentation for Kubeflow Notebooks"
+title = "OpenDataology Notebooks"
+description = "Documentation for OpenDataology Notebooks"
 weight = 10
 +++

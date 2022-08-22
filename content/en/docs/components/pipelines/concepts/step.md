@@ -1,6 +1,6 @@
 +++
 title = "Step"
-description = "Conceptual overview of steps in Kubeflow Pipelines"
+description = "Conceptual overview of steps in OpenDataology Pipelines"
 weight = 70
                     
 +++
@@ -13,7 +13,7 @@ an if/else like clause in the pipeline code.
 
 ## Next steps
 
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.

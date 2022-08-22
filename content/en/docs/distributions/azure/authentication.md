@@ -10,7 +10,7 @@ This section shows how to restrict access to only certain IP addresses for your 
 When using a service with `spec.type: LoadBalancer`, you can specify the IP ranges that are allowed to access the load balancer by using `spec.loadBalancerSourceRanges`. This is currently supported on all major cloud providers. 
 
 ## Editing the LoadBalancer Service
-Use the `kubectl edit svc <loadbalancer-name> -n kubeflow` to add your source ranges. This command will open the editor defined by you KUBE_EDITOR or EDITOR environment variables or fall back to 'vi' for Linux or 'notepad' for Windows. More information about using alternative editors and options for this command can be found in [the kubectl edit documentation](https://www.mankier.com/1/kubectl-edit).
+Use the `kubectl edit svc <loadbalancer-name> -n OpenDataology` to add your source ranges. This command will open the editor defined by you KUBE_EDITOR or EDITOR environment variables or fall back to 'vi' for Linux or 'notepad' for Windows. More information about using alternative editors and options for this command can be found in [the kubectl edit documentation](https://www.mankier.com/1/kubectl-edit).
 ## Internal Subnet Access
 Assuming 10.0.0.0/8 is the address for the internal subnet, a load balancer will be created such that the deployment is only accessible from internal Kubernetes cluster IPs. This will not allow clients from outside your Kubernetes cluster to access the load balancer.
 

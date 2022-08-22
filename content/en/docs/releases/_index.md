@@ -1,5 +1,5 @@
 +++
 title = "Releases"
-description = "Information about past and future Kubeflow releases"
+description = "Information about past and future OpenDataology releases"
 weight = 100
 +++

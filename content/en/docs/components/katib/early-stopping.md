@@ -28,13 +28,13 @@ stopped. Currently, early stopping works only with
 **Note**: Your training container must print training logs with the timestamp,
 because early stopping algorithms need to know the sequence of reported metrics.
 Check the
-[`MXNet` example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/trial-images/mxnet-mnist/mnist.py#L36)
+[`MXNet` example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/trial-images/mxnet-mnist/mnist.py#L36)
 to learn how to add a date format to your logs.
 
 ## Configure the experiment with early stopping
 
 As a reference, you can use the YAML file of the
-[early stopping example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/early-stopping/median-stop.yaml).
+[early stopping example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/early-stopping/median-stop.yaml).
 
 1. Follow the
    [guide](/docs/components/katib/experiment/#configuring-the-experiment)
@@ -42,7 +42,7 @@ As a reference, you can use the YAML file of the
 
 2. Next, to apply early stopping for your experiment, specify the `.spec.earlyStopping`
    parameter, similar to the `.spec.algorithm`. Refer to the
-   [`EarlyStoppingSpec` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L41-L58)
+   [`EarlyStoppingSpec` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/common/v1beta1/common_types.go#L41-L58)
    for more information.
 
    - `.earlyStopping.algorithmName` - the name of the early stopping algorithm.
@@ -71,7 +71,7 @@ Here’s a list of the early stopping algorithms available in Katib:
 More algorithms are under development.
 
 You can add an early stopping algorithm to Katib yourself. Check the
-[developer guide](https://github.com/kubeflow/katib/blob/master/docs/developer-guide.md)
+[developer guide](https://github.com/OpenDataology/katib/blob/master/docs/developer-guide.md)
 to contribute.
 
 <a id="median-stopping-rule"></a>

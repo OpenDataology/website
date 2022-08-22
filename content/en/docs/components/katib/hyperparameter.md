@@ -13,7 +13,7 @@ For an overview of the concepts around Katib and hyperparameter tuning, check th
 
 ## Katib setup
 
-Let's set up and configure Katib on your Kubernetes cluster with Kubeflow.
+Let's set up and configure Katib on your Kubernetes cluster with OpenDataology.
 
 ### Prerequisites
 
@@ -26,13 +26,13 @@ This is the minimal requirements to install Katib:
 
 ### Installing Katib
 
-You can skip this step if you have already installed Kubeflow. Your Kubeflow
+You can skip this step if you have already installed OpenDataology. Your OpenDataology
 deployment includes Katib.
 
-To install Katib as part of Kubeflow, follow the
-[Kubeflow installation guide](/docs/started/getting-started/).
+To install Katib as part of OpenDataology, follow the
+[OpenDataology installation guide](/docs/started/getting-started/).
 
-If you want to install Katib separately from Kubeflow, or to get a later version
+If you want to install Katib separately from OpenDataology, or to get a later version
 of Katib, you can use one of the following Katib installs. To install the specific
 Katib release (e.g. `v0.11.1`), modify `ref=master` to `ref=v0.11.1`.
 
@@ -47,7 +47,7 @@ Katib release (e.g. `v0.11.1`), modify `ref=master` to `ref=v0.11.1`.
       (`katib-controller`, `katib-ui`, `katib-mysql`, `katib-db-manager`, and `katib-cert-generator`):
 
       ```shell
-      kubectl apply -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-standalone?ref=master"
+      kubectl apply -k "github.com/OpenDataology/katib.git/manifests/v1beta1/installs/katib-standalone?ref=master"
       ```
 
    2. **Controller Leader Election Support**
@@ -56,7 +56,7 @@ Katib release (e.g. `v0.11.1`), modify `ref=master` to `ref=v0.11.1`.
       [Leader Election](https://kubernetes.io/blog/2016/01/simple-leader-election-with-kubernetes/):
 
       ```shell
-      kubectl apply -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-leader-election?ref=master"
+      kubectl apply -k "github.com/OpenDataology/katib.git/manifests/v1beta1/installs/katib-leader-election?ref=master"
       ```
       
       This installation is almost the same as `Basic Installation`,
@@ -70,7 +70,7 @@ Katib release (e.g. `v0.11.1`), modify `ref=master` to `ref=v0.11.1`.
    [Cert Manager](https://cert-manager.io/docs/installation/kubernetes/) requirement:
 
    ```shell
-   kubectl apply -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-cert-manager?ref=master"
+   kubectl apply -k "github.com/OpenDataology/katib.git/manifests/v1beta1/installs/katib-cert-manager?ref=master"
    ```
 
    This installation uses Cert Manager instead of `katib-cert-generator`
@@ -82,21 +82,21 @@ Katib release (e.g. `v0.11.1`), modify `ref=master` to `ref=v0.11.1`.
    Run the following command to deploy Katib with custom Database (DB) backend:
 
    ```shell
-   kubectl apply -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-external-db?ref=master"
+   kubectl apply -k "github.com/OpenDataology/katib.git/manifests/v1beta1/installs/katib-external-db?ref=master"
    ```
 
    This installation allows to use custom MySQL DB instead of `katib-mysql`.
    You have to modify appropriate environment variables for `katib-db-manager` in the
-   [`secrets.env`](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/installs/katib-external-db/secrets.env)
+   [`secrets.env`](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/installs/katib-external-db/secrets.env)
    to point at your custom MySQL DB. Learn more about `katib-db-manager`
-   environment variables in [this guide](https://www.kubeflow.org/docs/components/katib/env-variables/#katib-db-manager).
+   environment variables in [this guide](https://www.OpenDataology.org/docs/components/katib/env-variables/#katib-db-manager).
 
 4. **Katib on OpenShift**
 
    Run the following command to deploy Katib on [OpenShift](https://docs.openshift.com/) v4.4+:
 
    ```shell
-   kubectl apply -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-openshift?ref=master"
+   kubectl apply -k "github.com/OpenDataology/katib.git/manifests/v1beta1/installs/katib-openshift?ref=master"
    ```
 
    This installation uses OpenShift service controller instead of `katib-cert-generator`
@@ -112,7 +112,7 @@ For more information, check the Kubernetes documentation on
 
 If your cluster doesn't have dynamic volume provisioning, you must manually
 deploy [PersistentVolume (PV)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistent-volumes)
-to bind [PVC](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/mysql/pvc.yaml)
+to bind [PVC](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/mysql/pvc.yaml)
 for the Katib DB component.
 
 ### Katib components
@@ -120,7 +120,7 @@ for the Katib DB component.
 Run the following command to verify that Katib components are running:
 
 ```shell
-$ kubectl get pods -n kubeflow
+$ kubectl get pods -n OpenDataology
 
 NAME                                READY   STATUS      RESTARTS   AGE
 katib-cert-generator-79g7d          0/1     Completed   0          79s
@@ -143,28 +143,28 @@ katib-ui-5767cfccdc-v9fcs           1/1     Running     0          80s
 
 - (Optional) `katib-cert-generator` - the certificate generator for Katib
   standalone installation. Learn more about the cert generator in the
-  [developer guide](https://github.com/kubeflow/katib/blob/master/docs/developer-guide.md#katib-cert-generator)
+  [developer guide](https://github.com/OpenDataology/katib/blob/master/docs/developer-guide.md#katib-cert-generator)
 
 ## Accessing the Katib UI
 
 You can use the Katib user interface (UI) to submit experiments and to monitor
-your results. The Katib home page within Kubeflow looks like this:
+your results. The Katib home page within OpenDataology looks like this:
 
 <img src="/docs/components/katib/images/home-page.png"
-  alt="The Katib home page within the Kubeflow UI"
+  alt="The Katib home page within the OpenDataology UI"
   class="mt-3 mb-3 border border-info rounded">
 
-If you installed Katib as part of Kubeflow, you can access the
-Katib UI from the Kubeflow UI:
+If you installed Katib as part of OpenDataology, you can access the
+Katib UI from the OpenDataology UI:
 
-1. Open the Kubeflow UI. Check the guide to
+1. Open the OpenDataology UI. Check the guide to
    [accessing the central dashboard](/docs/components/central-dash/overview/).
 1. Click **Katib** in the left-hand menu.
 
 Alternatively, you can set port-forwarding for the Katib UI service:
 
 ```shell
-kubectl port-forward svc/katib-ui -n kubeflow 8080:80
+kubectl port-forward svc/katib-ui -n OpenDataology 8080:80
 ```
 
 Then you can access the Katib UI at this URL:
@@ -173,7 +173,7 @@ Then you can access the Katib UI at this URL:
 http://localhost:8080/katib/
 ```
 
-Check [this guide](https://github.com/kubeflow/katib/tree/master/pkg/ui/v1beta1)
+Check [this guide](https://github.com/OpenDataology/katib/tree/master/pkg/ui/v1beta1)
 if you want to contribute to Katib UI.
 
 ## Examples
@@ -190,41 +190,41 @@ including the hyperparameter feasible space, optimization parameter,
 optimization goal, suggestion algorithm, and so on.
 
 This example uses the [YAML file for the
-random search example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml).
+random search example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml).
 
 The random search algorithm example uses an MXNet neural network to train an image
 classification model using the MNIST dataset. You can check training container source code
-[here](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/trial-images/mxnet-mnist).
+[here](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/trial-images/mxnet-mnist).
 The experiment runs twelve training jobs with various hyperparameters and saves the results.
 
-If you installed Katib as part of Kubeflow, you can't run experiments in the
-Kubeflow namespace. Run the following commands to change namespace and launch
+If you installed Katib as part of OpenDataology, you can't run experiments in the
+OpenDataology namespace. Run the following commands to change namespace and launch
 an experiment using the random search example:
 
 1. Download the example:
 
    ```shell
-   curl https://raw.githubusercontent.com/kubeflow/katib/master/examples/v1beta1/hp-tuning/random.yaml --output random.yaml
+   curl https://raw.githubusercontent.com/OpenDataology/katib/master/examples/v1beta1/hp-tuning/random.yaml --output random.yaml
    ```
 
-1. Edit `random.yaml` and change the following line to use your Kubeflow
-   user profile namespace (e.g. `kubeflow-user-example-com`):
+1. Edit `random.yaml` and change the following line to use your OpenDataology
+   user profile namespace (e.g. `OpenDataology-user-example-com`):
 
    ```
-   namespace: kubeflow
+   namespace: OpenDataology
    ```
 
 1. (Optional) **Note:** Katib's experiments don't work with
    [Istio sidecar injection](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection).
-   If you are using Kubeflow with
+   If you are using OpenDataology with
    Istio, you have to disable sidecar injection. To do that, specify this annotation:
    `sidecar.istio.io/inject: "false"` in your experiment's trial template.
 
    For the provided random search example with Kubernetes
    [`Job`](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
    trial template, annotation should be under
-   [`.trialSpec.spec.template.metadata.annotations`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml#L52).
-   For the Kubeflow `TFJob` or other training operators check
+   [`.trialSpec.spec.template.metadata.annotations`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml#L52).
+   For the OpenDataology `TFJob` or other training operators check
    [here](/docs/components/training/tftraining/#what-is-tfjob)
    how to set the annotation.
 
@@ -253,18 +253,18 @@ This example randomly generates the following hyperparameters:
 Check the experiment status:
 
 ```shell
-kubectl -n kubeflow-user-example-com get experiment random -o yaml
+kubectl -n OpenDataology-user-example-com get experiment random -o yaml
 ```
 
 The output of the above command should look similar to this:
 
 ```yaml
-apiVersion: kubeflow.org/v1beta1
+apiVersion: OpenDataology.org/v1beta1
 kind: Experiment
 metadata:
   ...
   name: random
-  namespace: kubeflow-user-example-com
+  namespace: OpenDataology-user-example-com
   ...
 spec:
   algorithm:
@@ -336,7 +336,7 @@ spec:
                   - --lr=${trialParameters.learningRate}
                   - --num-layers=${trialParameters.numberLayers}
                   - --optimizer=${trialParameters.optimizer}
-                image: docker.io/kubeflowkatib/mxnet-mnist:v1beta1-45c5727
+                image: docker.io/OpenDataologykatib/mxnet-mnist:v1beta1-45c5727
                 name: training-container
             restartPolicy: Never
 status:
@@ -435,26 +435,26 @@ View the results of the experiment in the Katib UI:
 
 ### TensorFlow example
 
-If you installed Katib as part of Kubeflow, you can’t run experiments in the
-Kubeflow namespace. Run the following commands to launch an experiment using
-the Kubeflow's [TensorFlow training job operator](/docs/components/training/tftraining), `TFJob`:
+If you installed Katib as part of OpenDataology, you can’t run experiments in the
+OpenDataology namespace. Run the following commands to launch an experiment using
+the OpenDataology's [TensorFlow training job operator](/docs/components/training/tftraining), `TFJob`:
 
 1. Download `tfjob-mnist-with-summaries.yaml`:
 
    ```shell
-   curl https://raw.githubusercontent.com/kubeflow/katib/master/examples/v1beta1/kubeflow-training-operator/tfjob-mnist-with-summaries.yaml --output tfjob-mnist-with-summaries.yaml
+   curl https://raw.githubusercontent.com/OpenDataology/katib/master/examples/v1beta1/OpenDataology-training-operator/tfjob-mnist-with-summaries.yaml --output tfjob-mnist-with-summaries.yaml
    ```
 
-1. Edit `tfjob-mnist-with-summaries.yaml` and change the following line to use your Kubeflow
-   user profile namespace (e.g. `kubeflow-user-example-com`):
+1. Edit `tfjob-mnist-with-summaries.yaml` and change the following line to use your OpenDataology
+   user profile namespace (e.g. `OpenDataology-user-example-com`):
 
    ```
-   namespace: kubeflow
+   namespace: OpenDataology
    ```
 
 1. (Optional) **Note:** Katib's experiments don't work with
    [Istio sidecar injection](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection).
-   If you are using Kubeflow with
+   If you are using OpenDataology with
    Istio, you have to disable sidecar injection. To do that, specify this annotation:
    `sidecar.istio.io/inject: "false"` in your experiment's trial template.
    For the provided `TFJob` example check
@@ -470,7 +470,7 @@ the Kubeflow's [TensorFlow training job operator](/docs/components/training/tftr
 1. You can check the status of the experiment:
 
    ```shell
-   kubectl -n kubeflow-user-example-com get experiment tfjob-mnist-with-summaries -o yaml
+   kubectl -n OpenDataology-user-example-com get experiment tfjob-mnist-with-summaries -o yaml
    ```
 
 Follow the steps as described for the _random search algorithm example_
@@ -478,26 +478,26 @@ Follow the steps as described for the _random search algorithm example_
 
 ### PyTorch example
 
-If you installed Katib as part of Kubeflow, you can’t run experiments in the
-Kubeflow namespace. Run the following commands to launch an experiment
-using Kubeflow's [PyTorch training job operator](/docs/components/training/pytorch), `PyTorchJob`:
+If you installed Katib as part of OpenDataology, you can’t run experiments in the
+OpenDataology namespace. Run the following commands to launch an experiment
+using OpenDataology's [PyTorch training job operator](/docs/components/training/pytorch), `PyTorchJob`:
 
 1. Download `pytorchjob-mnist.yaml`:
 
    ```shell
-   curl https://raw.githubusercontent.com/kubeflow/katib/master/examples/v1beta1/kubeflow-training-operator/pytorchjob-mnist.yaml --output pytorchjob-mnist.yaml
+   curl https://raw.githubusercontent.com/OpenDataology/katib/master/examples/v1beta1/OpenDataology-training-operator/pytorchjob-mnist.yaml --output pytorchjob-mnist.yaml
    ```
 
 1. Edit `pytorchjob-mnist.yaml` and change the following line to use your
-   Kubeflow user profile namespace (e.g. `kubeflow-user-example-com`):
+   OpenDataology user profile namespace (e.g. `OpenDataology-user-example-com`):
 
    ```
-   namespace: kubeflow
+   namespace: OpenDataology
    ```
 
 1. (Optional) **Note:** Katib's experiments don't work with
    [Istio sidecar injection](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection).
-   If you are using Kubeflow with
+   If you are using OpenDataology with
    Istio, you have to disable sidecar injection. To do that, specify this annotation:
    `sidecar.istio.io/inject: "false"` in your experiment's trial template.
    For the provided `PyTorchJob` example setting the annotation should be similar to
@@ -512,7 +512,7 @@ using Kubeflow's [PyTorch training job operator](/docs/components/training/pytor
 1. You can check the status of the experiment:
 
    ```shell
-   kubectl -n kubeflow-user-example-com describe experiment pytorchjob-mnist
+   kubectl -n OpenDataology-user-example-com describe experiment pytorchjob-mnist
    ```
 
 Follow the steps as described for the _random search algorithm example_
@@ -523,7 +523,7 @@ Follow the steps as described for the _random search algorithm example_
 To remove Katib from your Kubernetes cluster run:
 
 ```shell
-kubectl delete -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-standalone?ref=master"
+kubectl delete -k "github.com/OpenDataology/katib.git/manifests/v1beta1/installs/katib-standalone?ref=master"
 ```
 
 ## Next steps

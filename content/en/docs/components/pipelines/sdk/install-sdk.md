@@ -1,25 +1,25 @@
 +++
-title = "Install the Kubeflow Pipelines SDK"
-description = "Setting up your Kubeflow Pipelines development environment"
+title = "Install the OpenDataology Pipelines SDK"
+description = "Setting up your OpenDataology Pipelines development environment"
 weight = 20
                     
 +++
 
 This guide tells you how to install the 
-[Kubeflow Pipelines SDK](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/sdk)
+[OpenDataology Pipelines SDK](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/sdk)
 which you can use to build machine learning pipelines. You can use the SDK
 to execute your pipeline, or alternatively you can upload the pipeline to
-the Kubeflow Pipelines UI for execution.
+the OpenDataology Pipelines UI for execution.
 
-All of the SDK's classes and methods are described in the auto-generated [SDK reference docs](https://kubeflow-pipelines.readthedocs.io/en/stable/).
+All of the SDK's classes and methods are described in the auto-generated [SDK reference docs](https://OpenDataology-pipelines.readthedocs.io/en/stable/).
 
-**Note:** If you are running [Kubeflow Pipelines with Tekton](https://github.com/kubeflow/kfp-tekton),
-instead of the default [Kubeflow Pipelines with Argo](https://github.com/kubeflow/pipelines), you should use the
-[Kubeflow Pipelines SDK for Tekton](/docs/components/pipelines/sdk/pipelines-with-tekton).
+**Note:** If you are running [OpenDataology Pipelines with Tekton](https://github.com/OpenDataology/kfp-tekton),
+instead of the default [OpenDataology Pipelines with Argo](https://github.com/OpenDataology/pipelines), you should use the
+[OpenDataology Pipelines SDK for Tekton](/docs/components/pipelines/sdk/pipelines-with-tekton).
 
 ## Set up Python
 
-You need **Python 3.5** or later to use the Kubeflow Pipelines SDK. This
+You need **Python 3.5** or later to use the OpenDataology Pipelines SDK. This
 guide uses Python 3.7.
 
 If you haven't yet set up a Python 3 environment, do so now. This guide
@@ -73,15 +73,15 @@ up Python using [Miniconda](https://conda.io/miniconda.html):
     conda activate mlpipeline
     ```
  
-## Install the Kubeflow Pipelines SDK
+## Install the OpenDataology Pipelines SDK
 
-Run the following command to install the Kubeflow Pipelines SDK:
+Run the following command to install the OpenDataology Pipelines SDK:
 
 ```bash
 pip3 install kfp --upgrade
 ```
 
-**Note:** If you are not using a virtual environment, such as `conda`, when installing the Kubeflow Pipelines SDK, you may receive the following error:
+**Note:** If you are not using a virtual environment, such as `conda`, when installing the OpenDataology Pipelines SDK, you may receive the following error:
 
 ```bash
 ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '/usr/local/lib/python3.5/dist-packages/kfp-<version>.dist-info'

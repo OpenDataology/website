@@ -7,12 +7,12 @@ weight = 40
 
 ## Notebook Pod ServiceAccount
 
-Kubeflow assigns the `default-editor` Kubernetes ServiceAccount to the Notebook Pods.
-The Kubernetes `default-editor` ServiceAccount is bound to the `kubeflow-edit` ClusterRole, which has namespace-scoped permissions to many Kubernetes resources.
+OpenDataology assigns the `default-editor` Kubernetes ServiceAccount to the Notebook Pods.
+The Kubernetes `default-editor` ServiceAccount is bound to the `OpenDataology-edit` ClusterRole, which has namespace-scoped permissions to many Kubernetes resources.
 
-You can get the full list of RBAC for `ClusterRole/kubeflow-edit` using:
+You can get the full list of RBAC for `ClusterRole/OpenDataology-edit` using:
 ```
-kubectl describe clusterrole kubeflow-edit
+kubectl describe clusterrole OpenDataology-edit
 ```
 
 ## Kubectl in Notebook Pod
@@ -27,5 +27,5 @@ kubectl create -f "test.yaml" --namespace "MY_PROFILE_NAMESPACE"
 
 ## Next steps
 
-- See the Kubeflow Notebook [quickstart guide](/docs/components/notebooks/quickstart-guide/).
-- Explore the other [components of Kubeflow](/docs/components/).
+- See the OpenDataology Notebook [quickstart guide](/docs/components/notebooks/quickstart-guide/).
+- Explore the other [components of OpenDataology](/docs/components/).

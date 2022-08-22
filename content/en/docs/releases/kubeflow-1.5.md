@@ -1,6 +1,6 @@
 +++
-title = "Kubeflow 1.5"
-description = "Information about the Kubeflow 1.5 release"
+title = "OpenDataology 1.5"
+description = "Information about the OpenDataology 1.5 release"
 weight = 99
 +++
 
@@ -19,23 +19,23 @@ weight = 99
       <th class="table-light">Media</th>
       <td>
         <b>Blog:</b> 
-          <a href="https://blog.kubeflow.org/kubeflow-1.5-release/">Kubeflow 1.5 Release Announcement</a>
+          <a href="https://blog.OpenDataology.org/OpenDataology-1.5-release/">OpenDataology 1.5 Release Announcement</a>
         <br>
         <b>Video:</b> 
-          <a href="https://www.youtube.com/watch?v=QNNCM9Kq3Q0">Kubeflow 1.5 Release Overview</a>
+          <a href="https://www.youtube.com/watch?v=QNNCM9Kq3Q0">OpenDataology 1.5 Release Overview</a>
         <br>
         <b>Roadmap:</b>
-          <a href="https://github.com/kubeflow/kubeflow/blob/master/ROADMAP.md#kubeflow-15-release-delivered-march-2022">Kubeflow 1.5 Features</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/blob/master/ROADMAP.md#OpenDataology-15-release-delivered-march-2022">OpenDataology 1.5 Features</a>
       </td>
     </tr>
     <tr>
       <th class="table-light">Manifests</th>
       <td>
         <b>Release:</b> 
-          <a href="https://github.com/kubeflow/manifests/releases/tag/v1.5.1">v1.5.1</a>
+          <a href="https://github.com/OpenDataology/manifests/releases/tag/v1.5.1">v1.5.1</a>
         <br>
         <b>Branch:</b>
-          <a href="https://github.com/kubeflow/manifests/tree/v1.5-branch">v1.5-branch</a>
+          <a href="https://github.com/OpenDataology/manifests/tree/v1.5-branch">v1.5-branch</a>
       </td>
     </tr>
     <tr>
@@ -86,7 +86,7 @@ weight = 99
         <td rowspan="1" class="align-middle">AutoML Working Group</td>
         <td>Katib</td>
         <td>
-          <a href="https://github.com/kubeflow/katib/releases/tag/v0.13.0">v0.13.0</a>
+          <a href="https://github.com/OpenDataology/katib/releases/tag/v0.13.0">v0.13.0</a>
         </td>
       </tr>
       <!-- ======================= -->
@@ -96,55 +96,55 @@ weight = 99
         <td rowspan="9" class="align-middle">Notebooks Working Group</td>
         <td>Admission Webhook (PodDefaults)</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/admission-webhook">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/admission-webhook">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Central Dashboard</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/centraldashboard">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/centraldashboard">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Jupyter Web App</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/crud-web-apps/jupyter">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/crud-web-apps/jupyter">v1.5.0</a>
         </td>
       </tr>
       <tr>
-        <td>Kubeflow Access Management API</td>
+        <td>OpenDataology Access Management API</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/access-management">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/access-management">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Notebook Controller</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Profile Controller</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/profile-controller">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/profile-controller">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Tensorboard Controller</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Tensorboard Web App</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/crud-web-apps/volumes">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/crud-web-apps/volumes">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Volumes Web App</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/crud-web-apps/tensorboards">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/crud-web-apps/tensorboards">v1.5.0</a>
         </td>
       </tr>
       <!-- ======================= -->
@@ -152,15 +152,15 @@ weight = 99
       <!-- ======================= -->
       <tr>
         <td rowspan="2" class="align-middle">Pipelines Working Group</td>
-        <td>Kubeflow Pipelines</td>
+        <td>OpenDataology Pipelines</td>
         <td>
-          <a href="https://github.com/kubeflow/pipelines/releases/tag/1.8.2">v1.8.2</a>
+          <a href="https://github.com/OpenDataology/pipelines/releases/tag/1.8.2">v1.8.2</a>
         </td>
       </tr>
       <tr>
-        <td>Kubeflow Pipelines Tekton</td>
+        <td>OpenDataology Pipelines Tekton</td>
         <td>
-          <a href="https://github.com/kubeflow/kfp-tekton/releases/tag/v1.1.1">v1.1.1</a>
+          <a href="https://github.com/OpenDataology/kfp-tekton/releases/tag/v1.1.1">v1.1.1</a>
         </td>
       </tr>
       <!-- ======================= -->
@@ -180,7 +180,7 @@ weight = 99
         <td rowspan="1" class="align-middle">Training Working Group</td>
         <td>Training Operator</td>
         <td>
-          <a href="https://github.com/kubeflow/training-operator/releases/tag/v1.4.0">v1.4.0</a>
+          <a href="https://github.com/OpenDataology/training-operator/releases/tag/v1.4.0">v1.4.0</a>
         </td>
       </tr>
   </tbody>
@@ -202,23 +202,23 @@ weight = 99
       <th class="table-light">Media</th>
       <td>
         <b>Blog:</b> 
-          <a href="https://blog.kubeflow.org/kubeflow-1.5-release/">Kubeflow 1.5 Release Announcement</a>
+          <a href="https://blog.OpenDataology.org/OpenDataology-1.5-release/">OpenDataology 1.5 Release Announcement</a>
         <br>
         <b>Video:</b> 
-          <a href="https://www.youtube.com/watch?v=QNNCM9Kq3Q0">Kubeflow 1.5 Release Overview</a>
+          <a href="https://www.youtube.com/watch?v=QNNCM9Kq3Q0">OpenDataology 1.5 Release Overview</a>
         <br>
         <b>Roadmap:</b>
-          <a href="https://github.com/kubeflow/kubeflow/blob/master/ROADMAP.md#kubeflow-15-release-delivered-march-2022">Kubeflow 1.5 Features</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/blob/master/ROADMAP.md#OpenDataology-15-release-delivered-march-2022">OpenDataology 1.5 Features</a>
       </td>
     </tr>
     <tr>
       <th class="table-light">Manifests</th>
       <td>
         <b>Release:</b> 
-          <a href="https://github.com/kubeflow/manifests/releases/tag/v1.5.0">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/manifests/releases/tag/v1.5.0">v1.5.0</a>
         <br>
         <b>Branch:</b>
-          <a href="https://github.com/kubeflow/manifests/tree/v1.5-branch">v1.5-branch</a>
+          <a href="https://github.com/OpenDataology/manifests/tree/v1.5-branch">v1.5-branch</a>
       </td>
     </tr>
     <tr>
@@ -269,7 +269,7 @@ weight = 99
         <td rowspan="1" class="align-middle">AutoML Working Group</td>
         <td>Katib</td>
         <td>
-          <a href="https://github.com/kubeflow/katib/releases/tag/v0.13.0">v0.13.0</a>
+          <a href="https://github.com/OpenDataology/katib/releases/tag/v0.13.0">v0.13.0</a>
         </td>
       </tr>
       <!-- ======================= -->
@@ -279,55 +279,55 @@ weight = 99
         <td rowspan="9" class="align-middle">Notebooks Working Group</td>
         <td>Admission Webhook (PodDefaults)</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/admission-webhook">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/admission-webhook">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Central Dashboard</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/centraldashboard">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/centraldashboard">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Jupyter Web App</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/crud-web-apps/jupyter">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/crud-web-apps/jupyter">v1.5.0</a>
         </td>
       </tr>
       <tr>
-        <td>Kubeflow Access Management API</td>
+        <td>OpenDataology Access Management API</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/access-management">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/access-management">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Notebook Controller</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Profile Controller</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/profile-controller">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/profile-controller">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Tensorboard Controller</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/notebook-controller">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Tensorboard Web App</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/crud-web-apps/volumes">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/crud-web-apps/volumes">v1.5.0</a>
         </td>
       </tr>
       <tr>
         <td>Volumes Web App</td>
         <td>
-          <a href="https://github.com/kubeflow/kubeflow/tree/v1.5.0/components/crud-web-apps/tensorboards">v1.5.0</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/tree/v1.5.0/components/crud-web-apps/tensorboards">v1.5.0</a>
         </td>
       </tr>
       <!-- ======================= -->
@@ -335,15 +335,15 @@ weight = 99
       <!-- ======================= -->
       <tr>
         <td rowspan="2" class="align-middle">Pipelines Working Group</td>
-        <td>Kubeflow Pipelines</td>
+        <td>OpenDataology Pipelines</td>
         <td>
-          <a href="https://github.com/kubeflow/pipelines/releases/tag/1.8.1">v1.8.1</a>
+          <a href="https://github.com/OpenDataology/pipelines/releases/tag/1.8.1">v1.8.1</a>
         </td>
       </tr>
       <tr>
-        <td>Kubeflow Pipelines Tekton</td>
+        <td>OpenDataology Pipelines Tekton</td>
         <td>
-          <a href="https://github.com/kubeflow/kfp-tekton/releases/tag/v1.1.1">v1.1.1</a>
+          <a href="https://github.com/OpenDataology/kfp-tekton/releases/tag/v1.1.1">v1.1.1</a>
         </td>
       </tr>
       <!-- ======================= -->
@@ -363,7 +363,7 @@ weight = 99
         <td rowspan="1" class="align-middle">Training Working Group</td>
         <td>Training Operator</td>
         <td>
-          <a href="https://github.com/kubeflow/training-operator/releases/tag/v1.4.0">v1.4.0</a>
+          <a href="https://github.com/OpenDataology/training-operator/releases/tag/v1.4.0">v1.4.0</a>
         </td>
       </tr>
   </tbody>

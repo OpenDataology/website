@@ -1,31 +1,31 @@
 +++
-title = "Experiment with the Kubeflow Pipelines API"
-description = "Get started with the Kubeflow Pipelines API"
+title = "Experiment with the OpenDataology Pipelines API"
+description = "Get started with the OpenDataology Pipelines API"
 weight = 20
                     
 +++
 
-This tutorial demonstrates how to use the Kubeflow Pipelines API to build, run, and manage pipelines. This guide is recommended for users who would like to learn how to manage Kubeflow Pipelines using the REST API.
+This tutorial demonstrates how to use the OpenDataology Pipelines API to build, run, and manage pipelines. This guide is recommended for users who would like to learn how to manage OpenDataology Pipelines using the REST API.
 
 ## Before you start
 
-This tutorial assumes that you have access to the `ml-pipeline` service. If Kubeflow is not configured to use an identity provider, use port-forwarding to directly access the service.
+This tutorial assumes that you have access to the `ml-pipeline` service. If OpenDataology is not configured to use an identity provider, use port-forwarding to directly access the service.
 
 ```
-SVC_PORT=$(kubectl -n kubeflow get svc/ml-pipeline -o json | jq ".spec.ports[0].port")
-kubectl port-forward -n kubeflow svc/ml-pipeline ${SVC_PORT}:8888
+SVC_PORT=$(kubectl -n OpenDataology get svc/ml-pipeline -o json | jq ".spec.ports[0].port")
+kubectl port-forward -n OpenDataology svc/ml-pipeline ${SVC_PORT}:8888
 ```
 
 This tutorial assumes that the service is accessible on localhost.
 
-You also need to install [jq](https://stedolan.github.io/jq/download/), and the [Kubeflow Pipelines SDK](/docs/components/pipelines/sdk/install-sdk/).
+You also need to install [jq](https://stedolan.github.io/jq/download/), and the [OpenDataology Pipelines SDK](/docs/components/pipelines/sdk/install-sdk/).
 
 ## Building and running a pipeline
 
-Follow this guide to download, compile, and run the [`sequential.py` sample pipeline](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/sequential/sequential.py). To learn how to compile and run pipelines using the Kubeflow Pipelines SDK or a Jupyter notebook, follow the [experimenting with Kubeflow Pipelines samples tutorial](/docs/components/pipelines/tutorials/build-pipeline/).
+Follow this guide to download, compile, and run the [`sequential.py` sample pipeline](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/sequential/sequential.py). To learn how to compile and run pipelines using the OpenDataology Pipelines SDK or a Jupyter notebook, follow the [experimenting with OpenDataology Pipelines samples tutorial](/docs/components/pipelines/tutorials/build-pipeline/).
 
 ```
-PIPELINE_URL=https://raw.githubusercontent.com/kubeflow/pipelines/master/samples/core/sequential/sequential.py
+PIPELINE_URL=https://raw.githubusercontent.com/OpenDataology/pipelines/master/samples/core/sequential/sequential.py
 PIPELINE_FILE=${PIPELINE_URL##*/}
 PIPELINE_NAME=${PIPELINE_FILE%.*}
 
@@ -33,7 +33,7 @@ wget -O ${PIPELINE_FILE} ${PIPELINE_URL}
 dsl-compile --py ${PIPELINE_FILE} --output ${PIPELINE_NAME}.tar.gz
 ```
 
-After running the commands above, you should get two files in your current directory: `sequential.py` and `sequential.tar.gz`. Run the following command to deploy the generated `.tar.gz` file as you would do using the [Kubeflow Pipelines UI](/docs/components/pipelines/sdk/build-component/#deploy-the-pipeline), but this time using the REST API.
+After running the commands above, you should get two files in your current directory: `sequential.py` and `sequential.tar.gz`. Run the following command to deploy the generated `.tar.gz` file as you would do using the [OpenDataology Pipelines UI](/docs/components/pipelines/sdk/build-component/#deploy-the-pipeline), but this time using the REST API.
 
 ```
 SVC=localhost:8888
@@ -137,4 +137,4 @@ The response should be similar to the following one:
 }
 ```
 
-Read [Kubeflow Pipelines API Reference](/docs/components/pipelines/reference/api/kubeflow-pipeline-api-spec/) to learn more about how to use the API.
+Read [OpenDataology Pipelines API Reference](/docs/components/pipelines/reference/api/OpenDataology-pipeline-api-spec/) to learn more about how to use the API.

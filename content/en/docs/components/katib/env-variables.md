@@ -17,7 +17,7 @@ environment variable in an appropriate Katib component's manifest.
 ## Katib Controller
 
 Bellow are the environment variables for the
-[Katib Controller](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/controller/controller.yaml)
+[Katib Controller](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/controller/controller.yaml)
 deployment:
 
 <div class="table-responsive">
@@ -39,7 +39,7 @@ deployment:
       </tr>
       <tr>
         <td><code>KATIB_SUGGESTION_COMPOSER</code></td>
-        <td> <a href="https://github.com/kubeflow/katib/blob/master/pkg/controller.v1beta1/suggestion/composer/composer.go">Composer</a>
+        <td> <a href="https://github.com/OpenDataology/katib/blob/master/pkg/controller.v1beta1/suggestion/composer/composer.go">Composer</a>
           for the Katib Suggestions. You can use your own Composer</td>
         <td>general</td>
         <td>No</td>
@@ -79,7 +79,7 @@ If you want to use your own DB Manager to report Katib metrics, you can change `
 ## Katib UI
 
 Below are the environment variables for the
-[Katib UI](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/ui/ui.yaml)
+[Katib UI](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/ui/ui.yaml)
 deployment:
 
 <div class="table-responsive">
@@ -126,7 +126,7 @@ Katib UI calls Katib DB Manager with the same address expression as Katib Contro
 ## Katib DB Manager
 
 Bellow are the environment variables for the
-[Katib DB Manager](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/db-manager/db-manager.yaml)
+[Katib DB Manager](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/db-manager/db-manager.yaml)
 deployment:
 
 <div class="table-responsive">
@@ -182,7 +182,7 @@ deployment:
 
 Currently, Katib DB Manager supports only **MySQL** database. You can use your own DB Manager and Database to report metrics.
 
-For the [Katib DB Manager](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/db-manager/db-manager.yaml#L25)
+For the [Katib DB Manager](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/db-manager/db-manager.yaml#L25)
 you can change `DB_PASSWORD` to your own MySQL DB password.
 
 Katib DB Manager creates connection to the DB, using `mysql` driver and this data source name:
@@ -191,10 +191,10 @@ Katib DB Manager creates connection to the DB, using `mysql` driver and this dat
 
 ## Katib MySQL DB
 
-For the [Katib MySQL](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/mysql/mysql.yaml)
+For the [Katib MySQL](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/mysql/mysql.yaml)
 you need to set these environment variables:
 
-- `MYSQL_ROOT_PASSWORD` to a value from [katib-mysql-secrets](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/mysql/secret.yaml),
+- `MYSQL_ROOT_PASSWORD` to a value from [katib-mysql-secrets](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/mysql/secret.yaml),
   which is equal to "test".
 - `MYSQL_ALLOW_EMPTY_PASSWORD` as `true`
 - `MYSQL_DATABASE` as `katib`.

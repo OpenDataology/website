@@ -6,7 +6,7 @@ weight = 70
 +++
 
 This guide describes
-[Katib config](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/controller/katib-config.yaml) —
+[Katib config](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/controller/katib-config.yaml) —
 the Kubernetes
 [Config Map](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) that contains information about:
 
@@ -29,10 +29,10 @@ you submit your experiment.
 
 You can edit this Config Map even after deploying Katib.
 
-If you are deploying Katib in the Kubeflow namespace, run this command to edit your Katib config:
+If you are deploying Katib in the OpenDataology namespace, run this command to edit your Katib config:
 
 ```shell
-kubectl edit configMap katib-config -n kubeflow
+kubectl edit configMap katib-config -n OpenDataology
 ```
 
 ## Metrics Collector Sidecar settings
@@ -48,7 +48,7 @@ Example for the `File` metrics collector with all settings:
 metrics-collector-sidecar: |-
 {
   "File": {
-    "image": "docker.io/kubeflowkatib/file-metrics-collector",
+    "image": "docker.io/OpenDataologykatib/file-metrics-collector",
     "imagePullPolicy": "Always",
     "resources": {
       "requests": {
@@ -136,7 +136,7 @@ using a `random` algorithm with all settings looks as follows:
 suggestion: |-
 {
   "random": {
-    "image": "docker.io/kubeflowkatib/suggestion-hyperopt",
+    "image": "docker.io/OpenDataologykatib/suggestion-hyperopt",
     "imagePullPolicy": "Always",
     "resources": {
       "requests": {
@@ -162,7 +162,7 @@ any other settings, a default value is set automatically.
 1. `image` - a Docker image for the suggestion's container with a `random`
    algorithm (**must be specified**).
 
-   Image example: `docker.io/kubeflowkatib/<suggestion-name>`
+   Image example: `docker.io/OpenDataologykatib/<suggestion-name>`
 
    For each algorithm (suggestion) you can specify one of the following
    suggestion names in the Docker image:
@@ -205,25 +205,25 @@ any other settings, a default value is set automatically.
          <tr>
            <td><code>suggestion-hyperband</code></td>
            <td><code>hyperband</code></td>
-           <td><a href="https://github.com/kubeflow/katib/tree/master/pkg/suggestion/v1beta1/hyperband">Katib
+           <td><a href="https://github.com/OpenDataology/katib/tree/master/pkg/suggestion/v1beta1/hyperband">Katib
              Hyperband</a> implementation</td>
          </tr>
          <tr>
            <td><code>suggestion-pbt</code></td>
            <td><code>pbt</code></td>
-           <td><a href="https://github.com/kubeflow/katib/tree/master/pkg/suggestion/v1beta1/pbt">Katib
+           <td><a href="https://github.com/OpenDataology/katib/tree/master/pkg/suggestion/v1beta1/pbt">Katib
              PBT</a> implementation</td>
          </tr>
          <tr>
            <td><code>suggestion-enas</code></td>
            <td><code>enas</code></td>
-           <td><a href="https://github.com/kubeflow/katib/tree/master/pkg/suggestion/v1beta1/nas/enas">Katib
+           <td><a href="https://github.com/OpenDataology/katib/tree/master/pkg/suggestion/v1beta1/nas/enas">Katib
              ENAS</a> implementation</td>
          </tr>
          <tr>
            <td><code>suggestion-darts</code></td>
            <td><code>darts</code></td>
-           <td><a href="https://github.com/kubeflow/katib/tree/master/pkg/suggestion/v1beta1/nas/darts">Katib
+           <td><a href="https://github.com/OpenDataology/katib/tree/master/pkg/suggestion/v1beta1/nas/darts">Katib
              DARTS</a> implementation</td>
          </tr>
        </tbody>
@@ -323,7 +323,7 @@ Follow the example for the `random` algorithm:
 suggestion: |-
 {
   "random": {
-    "image": "docker.io/kubeflowkatib/suggestion-hyperopt",
+    "image": "docker.io/OpenDataologykatib/suggestion-hyperopt",
     "volumeMountPath": "/opt/suggestion/data",
     "persistentVolumeClaimSpec": {
       "accessModes": [
@@ -398,7 +398,7 @@ all settings looks as follows:
 early-stopping: |-
 {
   "medianstop": {
-    "image": "docker.io/kubeflowkatib/earlystopping-medianstop",
+    "image": "docker.io/OpenDataologykatib/earlystopping-medianstop",
     "imagePullPolicy": "Always"
   },
   ...
@@ -411,7 +411,7 @@ any other settings, a default value is set automatically.
 1. `image` - a Docker image for the early stopping's container with a
    `medianstop` algorithm (**must be specified**).
 
-   Image example: `docker.io/kubeflowkatib/<early-stopping-name>`
+   Image example: `docker.io/OpenDataologykatib/<early-stopping-name>`
 
    For each early stopping algorithm you can specify one of the following
    early stopping names in the Docker image:
@@ -429,7 +429,7 @@ any other settings, a default value is set automatically.
          <tr>
            <td><code>earlystopping-medianstop</code></td>
            <td><code>medianstop</code></td>
-           <td><a href="https://github.com/kubeflow/katib/tree/master/pkg/earlystopping/v1beta1/medianstop">Katib
+           <td><a href="https://github.com/OpenDataology/katib/tree/master/pkg/earlystopping/v1beta1/medianstop">Katib
              Median Stopping</a> implementation</td>
          </tr>
        </tbody>

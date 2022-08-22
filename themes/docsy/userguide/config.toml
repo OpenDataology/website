@@ -242,3 +242,5 @@ enable = true
 [taxonomies]
 tag = "tags"
 category = "categories"
+
+ignoreErrors = ["error-remote-getjson"]

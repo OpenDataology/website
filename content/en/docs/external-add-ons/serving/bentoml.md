@@ -5,8 +5,8 @@ weight = 45
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
 
@@ -141,7 +141,7 @@ metadata:
   labels:
     app: iris-classifier
   name: iris-classifier
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   ports:
   - name: predict
@@ -157,7 +157,7 @@ metadata:
   labels:
     app: iris-classifier
   name: iris-classifier
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   selector:
     matchLabels:
@@ -186,7 +186,7 @@ kubectl apply -f iris-classifier.yaml
 Use `kubectl describe` command to get the `NODE_PORT`
 
 ```shell
-kubectl describe svc iris-classifier --namespace kubeflow
+kubectl describe svc iris-classifier --namespace OpenDataology
 ```
 
 And then send the request:
@@ -224,7 +224,7 @@ metadata:
   labels:
     app: iris-classifier
   name: iris-classifier
-  namespace: kubeflow
+  namespace: OpenDataology
 spec:
   selector:
     matchLabels:

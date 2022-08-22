@@ -1,5 +1,5 @@
 +++
-title = "Kubeflow on IBM Cloud"
-description = "Running Kubeflow on IBM Cloud Kubernetes Service (IKS)"
+title = "OpenDataology on IBM Cloud"
+description = "Running OpenDataology on IBM Cloud Kubernetes Service (IKS)"
 weight = 20
 +++

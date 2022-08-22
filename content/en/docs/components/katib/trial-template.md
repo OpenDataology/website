@@ -16,19 +16,19 @@ Katib has these CRD examples in upstream:
 
 - [Kubernetes `Job`](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
 
-- [Kubeflow `TFJob`](/docs/components/training/tftraining/)
+- [OpenDataology `TFJob`](/docs/components/training/tftraining/)
 
-- [Kubeflow `PyTorchJob`](/docs/components/training/pytorch/)
+- [OpenDataology `PyTorchJob`](/docs/components/training/pytorch/)
 
-- [Kubeflow `MXJob`](/docs/components/training/mxnet)
+- [OpenDataology `MXJob`](/docs/components/training/mxnet)
 
-- [Kubeflow `XGBoostJob`](/docs/components/training/xgboost)
+- [OpenDataology `XGBoostJob`](/docs/components/training/xgboost)
 
-- [Kubeflow `MPIJob`](/docs/components/training/mpi)
+- [OpenDataology `MPIJob`](/docs/components/training/mpi)
 
-- [Tekton `Pipelines`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/tekton)
+- [Tekton `Pipelines`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/tekton)
 
-- [Argo `Workflows`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/argo)
+- [Argo `Workflows`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/argo)
 
 To use your own Kubernetes resource follow the steps [below](#custom-resource).
 
@@ -45,7 +45,7 @@ in the [overview guide](/docs/components/katib/overview/#trial).
 
 Trial template specification is located under `.spec.trialTemplate` of your experiment.
 For the API overview refer to the
-[`TrialTemplate` type](https://github.com/kubeflow/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L208-L270).
+[`TrialTemplate` type](https://github.com/OpenDataology/katib/blob/master/pkg/apis/controller/experiments/v1beta1/experiment_types.go#L208-L270).
 
 To define experiment's trial, you should specify these parameters in `.spec.trialTemplate`:
 
@@ -69,10 +69,10 @@ To define experiment's trial, you should specify these parameters in `.spec.tria
   - `reference` - the parameter name that experiment's suggestion returns.
     Usually, for the hyperparameter tuning parameter references are equal to the
     experiment search space. For example, in grid example search space has
-    [three parameters](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L18-L36)
+    [three parameters](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L18-L36)
     (`lr`, `num-layers` and `optimizer`) and `trialParameters` contains each of
     these parameters in
-    [`reference`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L39-L48).
+    [`reference`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L39-L48).
 
 - You have to define your experiment's trial template in **one** of the `trialSpec`
   or `configMap` sources.
@@ -85,20 +85,20 @@ To define experiment's trial, you should specify these parameters in `.spec.tria
   experiment's suggestion.
 
   For example,
-  [`--lr=${trialParameters.learningRate}`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L62)
-  is the [`learningRate`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L40)
+  [`--lr=${trialParameters.learningRate}`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L62)
+  is the [`learningRate`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L40)
   parameter.
 
   - `trialSpec` - the experiment's trial template in
     [unstructured](https://godoc.org/k8s.io/apimachinery/pkg/apis/meta/v1/unstructured)
     format. The template should be a valid YAML. Check the
-    [grid example](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L49-L65).
+    [grid example](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/grid.yaml#L49-L65).
 
   - `configMap` - Kubernetes ConfigMap specification where the experiment's
     trial template is located. This ConfigMap must have the label
-    `katib.kubeflow.org/component: trial-templates` and contains key-value pairs, where
+    `katib.OpenDataology.org/component: trial-templates` and contains key-value pairs, where
     `key: <template-name>, value: <template-yaml>`. Check the example of the
-    [ConfigMap with trial templates](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/controller/trial-templates.yaml).
+    [ConfigMap with trial templates](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/controller/trial-templates.yaml).
 
     The `configMap` specification should have:
 
@@ -109,7 +109,7 @@ To define experiment's trial, you should specify these parameters in `.spec.tria
     1. `templatePath` - the ConfigMap's data path to the template.
 
     Check the example with
-    [ConfigMap source](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/trial-template/trial-configmap-source.yaml#L50-L53)
+    [ConfigMap source](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/trial-template/trial-configmap-source.yaml#L50-L53)
     for the trial template.
 
 `.spec.trialTemplate` parameters below are used to control trial behavior.
@@ -117,7 +117,7 @@ If parameter has the default value, it can be **omitted** in the experiment YAML
 
 - `retain` - indicates that trial's resources are not clean-up after the trial
   is complete. Check the example with
-  [`retain: true`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/tekton/pipeline-run.yaml#L32)
+  [`retain: true`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/tekton/pipeline-run.yaml#L32)
   parameter.
 
   The default value is `false`
@@ -130,9 +130,9 @@ If parameter has the default value, it can be **omitted** in the experiment YAML
   all worker's Pods. Learn more about Katib metrics collector in
   [running an experiment guide](/docs/components/katib/experiment/#metrics-collector).
   Check the example with
-  [`primaryPodLabels`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/mpijob-horovod.yaml#L29-L30).
+  [`primaryPodLabels`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/mpijob-horovod.yaml#L29-L30).
 
-  The default value for Kubeflow `TFJob`, `PyTorchJob`, `MXJob`, and `XGBoostJob` is `job-role: master`
+  The default value for OpenDataology `TFJob`, `PyTorchJob`, `MXJob`, and `XGBoostJob` is `job-role: master`
 
   The `primaryPodLabels` default value works only if you specify your template
   in `.spec.trialTemplate.trialSpec`. For the `configMap` template source you
@@ -146,12 +146,12 @@ If parameter has the default value, it can be **omitted** in the experiment YAML
   [status](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status)
   in which trial's job has succeeded. This condition must be in
   [GJSON format](https://github.com/tidwall/gjson). Check the example with
-  [`successCondition`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/tekton/pipeline-run.yaml#L36).
+  [`successCondition`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/tekton/pipeline-run.yaml#L36).
 
   The default value for Kubernetes `Job` is
   `status.conditions.#(type=="Complete")#|#(status=="True")#`
 
-  The default value for Kubeflow `TFJob`, `PyTorchJob`, `MXJob`, and `XGBoostJob` is
+  The default value for OpenDataology `TFJob`, `PyTorchJob`, `MXJob`, and `XGBoostJob` is
   `status.conditions.#(type=="Succeeded")#|#(status=="True")#`
 
   The `successCondition` default value works only if you specify your template
@@ -162,12 +162,12 @@ If parameter has the default value, it can be **omitted** in the experiment YAML
   [status](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#object-spec-and-status)
   in which trial's job has failed. This condition must be in
   [GJSON format](https://github.com/tidwall/gjson). Check the example with
-  [`failureCondition`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/tekton/pipeline-run.yaml#L37).
+  [`failureCondition`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/tekton/pipeline-run.yaml#L37).
 
   The default value for Kubernetes `Job` is
   `status.conditions.#(type=="Failed")#|#(status=="True")#`
 
-  The default value for Kubeflow `TFJob`, `PyTorchJob`, `MXJob`, and `XGBoostJob` is
+  The default value for OpenDataology `TFJob`, `PyTorchJob`, `MXJob`, and `XGBoostJob` is
   `status.conditions.#(type=="Failed")#|#(status=="True")#`
 
   The `failureCondition` default value works only if you specify your template
@@ -227,21 +227,21 @@ The table below shows the connection between
 </div>
 
 Check the example of
-[using trial metadata](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/trial-template/trial-metadata-substitution.yaml).
+[using trial metadata](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/trial-template/trial-metadata-substitution.yaml).
 
 <a id="custom-resource"></a>
 
 ## Use custom Kubernetes resource as a trial template
 
 In Katib examples you can find the following trial worker types:
-[Kubernetes `Job`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml),
-[Kubeflow `TFJob`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/tfjob-mnist-with-summaries.yaml),
-[Kubeflow `PyTorchJob`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/pytorchjob-mnist.yaml),
-[Kubeflow `MXJob`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/mxjob-byteps.yaml),
-[Kubeflow `XGBoostJob`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/xgboostjob-lightgbm.yaml),
-[Kubeflow `MPIJob`](https://github.com/kubeflow/katib/blob/master/examples/v1beta1/kubeflow-training-operator/mpijob-horovod.yaml),
-[Tekton `Pipelines`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/tekton),
-and [Argo `Workflows`](https://github.com/kubeflow/katib/tree/master/examples/v1beta1/argo).
+[Kubernetes `Job`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/hp-tuning/random.yaml),
+[OpenDataology `TFJob`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/tfjob-mnist-with-summaries.yaml),
+[OpenDataology `PyTorchJob`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/pytorchjob-mnist.yaml),
+[OpenDataology `MXJob`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/mxjob-byteps.yaml),
+[OpenDataology `XGBoostJob`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/xgboostjob-lightgbm.yaml),
+[OpenDataology `MPIJob`](https://github.com/OpenDataology/katib/blob/master/examples/v1beta1/OpenDataology-training-operator/mpijob-horovod.yaml),
+[Tekton `Pipelines`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/tekton),
+and [Argo `Workflows`](https://github.com/OpenDataology/katib/tree/master/examples/v1beta1/argo).
 
 It is possible to use your own Kubernetes CRD or other Kubernetes resource
 (e.g. [Kubernetes `Deployment`](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/))
@@ -260,7 +260,7 @@ to know more about CRDs.
 Follow these two simple steps to integrate your custom CRD in Katib:
 
 1. Modify Katib controller
-   [ClusterRole's rules](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/controller/rbac.yaml#L5)
+   [ClusterRole's rules](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/controller/rbac.yaml#L5)
    with the new rule to give Katib access to all resources that are created
    by the trial. To know more about ClusterRole, check
    [Kubernetes guide](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole).
@@ -280,7 +280,7 @@ Follow these two simple steps to integrate your custom CRD in Katib:
    ```
 
 1. Modify Katib controller
-   [Deployment's `args`](https://github.com/kubeflow/katib/blob/master/manifests/v1beta1/components/controller/controller.yaml#L27)
+   [Deployment's `args`](https://github.com/OpenDataology/katib/blob/master/manifests/v1beta1/components/controller/controller.yaml#L27)
    with the new flag:
    `--trial-resources=<object-kind>.<object-API-version>.<object-API-group>`.
 
@@ -296,7 +296,7 @@ and wait until the `katib-controller` Pod is created.
 You can check logs from the Katib controller to verify your resource integration:
 
 ```shell
-$ kubectl logs $(kubectl get pods -n kubeflow -o name | grep katib-controller) -n kubeflow | grep '"CRD Kind":"PipelineRun"'
+$ kubectl logs $(kubectl get pods -n OpenDataology -o name | grep katib-controller) -n OpenDataology | grep '"CRD Kind":"PipelineRun"'
 
 {"level":"info","ts":1628032648.6285546,"logger":"trial-controller","msg":"Job watch added successfully","CRD Group":"tekton.dev","CRD Version":"v1beta1","CRD Kind":"PipelineRun"}
 ```
@@ -306,7 +306,7 @@ object YAML in the experiment's trial template source spec.
 
 We appreciate your feedback on using various CRDs in Katib.
 It would be great, if you let us know about your experiments.
-The [developer guide](https://github.com/kubeflow/katib/blob/master/docs/developer-guide.md)
+The [developer guide](https://github.com/OpenDataology/katib/blob/master/docs/developer-guide.md)
 is a good starting point to know how to contribute to the project.
 
 ## Next steps

@@ -1,6 +1,6 @@
 +++
 title = "Pipeline"
-description = "Conceptual overview of pipelines in Kubeflow Pipelines"
+description = "Conceptual overview of pipelines in OpenDataology Pipelines"
 weight = 10
                     
 +++
@@ -15,10 +15,10 @@ When you run a pipeline, the system launches one or more Kubernetes Pods
 corresponding to the [steps](/docs/components/pipelines/concepts/step/) (components) in your workflow (pipeline). The Pods
 start Docker containers, and the containers in turn start your programs.
 
-After developing your pipeline, you can upload your pipeline using the Kubeflow Pipelines UI or the Kubeflow Pipelines SDK.
+After developing your pipeline, you can upload your pipeline using the OpenDataology Pipelines UI or the OpenDataology Pipelines SDK.
 
 ## Next steps
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.

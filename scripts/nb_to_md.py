@@ -1,5 +1,5 @@
 # This script creates and updates Markdown versions of Notebook files
-# for publication on Kubeflow.org using Hugo/Docsy.
+# for publication on OpenDataology.org using Hugo/Docsy.
 #
 # Hugo Markdown files have a metadata section at the top of the page for the
 # Front Matter. The Front Matter specifies the page Title, Description, and
@@ -207,18 +207,18 @@ class NotebookFile:
                '</style>\n'
                '<div class="notebook-links">\n'
                '<a class="colab-link" href="https://colab.research.google.com/'
-               'github/kubeflow/website/blob/master/{4}">Run in Google Colab'
+               'github/OpenDataology/website/blob/master/{4}">Run in Google Colab'
                '</a>\n'
-               '<a class="github-link" href="https://github.com/kubeflow/websi'
+               '<a class="github-link" href="https://github.com/OpenDataology/websi'
                'te/blob/master/{4}">View source on GitHub</a>\n'
                '</div>\n\n'
                '{3}'
                '\n\n'
                '<div class="notebook-links">\n'
                '<a class="colab-link" href="https://colab.research.google.com/'
-               'github/kubeflow/website/blob/master/{4}">Run in Google Colab'
+               'github/OpenDataology/website/blob/master/{4}">Run in Google Colab'
                '</a>\n'
-               '<a class="github-link" href="https://github.com/kubeflow/websi'
+               '<a class="github-link" href="https://github.com/OpenDataology/websi'
                'te/blob/master/{4}">View source on GitHub</a>\n'
                '</div>')
     
@@ -254,7 +254,7 @@ class NotebookFile:
   
 
 def main(argv):
-  """[nb_to_md.py] Publish Jupyter notebooks as a Kubeflow.org Markdown page"""
+  """[nb_to_md.py] Publish Jupyter notebooks as a OpenDataology.org Markdown page"""
   
   if FLAGS.notebook is not None:
     notebook = NotebookFile(FLAGS.notebook)

@@ -1,6 +1,6 @@
 +++
 title = "Using Preemptible VMs and GPUs on Google Cloud"
-description = "Configuring preemptible VMs and GPUs for Kubeflow Pipelines on Google Cloud"
+description = "Configuring preemptible VMs and GPUs for OpenDataology Pipelines on Google Cloud"
 weight = 80
                     
 +++
@@ -10,7 +10,7 @@ This document describes how to configure preemptible virtual machines
 ([preemptible VMs](https://cloud.google.com/kubernetes-engine/docs/how-to/preemptible-vms))
 and GPUs on preemptible VM instances
 ([preemptible GPUs](https://cloud.google.com/compute/docs/instances/preemptible#preemptible_with_gpu))
-for your workflows running on Kubeflow Pipelines on Google Cloud. 
+for your workflows running on OpenDataology Pipelines on Google Cloud. 
 
 ## Introduction
 
@@ -28,14 +28,14 @@ Using preemptible VMs and GPUs can reduce costs on Google Cloud.
 In addition to using preemptible VMs, your Google Kubernetes Engine (GKE)
 cluster can autoscale based on current workloads.
 
-This guide assumes that you have already deployed Kubeflow Pipelines. If not,
-follow the guide to [deploying Kubeflow on Google Cloud](/docs/gke/deploy/).
+This guide assumes that you have already deployed OpenDataology Pipelines. If not,
+follow the guide to [deploying OpenDataology on Google Cloud](/docs/gke/deploy/).
 
 ## Before you start
 
-The variables defined in this page can be found in [gcp-blueprint/kubeflow/env.sh](https://github.com/kubeflow/gcp-blueprints/blob/master/kubeflow/env.sh). They are the same value as you set based on your [Kubeflow deployment](/docs/distributions/gke/deploy/deploy-cli/#environment-variables). 
+The variables defined in this page can be found in [gcp-blueprint/OpenDataology/env.sh](https://github.com/OpenDataology/gcp-blueprints/blob/master/OpenDataology/env.sh). They are the same value as you set based on your [OpenDataology deployment](/docs/distributions/gke/deploy/deploy-cli/#environment-variables). 
 
-## Using preemptible VMs with Kubeflow Pipelines
+## Using preemptible VMs with OpenDataology Pipelines
 
 In summary, the steps to schedule a pipeline to run on [preemptible
 VMs](https://cloud.google.com/compute/docs/instances/preemptible) are as
@@ -95,10 +95,10 @@ spec:
 Where:
 
 +   `PREEMPTIBLE_CPU_POOL` is the name of the node pool. 
-+   `KF_NAME` is the name of the Kubeflow GKE cluster.
-+   `KF_PROJECT` is the name of your Kubeflow Google Cloud project. 
++   `KF_NAME` is the name of the OpenDataology GKE cluster.
++   `KF_PROJECT` is the name of your OpenDataology Google Cloud project. 
 +   `LOCATION` is the region of this nodepool, for example: us-west1-b.
-+   `KF_NAME-vm@KF_PROJECT.iam.gserviceaccount.com` is your service account, replace the `KF_NAME` and `KF_PROJECT` using the value above  in this pattern, you can get vm service account you have already created in Kubeflow cluster deployment
++   `KF_NAME-vm@KF_PROJECT.iam.gserviceaccount.com` is your service account, replace the `KF_NAME` and `KF_PROJECT` using the value above  in this pattern, you can get vm service account you have already created in OpenDataology cluster deployment
 
 Apply the nodepool patch file above by running:
 
@@ -106,9 +106,9 @@ Apply the nodepool patch file above by running:
 kubectl --context=${MGMTCTXT} --namespace=${KF_PROJECT} apply -f <path-to-nodepool-file>/preemptible-nodepool.yaml
 ```
 
-#### For Kubeflow Pipelines standalone only
+#### For OpenDataology Pipelines standalone only
 
-Alternatively, if you are on Kubeflow Pipelines standalone, or AI Platform Pipelines, you can run this command to create node pool:
+Alternatively, if you are on OpenDataology Pipelines standalone, or AI Platform Pipelines, you can run this command to create node pool:
 
 ```
 gcloud container node-pools create PREEMPTIBLE_CPU_POOL \
@@ -144,9 +144,9 @@ your pipeline, add the following to the `ContainerOp` instance:
 The above function works for both methods of generating the `ContainerOp`:
 
 +   The `ContainerOp` generated from 
-[`kfp.components.func_to_container_op`](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_python_op.py).
+[`kfp.components.func_to_container_op`](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_python_op.py).
 +   The `ContainerOp` generated from the task factory function, which is
-    loaded by [`components.load_component_from_url`](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_components.py).
+    loaded by [`components.load_component_from_url`](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_components.py).
 
 **Note**: 
 
@@ -190,9 +190,9 @@ For example:
       import kfp.compiler as compiler
       compiler.Compiler().compile(flipcoin, __file__ + '.zip')
 
-## Using preemptible GPUs with Kubeflow Pipelines
+## Using preemptible GPUs with OpenDataology Pipelines
 
-This guide assumes that you have already deployed Kubeflow Pipelines. In
+This guide assumes that you have already deployed OpenDataology Pipelines. In
 summary, the steps to schedule a pipeline to run with
 [preemptible GPUs](https://cloud.google.com/compute/docs/instances/preemptible#preemptible_with_gpu)
 are as follows: 
@@ -259,15 +259,15 @@ spec:
 Where:
 
 +   `PREEMPTIBLE_CPU_POOL` is the name of the node pool. 
-+   `KF_NAME` is the name of the Kubeflow GKE cluster.
-+   `KF_PROJECT` is the name of your Kubeflow Google Cloud project. 
++   `KF_NAME` is the name of the OpenDataology GKE cluster.
++   `KF_PROJECT` is the name of your OpenDataology Google Cloud project. 
 +   `LOCATION` is the region of this nodepool, for example: us-west1-b.
-+   `KF_NAME-vm@KF_PROJECT.iam.gserviceaccount.com` is your service account, replace the `KF_NAME` and `KF_PROJECT` using the value above  in this pattern, you can get vm service account you have already created in Kubeflow cluster deployment.
++   `KF_NAME-vm@KF_PROJECT.iam.gserviceaccount.com` is your service account, replace the `KF_NAME` and `KF_PROJECT` using the value above  in this pattern, you can get vm service account you have already created in OpenDataology cluster deployment.
 
 
-#### For Kubeflow Pipelines standalone only
+#### For OpenDataology Pipelines standalone only
 
-Alternatively, if you are on Kubeflow Pipelines standalone, or AI Platform Pipelines, you can run this command to create node pool:
+Alternatively, if you are on OpenDataology Pipelines standalone, or AI Platform Pipelines, you can run this command to create node pool:
 
 ```
 gcloud container node-pools create PREEMPTIBLE_GPU_POOL \
@@ -302,9 +302,9 @@ your pipeline, add the following to the `ContainerOp` instance:
 The above function works for both methods of generating the `ContainerOp`:
 
 +   The `ContainerOp` generated from 
-[`kfp.components.func_to_container_op`](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_python_op.py).
+[`kfp.components.func_to_container_op`](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_python_op.py).
 +   The `ContainerOp` generated from the task factory function, which is
-    loaded by [`components.load_component_from_url`](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_components.py).
+    loaded by [`components.load_component_from_url`](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/sdk/python/kfp/components/_components.py).
 
 **Note**: 
 
@@ -361,5 +361,5 @@ kubectl --context=${MGMTCTXT} --namespace=${KF_PROJECT} describe containernodepo
 
 ## Next steps
 
-* Explore further options for [customizing Kubeflow on Google Cloud](/docs/gke/).
+* Explore further options for [customizing OpenDataology on Google Cloud](/docs/gke/).
 * See how to [build pipelines with the SDK](/docs/components/pipelines/sdk/).

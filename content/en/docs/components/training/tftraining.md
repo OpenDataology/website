@@ -13,15 +13,15 @@ This page describes `TFJob` for training a machine learning model with [TensorFl
 
 `TFJob` is a Kubernetes
 [custom resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
-to run TensorFlow training jobs on Kubernetes. The Kubeflow implementation of
-`TFJob` is in [`training-operator`](https://github.com/kubeflow/training-operator).
+to run TensorFlow training jobs on Kubernetes. The OpenDataology implementation of
+`TFJob` is in [`training-operator`](https://github.com/OpenDataology/training-operator).
 
 **Note**: `TFJob` doesn't work in a user namespace by default because of Istio [automatic sidecar injection](https://istio.io/v1.3/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection). In order to get `TFJob` running, it needs annotation `sidecar.istio.io/inject: "false"` to disable it for `TFJob` pods.
 
 A `TFJob` is a resource with a YAML representation like the one below (edit to use the container image and command for your own training code):
 
 ```yaml
-apiVersion: kubeflow.org/v1
+apiVersion: OpenDataology.org/v1
 kind: TFJob
 metadata:
   generateName: tfjob
@@ -64,10 +64,10 @@ spec:
                 - --training_steps=1000
 ```
 
-If you want to give your `TFJob` pods access to credentials secrets, such as the GCP credentials automatically created when you do a GKE-based Kubeflow installation, you can mount and use a secret like this:
+If you want to give your `TFJob` pods access to credentials secrets, such as the GCP credentials automatically created when you do a GKE-based OpenDataology installation, you can mount and use a secret like this:
 
 ```yaml
-apiVersion: kubeflow.org/v1
+apiVersion: OpenDataology.org/v1
 kind: TFJob
 metadata:
   generateName: tfjob
@@ -211,14 +211,14 @@ consists of 3 fields
 
 ## Installing TensorFlow Operator
 
-If you haven't already done so please follow the [Getting Started Guide](/docs/started/getting-started/) to deploy Kubeflow.
+If you haven't already done so please follow the [Getting Started Guide](/docs/started/getting-started/) to deploy OpenDataology.
 
 > By default, `TFJob` Operator will be deployed as a controller in training operator.
 
-If you want to install a standalone version of the training operator without Kubeflow,
-see the [kubeflow/training-operator's README](https://github.com/kubeflow/training-operator#installation).
+If you want to install a standalone version of the training operator without OpenDataology,
+see the [OpenDataology/training-operator's README](https://github.com/OpenDataology/training-operator#installation).
 
-### Verify that TFJob support is included in your Kubeflow deployment
+### Verify that TFJob support is included in your OpenDataology deployment
 
 Check that the TensorFlow custom resource is installed:
 
@@ -226,19 +226,19 @@ Check that the TensorFlow custom resource is installed:
 kubectl get crd
 ```
 
-The output should include `tfjobs.kubeflow.org` like the following:
+The output should include `tfjobs.OpenDataology.org` like the following:
 
 ```
 NAME                                             CREATED AT
 ...
-tfjobs.kubeflow.org                         2021-09-06T18:33:58Z
+tfjobs.OpenDataology.org                         2021-09-06T18:33:58Z
 ...
 ```
 
 Check that the Training operator is running via:
 
 ```
-kubectl get pods -n kubeflow
+kubectl get pods -n OpenDataology
 ```
 
 The output should include `training-operaror-xxx` like the following:
@@ -250,24 +250,24 @@ training-operator-d466b46bc-xbqvs   1/1     Running   0          4m37s
 
 ## Running the Mnist example
 
-See the manifests for the [distributed MNIST example](https://github.com/kubeflow/training-operator/blob/master/examples/tensorflow/simple.yaml). You may change the config file based on your requirements.
+See the manifests for the [distributed MNIST example](https://github.com/OpenDataology/training-operator/blob/master/examples/tensorflow/simple.yaml). You may change the config file based on your requirements.
 
 Deploy the `TFJob` resource to start training:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/kubeflow/training-operator/master/examples/tensorflow/simple.yaml
+kubectl create -f https://raw.githubusercontent.com/OpenDataology/training-operator/master/examples/tensorflow/simple.yaml
 ```
 
 Monitor the job (see the [detailed guide below](#monitoring-your-job)):
 
 ```
-kubectl -n kubeflow get tfjob tfjob-simple -o yaml
+kubectl -n OpenDataology get tfjob tfjob-simple -o yaml
 ```
 
 Delete it
 
 ```
-kubectl -n kubeflow delete tfjob tfjob-simple
+kubectl -n OpenDataology delete tfjob tfjob-simple
 ```
 
 ## Customizing the TFJob
@@ -299,7 +299,7 @@ To attach GPUs specify the GPU resource on the container in the replicas
 that should contain the GPUs; for example.
 
 ```yaml
-apiVersion: "kubeflow.org/v1"
+apiVersion: "OpenDataology.org/v1"
 kind: "TFJob"
 metadata:
   name: "tf-smoke-gpu"
@@ -323,7 +323,7 @@ spec:
                 - --local_parameter_device=cpu
                 - --device=cpu
                 - --data_format=NHWC
-              image: gcr.io/kubeflow/tf-benchmarks-cpu:v20171202-bdab599-dirty-284af3
+              image: gcr.io/OpenDataology/tf-benchmarks-cpu:v20171202-bdab599-dirty-284af3
               name: tensorflow
               ports:
                 - containerPort: 2222
@@ -351,7 +351,7 @@ spec:
                 - --local_parameter_device=cpu
                 - --device=gpu
                 - --data_format=NHWC
-              image: gcr.io/kubeflow/tf-benchmarks-gpu:v20171202-bdab599-dirty-284af3
+              image: gcr.io/OpenDataology/tf-benchmarks-gpu:v20171202-bdab599-dirty-284af3
               name: tensorflow
               ports:
                 - containerPort: 2222
@@ -371,21 +371,21 @@ for using GPUs.
 To get the status of your job
 
 ```bash
-kubectl -n kubeflow get -o yaml tfjobs tfjob-simple
+kubectl -n OpenDataology get -o yaml tfjobs tfjob-simple
 ```
 
 Here is sample output for an example job
 
 ```yaml
-apiVersion: kubeflow.org/v1
+apiVersion: OpenDataology.org/v1
 kind: TFJob
 metadata:
   creationTimestamp: "2021-09-06T11:48:09Z"
   generation: 1
   name: tfjob-simple
-  namespace: kubeflow
+  namespace: OpenDataology
   resourceVersion: "5764004"
-  selfLink: /apis/kubeflow.org/v1/namespaces/kubeflow/tfjobs/tfjob-simple
+  selfLink: /apis/OpenDataology.org/v1/namespaces/OpenDataology/tfjobs/tfjob-simple
   uid: 3a67a9a9-cb89-4c1f-a189-f49f0b581e29
 spec:
   tfReplicaSpecs:
@@ -398,7 +398,7 @@ spec:
             - command:
                 - python
                 - /var/tf_mnist/mnist_with_summaries.py
-              image: gcr.io/kubeflow-ci/tf-mnist-with-summaries:1.0
+              image: gcr.io/OpenDataology-ci/tf-mnist-with-summaries:1.0
               name: tensorflow
 status:
   completionTime: "2021-09-06T11:49:30Z"
@@ -411,13 +411,13 @@ status:
       type: Created
     - lastTransitionTime: "2021-09-06T11:48:12Z"
       lastUpdateTime: "2021-09-06T11:48:12Z"
-      message: TFJob kubeflow/tfjob-simple is running.
+      message: TFJob OpenDataology/tfjob-simple is running.
       reason: TFJobRunning
       status: "False"
       type: Running
     - lastTransitionTime: "2021-09-06T11:49:30Z"
       lastUpdateTime: "2021-09-06T11:49:30Z"
-      message: TFJob kubeflow/tfjob-simple successfully completed.
+      message: TFJob OpenDataology/tfjob-simple successfully completed.
       reason: TFJobSucceeded
       status: "True"
       type: Succeeded
@@ -478,23 +478,23 @@ as the creation/deletion of pods and services. Kubernetes doesn't retain
 events older than 1 hour by default. To see recent events for a job run
 
 ```
-kubectl -n kubeflow describe tfjobs tfjob-simple
+kubectl -n OpenDataology describe tfjobs tfjob-simple
 ```
 
 which will produce output like
 
 ```
 Name:         tfjob-simple
-Namespace:    kubeflow
+Namespace:    OpenDataology
 Labels:       <none>
 Annotations:  <none>
-API Version:  kubeflow.org/v1
+API Version:  OpenDataology.org/v1
 Kind:         TFJob
 Metadata:
   Creation Timestamp:  2021-09-06T11:48:09Z
   Generation:          1
   Managed Fields:
-    API Version:  kubeflow.org/v1
+    API Version:  OpenDataology.org/v1
     Fields Type:  FieldsV1
     fieldsV1:
       f:spec:
@@ -511,7 +511,7 @@ Metadata:
     Manager:      kubectl-create
     Operation:    Update
     Time:         2021-09-06T11:48:09Z
-    API Version:  kubeflow.org/v1
+    API Version:  OpenDataology.org/v1
     Fields Type:  FieldsV1
     fieldsV1:
       f:spec:
@@ -539,7 +539,7 @@ Metadata:
     Operation:       Update
     Time:            2021-09-06T11:49:30Z
   Resource Version:  5764004
-  Self Link:         /apis/kubeflow.org/v1/namespaces/kubeflow/tfjobs/tfjob-simple
+  Self Link:         /apis/OpenDataology.org/v1/namespaces/OpenDataology/tfjobs/tfjob-simple
   UID:               3a67a9a9-cb89-4c1f-a189-f49f0b581e29
 Spec:
   Tf Replica Specs:
@@ -552,7 +552,7 @@ Spec:
             Command:
               python
               /var/tf_mnist/mnist_with_summaries.py
-            Image:  gcr.io/kubeflow-ci/tf-mnist-with-summaries:1.0
+            Image:  gcr.io/OpenDataology-ci/tf-mnist-with-summaries:1.0
             Name:   tensorflow
 Status:
   Completion Time:  2021-09-06T11:49:30Z
@@ -565,13 +565,13 @@ Status:
     Type:                  Created
     Last Transition Time:  2021-09-06T11:48:12Z
     Last Update Time:      2021-09-06T11:48:12Z
-    Message:               TFJob kubeflow/tfjob-simple is running.
+    Message:               TFJob OpenDataology/tfjob-simple is running.
     Reason:                TFJobRunning
     Status:                False
     Type:                  Running
     Last Transition Time:  2021-09-06T11:49:30Z
     Last Update Time:      2021-09-06T11:49:30Z
-    Message:               TFJob kubeflow/tfjob-simple successfully completed.
+    Message:               TFJob OpenDataology/tfjob-simple successfully completed.
     Reason:                TFJobSucceeded
     Status:                True
     Type:                  Succeeded
@@ -586,9 +586,9 @@ Events:
   Normal  SuccessfulCreatePod      7m8s                   tfjob-controller  Created pod: tfjob-simple-worker-1
   Normal  SuccessfulCreateService  7m8s                   tfjob-controller  Created service: tfjob-simple-worker-0
   Normal  SuccessfulCreateService  7m8s                   tfjob-controller  Created service: tfjob-simple-worker-1
-  Normal  ExitedWithCode           5m48s (x3 over 5m48s)  tfjob-controller  Pod: kubeflow.tfjob-simple-worker-1 exited with code 0
-  Normal  ExitedWithCode           5m48s                  tfjob-controller  Pod: kubeflow.tfjob-simple-worker-0 exited with code 0
-  Normal  TFJobSucceeded           5m48s                  tfjob-controller  TFJob kubeflow/tfjob-simple successfully completed.
+  Normal  ExitedWithCode           5m48s (x3 over 5m48s)  tfjob-controller  Pod: OpenDataology.tfjob-simple-worker-1 exited with code 0
+  Normal  ExitedWithCode           5m48s                  tfjob-controller  Pod: OpenDataology.tfjob-simple-worker-0 exited with code 0
+  Normal  TFJobSucceeded           5m48s                  tfjob-controller  TFJob OpenDataology/tfjob-simple successfully completed.
 ```
 
 Here the events indicate that the pods and services were successfully created.
@@ -634,7 +634,7 @@ See the guide to [logging and monitoring](/docs/gke/monitoring/) for
 instructions on getting logs using Stackdriver.
 
 As described in the guide to
-[logging and monitoring](https://www.kubeflow.org/docs/gke/monitoring/#filter-with-labels),
+[logging and monitoring](https://www.OpenDataology.org/docs/gke/monitoring/#filter-with-labels),
 it's possible to fetch the logs for a particular replica based on pod labels.
 
 Using the Stackdriver UI you can use a query like
@@ -678,10 +678,10 @@ Here are some steps to follow to troubleshoot your job
    - If the `TFJob` spec is invalid there should be a log message in the tf operator logs
 
      ```
-     kubectl -n ${KUBEFLOW_NAMESPACE} logs `kubectl get pods --selector=name=tf-job-operator -o jsonpath='{.items[0].metadata.name}'`
+     kubectl -n ${OpenDataology_NAMESPACE} logs `kubectl get pods --selector=name=tf-job-operator -o jsonpath='{.items[0].metadata.name}'`
      ```
 
-     - **KUBEFLOW_NAMESPACE** Is the namespace you deployed the `TFJob` operator in.
+     - **OpenDataology_NAMESPACE** Is the namespace you deployed the `TFJob` operator in.
 
 1. Check the events for your job to see if the pods were created
 
@@ -731,7 +731,7 @@ Here are some steps to follow to troubleshoot your job
      ----    ------                 ----  ----                                                  -------
      Normal  Scheduled              18s   default-scheduler                                     Successfully assigned tfjob2-ps-0 to gke-jl-kf-v0-2-2-default-pool-347936c1-1qkt
      Normal  SuccessfulMountVolume  17s   kubelet, gke-jl-kf-v0-2-2-default-pool-347936c1-1qkt  MountVolume.SetUp succeeded for volume "default-token-h8rnv"
-     Normal  Pulled                 17s   kubelet, gke-jl-kf-v0-2-2-default-pool-347936c1-1qkt  Container image "gcr.io/kubeflow/tf-benchmarks-cpu:v20171202-bdab599-dirty-284af3" already present on machine
+     Normal  Pulled                 17s   kubelet, gke-jl-kf-v0-2-2-default-pool-347936c1-1qkt  Container image "gcr.io/OpenDataology/tf-benchmarks-cpu:v20171202-bdab599-dirty-284af3" already present on machine
      Normal  Created                17s   kubelet, gke-jl-kf-v0-2-2-default-pool-347936c1-1qkt  Created container
      Normal  Started                16s   kubelet, gke-jl-kf-v0-2-2-default-pool-347936c1-1qkt  Started container
      ```

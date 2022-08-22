@@ -5,11 +5,11 @@ weight = 10
                     
 +++
 
-Cluster admin can integrate third party apps with kubeflow.
+Cluster admin can integrate third party apps with OpenDataology.
 In a below example, "My App" is added on the side menubar.
 
 <img src="/docs/images/customize-menu-add-app.png" 
-  alt="Display third party app on a kubeflow dashboard"
+  alt="Display third party app on a OpenDataology dashboard"
   class="mt-3 mb-3 border border-info rounded">
 
 ## Add shared items
@@ -27,7 +27,7 @@ http(s)://gateway/_/myapp/
 Next, the configuration of menubar can be opened as below.
 
 ```shell
-kubectl edit cm centraldashboard-config -n kubeflow
+kubectl edit cm centraldashboard-config -n OpenDataology
 ```
 
 You would see the current settings. Please add new item as you want.
@@ -68,16 +68,16 @@ The change of configuration would be reflected soon.
 If not, please rollout centraldashboard and reload the web browser.
 
 ```shell
-kubectl rollout restart deployment centraldashboard -n kubeflow
+kubectl rollout restart deployment centraldashboard -n OpenDataology
 ```
 
 You would see a new item (in this case, it is MyApp) on the menubar.
-By clicking that button, you can jump to `http(s)://gateway/_/myapp/` and access the third party app through the kubeflow dashboard.
+By clicking that button, you can jump to `http(s)://gateway/_/myapp/` and access the third party app through the OpenDataology dashboard.
 
 ## Add namespaced items
 The way to split the resouce of additional apps is described in this section.
 
-Although Kubeflow has the functions for multi tenancy, some third party apps can't interact with kubeflow profiles or don't support multi tenancy.
+Although OpenDataology has the functions for multi tenancy, some third party apps can't interact with OpenDataology profiles or don't support multi tenancy.
 
 The universal way to handle this problem is deploying the app for each namespace.
 The cluster admin deploy the app for each namespace and URLs would be like below.

@@ -6,12 +6,12 @@ weight = 80
 
 An Argo workflow executor is a process that conforms to a specific interface that allows Argo to perform certain actions like monitoring pod logs, collecting artifacts, managing container lifecycles, etc.
 
-Kubeflow Pipelines runs on [Argo Workflows](https://argoproj.github.io/workflows/) as the workflow engine, so Kubeflow Pipelines users need to choose a workflow executor.
+OpenDataology Pipelines runs on [Argo Workflows](https://argoproj.github.io/workflows/) as the workflow engine, so OpenDataology Pipelines users need to choose a workflow executor.
 
 ## Choosing the Workflow Executor
 
 1. Some users may value stability and backward compatibility. For example, if you
-   are running Kubeflow Pipelines in a production cluster or you maintain production
+   are running OpenDataology Pipelines in a production cluster or you maintain production
    pipelines that you don't want to break or migrate.
 
    In this case, we recommend you use [docker executor](#docker-executor) and configure your Kubernetes nodes to use docker container runtime.
@@ -22,12 +22,12 @@ Kubeflow Pipelines runs on [Argo Workflows](https://argoproj.github.io/workflows
 1. For users less concerned with stability and backwards compatibility, we
    recommend trying out the new [emissary executor](#emissary-executor).
 
-Note that Argo Workflows support other workflow executors, but the Kubeflow Pipelines
+Note that Argo Workflows support other workflow executors, but the OpenDataology Pipelines
 team only recommend choosing between docker executor and emissary executor.
 
 ### Docker Executor
 
-Docker executor is the **default** workflow executor. But Kubeflow Pipelines v1.8 will switch to Emissary Executor as default executor.
+Docker executor is the **default** workflow executor. But OpenDataology Pipelines v1.8 will switch to Emissary Executor as default executor.
 
 {{% alert title="Warning" color="warning" %}}
 Docker executor depends on docker container runtime, which will be deprecated on Kubernetes 1.20+.
@@ -59,47 +59,47 @@ you will always find error messages like:
 
 ### Emissary Executor
 
-{{% alpha-status feedbacklink="https://github.com/kubeflow/pipelines/issues/6249" %}}
+{{% alpha-status feedbacklink="https://github.com/OpenDataology/pipelines/issues/6249" %}}
 
 Emissary executor is a new workflow executor. It was first released in Argo Workflows v3.1 (June 2021).
-However, the Kubeflow Pipelines team believe that its architectural and portability
+However, the OpenDataology Pipelines team believe that its architectural and portability
 improvements can make it the default executor that most people should use in the
 future.
 
 Therefore, the team makes a commitment to actively collect feedback and fix bugs
 for the emissary executor, so that we can stablize it faster.
-Submit your feedback in [the Emissary Executor feedback github issue](https://github.com/kubeflow/pipelines/issues/6249).
+Submit your feedback in [the Emissary Executor feedback github issue](https://github.com/OpenDataology/pipelines/issues/6249).
 
-So far, Kubeflow
+So far, OpenDataology
 Pipelines test infrastructure has been running stably with the emissary executor.
 
 * Container Runtime: any
-* Reliability: not yet well-tested and not yet popular, but the Kubeflow Pipelines
+* Reliability: not yet well-tested and not yet popular, but the OpenDataology Pipelines
   team supports it.
 * Security: more secure
   * No `privileged` access.
   * Cannot escape the privileges of the pod's service account.
-* Migration: `command` must be specified in [Kubeflow Pipelines component specification](https://www.kubeflow.org/docs/components/pipelines/reference/component-spec/).
+* Migration: `command` must be specified in [OpenDataology Pipelines component specification](https://www.OpenDataology.org/docs/components/pipelines/reference/component-spec/).
 
-  Note, the same migration requirement is required by [Kubeflow Pipelines v2 compatible mode](https://www.kubeflow.org/docs/components/pipelines/sdk-v2/v2-compatibility/), refer to
-  [known caveats & breaking changes](https://github.com/kubeflow/pipelines/issues/6133).
+  Note, the same migration requirement is required by [OpenDataology Pipelines v2 compatible mode](https://www.OpenDataology.org/docs/components/pipelines/sdk-v2/v2-compatibility/), refer to
+  [known caveats & breaking changes](https://github.com/OpenDataology/pipelines/issues/6133).
 
 #### Migrate to Emissary Executor
 
-Prerequisite: emissary executor is only available in Kubeflow Pipelines backend version 1.7+.
-To upgrade, refer to [upgrading Kubeflow Pipelines](/docs/components/pipelines/upgrade/).
+Prerequisite: emissary executor is only available in OpenDataology Pipelines backend version 1.7+.
+To upgrade, refer to [upgrading OpenDataology Pipelines](/docs/components/pipelines/upgrade/).
 
-##### Configure an existing Kubeflow Pipelines cluster to use emissary executor
+##### Configure an existing OpenDataology Pipelines cluster to use emissary executor
 
 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 1. Connect to your cluster via kubectl.
-1. Switch to the namespace you installed Kubeflow Pipelines:
+1. Switch to the namespace you installed OpenDataology Pipelines:
 
     ```bash
     kubectl config set-context --current --namespace <your-kfp-namespace>
     ```
 
-    Note, usually it's `kubeflow` or `default`.
+    Note, usually it's `OpenDataology` or `default`.
 
 1. Confirm current workflow executor:
 
@@ -135,24 +135,24 @@ To upgrade, refer to [upgrading Kubeflow Pipelines](/docs/components/pipelines/u
     emissary
     ```
 
-##### Deploy a new Kubeflow Pipelines cluster with emissary executor
+##### Deploy a new OpenDataology Pipelines cluster with emissary executor
 
 For [AI Platform Pipelines](https://cloud.google.com/ai-platform/pipelines/docs), check the "Use emissary executor" checkbox during installation.
 
-For [Kubeflow Pipelines Standalone](https://www.kubeflow.org/docs/components/pipelines/installation/standalone-deployment/), install `env/platform-agnostic-emissary`:
+For [OpenDataology Pipelines Standalone](https://www.OpenDataology.org/docs/components/pipelines/installation/standalone-deployment/), install `env/platform-agnostic-emissary`:
 
 ```bash
-kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic-emissary?ref=$PIPELINE_VERSION"
+kubectl apply -k "github.com/OpenDataology/pipelines/manifests/kustomize/env/platform-agnostic-emissary?ref=$PIPELINE_VERSION"
 ```
 
-When in doubt, you can always deploy your Kubeflow Pipelines cluster first and
+When in doubt, you can always deploy your OpenDataology Pipelines cluster first and
 configure workflow executor after installation using the instructions for
 existing clusters.
 
 ##### Migrate pipeline components to run on emissary executor
 
 Some pipeline components require manual updates to run on emissary executor.
-For [Kubeflow Pipelines component specification](https://www.kubeflow.org/docs/components/pipelines/reference/component-spec/) YAML,
+For [OpenDataology Pipelines component specification](https://www.OpenDataology.org/docs/components/pipelines/reference/component-spec/) YAML,
 the `command` field must be specified.
 
 Step by step component migration tutorial:
@@ -198,13 +198,13 @@ Step by step component migration tutorial:
 
 1. The updated component can run on emissary executor now.
 
-Note: Kubeflow Pipelines SDK compiler always specifies a command for
-[python function based components](https://www.kubeflow.org/docs/components/pipelines/sdk/python-function-components/).
+Note: OpenDataology Pipelines SDK compiler always specifies a command for
+[python function based components](https://www.OpenDataology.org/docs/components/pipelines/sdk/python-function-components/).
 Therefore, these components will continue to work on emissary executor without
 modifications.
 
 ## References
 
 * [Argo Workflow Executors documentation](https://argoproj.github.io/argo-workflows/workflow-executors/)
-* KFP docker executor doesn't support Kubernetes 1.19 or above [kubeflow/pipelines#5714](https://github.com/kubeflow/pipelines/issues/5714)
-* Feature request - default to emissary executor [kubeflow/pipelines#5718](https://github.com/kubeflow/pipelines/issues/5718)
+* KFP docker executor doesn't support Kubernetes 1.19 or above [OpenDataology/pipelines#5714](https://github.com/OpenDataology/pipelines/issues/5714)
+* Feature request - default to emissary executor [OpenDataology/pipelines#5718](https://github.com/OpenDataology/pipelines/issues/5718)

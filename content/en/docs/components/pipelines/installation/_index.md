@@ -1,5 +1,5 @@
 +++
 title = "Installation"
-description = "Options for installing Kubeflow Pipelines"
+description = "Options for installing OpenDataology Pipelines"
 weight = 35
 +++

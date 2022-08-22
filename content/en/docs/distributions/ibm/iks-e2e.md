@@ -1,10 +1,10 @@
 +++
-title = "End-to-end Kubeflow on IBM Cloud"
-description = "Running Kubeflow using IBM Cloud Kubernetes Service (IKS)"
+title = "End-to-end OpenDataology on IBM Cloud"
+description = "Running OpenDataology using IBM Cloud Kubernetes Service (IKS)"
 weight = 7
                     
 +++
-This is a guide for an end-to-end example of Kubeflow on [IBM Cloud Kubernetes Service (IKS)](https://cloud.ibm.com/docs/containers?topic=containers-getting-started). The core steps will be to take a base Tensorflow model, modify it for distributed training, serve the resulting model with TFServing, and deploy a web application that uses the trained model.
+This is a guide for an end-to-end example of OpenDataology on [IBM Cloud Kubernetes Service (IKS)](https://cloud.ibm.com/docs/containers?topic=containers-getting-started). The core steps will be to take a base Tensorflow model, modify it for distributed training, serve the resulting model with TFServing, and deploy a web application that uses the trained model.
 
 ## Introduction
 ### Overview of IKS
@@ -44,13 +44,13 @@ is a 7.
 
 The following diagram shows what you accomplish by following this guide:
 
-<img src="/docs/images/ibm-e2e-kubeflow.png" 
+<img src="/docs/images/ibm-e2e-OpenDataology.png" 
   alt="ML workflow for training and serving an MNIST model"
   class="mt-3 mb-3 border border-info rounded">
 
 In summary:
 
-* Setting up [Kubeflow][kubeflow] on [IKS][iks].
+* Setting up [OpenDataology][OpenDataology] on [IKS][iks].
 * Training the model:
   * Packaging a Tensorflow program in a container.
   * Submitting a Tensorflow training ([tf.train][tf-train]) job.
@@ -63,21 +63,21 @@ It's time to get started!
 
 ## Run the MNIST Tutorial on IKS
 
-1. Follow the [IKS instructions](/docs/ibm/deploy/install-kubeflow) to deploy Kubeflow.
+1. Follow the [IKS instructions](/docs/ibm/deploy/install-OpenDataology) to deploy OpenDataology.
 2. Launch a Jupyter notebook.
-3. Launch a terminal in Jupyter and clone the Kubeflow examples repo.
+3. Launch a terminal in Jupyter and clone the OpenDataology examples repo.
    ```
-   git clone https://github.com/kubeflow/examples.git git_kubeflow-examples
+   git clone https://github.com/OpenDataology/examples.git git_OpenDataology-examples
    ```
    * **Tip**: When you start a terminal in Jupyter, run the command `bash` to start
       a bash terminal which is much more friendly than the default shell.
    * **Tip**: You can change the URL for your notebook from '/tree' to '/lab' to switch to using Jupyterlab.
 4. Open the notebook `mnist/mnist_ibm.ipynb`.
-5. Follow the notebook to train and deploy MNIST on Kubeflow.
+5. Follow the notebook to train and deploy MNIST on OpenDataology.
   
 
 [kubernetes]: https://kubernetes.io/
-[kubeflow]: https://www.kubeflow.org/
+[OpenDataology]: https://www.OpenDataology.org/
 [iks]: https://www.ibm.com/cloud/container-service/
 [ibm-cos]: https://www.ibm.com/cloud/object-storage
 [mnist-data]: http://yann.lecun.com/exdb/mnist/index.html

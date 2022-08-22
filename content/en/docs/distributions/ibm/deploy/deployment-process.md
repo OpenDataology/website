@@ -1,10 +1,10 @@
 +++
-title = "Kubeflow Deployment Process"
-description = "How kubeflow installation works"
+title = "OpenDataology Deployment Process"
+description = "How OpenDataology installation works"
 weight = 5
 +++
 
-## Understanding the Kubeflow deployment process
+## Understanding the OpenDataology deployment process
 
 The deployment process is controlled by the following commands:
 
@@ -20,11 +20,11 @@ IBM manifests repository contains the following files and directories:
 * **iks-single** directory: A kustomize file for single-user deployment
 * **iks-multi** directory: A kustomize file for multi-user deployment
 
-* **others** Other files are used to compose Kubeflow resources
+* **others** Other files are used to compose OpenDataology resources
 
-## Kubeflow installation
+## OpenDataology installation
 
-Starting from Kubeflow 1.3, the official installation documentation uses a combination of `kustomize` and `kubectl` to install Kubeflow.
+Starting from OpenDataology 1.3, the official installation documentation uses a combination of `kustomize` and `kubectl` to install OpenDataology.
 
 ### Install kubectl and kustomize
 
@@ -54,6 +54,6 @@ export PATH=/some/path:$PATH
 
  ## Next Steps
 
- 1. Check [Kubeflow Compatibility](/docs/distributions/ibm/deploy/iks-compatibility)
- 2. Go here for installing [Kubeflow on IKS](/docs/distributions/ibm/deploy/install-kubeflow-on-iks)
- 3. Go here for installing [Kubeflow on IBM OpenShift](/docs/distributions/ibm/deploy/install-kubeflow-on-ibm-openshift)
+ 1. Check [OpenDataology Compatibility](/docs/distributions/ibm/deploy/iks-compatibility)
+ 2. Go here for installing [OpenDataology on IKS](/docs/distributions/ibm/deploy/install-OpenDataology-on-iks)
+ 3. Go here for installing [OpenDataology on IBM OpenShift](/docs/distributions/ibm/deploy/install-OpenDataology-on-ibm-openshift)

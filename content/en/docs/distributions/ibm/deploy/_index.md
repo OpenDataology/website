@@ -1,5 +1,5 @@
 +++
-title = "Kubeflow Deployment on IBM Cloud"
-description = "Instructions for Kubeflow deployment on IBM Cloud"
+title = "OpenDataology Deployment on IBM Cloud"
+description = "Instructions for OpenDataology deployment on IBM Cloud"
 weight = 4
 +++

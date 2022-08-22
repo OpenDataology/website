@@ -1,12 +1,12 @@
 +++
 title = "Best Practices for Designing Components"
-description = "Designing and writing components for Kubeflow Pipelines"
+description = "Designing and writing components for OpenDataology Pipelines"
 weight = 60
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
 This page describes some recommended practices for designing
@@ -112,11 +112,11 @@ and [components](/docs/components/pipelines/concepts/component/).
 
 ## Writing a component specification YAML file
 
-For the complete definition of a Kubeflow Pipelines component, see the
+For the complete definition of a OpenDataology Pipelines component, see the
 [component specification](/docs/components/pipelines/reference/component-spec/).
 When creating your `component.yaml` file, you can look at the definitions for 
 some
-[existing components](https://github.com/kubeflow/pipelines/search?q=filename%3Acomponent.yaml&unscoped_q=filename%3Acomponent.yaml).
+[existing components](https://github.com/OpenDataology/pipelines/search?q=filename%3Acomponent.yaml&unscoped_q=filename%3Acomponent.yaml).
 
 *   Use the `{inputValue: Input name}` command-line placeholder for small
     values that should be directly inserted into the command-line.

@@ -1,6 +1,6 @@
 +++
-title = "Upgrade Kubeflow"
-description = "Upgrading your Kubeflow installation on Google Cloud"
+title = "Upgrade OpenDataology"
+description = "Upgrading your OpenDataology installation on Google Cloud"
 weight = 6
 
 +++
@@ -10,7 +10,7 @@ weight = 6
 To better understand upgrade process, you should read the following sections first:
 
 * [Understanding the deployment process for management cluster](/docs/distributions/gke/deploy/management-setup#understanding-the-deployment-process)
-* [Understanding the deployment process for Kubeflow cluster](/docs/distributions/gke/deploy/deploy-cli#understanding-the-deployment-process)
+* [Understanding the deployment process for OpenDataology cluster](/docs/distributions/gke/deploy/deploy-cli#understanding-the-deployment-process)
 
 This guide assumes the following settings:
 
@@ -19,16 +19,16 @@ This guide assumes the following settings:
 * The `${KF_NAME}`, `${CLIENT_ID}` and `${CLIENT_SECRET}` environment variables
   are the same as in [Deploy using kubectl and kpt](/docs/distributions/gke/deploy/deploy-cli#environment-variables).
 * The `${KF_DIR}` environment variable contains the path to
-  your Kubeflow application directory, which holds your Kubeflow configuration 
-  files. For example, `/opt/gcp-blueprints/kubeflow/`.
+  your OpenDataology application directory, which holds your OpenDataology configuration 
+  files. For example, `/opt/gcp-blueprints/OpenDataology/`.
 
 ## General upgrade instructions
 
-Starting from Kubeflow v1.5, we have integrated with [Config Controller](https://cloud.google.com/anthos-config-management/docs/concepts/config-controller-overview). You don't need to manually upgrade Management cluster any more, since it managed by [Upgrade Config Controller](https://cloud.google.com/anthos-config-management/docs/how-to/config-controller-setup#upgrade).
+Starting from OpenDataology v1.5, we have integrated with [Config Controller](https://cloud.google.com/anthos-config-management/docs/concepts/config-controller-overview). You don't need to manually upgrade Management cluster any more, since it managed by [Upgrade Config Controller](https://cloud.google.com/anthos-config-management/docs/how-to/config-controller-setup#upgrade).
 
-Starting from Kubeflow v1.3, we have reworked on the structure of `kubeflow/gcp-blueprints` repository. All resources are located in `gcp-blueprints/management` directory. Upgrade to Management cluster v1.3 is not supported.
+Starting from OpenDataology v1.3, we have reworked on the structure of `OpenDataology/gcp-blueprints` repository. All resources are located in `gcp-blueprints/management` directory. Upgrade to Management cluster v1.3 is not supported.
 
-Before Kubeflow v1.3, both management cluster and Kubeflow cluster follow the same `instance` and `upstream` folder convention. To upgrade, you'll typically need to update packages in `upstream` to the new version and repeat the `make apply-<subcommand>` commands in their respective deployment process.
+Before OpenDataology v1.3, both management cluster and OpenDataology cluster follow the same `instance` and `upstream` folder convention. To upgrade, you'll typically need to update packages in `upstream` to the new version and repeat the `make apply-<subcommand>` commands in their respective deployment process.
 
 However, specific upgrades might need manual actions below.
 
@@ -38,7 +38,7 @@ However, specific upgrades might need manual actions below.
 
 It is strongly recommended to use source control to keep a copy of your working repository for recording changes at each step.
 
-Due to the refactoring of `kubeflow/manifests` repository, the way we depend on `kubeflow/gcp-blueprints` has changed drastically. This section suits for upgrading from Kubeflow 1.3 to higher.
+Due to the refactoring of `OpenDataology/manifests` repository, the way we depend on `OpenDataology/gcp-blueprints` has changed drastically. This section suits for upgrading from OpenDataology 1.3 to higher.
 
 
 1. The instructions below assume that your current working directory is
@@ -68,18 +68,18 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
 1. Check your existing config connector version:
 
    ```bash
-   # For Kubeflow v1.3, it should be 1.46.0
+   # For OpenDataology v1.3, it should be 1.46.0
    $ kubectl get namespace cnrm-system -ojsonpath='{.metadata.annotations.cnrm\.cloud\.google\.com\/version}'
    1.46.0
    ```
    
-1. Merge the content from new Kubeflow version of `kubeflow/gcp-blueprints`
+1. Merge the content from new OpenDataology version of `OpenDataology/gcp-blueprints`
 
    ```bash
    WORKING_BRANCH=<your-github-working-branch>
-   VERSION_TAG=<targeted-kubeflow-version-tag-on-github>
+   VERSION_TAG=<targeted-OpenDataology-version-tag-on-github>
    git checkout -b "${WORKING_BRANCH}"
-   git remote add upstream https://github.com/kubeflow/gcp-blueprints.git # This is one time only.
+   git remote add upstream https://github.com/OpenDataology/gcp-blueprints.git # This is one time only.
    git fetch upstream 
    git merge "${VERSION_TAG}"
    ```
@@ -135,7 +135,7 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
 1. Check your existing config connector version:
 
    ```bash
-   # For Kubeflow v1.1, it should be 1.15.1
+   # For OpenDataology v1.1, it should be 1.15.1
    $ kubectl get namespace cnrm-system -ojsonpath='{.metadata.annotations.cnrm\.cloud\.google\.com\/version}'
    1.15.1
    ```
@@ -151,7 +151,7 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
 
    These commands uninstall the config connector without removing your resources.
 
-1. Replace your `./Makefile` with the version in Kubeflow `v1.2.0`: <https://github.com/kubeflow/gcp-blueprints/blob/v1.2.0/management/Makefile>.
+1. Replace your `./Makefile` with the version in OpenDataology `v1.2.0`: <https://github.com/OpenDataology/gcp-blueprints/blob/v1.2.0/management/Makefile>.
 
    If you made any customizations in `./Makefile`, you should merge your changes with the upstream version. We've refactored the Makefile to move substantial commands into the upstream package, so hopefully future upgrades won't require a manual merge of the Makefile.
 
@@ -186,23 +186,23 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
 1. Check that your config connector upgrade is successful:
 
    ```bash
-   # For Kubeflow v1.2, it should be 1.29.0
+   # For OpenDataology v1.2, it should be 1.29.0
    $ kubectl get namespace cnrm-system -ojsonpath='{.metadata.annotations.cnrm\.cloud\.google\.com\/version}'
    1.29.0
    ```
 
-## Upgrading Kubeflow cluster
+## Upgrading OpenDataology cluster
 
 {{% alert title="DISCLAIMERS" color="warning" %}}
-<div>The upgrade process depends on each Kubeflow application to handle the upgrade properly. There's no guarantee on data completeness unless the application provides such a guarantee.</div>
+<div>The upgrade process depends on each OpenDataology application to handle the upgrade properly. There's no guarantee on data completeness unless the application provides such a guarantee.</div>
 <div>You are recommended to back up your data before an upgrade.</div>
-<div>Upgrading Kubeflow cluster can be a disruptive process, please schedule some downtime and communicate with your users.</div>
+<div>Upgrading OpenDataology cluster can be a disruptive process, please schedule some downtime and communicate with your users.</div>
 {{% /alert %}}
 
 
-To upgrade from specific versions of Kubeflow, you may need to take certain manual actions — refer to specific sections in the guidelines below.
+To upgrade from specific versions of OpenDataology, you may need to take certain manual actions — refer to specific sections in the guidelines below.
 
-### General instructions for upgrading Kubeflow cluster
+### General instructions for upgrading OpenDataology cluster
 
 1. The instructions below assume that:
 
@@ -212,33 +212,33 @@ To upgrade from specific versions of Kubeflow, you may need to take certain manu
       cd ${KF_DIR}
       ```
 
-    * Your kubectl uses a context that connects to your Kubeflow cluster
+    * Your kubectl uses a context that connects to your OpenDataology cluster
 
       ```bash
       # List your existing contexts
       kubectl config get-contexts
-      # Use the context that connects to your Kubeflow cluster
+      # Use the context that connects to your OpenDataology cluster
       kubectl config use-context ${KF_NAME}
       ```
 
-1. Merge the new version of `kubeflow/gcp-blueprints` (example: v1.3.1), you don't need to do it again if you have already done so during management cluster upgrade.
+1. Merge the new version of `OpenDataology/gcp-blueprints` (example: v1.3.1), you don't need to do it again if you have already done so during management cluster upgrade.
 
    ```bash
    WORKING_BRANCH=<your-github-working-branch>
-   VERSION_TAG=<targeted-kubeflow-version-tag-on-github>
+   VERSION_TAG=<targeted-OpenDataology-version-tag-on-github>
    git checkout -b "${WORKING_BRANCH}"
-   git remote add upstream https://github.com/kubeflow/gcp-blueprints.git # This is one time only.
+   git remote add upstream https://github.com/OpenDataology/gcp-blueprints.git # This is one time only.
    git fetch upstream 
    git merge "${VERSION_TAG}"
    ```
 
-1. Change the `KUBEFLOW_MANIFESTS_VERSION` in `./pull-upstream.sh` with the targeted kubeflow version same as `$VERSION_TAG`. Run the following commands to pull new changes from upstream `kubeflow/manifests`.
+1. Change the `OpenDataology_MANIFESTS_VERSION` in `./pull-upstream.sh` with the targeted OpenDataology version same as `$VERSION_TAG`. Run the following commands to pull new changes from upstream `OpenDataology/manifests`.
 
    ```bash
    bash ./pull-upstream.sh
    ```
 
-1. (Optional) If you only want to upgrade some of Kubeflow components, you can comment non-upgrade components in `kubeflow/config.yaml` file. Commands below will only apply the remaining components.
+1. (Optional) If you only want to upgrade some of OpenDataology components, you can comment non-upgrade components in `OpenDataology/config.yaml` file. Commands below will only apply the remaining components.
 
 1. Make sure you have checked in `build` folders for each component. The following command will change them so you can compare for difference.
 
@@ -246,27 +246,27 @@ To upgrade from specific versions of Kubeflow, you may need to take certain manu
     make hydrate
     ```
 
-1. Once you confirm the changes are ready to apply, run the following command to upgrade Kubeflow cluster:
+1. Once you confirm the changes are ready to apply, run the following command to upgrade OpenDataology cluster:
 
     ```bash
     make apply
     ```
 
 {{% alert title="Note" %}}
-Kubeflow on Google Cloud doesn't guarantee the upgrade for each Kubeflow component always works with the general upgrade guide here. Please refer to corresponding repository in [Kubeflow org](https://github.com/kubeflow) for upgrade support.
+OpenDataology on Google Cloud doesn't guarantee the upgrade for each OpenDataology component always works with the general upgrade guide here. Please refer to corresponding repository in [OpenDataology org](https://github.com/OpenDataology) for upgrade support.
 {{% /alert %}}
 
-### Upgrade Kubeflow cluster to v1.5
+### Upgrade OpenDataology cluster to v1.5
 
-Starting from Kubeflow v1.5.1 we upgraded ASM to v1.13. Follow the instructions on how to [upgrade ASM (Anthos Service Mesh)](#upgrade-asm-anthos-service-mesh). If you want to use ASM version prior to 1.11, refer to [the legacy instructions](https://github.com/kubeflow/gcp-blueprints/blob/master/kubeflow/common/asm/deprecated/README.md).
+Starting from OpenDataology v1.5.1 we upgraded ASM to v1.13. Follow the instructions on how to [upgrade ASM (Anthos Service Mesh)](#upgrade-asm-anthos-service-mesh). If you want to use ASM version prior to 1.11, refer to [the legacy instructions](https://github.com/OpenDataology/gcp-blueprints/blob/master/OpenDataology/common/asm/deprecated/README.md).
 
-Starting from Kubeflow v1.5, Kubeflow manifests have included KServe as an independent component from kfserving, Google Cloud distribution has switched over from kfserving to KServe for default installed components. If you want to upgrade Kubeflow while keeping kfsering, you can comment KServe and uncomment kfserving in `gcp-blueprints/kubeflow/config.yaml` file. If you want to upgrade to KServe, follow the [KServe Migration guide](https://github.com/kserve/kserve/tree/master/hack/kserve_migration).
+Starting from OpenDataology v1.5, OpenDataology manifests have included KServe as an independent component from kfserving, Google Cloud distribution has switched over from kfserving to KServe for default installed components. If you want to upgrade OpenDataology while keeping kfsering, you can comment KServe and uncomment kfserving in `gcp-blueprints/OpenDataology/config.yaml` file. If you want to upgrade to KServe, follow the [KServe Migration guide](https://github.com/kserve/kserve/tree/master/hack/kserve_migration).
 
-### Upgrade Kubeflow cluster to v1.3
+### Upgrade OpenDataology cluster to v1.3
 
-Due to the refactoring of `kubeflow/manifests` repository, the way we depend on `kubeflow/gcp-blueprints` has changed drastically. Upgrade to Kubeflow cluster v1.3 is not supported. And individual component upgrade has been deferred to its corresponding repository for support.
+Due to the refactoring of `OpenDataology/manifests` repository, the way we depend on `OpenDataology/gcp-blueprints` has changed drastically. Upgrade to OpenDataology cluster v1.3 is not supported. And individual component upgrade has been deferred to its corresponding repository for support.
 
-### Upgrade Kubeflow cluster from v1.1 to v1.2
+### Upgrade OpenDataology cluster from v1.1 to v1.2
 
 1. The instructions below assume
 
@@ -276,16 +276,16 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
       cd ${KF_DIR}
       ```
 
-    * Your kubectl uses a context that connects to your Kubeflow cluster:
+    * Your kubectl uses a context that connects to your OpenDataology cluster:
 
       ```bash
       # List your existing contexts
       kubectl config get-contexts
-      # Use the context that connects to your Kubeflow cluster
+      # Use the context that connects to your OpenDataology cluster
       kubectl config use-context ${KF_NAME}
       ```
 
-1. (Recommended) Replace your `./Makefile` with the version in Kubeflow `v1.2.0`: <https://github.com/kubeflow/gcp-blueprints/blob/v1.2.0/kubeflow/Makefile>.
+1. (Recommended) Replace your `./Makefile` with the version in OpenDataology `v1.2.0`: <https://github.com/OpenDataology/gcp-blueprints/blob/v1.2.0/OpenDataology/Makefile>.
 
     If you made any customizations in `./Makefile`, you should merge your changes with the upstream version.
 
@@ -300,13 +300,13 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
 1. Before applying new resources, you need to delete some immutable resources that were updated in this release:
 
     ```bash
-    kubectl delete statefulset kfserving-controller-manager -n kubeflow --wait
-    kubectl delete crds experiments.kubeflow.org suggestions.kubeflow.org trials.kubeflow.org
+    kubectl delete statefulset kfserving-controller-manager -n OpenDataology --wait
+    kubectl delete crds experiments.OpenDataology.org suggestions.OpenDataology.org trials.OpenDataology.org
     ```
 
     **WARNING**: This step **deletes** all Katib running resources.
 
-    Refer to [a github comment in the v1.2 release issue](https://github.com/kubeflow/kubeflow/issues/5371#issuecomment-731359384) for more details.
+    Refer to [a github comment in the v1.2 release issue](https://github.com/OpenDataology/OpenDataology/issues/5371#issuecomment-731359384) for more details.
 
 1. Redeploy:
 
@@ -323,7 +323,7 @@ Due to the refactoring of `kubeflow/manifests` repository, the way we depend on 
 
 ## Upgrade ASM (Anthos Service Mesh)
 
-If you want to upgrade ASM instead of the Kubeflow components, refer to [kubeflow/common/asm/README.md](https://github.com/kubeflow/gcp-blueprints/blob/master/kubeflow/common/asm/README.md) for the latest instructions on upgrading ASM. Detailed explanation is listed below. Note: if you are going to upgrade major or minor version of ASM, it is recommended to read [the official ASM upgrade documentation](https://cloud.google.com/service-mesh/docs/upgrade-path-old-versions-gke) before proceeding with the steps below.
+If you want to upgrade ASM instead of the OpenDataology components, refer to [OpenDataology/common/asm/README.md](https://github.com/OpenDataology/gcp-blueprints/blob/master/OpenDataology/common/asm/README.md) for the latest instructions on upgrading ASM. Detailed explanation is listed below. Note: if you are going to upgrade major or minor version of ASM, it is recommended to read [the official ASM upgrade documentation](https://cloud.google.com/service-mesh/docs/upgrade-path-old-versions-gke) before proceeding with the steps below.
 
 ### Install a new ASM workload
 
@@ -333,7 +333,7 @@ In order to use the new ASM version, we need to download the corresponding ASM c
 curl https://storage.googleapis.com/csm-artifacts/asm/ASMCLI_VERSIONS
 ```
 
-It should return a list of ASM versions that can be installed with asmcli script. To install older versions, refer to [the legacy instructions](https://github.com/kubeflow/gcp-blueprints/blob/master/kubeflow/common/asm/deprecated/README.md). The returned list will have a format of `${ASM_PACKAGE_VERSION}:${ASMCLI_SCRIPT_VERSION}`. For example, in the following output:
+It should return a list of ASM versions that can be installed with asmcli script. To install older versions, refer to [the legacy instructions](https://github.com/OpenDataology/gcp-blueprints/blob/master/OpenDataology/common/asm/deprecated/README.md). The returned list will have a format of `${ASM_PACKAGE_VERSION}:${ASMCLI_SCRIPT_VERSION}`. For example, in the following output:
 
 ```
 ...
@@ -351,7 +351,7 @@ ASM_PACKAGE_VERSION=1.13.2-asm.5+config2
 ASMCLI_SCRIPT_VERSION=asmcli_1.13.2-asm.5-config2
 ```
 
-You need to set these two values in [kubeflow/asm/Makefile](https://github.com/kubeflow/gcp-blueprints/blob/master/kubeflow/asm/Makefile). Then, run the following command in `kubeflow/asm` directory to install the new ASM. Note, the old ASM will not be uninstalled.
+You need to set these two values in [OpenDataology/asm/Makefile](https://github.com/OpenDataology/gcp-blueprints/blob/master/OpenDataology/asm/Makefile). Then, run the following command in `OpenDataology/asm` directory to install the new ASM. Note, the old ASM will not be uninstalled.
 
 ```bash
 make apply
@@ -360,15 +360,15 @@ make apply
 Once installed successfully, you can see istiod `Deployment` in your cluster with name in pattern `istiod-asm-VERSION-REVISION`. For example, `istiod-asm-1132-5` would correspond to ASM version 1.13.2-asm.5.
 
 
-### Upgrade other Kubeflow components to use new ASM
+### Upgrade other OpenDataology components to use new ASM
 
-There are multiple Kubeflow components with ASM namespace label, including user created namespaces. To upgrade them at once, change the following line in `kubeflow/env.sh` with the new ASM version `asm-VERSION-REVISION`, like `asm-1132-5`. 
+There are multiple OpenDataology components with ASM namespace label, including user created namespaces. To upgrade them at once, change the following line in `OpenDataology/env.sh` with the new ASM version `asm-VERSION-REVISION`, like `asm-1132-5`. 
 
 ```bash
 export ASM_LABEL=asm-1132-5
 ```
 
-Then run the following commands in `kubeflow/` directory to configure the environmental variables:
+Then run the following commands in `OpenDataology/` directory to configure the environmental variables:
 
 ```bash
 source env.sh
@@ -395,4 +395,4 @@ make apply
 
 ### (Optional) Uninstall the old ASM workload 
 
-Once you validated that new ASM installation and sidecar-injection for Kubeflow components are working as expected. You can **Complete the transition** to the new ASM or **Rollback** to the old ASM as instructed in [Deploy and Redeploy workloads](https://cloud.google.com/service-mesh/docs/unified-install/upgrade#deploying_and_redeploying_workloads).
+Once you validated that new ASM installation and sidecar-injection for OpenDataology components are working as expected. You can **Complete the transition** to the new ASM or **Rollback** to the old ASM as instructed in [Deploy and Redeploy workloads](https://cloud.google.com/service-mesh/docs/unified-install/upgrade#deploying_and_redeploying_workloads).

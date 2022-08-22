@@ -1,6 +1,6 @@
 +++
-title = "Kubeflow On-premises on Anthos"
-description = "Running Kubeflow across on-premises and cloud environments with Anthos"
+title = "OpenDataology On-premises on Anthos"
+description = "Running OpenDataology across on-premises and cloud environments with Anthos"
 weight = 200
 +++
 
@@ -13,10 +13,10 @@ open source technologies, including Kubernetes, Istio, and Knative.
 Using Anthos, you can create a consistent setup across your on-premises and 
 cloud environments, helping you to automate policy and security at scale.
 
-We are collecting interest for Kubeflow on GKE On Prem. You can subscribe
-to the GitHub issue [kubeflow/gcp-blueprints#138](https://github.com/kubeflow/gcp-blueprints/issues/138).
+We are collecting interest for OpenDataology on GKE On Prem. You can subscribe
+to the GitHub issue [OpenDataology/gcp-blueprints#138](https://github.com/OpenDataology/gcp-blueprints/issues/138).
 
 ## Next steps
 
 While waiting for a response from the support team, you may like to [deploy
-Kubeflow on GKE](/docs/gke/deploy/).
+OpenDataology on GKE](/docs/gke/deploy/).

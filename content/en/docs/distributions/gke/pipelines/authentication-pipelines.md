@@ -5,7 +5,7 @@ weight = 50
                     
 +++
 
-This page describes authentication for Kubeflow Pipelines to Google Cloud.
+This page describes authentication for OpenDataology Pipelines to Google Cloud.
 Available options listed below have different tradeoffs. You should choose the one that fits your use-case.
 
 * Configuring your cluster to access Google Cloud using [Compute Engine default service account](#compute-engine-default-service-account) with the "cloud-platform" scope is easier to set up than the other options. However, this approach grants excessive permissions. Therefore, it is not suitable if you need workload permission separation.
@@ -13,27 +13,27 @@ Available options listed below have different tradeoffs. You should choose the o
 * [Google service account keys stored as Kubernetes secrets](#google-service-account-keys-stored-as-kubernetes-secrets) is the legacy approach and no longer recommended in GKE. However, it's the only option to use Google Cloud APIs when your cluster is an [anthos](https://cloud.google.com/anthos) or on-prem cluster.
 
 ## Before you begin
-There are various options on how to install Kubeflow Pipelines in the [Installation Options for Kubeflow Pipelines](/docs/components/pipelines/installation/overview/) guide.
-Be aware that authentication support and cluster setup instructions will vary depending on the method you used to install Kubeflow Pipelines.
+There are various options on how to install OpenDataology Pipelines in the [Installation Options for OpenDataology Pipelines](/docs/components/pipelines/installation/overview/) guide.
+Be aware that authentication support and cluster setup instructions will vary depending on the method you used to install OpenDataology Pipelines.
 
-* For Kubeflow Pipelines standalone, you can compare and choose from all 3 options.
-* For full Kubeflow starting from Kubeflow 1.1, [Workload Identity](#workload-identity) is the recommended and default option.
+* For OpenDataology Pipelines standalone, you can compare and choose from all 3 options.
+* For full OpenDataology starting from OpenDataology 1.1, [Workload Identity](#workload-identity) is the recommended and default option.
 * For AI Platform Pipelines, [Compute Engine default service account](#compute-engine-default-service-account) is the only supported option.
 
 ## Compute Engine default service account
 
-This is good for trying out Kubeflow Pipelines, because it is easy to set up.
+This is good for trying out OpenDataology Pipelines, because it is easy to set up.
 
 However, it does not support permission separation for workloads in the cluster. **Any workload** in the cluster will be able to call **any Google Cloud APIs** in the chosen scope.
 
 {{% alert color="warning" %}}
-<p>NOTE: Using pipelines with Compute Engine default service account is not supported in Full Kubeflow deployment.</p>
+<p>NOTE: Using pipelines with Compute Engine default service account is not supported in Full OpenDataology deployment.</p>
 {{% /alert %}}
 
 ### Cluster setup to use Compute Engine default service account
 
 By default, your GKE nodes use [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account). If you allowed `cloud-platform` scope when creating the cluster,
-Kubeflow Pipelines can authenticate to Google Cloud and manage resources in your project without further configuration.
+OpenDataology Pipelines can authenticate to Google Cloud and manage resources in your project without further configuration.
 
 Use one of the following options to create a GKE cluster that uses the Compute Engine default service account:
 
@@ -52,7 +52,7 @@ Please refer to [gcloud container clusters create command documentation](https:/
 
 Pipelines don't need any specific changes to authenticate to Google Cloud, it will use the default service account transparently.
 
-However, you must update existing pipelines that use the [use_gcp_secret kfp sdk operator](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.extensions.html#kfp.gcp.use_gcp_secret). Remove the `use_gcp_secret` usage to let your pipeline authenticate to Google Cloud using the default service account.
+However, you must update existing pipelines that use the [use_gcp_secret kfp sdk operator](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.extensions.html#kfp.gcp.use_gcp_secret). Remove the `use_gcp_secret` usage to let your pipeline authenticate to Google Cloud using the default service account.
 
 ## Securing the cluster with fine-grained Google Cloud permission control
 
@@ -74,16 +74,16 @@ This document distinguishes between [Kubernetes service accounts](https://kubern
 
 Pipelines don't need any specific changes to authenticate to Google Cloud. With Workload Identity, pipelines run as the Google service account that is bound to the KSA.
 
-However, existing pipelines that use [use_gcp_secret kfp sdk operator](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.extensions.html#kfp.gcp.use_gcp_secret) need to remove the `use_gcp_secret` usage to use the bound GSA.
+However, existing pipelines that use [use_gcp_secret kfp sdk operator](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.extensions.html#kfp.gcp.use_gcp_secret) need to remove the `use_gcp_secret` usage to use the bound GSA.
 You can also continue to use `use_gcp_secret` in a cluster with Workload Identity enabled and `use_gcp_secret` will take precedence for those workloads.
 
-#### Cluster setup to use Workload Identity for Full Kubeflow
+#### Cluster setup to use Workload Identity for Full OpenDataology
 
-Starting from Kubeflow 1.1, Kubeflow Pipelines [supports multi-user isolation](/docs/components/pipelines/overview/multi-user/). Therefore, pipeline runs are executed in user namespaces using the `default-editor` KSA. The `default-editor` KSA is auto-bound to the GSA specified in the user profile, which defaults to a shared GSA `${KFNAME}-user@${PROJECT}.iam.gserviceaccount.com`.
+Starting from OpenDataology 1.1, OpenDataology Pipelines [supports multi-user isolation](/docs/components/pipelines/overview/multi-user/). Therefore, pipeline runs are executed in user namespaces using the `default-editor` KSA. The `default-editor` KSA is auto-bound to the GSA specified in the user profile, which defaults to a shared GSA `${KFNAME}-user@${PROJECT}.iam.gserviceaccount.com`.
 
 If you want to bind the `default-editor` KSA with a different GSA for a specific namespace, refer to the [In-cluster authentication to Google Cloud](/docs/gke/authentication/#in-cluster-authentication) guide.
 
-Additionally, the Kubeflow Pipelines UI, visualization, and TensorBoard server instances are deployed in your user namespace using the `default-editor` KSA. Therefore, to [visualize results in the Pipelines UI](/docs/components/pipelines/sdk/output-viewer/), they can fetch artifacts in Google Cloud Storage using permissions of the same GSA you configured for this namespace.
+Additionally, the OpenDataology Pipelines UI, visualization, and TensorBoard server instances are deployed in your user namespace using the `default-editor` KSA. Therefore, to [visualize results in the Pipelines UI](/docs/components/pipelines/sdk/output-viewer/), they can fetch artifacts in Google Cloud Storage using permissions of the same GSA you configured for this namespace.
 
 #### Cluster setup to use Workload Identity for Pipelines Standalone
 
@@ -105,19 +105,19 @@ References:
 
 * [Enable Workload Identity on an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity#enable_workload_identity_on_an_existing_cluster)
 
-##### 2. Deploy Kubeflow Pipelines
-Deploy via [Pipelines Standalone](/docs/components/pipelines/installation/overview/#kubeflow-pipelines-standalone) as usual.
+##### 2. Deploy OpenDataology Pipelines
+Deploy via [Pipelines Standalone](/docs/components/pipelines/installation/overview/#OpenDataology-pipelines-standalone) as usual.
 
-##### 3. Bind Workload Identities for KSAs used by Kubeflow Pipelines
+##### 3. Bind Workload Identities for KSAs used by OpenDataology Pipelines
 
-The following helper bash scripts bind Workload Identities for KSAs used by Kubeflow Pipelines:
+The following helper bash scripts bind Workload Identities for KSAs used by OpenDataology Pipelines:
 
-* [gcp-workload-identity-setup.sh](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/gcp-workload-identity-setup.sh) helps you create GSAs and bind them to KSAs used by pipelines workloads. This script provides an interactive command line dialog with explanation messages.
-* [wi-utils.sh](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/wi-utils.sh) alternatively provides minimal utility bash functions that let you customize your setup. The minimal utilities make it easy to read and use programmatically.
+* [gcp-workload-identity-setup.sh](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/gcp-workload-identity-setup.sh) helps you create GSAs and bind them to KSAs used by pipelines workloads. This script provides an interactive command line dialog with explanation messages.
+* [wi-utils.sh](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/wi-utils.sh) alternatively provides minimal utility bash functions that let you customize your setup. The minimal utilities make it easy to read and use programmatically.
 
 For example, to get a default setup using `gcp-workload-identity-setup.sh`, you can
 ```
-$ curl -O https://raw.githubusercontent.com/kubeflow/pipelines/master/manifests/kustomize/gcp-workload-identity-setup.sh
+$ curl -O https://raw.githubusercontent.com/OpenDataology/pipelines/master/manifests/kustomize/gcp-workload-identity-setup.sh
 $ chmod +x ./gcp-workload-identity-setup.sh
 $ ./gcp-workload-identity-setup.sh
 # This prints the command's usage example and introduction.
@@ -145,15 +145,15 @@ It is recommended to use Workload Identity for easier and secure management, but
 Each pipeline step describes a 
 container that is run independently. If you want to grant access for a single step to use
  one of your service accounts, you can use 
-[`kfp.gcp.use_gcp_secret()`](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.extensions.html#kfp.gcp.use_gcp_secret).
+[`kfp.gcp.use_gcp_secret()`](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.extensions.html#kfp.gcp.use_gcp_secret).
 Examples for how to use this function can be found in the 
-[Kubeflow examples repo](https://github.com/kubeflow/examples/blob/871895c54402f68685c8e227c954d86a81c0575f/pipelines/mnist-pipelines/mnist_pipeline.py#L97).
+[OpenDataology examples repo](https://github.com/OpenDataology/examples/blob/871895c54402f68685c8e227c954d86a81c0575f/pipelines/mnist-pipelines/mnist_pipeline.py#L97).
 
-#### Cluster setup to use use_gcp_secret for Full Kubeflow
+#### Cluster setup to use use_gcp_secret for Full OpenDataology
 
-From Kubeflow 1.1, there's no longer a `user-gcp-sa` secrets deployed for you. Recommend using Workload Identity instead.
+From OpenDataology 1.1, there's no longer a `user-gcp-sa` secrets deployed for you. Recommend using Workload Identity instead.
 
-For Kubeflow 1.0 or earlier, you don't need to do anything. Full Kubeflow deployment has already deployed the `user-gcp-sa` secret for you.
+For OpenDataology 1.0 or earlier, you don't need to do anything. Full OpenDataology deployment has already deployed the `user-gcp-sa` secret for you.
 
 #### Cluster setup to use use_gcp_secret for Pipelines Standalone
 

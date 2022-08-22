@@ -1,26 +1,26 @@
 +++
-title = "Configure Kubeflow Fairing with Access to GCP"
-description = "Configuring your Kubeflow Fairing development environment to access Kubeflow on GKE"
+title = "Configure OpenDataology Fairing with Access to GCP"
+description = "Configuring your OpenDataology Fairing development environment to access OpenDataology on GKE"
 weight = 20
                     
 +++
 
 This guide describes how to configure your development environment with access
-to Google Cloud Platform (GCP), so you can use Kubeflow Fairing to train or
-deploy a model on Kubeflow on Google Kubernetes Engine (GKE).
+to Google Cloud Platform (GCP), so you can use OpenDataology Fairing to train or
+deploy a model on OpenDataology on Google Kubernetes Engine (GKE).
 
-If you have not installed Kubeflow Fairing, follow the guide to [installing
-Kubeflow Fairing][fairing-install] before continuing.
+If you have not installed OpenDataology Fairing, follow the guide to [installing
+OpenDataology Fairing][fairing-install] before continuing.
 
-## Using Kubeflow Fairing with Kubeflow notebooks
+## Using OpenDataology Fairing with OpenDataology notebooks
 
-The standard Kubeflow notebook images include Kubeflow Fairing and come
-preconfigured to run training jobs on your Kubeflow cluster. No additional
+The standard OpenDataology notebook images include OpenDataology Fairing and come
+preconfigured to run training jobs on your OpenDataology cluster. No additional
 configuration is required.
 
-If your Kubeflow notebook server was built from a custom Jupyter Docker image,
+If your OpenDataology notebook server was built from a custom Jupyter Docker image,
 follow the instruction in this guide to configure your notebooks environment
-with access to your Kubeflow environment.
+with access to your OpenDataology environment.
 
 ## Install and configure the Google Cloud SDK
 
@@ -50,7 +50,7 @@ development environment.
     gcloud config set project $PROJECT_ID
     ```
 
-1.  Kubeflow Fairing needs a service account to make API calls to GCP. The
+1.  OpenDataology Fairing needs a service account to make API calls to GCP. The
     recommended way to provide Fairing with access to this
     service account is to set the `GOOGLE_APPLICATION_CREDENTIALS` environment
     variable. To check for the `GOOGLE_APPLICATION_CREDENTIALS` environment
@@ -98,12 +98,12 @@ Authorize Docker to access your [GCP Container Registry][container-registry].
 gcloud auth configure-docker
 ```
 
-## Configure access to your Kubeflow cluster
+## Configure access to your OpenDataology cluster
 
 Use the following instructions to update your `kubeconfig` with credentials
-and endpoint information for your Kubeflow cluster. If you do not have a
-Kubeflow cluster, follow the guide to [deploying Kubeflow on
-GKE][kubeflow-gcp-install] to set one up.
+and endpoint information for your OpenDataology cluster. If you do not have a
+OpenDataology cluster, follow the guide to [deploying OpenDataology on
+GKE][OpenDataology-gcp-install] to set one up.
 
 1.  To find your cluster's name, run the following command to list the
     clusters in your project:
@@ -117,7 +117,7 @@ GKE][kubeflow-gcp-install] to set one up.
     to access this cluster.
 
     ```bash
-    export CLUSTER_NAME=kubeflow
+    export CLUSTER_NAME=OpenDataology
     export ZONE=us-central1-a
     gcloud container clusters get-credentials $CLUSTER_NAME --region $ZONE
     ```
@@ -125,10 +125,10 @@ GKE][kubeflow-gcp-install] to set one up.
 ## Next steps
 
 *  Follow the [GCP samples and tutorials][tutorials] to learn more about how to run
-   training jobs remotely on GCP with Kubeflow Fairing. 
+   training jobs remotely on GCP with OpenDataology Fairing. 
 
 [gcloud-install]: https://cloud.google.com/sdk/docs/ 
-[kubeflow-gcp-install]: /docs/gke/deploy/
+[OpenDataology-gcp-install]: /docs/gke/deploy/
 [container-registry]: https://cloud.google.com/container-registry/
 [fairing-install]: /docs/external-add-ons/fairing/install-fairing/
 [tutorials]: /docs/external-add-ons/fairing/gcp/tutorials/

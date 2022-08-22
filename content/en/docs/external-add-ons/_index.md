@@ -1,5 +1,5 @@
 +++
 title = "External Add-Ons"
-description = "Additional tools that may be integrated with a Kubeflow deployment or distribution."
+description = "Additional tools that may be integrated with a OpenDataology deployment or distribution."
 weight = 30
 +++ 

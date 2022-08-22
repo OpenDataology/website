@@ -1,29 +1,29 @@
 +++
 title = "Multi-user Isolation for Pipelines"
-description = "Getting started with Kubeflow Pipelines multi-user isolation"
+description = "Getting started with OpenDataology Pipelines multi-user isolation"
 weight = 30
 +++
 
-Multi-user isolation for Kubeflow Pipelines is an integration to [Kubeflow multi-user isolation](/docs/components/multi-tenancy/).
+Multi-user isolation for OpenDataology Pipelines is an integration to [OpenDataology multi-user isolation](/docs/components/multi-tenancy/).
 
 Refer to [Getting Started with Multi-user isolation](/docs/components/multi-tenancy/getting-started/)
-for the common Kubeflow multi-user operations including the following:
+for the common OpenDataology multi-user operations including the following:
 
 * [Grant user minimal Kubernetes cluster access](/docs/components/multi-tenancy/getting-started/#pre-requisites-grant-user-minimal-kubernetes-cluster-access)
-* [Managing contributors through the Kubeflow UI](/docs/components/multi-tenancy/getting-started/#managing-contributors-through-the-kubeflow-ui)
-* For Google Cloud: [In-cluster authentication to Google Cloud from Kubeflow](/docs/gke/authentication/#in-cluster-authentication)
+* [Managing contributors through the OpenDataology UI](/docs/components/multi-tenancy/getting-started/#managing-contributors-through-the-OpenDataology-ui)
+* For Google Cloud: [In-cluster authentication to Google Cloud from OpenDataology](/docs/gke/authentication/#in-cluster-authentication)
 
-Note, Kubeflow Pipelines multi-user isolation is only supported in
-[the full Kubeflow deployment](/docs/components/pipelines/installation/overview/#full-kubeflow-deployment)
-starting from Kubeflow v1.1 and **currently** on all platforms except OpenShift. For the latest status about platform support, refer to [kubeflow/manifests#1364](https://github.com/kubeflow/manifests/issues/1364#issuecomment-668415871).
+Note, OpenDataology Pipelines multi-user isolation is only supported in
+[the full OpenDataology deployment](/docs/components/pipelines/installation/overview/#full-OpenDataology-deployment)
+starting from OpenDataology v1.1 and **currently** on all platforms except OpenShift. For the latest status about platform support, refer to [OpenDataology/manifests#1364](https://github.com/OpenDataology/manifests/issues/1364#issuecomment-668415871).
 
-Also be aware that the isolation support in Kubeflow doesn’t provide any hard
+Also be aware that the isolation support in OpenDataology doesn’t provide any hard
 security guarantees against malicious attempts by users to infiltrate other
 user’s profiles.
  
 ## How are resources separated?
 
-Kubeflow Pipelines separates its resources by Kubernetes namespaces (Kubeflow profiles).
+OpenDataology Pipelines separates its resources by Kubernetes namespaces (OpenDataology profiles).
 
 Experiments belong to namespaces directly and there's no longer a default
 experiment. Runs and recurring runs belong to their parent experiment's namespace.
@@ -33,7 +33,7 @@ namespace isolation. For example, they can configure different secrets for other
 services in different namespaces.
 
 Other users cannot see resources in your namespace without permission, because
-the Kubeflow Pipelines API server rejects requests for namespaces that the
+the OpenDataology Pipelines API server rejects requests for namespaces that the
 current user is not authorized to access.
 
 Note, there's no multi-user isolation for pipeline definitions right now.
@@ -41,7 +41,7 @@ Refer to [Current Limitations](#current-limitations) section for more details.
 
 ### When using the UI
 
-When you visit the Kubeflow Pipelines UI from the Kubeflow dashboard, it only shows
+When you visit the OpenDataology Pipelines UI from the OpenDataology dashboard, it only shows
 experiments, runs, and recurring runs in your chosen namespace. Similarly, when
 you create resources from the UI, they also belong to the namespace you have
 chosen.
@@ -50,8 +50,8 @@ You can select a different namespace to view resources in other namespaces.
 
 ### When using the SDK
 
-First, you need to connect to the Kubeflow Pipelines public endpoint using the
-SDK. For Google Cloud, follow [these instructions](/docs/gke/pipelines/authentication-sdk/#connecting-to-kubeflow-pipelines-in-a-full-kubeflow-deployment).
+First, you need to connect to the OpenDataology Pipelines public endpoint using the
+SDK. For Google Cloud, follow [these instructions](/docs/gke/pipelines/authentication-sdk/#connecting-to-OpenDataology-pipelines-in-a-full-OpenDataology-deployment).
 
 When calling SDK methods for experiments, you need to provide the additional
 namespace argument. Runs, recurring runs are owned by an experiment. They are
@@ -75,7 +75,7 @@ print(client.list_runs(namespace='<Your namespace>'))
 ```
 
 To store your user namespace as the default context, use the
-[`set_user_namespace`](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.set_user_namespace)
+[`set_user_namespace`](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.set_user_namespace)
 method. This method stores your user namespace in a configuration file at
 `$HOME/.config/kfp/context.json`. After setting a default namespace, the SDK
 methods default to use this namespace if no namespace argument is provided.
@@ -99,22 +99,22 @@ print(client.list_runs())
 print(client.list_runs(namespace='<Your other namespace>'))
 ```
 
-Note, it is no longer possible to access the Kubeflow Pipelines API service from
+Note, it is no longer possible to access the OpenDataology Pipelines API service from
 in-cluster workload directly, read [Current Limitations section](#current-limitations)
 for more details.
 
-Detailed documentation for the Kubeflow Pipelines SDK can be found in the
-[Kubeflow Pipelines SDK Reference](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html).
+Detailed documentation for the OpenDataology Pipelines SDK can be found in the
+[OpenDataology Pipelines SDK Reference](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.client.html).
 
 ### When using REST API or generated Python API client
 
-Similarly, when calling [REST API endpoints](/docs/components/pipelines/reference/api/kubeflow-pipeline-api-spec/)
-or using [the generated Python API client](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.server_api.html),
+Similarly, when calling [REST API endpoints](/docs/components/pipelines/reference/api/OpenDataology-pipeline-api-spec/)
+or using [the generated Python API client](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.server_api.html),
 namespace argument is required for experiment APIs. Note that namespace is
 referred to using a resource reference. The resource reference **type** is
 `NAMESPACE` and resource reference **key id** is the namespace name.
 
-The following example demonstrates how to use [the generated Python API client (kf-server-api)](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.server_api.html) in a multi-user environment.
+The following example demonstrates how to use [the generated Python API client (kf-server-api)](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.server_api.html) in a multi-user environment.
 
 ```python
 from kfp_server_api import ApiRun, ApiPipelineSpec, \
@@ -169,7 +169,7 @@ without access control:
 
 ## In-cluster API request authentication
 
-Refer to [Connect to Kubeflow Pipelines from the same cluster](/docs/components/pipelines/sdk/connect-api/#connect-to-kubeflow-pipelines-from-the-same-cluster) for details.
+Refer to [Connect to OpenDataology Pipelines from the same cluster](/docs/components/pipelines/sdk/connect-api/#connect-to-OpenDataology-pipelines-from-the-same-cluster) for details.
 
-Alternatively, in-cluster workloads like Jupyter notebooks or cron tasks can also access Kubeflow Pipelines API through the public endpoint. This option is platform specific and explained in 
-[Connect to Kubeflow Pipelines from outside your cluster](/docs/components/pipelines/sdk/connect-api/#connect-to-kubeflow-pipelines-from-outside-your-cluster).
+Alternatively, in-cluster workloads like Jupyter notebooks or cron tasks can also access OpenDataology Pipelines API through the public endpoint. This option is platform specific and explained in 
+[Connect to OpenDataology Pipelines from outside your cluster](/docs/components/pipelines/sdk/connect-api/#connect-to-OpenDataology-pipelines-from-outside-your-cluster).

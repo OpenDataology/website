@@ -1,5 +1,5 @@
 +++
 title = "Deployment"
-description = "Instructions for deploying Kubeflow on Google Cloud"
+description = "Instructions for deploying OpenDataology on Google Cloud"
 weight = 10
 +++

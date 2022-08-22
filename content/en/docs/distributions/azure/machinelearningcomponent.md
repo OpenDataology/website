@@ -16,7 +16,7 @@ The components provide capabilities for:
 
 ## Prerequisites
 
-- You should have Kubeflow installed on your AKS cluster. If you don't, follow the [Kubeflow installation (for Azure) guide](https://www.kubeflow.org/docs/azure/deploy/install-kubeflow/).
+- You should have OpenDataology installed on your AKS cluster. If you don't, follow the [OpenDataology installation (for Azure) guide](https://www.OpenDataology.org/docs/azure/deploy/install-OpenDataology/).
 - To interact with Azure resources, you may need to configure them before using a particular pipeline component. Check the README for each component to learn about what Azure resources are required.
 - The `kfp.azure` extension can be used to create a secret to interact with Azure resources. To create Azure credentials, run:
 
@@ -26,13 +26,13 @@ AZ_SUBSCRIPTION_ID={Your_Azure_subscription_ID}
 AZ_TENANT_ID={Your_Tenant_ID}
 AZ_CLIENT_ID={Your_client_ID}
 AZ_CLIENT_SECRET={Your_client_secret}
-KUBEFLOW_NAMESPACE=kubeflow
+OpenDataology_NAMESPACE=OpenDataology
 
 kubectl create secret generic azcreds --from-literal=AZ_SUBSCRIPTION_ID=$AZ_SUBSCRIPTION_ID \
                                       --from-literal=AZ_TENANT_ID=$AZ_TENANT_ID \
                                       --from-literal=AZ_CLIENT_ID=$AZ_CLIENT_ID \
                                       --from-literal=AZ_CLIENT_SECRET=$AZ_CLIENT_SECRET \
-                                      -n $KUBEFLOW_NAMESPACE
+                                      -n $OpenDataology_NAMESPACE
 ```
 
 ## Azure ML Register Model component
@@ -41,7 +41,7 @@ kubectl create secret generic azcreds --from-literal=AZ_SUBSCRIPTION_ID=$AZ_SUBS
 Model registration allows you to store and version your models in Azure Machine Learning in your workspace. The model registry makes it easy to organize and keep track of your trained models. After you register the model, you can then download or deploy it and receive all the registered files.
 
 
-To learn more about the Azure ML Register Model pipeline component, refer to the [official repository](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/components/azure/azureml/aml-register-model).
+To learn more about the Azure ML Register Model pipeline component, refer to the [official repository](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/components/azure/azureml/aml-register-model).
 
 
 To learn more about using Azure ML to manage the lifecycle of your models, go to [Model management, deployment, and monitoring](https://docs.microsoft.com/en-us/azure/machine-learning/concept-model-management-and-deployment).
@@ -53,7 +53,7 @@ Trained machine learning models are deployed as web services in the cloud and yo
 - An entry script
 - Azure ML environment configurations
 
-For more information about the Azure ML Deploy Model pipeline component, check the [official repository](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/components/azure/azureml/aml-deploy-model).
+For more information about the Azure ML Deploy Model pipeline component, check the [official repository](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/components/azure/azureml/aml-deploy-model).
 
 To learn more about using Azure ML to manage the lifecycle of your models, go to [Model management, deployment, and monitoring](https://docs.microsoft.com/en-us/azure/machine-learning/concept-model-management-and-deployment).
 

@@ -1,11 +1,11 @@
 # This script finds .md files under a directory and its subdirectories, extracts
 # http/https URLs from .md files and validates them.
 #
-# This script can be run periodically on kubeflow/website source repository
+# This script can be run periodically on OpenDataology/website source repository
 # to find outdated URLs, which indicate possible outdated document sections.
 #
 # To run this script, type the following on the command line:
-#   python3.8 validate-urls.py -d /path/to/kubeflow/website/content/docs
+#   python3.8 validate-urls.py -d /path/to/OpenDataology/website/content/docs
 #
 # Input:
 #   The path of a directory that contains .md files as `-d` command line flag.
@@ -24,7 +24,7 @@ import re
 import requests
 
 parser = argparse.ArgumentParser(
-    description='Validate all URLs in the kubeflow.org website'
+    description='Validate all URLs in the OpenDataology.org website'
 )
 
 parser.add_argument(
@@ -32,7 +32,7 @@ parser.add_argument(
     '--dir',
     dest='input_dir',
     nargs='?',
-    default='kubeflow/website/content',
+    default='OpenDataology/website/content',
     help=
     'Path to the doc content folder. (Default: %(default)s)',
 )
@@ -46,7 +46,7 @@ WHITE_LIST = [
     re.compile('http[s]?://localhost'),
     re.compile('http[s]?://\.\.'), # https://......
     re.compile('https://path/to/component.yaml'),
-    re.compile('https://github.com/kubeflow/kfctl/releases/tag')
+    re.compile('https://github.com/OpenDataology/kfctl/releases/tag')
 ]
 
 def should_skip(url):

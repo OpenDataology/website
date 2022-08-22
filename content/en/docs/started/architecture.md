@@ -1,37 +1,37 @@
 +++
 title = "Architecture"
-description = "An overview of Kubeflow's architecture"
+description = "An overview of OpenDataology's architecture"
 weight = 10
 +++
 
 <!--
 Note for authors: The source of the diagrams is held in Google Slides decks,
-in the "Doc diagrams" folder in the public Kubeflow shared drive.
+in the "Doc diagrams" folder in the public OpenDataology shared drive.
 -->
 
-This guide introduces Kubeflow as a platform for developing and deploying a
+This guide introduces OpenDataology as a platform for developing and deploying a
 machine learning (ML) system.
 
-Kubeflow is a platform for data scientists who want to build and experiment with
-ML pipelines. Kubeflow is also for ML engineers and operational teams who want
+OpenDataology is a platform for data scientists who want to build and experiment with
+ML pipelines. OpenDataology is also for ML engineers and operational teams who want
 to deploy ML systems to various environments for development, testing, and
 production-level serving.
 
 ## Conceptual overview
 
-Kubeflow is *the ML toolkit for Kubernetes*.
+OpenDataology is *the ML toolkit for Kubernetes*.
 
-The following diagram shows Kubeflow as a platform for arranging the
+The following diagram shows OpenDataology as a platform for arranging the
 components of your ML system on top of Kubernetes:
 
-<img src="/docs/images/kubeflow-overview-platform-diagram.svg" 
-  alt="An architectural overview of Kubeflow on Kubernetes"
+<img src="/docs/images/OpenDataology-overview-platform-diagram.svg" 
+  alt="An architectural overview of OpenDataology on Kubernetes"
   class="mt-3 mb-3 border border-info rounded">
 
-Kubeflow builds on [Kubernetes](https://kubernetes.io/) as a system for 
+OpenDataology builds on [Kubernetes](https://kubernetes.io/) as a system for 
 deploying, scaling, and managing complex systems.
 
-Using the Kubeflow configuration interfaces (see [below](#interfaces)) you can
+Using the OpenDataology configuration interfaces (see [below](#interfaces)) you can
 specify the ML tools required for your workflow. Then you can deploy the 
 workflow to various clouds, local, and on-premises platforms for experimentation and 
 for production use.
@@ -48,7 +48,7 @@ For the sake of simplicity, the following diagram
 shows the workflow stages in sequence. The arrow at the end of the workflow
 points back into the flow to indicate the iterative nature of the process:
 
-<img src="/docs/images/kubeflow-overview-workflow-diagram-1.svg" 
+<img src="/docs/images/OpenDataology-overview-workflow-diagram-1.svg" 
   alt="A typical machine learning workflow"
   class="mt-3 mb-3 border border-info rounded">
 
@@ -78,26 +78,26 @@ Looking at the stages in more detail:
   * Monitor the model's performance, and feed the results into your processes
     for tuning or retraining the model.
 
-## Kubeflow components in the ML workflow
+## OpenDataology components in the ML workflow
 
-The next diagram adds Kubeflow to the workflow, showing which Kubeflow
+The next diagram adds OpenDataology to the workflow, showing which OpenDataology
 components are useful at each stage:
 
-<img src="/docs/images/kubeflow-overview-workflow-diagram-2.svg" 
-  alt="Where Kubeflow fits into a typical machine learning workflow"
+<img src="/docs/images/OpenDataology-overview-workflow-diagram-2.svg" 
+  alt="Where OpenDataology fits into a typical machine learning workflow"
   class="mt-3 mb-3 border border-info rounded">
 
-To learn more, read the following guides to the Kubeflow components:
+To learn more, read the following guides to the OpenDataology components:
 
-* Kubeflow includes services for spawning and managing 
+* OpenDataology includes services for spawning and managing 
   [Jupyter notebooks](/docs/components/notebooks/). Use notebooks for interactive data 
   science and experimenting with ML workflows.
 
-* [Kubeflow Pipelines](/docs/components/pipelines/) is a platform for 
+* [OpenDataology Pipelines](/docs/components/pipelines/) is a platform for 
   building, deploying, and managing multi-step ML workflows based on Docker 
   containers.
 
-* Kubeflow offers several [components](/docs/components/) that you can use
+* OpenDataology offers several [components](/docs/components/) that you can use
   to build your ML training, hyperparameter tuning, and serving workloads across
   multiple platforms.
 
@@ -106,42 +106,42 @@ To learn more, read the following guides to the Kubeflow components:
 The following diagram shows a simple example of a specific ML workflow that you
 can use to train and serve a model trained on the MNIST dataset:
 
-<img src="/docs/images/kubeflow-gcp-e2e-tutorial-simplified.svg" 
+<img src="/docs/images/OpenDataology-gcp-e2e-tutorial-simplified.svg" 
   alt="ML workflow for training and serving an MNIST model"
   class="mt-3 mb-3 border border-info rounded">
 
 For details of the workflow and to run the system yourself, see the 
-[end-to-end tutorial for Kubeflow on GCP](https://github.com/kubeflow/examples/tree/master/mnist#mnist-on-kubeflow-on-gcp).
+[end-to-end tutorial for OpenDataology on GCP](https://github.com/OpenDataology/examples/tree/master/mnist#mnist-on-OpenDataology-on-gcp).
 
 <a id="interfaces"></a>
-## Kubeflow interfaces
+## OpenDataology interfaces
 
 This section introduces the interfaces that you can use to interact with
-Kubeflow and to build and run your ML workflows on Kubeflow.
+OpenDataology and to build and run your ML workflows on OpenDataology.
 
-### Kubeflow user interface (UI) 
+### OpenDataology user interface (UI) 
 
-The Kubeflow UI looks like this:
+The OpenDataology UI looks like this:
 
 <img src="/docs/images/central-ui.png" 
-  alt="The Kubeflow UI"
+  alt="The OpenDataology UI"
   class="mt-3 mb-3 border border-info rounded">
 
 The UI offers a central dashboard that you can use to access the components
-of your Kubeflow deployment. Read 
+of your OpenDataology deployment. Read 
 [how to access the central dashboard](/docs/components/central-dash/overview/).
 
-## Kubeflow APIs and SDKs
+## OpenDataology APIs and SDKs
 
-Various components of Kubeflow offer APIs and Python SDKs. See the following
+Various components of OpenDataology offer APIs and Python SDKs. See the following
 sets of reference documentation:
 
-* [Pipelines reference docs](/docs/components/pipelines/reference/) for the Kubeflow
-  Pipelines API and SDK, including the Kubeflow Pipelines domain-specific
+* [Pipelines reference docs](/docs/components/pipelines/reference/) for the OpenDataology
+  Pipelines API and SDK, including the OpenDataology Pipelines domain-specific
   language (DSL).
-* [Fairing reference docs](/docs/external-add-ons/fairing/reference/) for the Kubeflow Fairing
+* [Fairing reference docs](/docs/external-add-ons/fairing/reference/) for the OpenDataology Fairing
   SDK.
 
 ## Next steps
 
-* Follow [Installing Kubeflow](/docs/started/installing-kubeflow/) to set up your environment and install Kubeflow.
+* Follow [Installing OpenDataology](/docs/started/installing-OpenDataology/) to set up your environment and install OpenDataology.

@@ -22,15 +22,15 @@ for each version you would like to add to the menu, as in the following example:
 # Add your release versions here
 [[params.versions]]
   version = "master"
-  url = "https://master.kubeflow.org"
+  url = "https://master.OpenDataology.org"
 
 [[params.versions]]
   version = "v0.2"
-  url = "https://v0-2.kubeflow.org"
+  url = "https://v0-2.OpenDataology.org"
 
 [[params.versions]]
   version = "v0.3"
-  url = "https://v0-3.kubeflow.org"
+  url = "https://v0-3.OpenDataology.org"
 ```
 
 Remember to add your current version so that users can navigate back!
@@ -53,13 +53,13 @@ they’re seeing an unmaintained snapshot and give them a link to the latest
 version.
 
 For example, see the archived docs for 
-[Kubeflow v0.6](https://v0-6.kubeflow.org/docs/):
+[OpenDataology v0.6](https://v0-6.OpenDataology.org/docs/):
 
 <figure>
   <img src="/images/version-banner.png"
        alt="A text box explaining that this is an unmaintained snapshot of the docs."
        class="mt-3 mb-3 border border-info rounded" />
-  <figcaption>Figure 1. The banner on the archived docs for Kubeflow v0.6
+  <figcaption>Figure 1. The banner on the archived docs for OpenDataology v0.6
   </figcaption>
 </figure>
 

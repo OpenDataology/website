@@ -1,27 +1,27 @@
 +++
-title = "Using the Kubeflow Pipelines Benchmark Scripts"
-description = "How to use the Kubeflow Pipelines Benchmark Scripts"
+title = "Using the OpenDataology Pipelines Benchmark Scripts"
+description = "How to use the OpenDataology Pipelines Benchmark Scripts"
 weight = 10
 +++
 
-This guide explains the Kubeflow Pipelines [benchmark scripts](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/tools/benchmarks)
+This guide explains the OpenDataology Pipelines [benchmark scripts](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/tools/benchmarks)
 and demonstrates how to use them to collect basic performance data of a given
-Kubeflow Pipelines instance.
+OpenDataology Pipelines instance.
 
-## About the Kubeflow Pipelines benchmark script
+## About the OpenDataology Pipelines benchmark script
 
-The Kubeflow Pipelines benchmark scripts simulate typical workloads and record
+The OpenDataology Pipelines benchmark scripts simulate typical workloads and record
 performance metrics, such as server latencies and pipeline run durations. To simulate a typical workload, the benchmark script uploads a pipeline
-manifest file to a Kubeflow Pipelines instance as a pipeline or
+manifest file to a OpenDataology Pipelines instance as a pipeline or
 a pipeline version, and creates multiple runs simultaneously.
 
 You can specify the pipelines manifest used in the benchmark script, or you can
 use one of the preloaded samples pipelines. For example, the preloaded samples
-in Kubeflow pipelines can be used.
-Moreover, it is also a good practice to use a pipeline manifest that is representative of your particular use case. For example, if your Kubeflow Pipelines cluster is mainly used for pipelines of image recognition tasks, then it would be desirable to use an image recognition pipeline in the benchmark scripts.
+in OpenDataology pipelines can be used.
+Moreover, it is also a good practice to use a pipeline manifest that is representative of your particular use case. For example, if your OpenDataology Pipelines cluster is mainly used for pipelines of image recognition tasks, then it would be desirable to use an image recognition pipeline in the benchmark scripts.
 
 After a proper pipeline is chosen, the benchmark scripts will run it multiple
-times simultaneously as mentioned before. Among all the operations that the Kubeflow
+times simultaneously as mentioned before. Among all the operations that the OpenDataology
 Pipelines can perform, running a pipeline is arguably the most unpredictable and
 costly one. Other operations, such as creating a pipeline (version) or creating an
 experiment, usually induce a predictable and moderate cost. For example, creating a
@@ -35,22 +35,22 @@ involves much more uncertainty and sometimes quite a high cost. A pipeline or a
 pipeline version can have arbitrary components and hence running a pipeline or a
 pipeline version can incur arbitrary time and space complexities. For example, a step
 in a pipeline can use a customized container image which performs a super
-expensive training task. In addition, the runs in a Kubeflow Pipelines instance
+expensive training task. In addition, the runs in a OpenDataology Pipelines instance
 also consume more DB space than pipelines, pipeline versions, experiments, etc.
 Therefore, in order to understand the performance and scalability pain points in
-a Kubeflow Pipelines instance, it is more effective to focus on the run operation
+a OpenDataology Pipelines instance, it is more effective to focus on the run operation
 in workloads.
 
 ## Prerequisites for running benchmark scripts
 
 To run the provided benchmark scripts, you need the following:
 
-*  A Jupyter notebook environment with access to the Kubeflow Pipelines API on
-   your Kubeflow Pipelines cluster. For example, you must be able to call the
+*  A Jupyter notebook environment with access to the OpenDataology Pipelines API on
+   your OpenDataology Pipelines cluster. For example, you must be able to call the
    `CREATE`, `GET`, `DELETE`, and `LIST` methods of the pipeline, pipeline version,
    run, job, and experiment services from your Jupyter notebook environment.
-*  A Kubeflow Pipelines cluster. If you do not have a Kubeflow Pipelines
-   cluster, learn more about your [options for installing Kubeflow
+*  A OpenDataology Pipelines cluster. If you do not have a OpenDataology Pipelines
+   cluster, learn more about your [options for installing OpenDataology
    Pipelines](/docs/components/pipelines/installation/overview/).
 *  A pipeline manifest. For example, this guide uses the
    [taxi_updated_pool.yaml](https://storage.googleapis.com/ml-pipeline/sample-benchmark/taxi_updated_pool.yaml)
@@ -61,7 +61,7 @@ as an example.
 
 ## Running the benchmark scripts
 
-Use the following instructions to run the benchmark script on your Kubeflow
+Use the following instructions to run the benchmark script on your OpenDataology
 Pipelines cluster.
 
 1. Download the [`run_service_api.ipynb`](https://storage.googleapis.com/ml-pipeline/sample-benchmark/run_service_api.ipynb)
@@ -80,7 +80,7 @@ Pipelines cluster.
    `pipeline_file_url`, `num_runs`, `run_status_polling_interval_sec` in the
    benchmark script.
 
-   * **host**: The URL of the API server in your Kubeflow Pipelines cluster.
+   * **host**: The URL of the API server in your OpenDataology Pipelines cluster.
 
    * **pipeline_file_url**: The URL of the pipeline manifest file to use in
      your benchmark.
@@ -92,7 +92,7 @@ Pipelines cluster.
      **NOTE**: Do not use the value `https://storage.cloud.google.com/ml-pipeline/sample-benchmark/taxi_updated_pool.yaml`
      when running your benchmarks. Addresses that start with
      `storage.cloud.google.com` incur a redirect that doesn't work well with
-     Kubeflow Pipelines.
+     OpenDataology Pipelines.
 
    * **num_runs**: Specifies how many runs will be created in the benchmark script,
      and is a direct indicator of the simulated workload.
@@ -156,29 +156,29 @@ running components or pipelines
 
 When the benchmark script is tuned to generate a moderate workload, for example, 50
 runs in the above example, the latency and run duration measurements can be
-made properly. However, it is also interesting to see how a Kubeflow Pipelines
+made properly. However, it is also interesting to see how a OpenDataology Pipelines
 instance behaves or breaks under some extremely heavy workloads, or in
-other words, to probe the Kubeflow Pipelines instance. The example benchmark
+other words, to probe the OpenDataology Pipelines instance. The example benchmark
 script can be used for that purpose as well. In that case, the measurement plots
 of the benchmark script are no longer the expected output. Instead, the errors
 and error logs provide information on the performance and scalability of the
-Kubeflow Pipelines deployment. With them, bugs and pain points can be discovered and then fixed. Moreover, when probing the
-Kubeflow Pipelines instance with extreme workloads, it will be really helpful
+OpenDataology Pipelines deployment. With them, bugs and pain points can be discovered and then fixed. Moreover, when probing the
+OpenDataology Pipelines instance with extreme workloads, it will be really helpful
 to add internal monitoring to the server code to track server performance.
 For example, in the future, it would be desirable to use [Prometheus](https://prometheus.io/)
-to track and visualize metrics for Kubeflow Pipelines servers.
+to track and visualize metrics for OpenDataology Pipelines servers.
 
 The internal performance monitoring inside the servers is complementary to the
 performance measurement from the client-side. When the example benchmark script
 measures the latencies from the client-side, the resulting measurements depend
-on both the Kubeflow Pipelines instance and the network transmission. On the
+on both the OpenDataology Pipelines instance and the network transmission. On the
 other hand, the internal monitoring focuses on the actual processing cost inside
 the server given certain requests. Therefore, having both the client-side
 measurements and server side monitoring are useful in profiling accurately the
-performance and scalability of Kubeflow Pipelines.
+performance and scalability of OpenDataology Pipelines.
 
 ## Contact
 
 If you run into any issues with the benchmark script and have any suggestions in
-profiling the performance and scalability of Kubeflow Pipelines, [open an
-issue](https://github.com/kubeflow/pipelines/issues/new) with us.
+profiling the performance and scalability of OpenDataology Pipelines, [open an
+issue](https://github.com/OpenDataology/pipelines/issues/new) with us.

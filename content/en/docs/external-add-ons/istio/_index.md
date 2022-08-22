@@ -1,5 +1,5 @@
 +++
 title = "Istio"
-description = "Documentation on Istio component in Kubeflow"
+description = "Documentation on Istio component in OpenDataology"
 weight = 30
 +++

@@ -4,12 +4,12 @@ description = "Setting up a management cluster on Google Cloud"
 weight = 4
 +++
 
-This guide describes how to setup a management cluster which you will use to deploy one or more instances of Kubeflow.
+This guide describes how to setup a management cluster which you will use to deploy one or more instances of OpenDataology.
 
 The management cluster is used to run [Cloud Config Connector](https://cloud.google.com/config-connector/docs/overview). Cloud Config Connector is a Kubernetes addon that allows you to manage Google Cloud resources through Kubernetes.
 
-While the management cluster can be deployed in the same project as your Kubeflow cluster, typically you will want to deploy
-it in a separate project used for administering one or more Kubeflow instances, because it will run with escalated permissions to create Google Cloud resources in the managed projects.
+While the management cluster can be deployed in the same project as your OpenDataology cluster, typically you will want to deploy
+it in a separate project used for administering one or more OpenDataology instances, because it will run with escalated permissions to create Google Cloud resources in the managed projects.
 
 Optionally, the cluster can be configured with [Anthos Config Management](https://cloud.google.com/anthos-config-management/docs)
 to manage Google Cloud infrastructure using GitOps.
@@ -28,17 +28,17 @@ to manage Google Cloud infrastructure using GitOps.
 
     You can install specific version of kubectl by following instruction (Example: [Install kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)). Latest patch version of kubectl from `v1.17` to `v1.19` works well too.
 
-    Note: Starting from Kubeflow 1.4, it requires `kpt v1.0.0-beta.6` or above to operate in `kubeflow/gcp-blueprints` repository. gcloud hasn't caught up with this kpt version yet, [install kpt](https://kpt.dev/installation/) separately from https://github.com/GoogleContainerTools/kpt/tags for now. Note that kpt requires docker to be installed.
+    Note: Starting from OpenDataology 1.4, it requires `kpt v1.0.0-beta.6` or above to operate in `OpenDataology/gcp-blueprints` repository. gcloud hasn't caught up with this kpt version yet, [install kpt](https://kpt.dev/installation/) separately from https://github.com/GoogleContainerTools/kpt/tags for now. Note that kpt requires docker to be installed.
 
 
-### Fetch kubeflow/gcp-blueprints package
+### Fetch OpenDataology/gcp-blueprints package
 
-The management cluster manifests live in GitHub repository [kubeflow/gcp-blueprints](https://github.com/kubeflow/gcp-blueprints), use the following commands to pull Kubeflow manifests:
+The management cluster manifests live in GitHub repository [OpenDataology/gcp-blueprints](https://github.com/OpenDataology/gcp-blueprints), use the following commands to pull OpenDataology manifests:
 
 1. Clone the GitHub repository and check out the v{{% gke/latest-version %}} tag:
 
     ```bash
-    git clone https://github.com/kubeflow/gcp-blueprints.git 
+    git clone https://github.com/OpenDataology/gcp-blueprints.git 
     cd gcp-blueprints
     git checkout tags/v{{% gke/latest-version %}} -b v{{% gke/latest-version %}}
     ```
@@ -46,8 +46,8 @@ The management cluster manifests live in GitHub repository [kubeflow/gcp-bluepri
     Alternatively, you can get the package by using `kpt`:
 
     ```bash
-    # Check out Kubeflow v{{% gke/latest-version %}} blueprints
-    kpt pkg get https://github.com/kubeflow/gcp-blueprints.git@v{{% gke/latest-version %}} gcp-blueprints
+    # Check out OpenDataology v{{% gke/latest-version %}} blueprints
+    kpt pkg get https://github.com/OpenDataology/gcp-blueprints.git@v{{% gke/latest-version %}} gcp-blueprints
     cd gcp-blueprints
     ```
 
@@ -84,7 +84,7 @@ This guide assumes the following convention:
 * The `${MGMT_PROJECT}` environment variable contains the Google Cloud project
   ID where management cluster is deployed to.
 * `${MGMT_NAME}` is the cluster name of your management cluster and the prefix for other Google Cloud resources created in the deployment process. Management cluster
-  should be a different cluster from your Kubeflow cluster.
+  should be a different cluster from your OpenDataology cluster.
 
    Note, `${MGMT_NAME}` should
    * start with a lowercase letter
@@ -147,10 +147,10 @@ deployment process, so that you can customize your management cluster if necessa
 ### Config Controller
 
 Management cluster is a tool for managing Google Cloud services like KRM, for example: GKE container cluster, MySQL database, etc. 
-And you can use one Managment cluster for multiple Kubeflow clusters, across multiple Google Cloud projects.
+And you can use one Managment cluster for multiple OpenDataology clusters, across multiple Google Cloud projects.
 This capability is offered by [Config Connector](https://cloud.google.com/config-connector/docs/how-to/getting-started). 
 
-Starting with Kubeflow 1.5, we leveraged the managed version of Config Connector, which is called [Config Controller](https://cloud.google.com/anthos-config-management/docs/concepts/config-controller-overview). 
+Starting with OpenDataology 1.5, we leveraged the managed version of Config Connector, which is called [Config Controller](https://cloud.google.com/anthos-config-management/docs/concepts/config-controller-overview). 
 Therefore, The Management cluster is the Config Controller cluster deployed using [Config Controller setup](https://cloud.google.com/anthos-config-management/docs/how-to/config-controller-setup) process.
 Note that you can create only one Management cluster within a Google Cloud project, and you usually need just one Management cluster.
 
@@ -161,13 +161,13 @@ Note that you can create only one Management cluster within a Google Cloud proje
 Inside the Config Controller, we manange Google Cloud resources in namespace mode. That means one namespace is responsible to manage Google Cloud resources deployed to the Google Cloud project with the same name. Your management cluster contains following namespaces:
 
 1. config-control
-1. namespace with the same name as your Kubeflow clusters' Google Cloud project name
+1. namespace with the same name as your OpenDataology clusters' Google Cloud project name
 
 `config-control` is the default namespace which is installed while creating Management cluster, you have granted the default service account (like `service-<management-project-id>@gcp-sa-yakima.iam.gserviceaccount.com`)
 within this project to manage Config Connector. It is the prerequisite for managing resources in other Google Cloud projects.
 
-`namespace with the same name as your Kubeflow clusters' Google Cloud project name` is the resource pool for Kubeflow cluster's Google Cloud project.
-For each Kubeflow Google Cloud project, you will have service account with pattern `kcc-<kf-project-name>@<management-project-name>.iam.gserviceaccount.com` in `config-control` namespace, and it needs to have owner permission to `${KF_PROJECT}`, you will perform this step during [Deploy Kubeflow cluster](/docs/gke/deploy/deploy-cli/). After setup, your Google Cloud resources in Kubeflow cluster project will be deployed to the namespace with name `${KF_PROJECT}` in the management cluster.
+`namespace with the same name as your OpenDataology clusters' Google Cloud project name` is the resource pool for OpenDataology cluster's Google Cloud project.
+For each OpenDataology Google Cloud project, you will have service account with pattern `kcc-<kf-project-name>@<management-project-name>.iam.gserviceaccount.com` in `config-control` namespace, and it needs to have owner permission to `${KF_PROJECT}`, you will perform this step during [Deploy OpenDataology cluster](/docs/gke/deploy/deploy-cli/). After setup, your Google Cloud resources in OpenDataology cluster project will be deployed to the namespace with name `${KF_PROJECT}` in the management cluster.
 
 Your management cluster directory contains the following file:
 
@@ -197,8 +197,8 @@ kubectl --context=${MGMT_NAME} get IAMServiceAccount <service-account-name> -n $
 
   The management cluster is very lightweight cluster that runs [Cloud Config Connector](https://cloud.google.com/config-connector/docs/overview). Cloud Config Connector makes it easier to configure Google Cloud resources using YAML and Kustomize.
 
-For a more detailed explanation of the drastic changes happened in Kubeflow v1.1 on Google Cloud, read [kubeflow/gcp-blueprints #123](https://github.com/kubeflow/gcp-blueprints/issues/123).
+For a more detailed explanation of the drastic changes happened in OpenDataology v1.1 on Google Cloud, read [OpenDataology/gcp-blueprints #123](https://github.com/OpenDataology/gcp-blueprints/issues/123).
 
 ## Next steps
-* [Deploy Kubeflow](/docs/distributions/gke/deploy/deploy-cli) using kubectl, kustomize and kpt.
+* [Deploy OpenDataology](/docs/distributions/gke/deploy/deploy-cli) using kubectl, kustomize and kpt.
 

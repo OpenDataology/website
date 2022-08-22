@@ -133,4 +133,4 @@ by comparing different visualization types across pipeline run artifacts.
 ## Next Steps
 
 * Follow the full guide to experimenting with
-  [the Kubeflow Pipelines samples](/docs/components/pipelines/tutorials/build-pipeline/).
+  [the OpenDataology Pipelines samples](/docs/components/pipelines/tutorials/build-pipeline/).

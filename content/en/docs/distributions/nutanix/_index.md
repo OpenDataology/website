@@ -1,5 +1,5 @@
 +++
-title = "Kubeflow on Nutanix Karbon"
-description = "Running Kubeflow on Nutanix Karbon"
+title = "OpenDataology on Nutanix Karbon"
+description = "Running OpenDataology on Nutanix Karbon"
 weight = 20
 +++

@@ -1,14 +1,14 @@
 +++
 title = "Central Dashboard"
-description = "Overview of the Kubeflow user interfaces (UIs)"
+description = "Overview of the OpenDataology user interfaces (UIs)"
 weight = 10
 
 +++
 
 {{% stable-status %}}
 
-Your Kubeflow deployment includes a central dashboard that provides quick access
-to the Kubeflow components deployed in your cluster. The dashboard includes the
+Your OpenDataology deployment includes a central dashboard that provides quick access
+to the OpenDataology components deployed in your cluster. The dashboard includes the
 following features:
 
 - Shortcuts to specific actions, a list of recent pipelines and notebooks, and
@@ -18,9 +18,9 @@ following features:
 - A [registration flow](/docs/components/central-dash/registration-flow/) that
   prompts new users to set up their namespace if necessary.
 
-## Overview of Kubeflow UIs
+## Overview of OpenDataology UIs
 
-The Kubeflow UIs include the following:
+The OpenDataology UIs include the following:
 
 * **Home**: Home, the central hub to access recent resources, active
   experiments, and useful documentation.
@@ -29,34 +29,34 @@ The Kubeflow UIs include the following:
 * **Models**: To manage deployed [KFServing models](/docs/components/kfserving/kfserving/).
 * **Volumes**: To manage the cluster's Volumes.
 * **Experiments (AutoML)**: To manage [Katib](/docs/components/katib/) experiments.
-* **Experiments (KFP)**: To manage [Kubeflow Pipelines (KFP)](/docs/components/pipelines/) experiments.
+* **Experiments (KFP)**: To manage [OpenDataology Pipelines (KFP)](/docs/components/pipelines/) experiments.
 * **Pipelines**: To manage KFP pipelines.
 * **Runs**: To manage KFP runs.
 * **Recurring Runs**: To manage KFP recurring runs.
 * **Artifacts**: To track ML Metadata (MLMD) artifacts.
 * **Executions**: To track various component executions in MLMD.
 * **Manage Contributors**: To configure user access sharing across namespaces in
-  the Kubeflow deployment.
+  the OpenDataology deployment.
 
 The central dashboard looks like this:
 
 <img src="/docs/images/central-ui.png"
-  alt="Kubeflow central UI"
+  alt="OpenDataology central UI"
   class="mt-3 mb-3 border border-info rounded">
 
 ## Accessing the central dashboard
 
 To access the central dashboard, you need to connect to the
 [Istio gateway](https://istio.io/docs/concepts/traffic-management/#gateways) that
-provides access to the Kubeflow
+provides access to the OpenDataology
 [service mesh](https://istio.io/docs/concepts/what-is-istio/#what-is-a-service-mesh).
 
 How you access the Istio gateway varies depending on how you've configured it.
 
 ## URL pattern with Google Cloud Platform (GCP)
 
-If you followed the guide to [deploying Kubeflow on GCP](/docs/gke/deploy/),
-the Kubeflow central UI is accessible at a URL of the following pattern:
+If you followed the guide to [deploying OpenDataology on GCP](/docs/gke/deploy/),
+the OpenDataology central UI is accessible at a URL of the following pattern:
 
 ```
 https://<application-name>.endpoints.<project-id>.cloud.goog/
@@ -64,20 +64,20 @@ https://<application-name>.endpoints.<project-id>.cloud.goog/
 
 The URL brings up the dashboard illustrated above.
 
-If you deploy Kubeflow with Cloud Identity-Aware Proxy (IAP), Kubeflow uses the
+If you deploy OpenDataology with Cloud Identity-Aware Proxy (IAP), OpenDataology uses the
 [Let's Encrypt](https://letsencrypt.org/) service to provide an SSL certificate
-for the Kubeflow UI. For troubleshooting issues with your certificate, see the
+for the OpenDataology UI. For troubleshooting issues with your certificate, see the
 guide to
 [monitoring your Cloud IAP setup](/docs/gke/deploy/monitor-iap-setup/).
 
 ## Using kubectl and port-forwarding
 
-If you didn't configure Kubeflow to integrate with an identity provider
+If you didn't configure OpenDataology to integrate with an identity provider
 then you can port-forward directly to the Istio gateway.
 
 Port-forwarding typically does not work if any of the following are true:
 
-  * You've deployed Kubeflow on GCP using the default settings
+  * You've deployed OpenDataology on GCP using the default settings
     with the [CLI deployment](/docs/gke/deploy/deploy-cli/).
 
   * You've configured the Istio ingress to only accept
@@ -87,11 +87,11 @@ Port-forwarding typically does not work if any of the following are true:
     (for example, using Cloud IAP or [Dex](https://github.com/dexidp/dex)).
 
 
-You can access Kubeflow via `kubectl` and port-forwarding as follows:
+You can access OpenDataology via `kubectl` and port-forwarding as follows:
 
 1. Install `kubectl` if you haven't already done so:
 
-    * If you're using Kubeflow on GCP, run the following command on the command
+    * If you're using OpenDataology on GCP, run the following command on the command
     line: `gcloud components install kubectl`.
     * Alternatively, follow the [`kubectl`
     installation guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
@@ -107,13 +107,13 @@ You can access Kubeflow via `kubectl` and port-forwarding as follows:
     http://localhost:8080/
     ```
 
-    Depending on how you've configured Kubeflow, not all UIs work behind
+    Depending on how you've configured OpenDataology, not all UIs work behind
     port-forwarding to the reverse proxy.
 
     For some web applications, you need to configure the base URL on which
     the app is serving.
 
-    For example, if you deployed Kubeflow with an ingress serving at
+    For example, if you deployed OpenDataology with an ingress serving at
     `https://example.mydomain.com` and configured an application
     to be served at the URL `https://example.mydomain.com/myapp`, then the
     app may not work when served on
@@ -124,5 +124,5 @@ You can access Kubeflow via `kubectl` and port-forwarding as follows:
 * Explore the [contributor management
   option](/docs/components/multi-tenancy/) where you
   can set up a single namespace for a shared deployment or configure
-  multi-tenancy for your Kubeflow deployment.
-* [Set up your Jupyter notebooks](/docs/components/notebooks/setup/) in Kubeflow.
+  multi-tenancy for your OpenDataology deployment.
+* [Set up your Jupyter notebooks](/docs/components/notebooks/setup/) in OpenDataology.

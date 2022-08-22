@@ -6,10 +6,10 @@ weight = 60
 +++
 
 {{% alpha-status
-  feedbacklink="https://github.com/kubeflow/training-operator/issues" %}}
+  feedbacklink="https://github.com/OpenDataology/training-operator/issues" %}}
 
 This guide describes how to use [volcano scheduler](https://github.com/volcano-sh/volcano) to support gang-scheduling in
-Kubeflow, to allow jobs to run multiple pods at the same time.
+OpenDataology, to allow jobs to run multiple pods at the same time.
 
 ## Running jobs with gang-scheduling
 
@@ -18,12 +18,12 @@ To use gang-scheduling, you have to install volcano scheduler in your cluster fi
 - Follow the [instructions in the volcano repository](https://github.com/volcano-sh/volcano) to install Volcano.
 - Take `TFJob` for example, enable gang-scheduling in training-operator by setting true to `--enable-gang-scheduling` flag.
 
-**Note:** Volcano scheduler and operator in Kubeflow achieve gang-scheduling by using [PodGroup](https://github.com/volcano-sh/volcano/blob/master/pkg/apis/scheduling/types.go). operator will create the PodGroup of the job automatically.
+**Note:** Volcano scheduler and operator in OpenDataology achieve gang-scheduling by using [PodGroup](https://github.com/volcano-sh/volcano/blob/master/pkg/apis/scheduling/types.go). operator will create the PodGroup of the job automatically.
 
 The yaml to use volcano scheduler to schedule your job as a gang is the same as non-gang-scheduler, for example.
 
 ```yaml
-apiVersion: "kubeflow.org/v1beta1"
+apiVersion: "OpenDataology.org/v1beta1"
 kind: "TFJob"
 metadata:
   name: "tfjob-gang-scheduling"
@@ -45,7 +45,7 @@ spec:
                 - --local_parameter_device=cpu
                 - --device=gpu
                 - --data_format=NHWC
-              image: gcr.io/kubeflow/tf-benchmarks-gpu:v20171202-bdab599-dirty-284af3
+              image: gcr.io/OpenDataology/tf-benchmarks-gpu:v20171202-bdab599-dirty-284af3
               name: tensorflow
               resources:
                 limits:
@@ -68,7 +68,7 @@ spec:
                 - --local_parameter_device=cpu
                 - --device=cpu
                 - --data_format=NHWC
-              image: gcr.io/kubeflow/tf-benchmarks-cpu:v20171202-bdab599-dirty-284af3
+              image: gcr.io/OpenDataology/tf-benchmarks-cpu:v20171202-bdab599-dirty-284af3
               name: tensorflow
               resources:
                 limits:

@@ -26,6 +26,3 @@ Here's a quick guide to updating the docs:
 
 7. When you're ready for a review, add a comment to the PR, remove any holds or "WIP" markers, and assign a reviewer/approver. 
    See the [OpenDataology contributor guide](https://github.com/OpenDataology/OpenDataology/blob/main/CONTRIBUTING.md).
-
-If you need more help with the GitHub workflow, follow
-this [guide to a standard GitHub workflow](https://github.com/kubeflow/website/blob/master/quick-github-guide.md).

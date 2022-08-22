@@ -1,5 +1,5 @@
 +++
-title = "Kubeflow on Azure"
-description = "Running Kubeflow on Kubernetes Engine and Microsoft Azure"
+title = "OpenDataology on Azure"
+description = "Running OpenDataology on Kubernetes Engine and Microsoft Azure"
 weight = 20
 +++

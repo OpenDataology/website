@@ -6,26 +6,26 @@ weight = 80
 +++
 
 
-This page shows you how to use the Kubeflow Pipelines UI to visualize output 
-from a Kubeflow Pipelines component. 
+This page shows you how to use the OpenDataology Pipelines UI to visualize output 
+from a OpenDataology Pipelines component. 
 For details about how to build a component, see the guide to 
 [building your own component](/docs/components/pipelines/sdk/build-component/).
 
-Kubeflow Pipelines provides a new method of generating visualizations. See the
+OpenDataology Pipelines provides a new method of generating visualizations. See the
 guide to [Python Based Visualizations](/docs/components/pipelines/sdk/python-based-visualizations/).
 
 ## Introduction
 
-The Kubeflow Pipelines UI offers built-in support for several types of 
+The OpenDataology Pipelines UI offers built-in support for several types of 
 visualizations, which you can use to provide rich performance evaluation and 
 comparison data. Follow the instruction below to write visualization output
 data to file system. You can do this at any point during the pipeline execution.
 
-You can view the output visualizations in the following places on the Kubeflow
+You can view the output visualizations in the following places on the OpenDataology
 Pipelines UI:
 
 * The **Run output** tab shows the visualizations for all pipeline steps in the
-  selected run. To open the tab in the Kubeflow Pipelines UI:
+  selected run. To open the tab in the OpenDataology Pipelines UI:
 
   1. Click **Experiments** to see your current pipeline experiments.
   1. Click the *experiment name* of the experiment that you want to view.
@@ -37,7 +37,7 @@ Pipelines UI:
       class="mt-3 mb-3 border border-info rounded">
 
 * The **Visualizations** tab shows the visualization for the selected pipeline step.
-  To open the tab in the Kubeflow Pipelines UI:
+  To open the tab in the OpenDataology Pipelines UI:
 
   1. Click **Experiments** to see your current pipeline experiments.
   1. Click the *experiment name* of the experiment that you want to view.
@@ -51,7 +51,7 @@ Pipelines UI:
       class="mt-3 mb-3 border border-info rounded">
 
 All screenshots and code snippets on this page come from a 
-sample pipeline that you can run directly from the Kubeflow Pipelines UI.
+sample pipeline that you can run directly from the OpenDataology Pipelines UI.
 See the [sample description and links below](#example-source).
 
 <a id="v2-visualization"></a>
@@ -60,13 +60,13 @@ See the [sample description and links below](#example-source).
 For KFP [SDK v2 and v2 compatible mode](/docs/components/pipelines/sdk-v2/), you can use 
 convenient SDK APIs and system artifact types for metrics visualization. Currently KFP
 supports ROC Curve, Confusion Matrix and Scalar Metrics formats. Full pipeline example
-of all metrics visualizations can be found in [metrics_visualization_v2.py](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/test/metrics_visualization_v2.py). 
+of all metrics visualizations can be found in [metrics_visualization_v2.py](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/test/metrics_visualization_v2.py). 
 
 ### Requirements
 
-* Use Kubeflow Pipelines v1.7.0 or above: [upgrade Kubeflow Pipelines](/docs/components/pipelines/installation/standalone-deployment/#upgrading-kubeflow-pipelines).
+* Use OpenDataology Pipelines v1.7.0 or above: [upgrade OpenDataology Pipelines](/docs/components/pipelines/installation/standalone-deployment/#upgrading-OpenDataology-pipelines).
 * Use `kfp.dsl.PipelineExecutionMode.V2_COMPATIBLE` mode when you [compile and run your pipelines](/docs/components/pipelines/sdk-v2/build-pipeline/#compile-and-run-your-pipeline).
-* Make sure to use the latest environment kustomize manifest [pipelines/manifests/kustomize/env/dev/kustomization.yaml](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/dev/kustomization.yaml).
+* Make sure to use the latest environment kustomize manifest [pipelines/manifests/kustomize/env/dev/kustomization.yaml](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/manifests/kustomize/env/dev/kustomization.yaml).
 
 
 For a usage guide of each metric visualization output, refer to sections below:
@@ -78,7 +78,7 @@ output Confusion Matrix data using API
 `log_confusion_matrix(self, categories: List[str], matrix: List[List[int]])`. `categories`
 provides a list of names for each label, `matrix` provides prediction performance for corresponding
 label. There are multiple APIs you can use for logging Confusion Matrix. Refer to 
-[artifact_types.py](https://github.com/kubeflow/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L255-L256) for detail.
+[artifact_types.py](https://github.com/OpenDataology/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L255-L256) for detail.
 
 Refer to example below for logging Confusion Matrix:
 
@@ -125,7 +125,7 @@ output ROC Curve data using API
 `fpr` defines a list of False Positive Rate values, `tpr` defines a list of 
 True Positive Rate values, `threshold` indicates the level of sensitivity and specificity 
 of this probability curve. There are multiple APIs you can use for logging ROC Curve. Refer to 
-[artifact_types.py](https://github.com/kubeflow/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L163-L164) for detail.
+[artifact_types.py](https://github.com/OpenDataology/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L163-L164) for detail.
 
 ```
 @component(
@@ -168,7 +168,7 @@ Define `Output[Metrics]` argument in your component function, then
 output Scalar data using API `log_metric(self, metric: str, value: float)`. 
 You can define any amount of metric by calling this API multiple times.
 `metric` defines the name of metric, `value` is the value of this metric. Refer to 
-[artifacts_types.py](https://github.com/kubeflow/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L124) 
+[artifacts_types.py](https://github.com/OpenDataology/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L124) 
 for detail.
 
 ```
@@ -230,7 +230,7 @@ Visualization of Scalar Metrics is as below:
 Define `Output[Markdown]` argument in your component function, then
 write Markdown file to path `<artifact_argument_name>.path`. 
 Refer to
-[artifact_types.py](https://github.com/kubeflow/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L420-L428) 
+[artifact_types.py](https://github.com/OpenDataology/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L420-L428) 
 for detail.
 
 ```
@@ -249,12 +249,12 @@ def markdown_visualization(markdown_artifact: Output[Markdown]):
 
 ### Single HTML file
 
-You can specify an HTML file that your component creates, and the Kubeflow Pipelines UI renders that HTML in the output page. The HTML file must be self-contained, with no references to other files in the filesystem. The HTML file can contain absolute references to files on the web. Content running inside the HTML file is sandboxed in an iframe and cannot communicate with the Kubeflow Pipelines UI.
+You can specify an HTML file that your component creates, and the OpenDataology Pipelines UI renders that HTML in the output page. The HTML file must be self-contained, with no references to other files in the filesystem. The HTML file can contain absolute references to files on the web. Content running inside the HTML file is sandboxed in an iframe and cannot communicate with the OpenDataology Pipelines UI.
 
 Define `Output[HTML]` argument in your component function, then
 write HTML file to path `<artifact_argument_name>.path`. 
 Refer to
-[artifact_types.py](https://github.com/kubeflow/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L409-L417) 
+[artifact_types.py](https://github.com/OpenDataology/pipelines/blob/55a2fb5c20011b01945c9867ddff0d39e9db1964/sdk/python/kfp/v2/components/types/artifact_types.py#L409-L417) 
 for detail.
 
 
@@ -274,7 +274,7 @@ def html_visualization(html_artifact: Output[HTML]):
 ## Source of v2 examples
 
 The metric visualization in V2 or V2 compatible mode depends on SDK visualization APIs,
-refer to [metrics_visualization_v2.py](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/test/metrics_visualization_v2.py)
+refer to [metrics_visualization_v2.py](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/test/metrics_visualization_v2.py)
 for a complete pipeline example. Follow instruction
 [Compile and run your pipeline](/docs/components/pipelines/sdk-v2/build-pipeline/#compile-and-run-your-pipeline)
 to compile in V2 compatible mode.
@@ -284,7 +284,7 @@ to compile in V2 compatible mode.
 For KFP v1, the pipeline component must write a JSON file specifying metadata
 for the output viewer(s) that you want to use for visualizing the results. The
 component must also export a file output artifact with an artifact name of
-`mlpipeline-ui-metadata`, or else the Kubeflow Pipelines UI will not render
+`mlpipeline-ui-metadata`, or else the OpenDataology Pipelines UI will not render
 the visualization. In other words, the `.outputs.artifacts` setting for the
 generated pipeline component should show:
 `- {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}`.
@@ -316,10 +316,10 @@ metadata for an output viewer. The JSON structure looks like this:
 }
 ```
 
-If the component writes such a file to its container filesystem, the Kubeflow
-Pipelines system extracts the file, and the Kubeflow Pipelines UI uses the file
+If the component writes such a file to its container filesystem, the OpenDataology
+Pipelines system extracts the file, and the OpenDataology Pipelines UI uses the file
 to generate the specified viewer(s). The metadata specifies where to load the
-artifact data from. The Kubeflow Pipelines UI loads the data **into memory**
+artifact data from. The OpenDataology Pipelines UI loads the data **into memory**
 and renders it. *Note:* You should keep this data at a volume that's manageable
 by the UI, for example by running a sampling step before exporting the file as
 an artifact.
@@ -373,7 +373,7 @@ viewers later on the page.
           <a href="https://cloud.google.com/storage/docs/">Google Cloud 
           Storage</a>.</p>
           <p>The path can contain wildcards ‘*’, in 
-          which case the Kubeflow Pipelines UI concatenates the data from the 
+          which case the OpenDataology Pipelines UI concatenates the data from the 
           matching source files.</p>
           <p><code>source</code> can also contain inlined string data instead of
           a path when <code>storage='inline'</code>.</p>
@@ -387,8 +387,8 @@ viewers later on the page.
         <a href="#markdown">Markdown</a> or <a href="#web-app">Web app</a>
         below as examples.</p>
         <p><b>Be aware</b>, support for inline visualizations, other than
-        markdown, was introduced in Kubeflow Pipelines 0.2.5. Before using these
-        visualizations, [upgrade  your Kubeflow Pipelines cluster](/docs/components/pipelines/upgrade/)
+        markdown, was introduced in OpenDataology Pipelines 0.2.5. Before using these
+        visualizations, [upgrade  your OpenDataology Pipelines cluster](/docs/components/pipelines/upgrade/)
         to version 0.2.5 or higher.</p>
         </td>
       </tr>
@@ -459,7 +459,7 @@ def confusion_matrix_viz(mlpipeline_ui_metadata_path: kfp.components.OutputPath(
     json.dump(metadata, metadata_file)
 ```
 
-**Visualization on the Kubeflow Pipelines UI:**
+**Visualization on the OpenDataology Pipelines UI:**
 
 <img src="/docs/images/taxi-tip-confusion-matrix-step-output.png" 
   alt="Confusion matrix visualization from a pipeline component"
@@ -478,7 +478,7 @@ def confusion_matrix_viz(mlpipeline_ui_metadata_path: kfp.components.OutputPath(
 
 - `storage`
 
-The `markdown` viewer renders Markdown strings on the Kubeflow Pipelines UI. 
+The `markdown` viewer renders Markdown strings on the OpenDataology Pipelines UI. 
 The viewer can read the Markdown data from the following locations:
 
 * A Markdown-formatted string embedded in the `source` field. The value of the
@@ -496,7 +496,7 @@ def markdown_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
     # Markdown that is hardcoded inline
     {
       'storage': 'inline',
-      'source': '# Inline Markdown\n[A link](https://www.kubeflow.org/)',
+      'source': '# Inline Markdown\n[A link](https://www.OpenDataology.org/)',
       'type': 'markdown',
     },
     # Markdown that is read from a file
@@ -510,7 +510,7 @@ def markdown_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
     json.dump(metadata, metadata_file)
 ```
 
-**Visualization on the Kubeflow Pipelines UI:**
+**Visualization on the OpenDataology Pipelines UI:**
 
 <img src="/docs/images/markdown-output.png" 
   alt="Markdown visualization from a pipeline component"
@@ -528,7 +528,7 @@ def markdown_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
 
 The `roc` viewer plots a receiver operating characteristic 
 ([ROC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic))
-curve using the data from the given source path. The Kubeflow Pipelines UI
+curve using the data from the given source path. The OpenDataology Pipelines UI
 assumes that the schema includes three columns with the following names:
 
 * `fpr` (false positive rate)
@@ -573,7 +573,7 @@ def roc_vis(roc_csv_file_path: str, mlpipeline_ui_metadata_path: kfp.components.
     json.dump(metadata, metadata_file)
 ```
 
-**Visualization on the Kubeflow Pipelines UI:**
+**Visualization on the OpenDataology Pipelines UI:**
 
 <img src="/docs/images/taxi-tip-roc-step-output.png" 
   alt="ROC curve visualization from a pipeline component"
@@ -620,7 +620,7 @@ def table_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
     json.dump(metadata, metadata_file)
 ```
 
-**Visualization on the Kubeflow Pipelines UI:**
+**Visualization on the OpenDataology Pipelines UI:**
 
 <img src="/docs/images/pipelines/taxi-tip-prediction-step-output-table.png" 
   alt="Table-based visualization from a pipeline component"
@@ -640,12 +640,12 @@ When viewing the output page, you can:
 
 * Click **Start Tensorboard** to start a 
   [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard) Pod
-  in your Kubeflow cluster. The button text switches to **Open Tensorboard**. 
+  in your OpenDataology cluster. The button text switches to **Open Tensorboard**. 
 * Click **Open Tensorboard** to open the TensorBoard interface in a new tab, 
   pointing to the logdir data specified in the `source` field.
 * Click **Delete Tensorboard** to shutdown the Tensorboard instance.
 
-**Note:** The Kubeflow Pipelines UI doesn't fully manage your TensorBoard 
+**Note:** The OpenDataology Pipelines UI doesn't fully manage your TensorBoard 
 instances. The "Start Tensorboard" button is a convenience feature so that
 you don't have to interrupt your workflow when looking at pipeline runs. You're
 responsible for recycling or deleting the TensorBoard Pods using your Kubernetes
@@ -668,7 +668,7 @@ def tensorboard_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
     json.dump(metadata, metadata_file)
 ```
 
-**Visualization on the Kubeflow Pipelines UI:**
+**Visualization on the OpenDataology Pipelines UI:**
 
 <img src="/docs/images/taxi-tip-training-step-output-tensorboard.png" 
   alt="TensorBoard option output from a pipeline component"
@@ -687,11 +687,11 @@ def tensorboard_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
 - `storage`
 
 The `web-app` viewer provides flexibility for rendering custom output. You can
-specify an HTML file that your component creates, and the Kubeflow Pipelines UI
+specify an HTML file that your component creates, and the OpenDataology Pipelines UI
 renders that HTML in the output page. The HTML file must be self-contained, with
 no references to other files in the filesystem. The HTML file can contain
 absolute references to files on the web. Content running inside the web app is
-sandboxed in an iframe and cannot communicate with the Kubeflow Pipelines UI.
+sandboxed in an iframe and cannot communicate with the OpenDataology Pipelines UI.
 
 Specify `'storage': 'inline'` to embed raw html in `source` field directly.
 
@@ -720,7 +720,7 @@ def tensorboard_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
     json.dump(metadata, metadata_file)
 ```
 
-**Visualization on the Kubeflow Pipelines UI:**
+**Visualization on the OpenDataology Pipelines UI:**
 
 <img src="/docs/images/taxi-tip-analysis-step-output-webapp-popped-out.png" 
   alt="Web app output from a pipeline component"
@@ -730,37 +730,37 @@ def tensorboard_vis(mlpipeline_ui_metadata_path: kfp.components.OutputPath()):
 ## Source of v1 examples
 
 The v1 examples come from the *tax tip prediction* sample that is
-pre-installed when you deploy Kubeflow. 
+pre-installed when you deploy OpenDataology. 
 
 You can run the sample by selecting 
 **[Sample] ML - TFX - Taxi Tip Prediction Model Trainer** from the 
-Kubeflow Pipelines UI. For help getting started with the UI, follow the 
-[Kubeflow Pipelines quickstart](/docs/components/pipelines/overview/quickstart/).
+OpenDataology Pipelines UI. For help getting started with the UI, follow the 
+[OpenDataology Pipelines quickstart](/docs/components/pipelines/overview/quickstart/).
 
 <!--- TODO: Will replace the tfx cab with tfx oss when it is ready.-->
 The pipeline uses a number of prebuilt, reusable components, including:
 
 * The [Confusion Matrix 
-  component](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/components/local/confusion_matrix/src/confusion_matrix.py)
+  component](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/components/local/confusion_matrix/src/confusion_matrix.py)
   which writes out the data for the `confusion_matrix` viewer.
 * The [ROC 
-  component](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/components/local/roc/src/roc.py)
+  component](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/components/local/roc/src/roc.py)
   which writes out the data for the `roc` viewer.
 * The [dnntrainer 
-  component](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/components/kubeflow/dnntrainer/src/trainer/task.py)
+  component](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/components/OpenDataology/dnntrainer/src/trainer/task.py)
   which writes out the data for the `tensorboard` viewer.
 * The [tfma 
-  component](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/components/deprecated/dataflow/tfma/component.yaml)
+  component](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/components/deprecated/dataflow/tfma/component.yaml)
   which writes out the data for the `web-app` viewer.
 
 ## Lightweight Python component Notebook example
 
 For a complete example of lightweigh Python component, you can refer to
-[the lightweight python component notebook example](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/lightweight_component/lightweight_component.ipynb) to learn more about declaring output visualizations.
+[the lightweight python component notebook example](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/lightweight_component/lightweight_component.ipynb) to learn more about declaring output visualizations.
 
 ## YAML component example
 
-You can also configure visualization in a component.yaml file. Refer to `{name: MLPipeline UI Metadata}` output in [Create Tensorboard Visualization component](https://github.com/kubeflow/pipelines/blob/f61048b5d2e1fb5a6a61782d570446b0ec940ff7/components/tensorflow/tensorboard/prepare_tensorboard/component.yaml#L12).
+You can also configure visualization in a component.yaml file. Refer to `{name: MLPipeline UI Metadata}` output in [Create Tensorboard Visualization component](https://github.com/OpenDataology/pipelines/blob/f61048b5d2e1fb5a6a61782d570446b0ec940ff7/components/tensorflow/tensorboard/prepare_tensorboard/component.yaml#L12).
 
 ## Next step
 

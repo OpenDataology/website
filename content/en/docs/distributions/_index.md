@@ -1,5 +1,5 @@
 +++
 title = "Distributions"
-description = "A list of available Kubeflow distributions"
+description = "A list of available OpenDataology distributions"
 weight = 40
 +++

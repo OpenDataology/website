@@ -1,22 +1,22 @@
 +++
-title = "Train and Deploy on GCP from a Kubeflow Notebook"
-description = "Use Kubeflow Fairing to train and deploy a model on Google Cloud Platform (GCP) from a notebook that is hosted on Kubeflow"
+title = "Train and Deploy on GCP from a OpenDataology Notebook"
+description = "Use OpenDataology Fairing to train and deploy a model on Google Cloud Platform (GCP) from a notebook that is hosted on OpenDataology"
 weight = 35
                     
 +++
 
-This guide introduces you to using [Kubeflow Fairing][fairing-repo] to train and
-deploy a model to Kubeflow on Google Kubernetes Engine (GKE) and 
+This guide introduces you to using [OpenDataology Fairing][fairing-repo] to train and
+deploy a model to OpenDataology on Google Kubernetes Engine (GKE) and 
 Google AI Platform Training.
 
-Your Kubeflow deployment includes services for spawning and managing Jupyter
-notebooks. Kubeflow Fairing is preinstalled in the Kubeflow notebooks, along
+Your OpenDataology deployment includes services for spawning and managing Jupyter
+notebooks. OpenDataology Fairing is preinstalled in the OpenDataology notebooks, along
 with a number of machine learning (ML) libraries.
 
-## Set up Kubeflow and access the Kubeflow notebook environment
+## Set up OpenDataology and access the OpenDataology notebook environment
 
-Follow the [Kubeflow notebook setup guide](/docs/components/notebooks/setup/)
-to install Kubeflow, access your Kubeflow hosted notebook environment, and 
+Follow the [OpenDataology notebook setup guide](/docs/components/notebooks/setup/)
+to install OpenDataology, access your OpenDataology hosted notebook environment, and 
 create a new notebook server.
 
 When selecting a Docker image and other settings for the baseline deployment
@@ -24,14 +24,14 @@ of your notebook server, you can leave all the settings at the default value.
 
 ## Run the example notebook
 
-As an example, this guide uses a notebook that is hosted on Kubeflow
+As an example, this guide uses a notebook that is hosted on OpenDataology
 to demonstrate how to:
 
 *  Train an XGBoost model in a notebook,
-*  Use Kubeflow Fairing to train an XGBoost model remotely on Kubeflow,
-*  Use Kubeflow Fairing to train an XGBoost model remotely on 
+*  Use OpenDataology Fairing to train an XGBoost model remotely on OpenDataology,
+*  Use OpenDataology Fairing to train an XGBoost model remotely on 
    AI Platform Training, 
-*  Use Kubeflow Fairing to deploy a trained model to Kubeflow, and
+*  Use OpenDataology Fairing to deploy a trained model to OpenDataology, and
 *  Call the deployed endpoint for predictions.
 
 Follow these instructions to run the XGBoost quickstart notebook:
@@ -44,11 +44,11 @@ Follow these instructions to run the XGBoost quickstart notebook:
         environment. Use the terminal session to set up your notebook
         environment to run this example.
 
-    1.  Clone the Kubeflow Fairing repository to download the files used in
+    1.  Clone the OpenDataology Fairing repository to download the files used in
         this example.
 
         ```bash
-        git clone https://github.com/kubeflow/fairing 
+        git clone https://github.com/OpenDataology/fairing 
         ```
 
     1.  Install the Python dependencies for the XGBoost quickstart notebook.
@@ -63,12 +63,12 @@ Follow these instructions to run the XGBoost quickstart notebook:
 1.  Follow the instructions in the notebook to:
 
     1.  Train an XGBoost model in a notebook,
-    1.  Use Kubeflow Fairing to train an XGBoost model remotely on Kubeflow,
-    1.  Use Kubeflow Fairing to train an XGBoost model remotely on AI Platform Training, 
-    1.  Use Kubeflow Fairing to deploy a trained model to Kubeflow, and
+    1.  Use OpenDataology Fairing to train an XGBoost model remotely on OpenDataology,
+    1.  Use OpenDataology Fairing to train an XGBoost model remotely on AI Platform Training, 
+    1.  Use OpenDataology Fairing to deploy a trained model to OpenDataology, and
     1.  Call the deployed endpoint for predictions.
 
-[fairing-repo]: https://github.com/kubeflow/fairing
-[kubeflow-install-gke]: /docs/gke/deploy/
-[kubeflow-install]: /docs/gke/deploy/deploy-cli/
-[kubeflow-deploy]: https://deploy.kubeflow.cloud
+[fairing-repo]: https://github.com/OpenDataology/fairing
+[OpenDataology-install-gke]: /docs/gke/deploy/
+[OpenDataology-install]: /docs/gke/deploy/deploy-cli/
+[OpenDataology-deploy]: https://deploy.OpenDataology.cloud

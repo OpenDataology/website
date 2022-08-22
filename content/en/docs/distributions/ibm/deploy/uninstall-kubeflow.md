@@ -1,28 +1,28 @@
 +++
-title = "Uninstall Kubeflow"
-description = "Instructions for uninstalling Kubeflow"
+title = "Uninstall OpenDataology"
+description = "Instructions for uninstalling OpenDataology"
 weight = 20
                     
 +++
 
-Uninstall Kubeflow on your IBM Cloud IKS cluster.
+Uninstall OpenDataology on your IBM Cloud IKS cluster.
 
-1. Go to your Kubeflow deployment directory where you download the
+1. Go to your OpenDataology deployment directory where you download the
    IBM manifests repository: https://github.com/IBM/manifests.git
    ```shell
    cd ibm-manifests-160
    ```
 
-2. Run the following command to get Kubeflow Profiles:
+2. Run the following command to get OpenDataology Profiles:
    ```shell
    kubectl get profile
    ```
 
-3. Delete all Kubeflow Profiles manually:
+3. Delete all OpenDataology Profiles manually:
    ```shell
    kubectl delete profile --all
    ```
-   Use the following command to check all namespaces for Kubeflow Profiles
+   Use the following command to check all namespaces for OpenDataology Profiles
    are removed properly:
    ```
    kubectl get ns
@@ -30,7 +30,7 @@ Uninstall Kubeflow on your IBM Cloud IKS cluster.
    Make sure no namespace is in the `Terminating` state.
 
 
-4. Remove Kubeflow:
+4. Remove OpenDataology:
 
    For single-user deployment:
    ```shell

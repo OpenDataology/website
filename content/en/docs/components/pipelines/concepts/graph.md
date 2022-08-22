@@ -1,11 +1,11 @@
 +++
 title = "Graph"
-description = "Conceptual overview of graphs in Kubeflow Pipelines"
+description = "Conceptual overview of graphs in OpenDataology Pipelines"
 weight = 30
                     
 +++
 
-A *graph* is a pictorial representation in the Kubeflow Pipelines UI of the
+A *graph* is a pictorial representation in the OpenDataology Pipelines UI of the
 runtime execution of a pipeline. The graph shows the steps that a pipeline run
 has executed or is executing, with arrows indicating the parent/child
 relationships between the pipeline components represented by each step. The
@@ -24,7 +24,7 @@ parent contains a conditional clause.)
 
 ## Next steps
 
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.

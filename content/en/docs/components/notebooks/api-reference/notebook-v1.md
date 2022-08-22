@@ -7,16 +7,16 @@ weight = 10
 <p>Packages:</p>
 <ul>
 <li>
-<a href="#kubeflow.org%2fv1">kubeflow.org/v1</a>
+<a href="#OpenDataology.org%2fv1">OpenDataology.org/v1</a>
 </li>
 </ul>
-<h2 id="kubeflow.org/v1">kubeflow.org/v1</h2>
+<h2 id="OpenDataology.org/v1">OpenDataology.org/v1</h2>
 <p>
-<p>Package v1 contains API Schema definitions for the kubeflow.org v1 API group</p>
+<p>Package v1 contains API Schema definitions for the OpenDataology.org v1 API group</p>
 </p>
 Resource Types:
 <ul></ul>
-<h3 id="kubeflow.org/v1.Notebook">Notebook
+<h3 id="OpenDataology.org/v1.Notebook">Notebook
 </h3>
 <p>
 <p>Notebook is the Schema for the notebooks API</p>
@@ -47,7 +47,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code></br>
 <em>
-<a href="#kubeflow.org/v1.NotebookSpec">
+<a href="#OpenDataology.org/v1.NotebookSpec">
 NotebookSpec
 </a>
 </em>
@@ -60,7 +60,7 @@ NotebookSpec
 <td>
 <code>template</code></br>
 <em>
-<a href="#kubeflow.org/v1.NotebookTemplateSpec">
+<a href="#OpenDataology.org/v1.NotebookTemplateSpec">
 NotebookTemplateSpec
 </a>
 </em>
@@ -77,7 +77,7 @@ Important: Run &ldquo;make&rdquo; to regenerate code after modifying this file</
 <td>
 <code>status</code></br>
 <em>
-<a href="#kubeflow.org/v1.NotebookStatus">
+<a href="#OpenDataology.org/v1.NotebookStatus">
 NotebookStatus
 </a>
 </em>
@@ -87,11 +87,11 @@ NotebookStatus
 </tr>
 </tbody>
 </table>
-<h3 id="kubeflow.org/v1.NotebookCondition">NotebookCondition
+<h3 id="OpenDataology.org/v1.NotebookCondition">NotebookCondition
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#kubeflow.org/v1.NotebookStatus">NotebookStatus</a>)
+<a href="#OpenDataology.org/v1.NotebookStatus">NotebookStatus</a>)
 </p>
 <p>
 </p>
@@ -154,11 +154,11 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="kubeflow.org/v1.NotebookSpec">NotebookSpec
+<h3 id="OpenDataology.org/v1.NotebookSpec">NotebookSpec
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#kubeflow.org/v1.Notebook">Notebook</a>)
+<a href="#OpenDataology.org/v1.Notebook">Notebook</a>)
 </p>
 <p>
 <p>NotebookSpec defines the desired state of Notebook</p>
@@ -175,7 +175,7 @@ string
 <td>
 <code>template</code></br>
 <em>
-<a href="#kubeflow.org/v1.NotebookTemplateSpec">
+<a href="#OpenDataology.org/v1.NotebookTemplateSpec">
 NotebookTemplateSpec
 </a>
 </em>
@@ -187,11 +187,11 @@ Important: Run &ldquo;make&rdquo; to regenerate code after modifying this file</
 </tr>
 </tbody>
 </table>
-<h3 id="kubeflow.org/v1.NotebookStatus">NotebookStatus
+<h3 id="OpenDataology.org/v1.NotebookStatus">NotebookStatus
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#kubeflow.org/v1.Notebook">Notebook</a>)
+<a href="#OpenDataology.org/v1.Notebook">Notebook</a>)
 </p>
 <p>
 <p>NotebookStatus defines the observed state of Notebook</p>
@@ -208,7 +208,7 @@ Important: Run &ldquo;make&rdquo; to regenerate code after modifying this file</
 <td>
 <code>conditions</code></br>
 <em>
-<a href="#kubeflow.org/v1.NotebookCondition">
+<a href="#OpenDataology.org/v1.NotebookCondition">
 []NotebookCondition
 </a>
 </em>
@@ -243,11 +243,11 @@ Kubernetes core/v1.ContainerState
 </tr>
 </tbody>
 </table>
-<h3 id="kubeflow.org/v1.NotebookTemplateSpec">NotebookTemplateSpec
+<h3 id="OpenDataology.org/v1.NotebookTemplateSpec">NotebookTemplateSpec
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#kubeflow.org/v1.NotebookSpec">NotebookSpec</a>)
+<a href="#OpenDataology.org/v1.NotebookSpec">NotebookSpec</a>)
 </p>
 <p>
 </p>

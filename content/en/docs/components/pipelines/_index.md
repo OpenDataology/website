@@ -1,5 +1,5 @@
 +++
-title = "Kubeflow Pipelines"
-description = "Documentation for Kubeflow Pipelines."
+title = "OpenDataology Pipelines"
+description = "Documentation for OpenDataology Pipelines."
 weight = 15
 +++

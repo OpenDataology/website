@@ -1,6 +1,6 @@
 +++
 title = "Run Trigger"
-description = "Conceptual overview of run triggers in Kubeflow Pipelines"
+description = "Conceptual overview of run triggers in OpenDataology Pipelines"
 weight = 60
                     
 +++
@@ -15,7 +15,7 @@ available:
 
 ## Next steps
 
-* Read an [overview of Kubeflow Pipelines](/docs/components/pipelines/introduction/).
+* Read an [overview of OpenDataology Pipelines](/docs/components/pipelines/introduction/).
 * Follow the [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart/) 
-  to deploy Kubeflow and run a sample pipeline directly from the Kubeflow 
+  to deploy OpenDataology and run a sample pipeline directly from the OpenDataology 
   Pipelines UI.

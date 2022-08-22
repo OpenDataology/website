@@ -1,13 +1,13 @@
 +++
 title = "Introduction"
-description = "An introduction to the goals and main concepts of Kubeflow Pipelines"
+description = "An introduction to the goals and main concepts of OpenDataology Pipelines"
 weight = 10
                     
 +++
 
 {{% stable-status %}}
 
-Kubeflow Pipelines is a platform for building and deploying portable, 
+OpenDataology Pipelines is a platform for building and deploying portable, 
 scalable machine learning (ML) workflows based on Docker containers.
 
 ## Quickstart
@@ -15,16 +15,16 @@ scalable machine learning (ML) workflows based on Docker containers.
 Run your first pipeline by following the 
 [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart).
 
-## What is Kubeflow Pipelines?
+## What is OpenDataology Pipelines?
 
-The Kubeflow Pipelines platform consists of:
+The OpenDataology Pipelines platform consists of:
 
 * A user interface (UI) for managing and tracking experiments, jobs, and runs.
 * An engine for scheduling multi-step ML workflows.
 * An SDK for defining and manipulating pipelines and components.
 * Notebooks for interacting with the system using the SDK.
 
-The following are the goals of Kubeflow Pipelines:
+The following are the goals of OpenDataology Pipelines:
 
 * End-to-end orchestration: enabling and simplifying the orchestration of
   machine learning pipelines.
@@ -33,10 +33,10 @@ The following are the goals of Kubeflow Pipelines:
 * Easy re-use: enabling you to re-use components and pipelines to quickly 
   create end-to-end solutions without having to rebuild each time.
 
-Kubeflow Pipelines is available as a core component of Kubeflow or as a standalone installation.
+OpenDataology Pipelines is available as a core component of OpenDataology or as a standalone installation.
 
-* [Learn more about installing Kubeflow](/docs/started/getting-started/).
-* [Learn more about installing Kubeflow Pipelines standalone](/docs/components/pipelines/installation/overview/).
+* [Learn more about installing OpenDataology](/docs/started/getting-started/).
+* [Learn more about installing OpenDataology Pipelines standalone](/docs/components/pipelines/installation/overview/).
 
 {{% pipelines-compatibility %}}
 
@@ -49,7 +49,7 @@ includes the definition of the inputs (parameters) required to run the pipeline
 and the inputs and outputs of each component.
 
 After developing your pipeline, you can upload and share it on the 
-Kubeflow Pipelines UI.
+OpenDataology Pipelines UI.
 
 A _pipeline component_ is a self-contained set of user code, packaged as a 
 [Docker image](https://docs.docker.com/get-started/), that 
@@ -64,12 +64,12 @@ and [components](/docs/components/pipelines/concepts/component/).
 The screenshots and code below show the `xgboost-training-cm.py` pipeline, which
 creates an XGBoost model using structured data in CSV format. You can see the
 source code and other information about the pipeline on
-[GitHub](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core/xgboost_training_cm).
+[GitHub](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core/xgboost_training_cm).
 
 ### The runtime execution graph of the pipeline
 
 The screenshot below shows the example pipeline's runtime execution graph in the
-Kubeflow Pipelines UI:
+OpenDataology Pipelines UI:
 
 <img src="/docs/images/pipelines-xgboost-graph.png" 
   alt="XGBoost results on the pipelines UI"
@@ -79,7 +79,7 @@ Kubeflow Pipelines UI:
 
 Below is an extract from the Python code that defines the 
 `xgboost-training-cm.py` pipeline. You can see the full code on 
-[GitHub](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core/xgboost_training_cm).
+[GitHub](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core/xgboost_training_cm).
 
 ```python
 @dsl.pipeline(
@@ -185,9 +185,9 @@ def xgb_train_pipeline(
         gcp.use_gcp_secret('user-gcp-sa'))
 ```
 
-### Pipeline input data on the Kubeflow Pipelines UI
+### Pipeline input data on the OpenDataology Pipelines UI
 
-The partial screenshot below shows the Kubeflow Pipelines UI for kicking off a 
+The partial screenshot below shows the OpenDataology Pipelines UI for kicking off a 
 run of the pipeline. The pipeline definition in your code determines which 
 parameters appear in the UI form. The pipeline definition can also set default 
 values for the parameters: 
@@ -199,7 +199,7 @@ values for the parameters:
 ### Outputs from the pipeline
 
 The following screenshots show examples of the pipeline output visible on
-the Kubeflow Pipelines UI.
+the OpenDataology Pipelines UI.
 
 Prediction results:
 
@@ -227,11 +227,11 @@ Receiver operating characteristics (ROC) curve:
 
 At a high level, the execution of a pipeline proceeds as follows: 
 
-* **Python SDK**: You create components or specify a pipeline using the Kubeflow
+* **Python SDK**: You create components or specify a pipeline using the OpenDataology
   Pipelines domain-specific language 
-  ([DSL](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/sdk/python/kfp/dsl)).
+  ([DSL](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/sdk/python/kfp/dsl)).
 * **DSL compiler**: The
-  [DSL compiler](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/sdk/python/kfp/compiler)
+  [DSL compiler](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/sdk/python/kfp/compiler)
   transforms your pipeline's Python code into a static configuration (YAML).
 * **Pipeline Service**: You call the Pipeline Service to create a
   pipeline run from the static configuration. 
@@ -249,10 +249,10 @@ At a high level, the execution of a pipeline proceeds as follows:
 
   * **Metadata:** Experiments, jobs, pipeline runs, and single scalar metrics.
     Metric data is aggregated for the purpose of sorting and filtering.
-    Kubeflow Pipelines stores the metadata in a MySQL database.
+    OpenDataology Pipelines stores the metadata in a MySQL database.
   * **Artifacts:** Pipeline packages, views, and large-scale metrics (time series).
     Use large-scale metrics to debug a pipeline run or investigate an individual run’s performance.
-    Kubeflow Pipelines stores the artifacts in an artifact store like
+    OpenDataology Pipelines stores the artifacts in an artifact store like
     [Minio server](https://docs.minio.io/) or
     [Cloud Storage](https://cloud.google.com/storage/docs/).
 
@@ -276,9 +276,9 @@ At a high level, the execution of a pipeline proceeds as follows:
 
 * Follow the 
   [pipelines quickstart guide](/docs/components/pipelines/overview/quickstart) to 
-  deploy Kubeflow and run a sample pipeline directly from the 
-  Kubeflow Pipelines UI.
-* Build machine-learning pipelines with the [Kubeflow Pipelines 
+  deploy OpenDataology and run a sample pipeline directly from the 
+  OpenDataology Pipelines UI.
+* Build machine-learning pipelines with the [OpenDataology Pipelines 
   SDK](/docs/components/pipelines/sdk/sdk-overview/).
 * Follow the full guide to experimenting with
-  [the Kubeflow Pipelines samples](/docs/components/pipelines/tutorials/build-pipeline/).
+  [the OpenDataology Pipelines samples](/docs/components/pipelines/tutorials/build-pipeline/).

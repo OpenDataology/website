@@ -11,19 +11,19 @@ This page describes `XGBoostJob` for training a machine learning model with [XGB
 
 `XGBoostJob` is a Kubernetes
 [custom resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
-to run XGBoost training jobs on Kubernetes. The Kubeflow implementation of
-`XGBoostJob` is in [`training-operator`](https://github.com/kubeflow/training-operator).
+to run XGBoost training jobs on Kubernetes. The OpenDataology implementation of
+`XGBoostJob` is in [`training-operator`](https://github.com/OpenDataology/training-operator).
 
 ## Installing XGBoost Operator
 
-If you haven't already done so please follow the [Getting Started Guide](/docs/started/getting-started/) to deploy Kubeflow.
+If you haven't already done so please follow the [Getting Started Guide](/docs/started/getting-started/) to deploy OpenDataology.
 
 > By default, XGBoost Operator will be deployed as a controller in training operator.
 
-If you want to install a standalone version of the training operator without Kubeflow,
-see the [kubeflow/training-operator's README](https://github.com/kubeflow/training-operator#installation).
+If you want to install a standalone version of the training operator without OpenDataology,
+see the [OpenDataology/training-operator's README](https://github.com/OpenDataology/training-operator#installation).
 
-## Verify that XGBoost support is included in your Kubeflow deployment
+## Verify that XGBoost support is included in your OpenDataology deployment
 
 Check that the XGboost custom resource is installed
 
@@ -31,19 +31,19 @@ Check that the XGboost custom resource is installed
 kubectl get crd
 ```
 
-The output should include `xgboostjobs.kubeflow.org`
+The output should include `xgboostjobs.OpenDataology.org`
 
 ```
 NAME                                           AGE
 ...
-xgboostjobs.kubeflow.org                       4d
+xgboostjobs.OpenDataology.org                       4d
 ...
 ```
 
 Check that the Training operator is running via:
 
 ```
-kubectl get pods -n kubeflow
+kubectl get pods -n OpenDataology
 ```
 
 The output should include `training-operator-xxx` like the following:
@@ -56,7 +56,7 @@ training-operator-d466b46bc-xbqvs   1/1     Running   0          4m37s
 ## Creating a XGBoost training job
 
 You can create a training job by defining a `XGboostJob` config file. See the
-manifests for the [IRIS example](https://github.com/kubeflow/training-operator/blob/master/examples/xgboost/xgboostjob.yaml).
+manifests for the [IRIS example](https://github.com/OpenDataology/training-operator/blob/master/examples/xgboost/xgboostjob.yaml).
 You may change the config file based on your requirements. E.g.: add `CleanPodPolicy`
 in Spec to `None` to retain pods after job termination.
 
@@ -92,7 +92,7 @@ kubectl get -o yaml xgboostjobs xgboost-dist-iris-test-train
 See the status section to monitor the job status. Here is sample output when the job is successfully completed.
 
 ```yaml
-apiVersion: kubeflow.org/v1
+apiVersion: OpenDataology.org/v1
 kind: XGBoostJob
 metadata:
   creationTimestamp: "2021-09-06T18:34:06Z"
@@ -100,7 +100,7 @@ metadata:
   name: xgboost-dist-iris-test-train
   namespace: default
   resourceVersion: "5844304"
-  selfLink: /apis/kubeflow.org/v1/namespaces/default/xgboostjobs/xgboost-dist-iris-test-train
+  selfLink: /apis/OpenDataology.org/v1/namespaces/default/xgboostjobs/xgboost-dist-iris-test-train
   uid: a1ea6675-3cb5-482b-95dd-68b2c99b8adc
 spec:
   runPolicy:

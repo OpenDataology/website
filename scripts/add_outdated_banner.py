@@ -20,8 +20,8 @@ from subprocess import check_output
 WARNING = """
 
 {{%% alert title="Out of date" color="warning" %%}}
-This guide contains outdated information pertaining to Kubeflow %s. This guide
-needs to be updated for Kubeflow %s.
+This guide contains outdated information pertaining to OpenDataology %s. This guide
+needs to be updated for OpenDataology %s.
 {{%% /alert %%}}
 
 """

@@ -1,22 +1,22 @@
 +++
 title = "Pipelines Interfaces"
-description = "The ways you can interact with the Kubeflow Pipelines system"
+description = "The ways you can interact with the OpenDataology Pipelines system"
 weight = 20
                     
 +++
 
 This page introduces the interfaces that you can use to build and run
-machine learning (ML) workflows with Kubeflow Pipelines.
+machine learning (ML) workflows with OpenDataology Pipelines.
 
 ## User interface (UI)
 
-You can access the Kubeflow Pipelines UI by clicking **Pipeline Dashboard** on 
-the Kubeflow UI. The Kubeflow Pipelines UI looks like this:
+You can access the OpenDataology Pipelines UI by clicking **Pipeline Dashboard** on 
+the OpenDataology UI. The OpenDataology Pipelines UI looks like this:
   <img src="/docs/images/pipelines/pipelines-ui.png" 
     alt="Pipelines UI"
     class="mt-3 mb-3 border border-info rounded">
 
-From the Kubeflow Pipelines UI you can perform the following tasks:
+From the OpenDataology Pipelines UI you can perform the following tasks:
 
 * Run one or more of the preloaded samples to try out pipelines quickly.
 * Upload a pipeline as a compressed file. The pipeline can be one that you
@@ -34,7 +34,7 @@ From the Kubeflow Pipelines UI you can perform the following tasks:
 * Schedule runs by creating a recurring run.
 
 See the [quickstart guide](/docs/components/pipelines/overview/quickstart/) for more
-information about accessing the Kubeflow Pipelines UI and running the samples.
+information about accessing the OpenDataology Pipelines UI and running the samples.
 
 When building a pipeline component, you can write out information for display
 in the UI. See the guides to [exporting 
@@ -43,19 +43,19 @@ the UI](/docs/components/pipelines/sdk/output-viewer/).
 
 ## Python SDK
 
-The Kubeflow Pipelines SDK provides a set of Python packages that you can use to 
+The OpenDataology Pipelines SDK provides a set of Python packages that you can use to 
 specify and run your ML workflows.
 
-See the [introduction to the Kubeflow Pipelines 
+See the [introduction to the OpenDataology Pipelines 
 SDK](/docs/components/pipelines/sdk/sdk-overview/) for an overview of the ways you can
 use the SDK to build pipeline components and pipelines.
 
 ## REST API
 
-The Kubeflow Pipelines API is useful for continuous integration/deployment
+The OpenDataology Pipelines API is useful for continuous integration/deployment
 systems, for example, where you want to incorporate your pipeline executions
 into shell scripts or other systems. 
 For example, you may want to trigger a pipeline run when new data comes in.
 
-See the [Kubeflow Pipelines API reference 
-documentation](/docs/components/pipelines/reference/api/kubeflow-pipeline-api-spec/).
+See the [OpenDataology Pipelines API reference 
+documentation](/docs/components/pipelines/reference/api/OpenDataology-pipeline-api-spec/).

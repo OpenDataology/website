@@ -5,12 +5,12 @@ weight = 1350
                     
 +++
 {{% alert title="Out of date" color="warning" %}}
-This guide contains outdated information pertaining to Kubeflow 1.0. This guide
-needs to be updated for Kubeflow 1.1.
+This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
 {{% /alert %}}
 
 This page describes how to manipulate Kubernetes resources through individual
-Kubeflow Pipelines components during a pipeline.
+OpenDataology Pipelines components during a pipeline.
 Users may handle any Kubernetes resource, while creating
 [Persistent Volume Claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 and
@@ -30,7 +30,7 @@ This feature allows users to perform some action (`get`, `create`, `apply`,
 Users are able to set conditions that denote the success or failure of the
 step undertaking that action.
 
-[Link](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ResourceOp)
+[Link](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ResourceOp)
 to the corresponding Python library.
 
 #### Arguments
@@ -48,7 +48,7 @@ For more information, please refer to the aforementioned link to the library.
 * `failure_condition`: Condition to denote failure of the step once it is true.
   (_optional_)
 * `attribute_outputs`: Similar to `file_outputs` of
-  [`kfp.dsl.ContainerOp`](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp).
+  [`kfp.dsl.ContainerOp`](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.ContainerOp).
   Maps output parameter names to JSON paths in the Kubernetes object.
   More on that in the following section.
   (_optional_)
@@ -76,7 +76,7 @@ specification.
 ### Samples
 
 For better understanding, please refer to the following samples:
-[1](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/resource_ops/resource_ops.py)
+[1](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/resource_ops/resource_ops.py)
 
 ---
 
@@ -88,7 +88,7 @@ Request the creation of PVC instances simple and fast.
 
 A ResourceOp specialized in PVC creation.
 
-[Link](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.VolumeOp)
+[Link](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.VolumeOp)
 to the corresponding Python library.
 
 #### Arguments
@@ -176,7 +176,7 @@ Those dependencies can then be parsed properly by a `ContainerOp`, when consumed
 in `pvolumes` argument or `add_pvolumes()` method, to extend the dependencies
 of that step.
 
-[Link](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.PipelineVolume)
+[Link](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.PipelineVolume)
 to the corresponding Python library.
 
 _(*) Inherits from V1Volume class of Kubernetes Python client._
@@ -197,10 +197,10 @@ Extra arguments:
 ### Samples
 
 For better understanding, please refer to the following samples:
-[1](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/volume_ops/volume_ops.py),
-[2](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/contrib/volume_ops/volumeop_dag.py),
-[3](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/contrib/volume_ops/volumeop_parallel.py),
-[4](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/contrib/volume_ops/volumeop_sequential.py)
+[1](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/volume_ops/volume_ops.py),
+[2](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/contrib/volume_ops/volumeop_dag.py),
+[3](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/contrib/volume_ops/volumeop_parallel.py),
+[4](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/contrib/volume_ops/volumeop_sequential.py)
 
 ---
 
@@ -212,7 +212,7 @@ Request the creation of Volume Snapshot instances simple and fast.
 
 A ResourceOp specialized in Volume Snapshot creation.
 
-[Link](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.VolumeSnapshotOp)
+[Link](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.VolumeSnapshotOp)
 to the corresponding Python library.
 
 **NOTE:** You should check if your Kubernetes cluster admin has Volume Snapshots
@@ -261,20 +261,20 @@ The user may otherwise use the `step.outputs["name"]` as `data_source`.
 ### Samples
 
 For better understanding, please refer to the following samples:
-[1](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/core/volume_snapshot_ops/volume_snapshot_ops.py),
-[2](https://github.com/kubeflow/pipelines/blob/sdk/release-1.8/samples/contrib/volume_snapshot_ops/volume_snapshotop_rokurl.py)
+[1](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/core/volume_snapshot_ops/volume_snapshot_ops.py),
+[2](https://github.com/OpenDataology/pipelines/blob/sdk/release-1.8/samples/contrib/volume_snapshot_ops/volume_snapshotop_rokurl.py)
 
 ## Next steps
 
-* See samples in Kubeflow Pipelines 
-  [repository](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples).
+* See samples in OpenDataology Pipelines 
+  [repository](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples).
   For instance, check these samples of 
-  [ResourceOps](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core/resource_ops), 
-  [VolumeOps](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core/volume_ops)
+  [ResourceOps](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core/resource_ops), 
+  [VolumeOps](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core/volume_ops)
   and 
-  [VolumeSnapshotOps](https://github.com/kubeflow/pipelines/tree/sdk/release-1.8/samples/core/volume_snapshot_ops).
+  [VolumeSnapshotOps](https://github.com/OpenDataology/pipelines/tree/sdk/release-1.8/samples/core/volume_snapshot_ops).
 * Learn more about the 
-  [Kubeflow Pipelines domain-specific language (DSL)](/docs/components/pipelines/sdk/dsl-overview/),
+  [OpenDataology Pipelines domain-specific language (DSL)](/docs/components/pipelines/sdk/dsl-overview/),
   a set of Python libraries that you can use to specify ML pipelines.
 * For quick iteration, 
   [build components and pipelines](/docs/components/pipelines/sdk/build-component/).

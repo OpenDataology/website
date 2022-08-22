@@ -10,7 +10,7 @@ weight = 6
 * Install the CLI plug-in for the IBM Cloud Container Registry by running the command `ibmcloud plugin install container-registry`.
 * Create a namespace in ICR with the command `ibmcloud cr namespace-add <my_namespace>`, replace `<my_namespace>` with your preferred name.
 
-**Note**: The [ICR namespace](https://cloud.ibm.com/docs/Registry?topic=Registry-getting-started#gs_registry_namespace_add) is different from the Kubeflow Profile namespace. The ICR namespace is used to group container images stored in ICR, while a [Kubeflow Profile](/docs/components/multi-tenancy/overview/) namespace is a group of all Kubernetes clusters owned by a user.
+**Note**: The [ICR namespace](https://cloud.ibm.com/docs/Registry?topic=Registry-getting-started#gs_registry_namespace_add) is different from the OpenDataology Profile namespace. The ICR namespace is used to group container images stored in ICR, while a [OpenDataology Profile](/docs/components/multi-tenancy/overview/) namespace is a group of all Kubernetes clusters owned by a user.
 
 ## Image pull secret
 
@@ -18,7 +18,7 @@ As a Kubernetes cluster uses the Secret of `docker-registry` type to authenticat
 
 ### Using a default image pull secret
 
-By default, the IBM Cloud Kubernetes cluster is set up to pull images from only your account's namespace in IBM Cloud Container Registry by using the secret `all-icr-io` in the `default` namespace. A cluster admin can copy this secret to any Kubernetes namespace used as Kubeflow profile. For example, run below command to copy the secret `all-icr-io` to the `anonymous` namespace:
+By default, the IBM Cloud Kubernetes cluster is set up to pull images from only your account's namespace in IBM Cloud Container Registry by using the secret `all-icr-io` in the `default` namespace. A cluster admin can copy this secret to any Kubernetes namespace used as OpenDataology profile. For example, run below command to copy the secret `all-icr-io` to the `anonymous` namespace:
 
 ```
 kubectl get secret all-icr-io -n default -o yaml \
@@ -26,7 +26,7 @@ kubectl get secret all-icr-io -n default -o yaml \
 | kubectl -n anonymous create -f -
 ```
 
-Once this secret is ready in your Kubeflow profile, a data scientist can use it to pull container images from ICR.
+Once this secret is ready in your OpenDataology profile, a data scientist can use it to pull container images from ICR.
 
 See details and FAQs from the official guide [Setting up an image registry](https://cloud.ibm.com/docs/containers?topic=containers-registry).
 
@@ -58,13 +58,13 @@ kubectl -n <my_namespace> create secret docker-registry <secret_name> \
 
 ## Scenarios
 
-### Using container images from ICR in Kubeflow Pipelines
+### Using container images from ICR in OpenDataology Pipelines
 
-The pull image secret may be set in Kubeflow Pipelines SDK's [`PipelineConf`](https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.PipelineConf). Refer to this [`imagepullsecrets.py`](https://github.com/kubeflow/pipelines/blob/ef381aafccf916482d16774cac3b8568d06dff9e/samples/core/imagepullsecrets/imagepullsecrets.py#L55) sample in Kubeflow Pipelines project for usage.
+The pull image secret may be set in OpenDataology Pipelines SDK's [`PipelineConf`](https://OpenDataology-pipelines.readthedocs.io/en/stable/source/kfp.dsl.html#kfp.dsl.PipelineConf). Refer to this [`imagepullsecrets.py`](https://github.com/OpenDataology/pipelines/blob/ef381aafccf916482d16774cac3b8568d06dff9e/samples/core/imagepullsecrets/imagepullsecrets.py#L55) sample in OpenDataology Pipelines project for usage.
 
 ### Using notebook images from ICR in a Jupyter Notebook
 
-When a namespace is created for Kubeflow with its profile controller, a default service account `default-editor` is created in that namespace. Before creating a Notebook Server, run following command to patch the service account. Replace `<secret_name>` with the ICR pull image secret name and `<my_namespace>` with the Kubeflow profile namespace.
+When a namespace is created for OpenDataology with its profile controller, a default service account `default-editor` is created in that namespace. Before creating a Notebook Server, run following command to patch the service account. Replace `<secret_name>` with the ICR pull image secret name and `<my_namespace>` with the OpenDataology profile namespace.
 
 Replace `<my_namespace>` with your namespace then run below command to patch the service account `default-editor` with this image pull secret:
 ```SHELL
@@ -73,7 +73,7 @@ kubectl patch serviceaccount default-editor \
 -n <my_namespace>
 ```
 
-The service account should be updated. Then, when you create the Notebook Server through Kubeflow dashboard, you should be able to choose a Custom Image. Afterwards, set the notebook image path from the ICR as follows:
+The service account should be updated. Then, when you create the Notebook Server through OpenDataology dashboard, you should be able to choose a Custom Image. Afterwards, set the notebook image path from the ICR as follows:
 
 <img src="/docs/images/ibm/notebook-custom-image.png" 
     alt="Notebook Custom Image"

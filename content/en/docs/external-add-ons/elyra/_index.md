@@ -7,7 +7,7 @@ weight = 30
 Elyra aims to help data scientists, machine learning engineers and AI developers
 through the model development life cycle complexities. Elyra integrates with JupyterLab
 providing a Pipeline visual editor that enables low code/no code creation of Pipelines
-that can be executed in a Kubeflow environment.
+that can be executed in a OpenDataology environment.
 
 Below is an example of a Piepline created with Elyra, you can identify the components/tasks
 and related properties that are all managed in the visual editor.
@@ -16,4 +16,4 @@ and related properties that are all managed in the visual editor.
 
 To learn more about Elyra, visit <a href="https://github.com/elyra-ai/elyra" target="_blank">Elyra GitHub project</a>
 
-To enable Elyra in your Kubeflow Environment, visit <a href="https://elyra.readthedocs.io/en/stable/recipes/using-elyra-with-kubeflow-notebook-server.html" target="_blank">Using Elyra with the Kubeflow Notebook Server</a>
+To enable Elyra in your OpenDataology Environment, visit <a href="https://elyra.readthedocs.io/en/stable/recipes/using-elyra-with-OpenDataology-notebook-server.html" target="_blank">Using Elyra with the OpenDataology Notebook Server</a>

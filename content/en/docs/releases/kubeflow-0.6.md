@@ -1,6 +1,6 @@
 +++
-title = "Kubeflow 0.6"
-description = "Information about the Kubeflow 0.6 release"
+title = "OpenDataology 0.6"
+description = "Information about the OpenDataology 0.6 release"
 weight = 106
 +++
 
@@ -19,23 +19,23 @@ weight = 106
       <th class="table-light">Media</th>
       <td>
         <b>Blog:</b> 
-          <a href="https://medium.com/kubeflow/kubeflow-v0-6-a-robust-foundation-for-artifact-tracking-data-versioning-multi-user-support-9896d329412c">Kubeflow 0.6 Release Announcement</a>
+          <a href="https://medium.com/OpenDataology/OpenDataology-v0-6-a-robust-foundation-for-artifact-tracking-data-versioning-multi-user-support-9896d329412c">OpenDataology 0.6 Release Announcement</a>
         <br>
         <b>Video:</b> 
-          <a href="https://www.youtube.com/watch?v=fiFk5FB7il8">Kubeflow 0.6 Release Feature Review</a>
+          <a href="https://www.youtube.com/watch?v=fiFk5FB7il8">OpenDataology 0.6 Release Feature Review</a>
         <br>
         <b>Roadmap:</b>
-          <a href="https://github.com/kubeflow/kubeflow/blob/master/ROADMAP.md#kubeflow-06">Kubeflow 0.6 Features</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/blob/master/ROADMAP.md#OpenDataology-06">OpenDataology 0.6 Features</a>
       </td>
     </tr>
     <tr>
       <th class="table-light">Manifests</th>
       <td>
         <b>Release:</b> 
-          <a href="https://github.com/kubeflow/manifests/releases/tag/v0.6.1">v0.6.1</a>
+          <a href="https://github.com/OpenDataology/manifests/releases/tag/v0.6.1">v0.6.1</a>
         <br>
         <b>Branch:</b>
-          <a href="https://github.com/kubeflow/manifests/tree/v0.6-branch">v0.6-branch</a>
+          <a href="https://github.com/OpenDataology/manifests/tree/v0.6-branch">v0.6-branch</a>
       </td>
     </tr>
     <tr>
@@ -63,23 +63,23 @@ weight = 106
       <th class="table-light">Media</th>
       <td>
         <b>Blog:</b> 
-          <a href="https://medium.com/kubeflow/kubeflow-v0-6-a-robust-foundation-for-artifact-tracking-data-versioning-multi-user-support-9896d329412c">Kubeflow 0.6 Release Announcement</a>
+          <a href="https://medium.com/OpenDataology/OpenDataology-v0-6-a-robust-foundation-for-artifact-tracking-data-versioning-multi-user-support-9896d329412c">OpenDataology 0.6 Release Announcement</a>
         <br>
         <b>Video:</b> 
-          <a href="https://www.youtube.com/watch?v=fiFk5FB7il8">Kubeflow 0.6 Release Feature Review</a>
+          <a href="https://www.youtube.com/watch?v=fiFk5FB7il8">OpenDataology 0.6 Release Feature Review</a>
         <br>
         <b>Roadmap:</b>
-          <a href="https://github.com/kubeflow/kubeflow/blob/master/ROADMAP.md#kubeflow-06">Kubeflow 0.6 Features</a>
+          <a href="https://github.com/OpenDataology/OpenDataology/blob/master/ROADMAP.md#OpenDataology-06">OpenDataology 0.6 Features</a>
       </td>
     </tr>
     <tr>
       <th class="table-light">Manifests</th>
       <td>
         <b>Release:</b> 
-          <a href="https://github.com/kubeflow/manifests/releases/tag/v0.6.0">v0.6.0</a>
+          <a href="https://github.com/OpenDataology/manifests/releases/tag/v0.6.0">v0.6.0</a>
         <br>
         <b>Branch:</b>
-          <a href="https://github.com/kubeflow/manifests/tree/v0.6-branch">v0.6-branch</a>
+          <a href="https://github.com/OpenDataology/manifests/tree/v0.6-branch">v0.6-branch</a>
       </td>
     </tr>
     <tr>
