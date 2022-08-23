@@ -1,0 +1,50 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenDataology – Tutorials</title>
+    <link>/docs/external-add-ons/fairing/tutorials/</link>
+    <description>Recent content in Tutorials on OpenDataology</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/docs/external-add-ons/fairing/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Other Samples and Tutorials</title>
+      <link>/docs/external-add-ons/fairing/tutorials/other-tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/external-add-ons/fairing/tutorials/other-tutorials/</guid>
+      <description>
+        
+        
+        
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Out of date&lt;/h4&gt;
+
+    This guide contains outdated information pertaining to OpenDataology 1.0. This guide
+needs to be updated for OpenDataology 1.1.
+
+&lt;/div&gt;
+
+&lt;p&gt;Read the following tutorials to learn more about using OpenDataology Fairing to train
+and deploy on various environments such as on the Google Cloud Platform (GCP).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Learn how to &lt;a href=&#34;/docs/external-add-ons/fairing/gcp/tutorials/gcp-local-notebook/&#34;&gt;train and deploy a model on GCP from a local
+notebook&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Learn how to &lt;a href=&#34;/docs/external-add-ons/fairing/gcp/tutorials/gcp-OpenDataology-notebook/&#34;&gt;train and deploy a model on GCP from a notebook hosted on
+OpenDataology&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Learn how to &lt;a href=&#34;/docs/external-add-ons/fairing/azure/&#34;&gt;train and deploy a model on Azure from a notebook hosted on
+OpenDataology&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

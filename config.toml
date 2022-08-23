@@ -117,55 +117,12 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   [[params.versions]]
     version = "master"
     githubbranch = "master"
-    url = "https://master.OpenDataology.org"
-  [[params.versions]]
-    version = "v1.5"
-    githubbranch = "v1.5-branch"
-    url = "https://v1-5-branch.OpenDataology.org"
-  [[params.versions]]
-    version = "v1.4"
-    githubbranch = "v1.4-branch"
-    url = "https://v1-4-branch.OpenDataology.org"
-  [[params.versions]]
-    version = "v1.3"
-    githubbranch = "v1.3-branch"
-    url = "https://v1-3-branch.OpenDataology.org"
-  [[params.versions]]
-    version = "v1.2"
-    githubbranch = "v1.2-branch"
-    url = "https://v1-2-branch.OpenDataology.org"
-  [[params.versions]]
-    version = "v1.1"
-    githubbranch = "v1.1-branch"
-    url = "https://v1-1-branch.OpenDataology.org"
-  [[params.versions]]
-    version = "v1.0"
-    githubbranch = "v1.0-branch"
-    url = "https://v1-0-branch.OpenDataology.org"
-  [[params.versions]]
-    version = "v0.7"
-    githubbranch = "v0.7-branch"
-    url = "https://v0-7.OpenDataology.org"
-  [[params.versions]]
-    version = "v0.6"
-    githubbranch = "v0.6-branch"
-    url = "https://v0-6.OpenDataology.org"
-  [[params.versions]]
-    version = "v0.5"
-    githubbranch = "v0.5-branch"
-    url = "https://v0-5.OpenDataology.org"
-  [[params.versions]]
-    version = "v0.4"
-    githubbranch = "v0.4-branch"
-    url = "https://v0-4.OpenDataology.org"
-  [[params.versions]]
-    version = "v0.3"
-    githubbranch = "v0.3-branch"
-    url = "https://v0-3.OpenDataology.org"
-  [[params.versions]]
-    version = "v0.2"
-    githubbranch = "v0.2-branch"
-    url = "https://v0-2.OpenDataology.org"
+    url = "https://github.com/OpenDataology/OpenDataology"
+
+    [[params.versions]]
+    version = "v0.1"
+    githubbranch = "0.1"
+    url = "https://github.com/OpenDataology/OpenDataology/releases/tag/0.1"
 
   # User interface configuration
   [params.ui]

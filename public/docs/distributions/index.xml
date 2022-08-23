@@ -1,0 +1,165 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenDataology – Distributions</title>
+    <link>/docs/distributions/</link>
+    <description>Recent content in Distributions on OpenDataology</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/docs/distributions/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: OpenDataology on AWS</title>
+      <link>/docs/distributions/aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/aws/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;https://awslabs.github.io/OpenDataology-manifests/&#34;&gt;OpenDataology on AWS&lt;/a&gt; is an open source distribution of OpenDataology that allows customers to build machine learning systems with ready-made AWS service integrations. Use OpenDataology on AWS to streamline data science tasks and build highly reliable, secure, and scalable machine learning systems with reduced operational overheads.&lt;/p&gt;
+&lt;p&gt;For more information, see the &lt;a href=&#34;https://awslabs.github.io/OpenDataology-manifests/docs/&#34;&gt;OpenDataology on AWS documentation&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenDataology on Azure</title>
+      <link>/docs/distributions/azure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/azure/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenDataology on Google Cloud</title>
+      <link>/docs/distributions/gke/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/gke/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenDataology on IBM Cloud</title>
+      <link>/docs/distributions/ibm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/ibm/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenDataology on Nutanix Karbon</title>
+      <link>/docs/distributions/nutanix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/nutanix/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Arrikto Enterprise OpenDataology</title>
+      <link>/docs/distributions/ekf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/ekf/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;a href=&#34;https://www.arrikto.com/enterprise-OpenDataology/&#34; target=&#34;_blank&#34;&gt;Arrikto Enterprise OpenDataology (EKF)&lt;/a&gt; distribution extends the capabilities of the OpenDataology platform with additional automation, reproducibility, portability, and security features.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Automation&lt;/em&gt;: Orchestrate your end-to-end ML workflow with a click of a button. Start by tagging cells in Jupyter Notebooks to define pipeline steps, hyperparameter tuning, GPU usage, and metrics tracking. Click a button to create pipeline components and KFP DSL, resolve dependencies, inject data objects into each step, deploy the data science pipeline, and serve the best model. Or use the Kale SDK to do all the above with your preferred IDE.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Reproducibility&lt;/em&gt;: Snapshot pipeline code, libraries, and data for every step with Arrikto’s Rok data management platform. Roll back to any machine learning pipeline step at it’s exact execution state for easy debugging. Collaborate with other data scientists through a Git-style publish/subscribe versioning workflow.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Portability&lt;/em&gt;: Deploy and upgrade your OpenDataology environment with a proven GitOps process across all major public clouds, and on-prem infrastructure. Move ML workflows seamlessly across with Rok Registry.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Security&lt;/em&gt;: Manage teams and user access via GitLab or any ID provider via Istio/OIDC. Isolate user ML data access within their own namespace while enabling notebook and pipeline collaboration in shared namespaces. Manage secrets and credentials securely, and efficiently.&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Arrikto OpenDataology as a Service</title>
+      <link>/docs/distributions/kfaas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/kfaas/</guid>
+      <description>
+        
+        
+        &lt;p&gt;To get started go to &lt;a href=&#34;https://OpenDataology.arrikto.com/&#34;&gt;https://OpenDataology.arrikto.com/&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Charmed OpenDataology</title>
+      <link>/docs/distributions/charmed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/charmed/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;https://charmed-OpenDataology.io/&#34;&gt;Charmed OpenDataology&lt;/a&gt; from &lt;a href=&#34;https://www.canonical.com&#34;&gt;Canonical&lt;/a&gt; delivers a powerful, sophisticated end-to-end MLOps platform which you can deploy in half an hour or less using any conformant Kubernetes distribution. The enterprise-ready solution is available backed with 24/7 support, expert set-up services, and managed services with an SLA. With a growing ecosystem of powerful extensions and integrations including MLFlow, the Charmed OpenDataology solution can dramatically amplify productivity levels for data scientists and engineers working with advanced analytics and AI.&lt;/p&gt;
+&lt;p&gt;Features include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Ecosystem:&lt;/em&gt; A growing ecosystem of extensions and integrations, such as &lt;a href=&#34;https://mlflow.org&#34;&gt;MLFlow&lt;/a&gt; to help scale up your data science initiatives.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Any cloud&lt;/em&gt;: Charmed OpenDataology is a fully portable solution for any cloud, including on-premise Kubernetes. Train your teams once to work anywhere.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Supported&lt;/em&gt;: &lt;a href=&#34;https://ubuntu.com/support&#34;&gt;24/7 support&lt;/a&gt;, &lt;a href=&#34;https://ubuntu.com/ai/services&#34;&gt;professional services&lt;/a&gt; and &lt;a href=&#34;https://ubuntu.com/managed/apps&#34;&gt;managed services&lt;/a&gt; with guaranteed SLA are available.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Free to use&lt;/em&gt;: Charmed OpenDataology is offered as free, open source software. You don&amp;rsquo;t need a support agreement or license to deploy Charmed OpenDataology.&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenDataology Operator</title>
+      <link>/docs/distributions/operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/operator/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenDataology on OpenShift</title>
+      <link>/docs/distributions/openshift/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/distributions/openshift/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

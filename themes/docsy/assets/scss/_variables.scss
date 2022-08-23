@@ -26,6 +26,7 @@ $warning: #ED6A5A !default;
 $danger: #ED6A5A !default;
 $white: #fff !default;
 $light: #D3F3EE !default;
+$red: #ED6A5A !default;
 
 $dark: #403F4C !default;
 $blue: #72A1E5 !default;
@@ -55,7 +56,7 @@ $td-sidebar-border-color: $border-color !default;
 // These colors are all part of the theme palette, but the mix is fairly random to create variation. This can be overridden by the project if needed.
 $td-box-colors: $dark, $primary, $secondary, $info, $primary-light, $gray-600, $success, $warning, $dark, $danger, $primary, $secondary, $primary-light, $info !default;
 
-$link-color: darken($blue, 15%) !default;
+$link-color: darken($red, 15%) !default;
 $link-decoration: none !default;
 $link-hover-color: darken($link-color, 15%) !default;
 $link-hover-decoration: none !default;

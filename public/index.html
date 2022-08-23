@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.101.0" />
+<link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
+<meta name="robots" content="index, follow">
+
+<script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "WebSite",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "",
+      "name" : "OpenDataology",
+      "headline" : "OpenDataology",
+      "description" : "",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "0001",
+      "datePublished": "0001-01-01 00:00:00 \u002b0000 UTC",
+      "dateModified" : "0001-01-01 00:00:00 \u002b0000 UTC",
+      "url" : "\/",
+      "wordCount" : "323",
+      "keywords" : [ "OpenDataology" ]
+  }
+  </script>
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="manifest" href="/favicons/manifest.json">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+<meta name="msapplication-TileColor" content="#4279f4">
+<meta name="theme-color" content="#4279f4">
+
+<title>OpenDataology</title>
+<meta name="description" content="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;/!--&gt;">
+<meta property="og:title" content="OpenDataology" />
+<meta property="og:description" content="Best practices for AI dataset metadata and license compliance" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/" /><meta property="og:site_name" content="OpenDataology" />
+
+<meta itemprop="name" content="OpenDataology">
+<meta itemprop="description" content="Best practices for AI dataset metadata and license compliance"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenDataology"/>
+<meta name="twitter:description" content="Best practices for AI dataset metadata and license compliance"/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.77d5247744700e1ebfd507b924882052c86a9db9bdb65458bf48ac2548a7e4af.css" as="style">
+<link href="/scss/main.min.77d5247744700e1ebfd507b924882052c86a9db9bdb65458bf48ac2548a7e4af.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-home">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand-md navbar-dark  td-navbar-cover  td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">OpenDataology</span>
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navbar" aria-controls="main_navbar" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav ml-auto pt-4 pt-md-0 my-2 my-md-1">
+			
+			
+			<li class="nav-item mr-2 mr-lg-4 mt-1 mt-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/" ><i class='fas fa-book pr-2'></i><span>Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-2 mr-lg-4 mt-1 mt-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/OpenDataology/" target="_blank" ><i class='fab fa-github pr-2'></i><span>GitHub</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown mt-1 mt-lg-0 mr-2">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	OpenDataology Version
+</a>
+<div class="dropdown-menu dropdown-menu-md-right dropdown-menu-lg-left" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://master.OpenDataology.org">master</a>
+	
+	<a class="dropdown-item" href="https://v1-5-branch.OpenDataology.org">v1.5</a>
+	
+	<a class="dropdown-item" href="https://v1-4-branch.OpenDataology.org">v1.4</a>
+	
+	<a class="dropdown-item" href="https://v1-3-branch.OpenDataology.org">v1.3</a>
+	
+	<a class="dropdown-item" href="https://v1-2-branch.OpenDataology.org">v1.2</a>
+	
+	<a class="dropdown-item" href="https://v1-1-branch.OpenDataology.org">v1.1</a>
+	
+	<a class="dropdown-item" href="https://v1-0-branch.OpenDataology.org">v1.0</a>
+	
+	<a class="dropdown-item" href="https://v0-7.OpenDataology.org">v0.7</a>
+	
+	<a class="dropdown-item" href="https://v0-6.OpenDataology.org">v0.6</a>
+	
+	<a class="dropdown-item" href="https://v0-5.OpenDataology.org">v0.5</a>
+	
+	<a class="dropdown-item" href="https://v0-4.OpenDataology.org">v0.4</a>
+	
+	<a class="dropdown-item" href="https://v0-3.OpenDataology.org">v0.3</a>
+	
+	<a class="dropdown-item" href="https://v0-2.OpenDataology.org">v0.2</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        
+
+
+<!-- Hero section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preload" as="image" href="/homepage-background_huac7d4ee4bcda6617c71a2dd699485ce4_55788_960x540_fill_catmullrom_center_3.png" media="(max-width: 1200px)">
+<link rel="preload" as="image" href="/homepage-background_huac7d4ee4bcda6617c71a2dd699485ce4_55788_960x540_fill_catmullrom_center_3.png" media="(min-width: 1200px)">
+<style>
+#td-cover-block-0 {
+    background-image: url(/homepage-background_huac7d4ee4bcda6617c71a2dd699485ce4_55788_960x540_fill_catmullrom_center_3.png); 
+}
+@media only screen and (min-width: 1200px) {
+    #td-cover-block-0 {
+        background-image: url(/homepage-background_huac7d4ee4bcda6617c71a2dd699485ce4_55788_960x540_fill_catmullrom_center_3.png); 
+    }
+}
+</style>
+
+<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-max js-td-cover td-overlay td-overlay--dark -bg-dark">
+  <div class="container td-overlay__inner">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <h1 class="display-1 mt-0 mt-md-5 pb-4">OpenDataology</h1>
+          
+          <div class="pt-3 lead">
+            
+                
+<div class="mx-auto">
+  <p class="lead mt-5">Best practice for AI datasets compliance</p>
+  <a
+    class="btn btn-lg btn-primary mr-3 mb-4"
+    href="/docs/started/"
+  >
+    Get Started <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+  </a>
+  <a
+    class="btn btn-lg btn-secondary mr-3 mb-4"
+    href="/docs/about/contributing/"
+  >
+    Contribute <i class="fas fa-pencil-alt ml-2"></i>
+  </a>
+  <div class="mx-auto mt-5">
+    
+    
+    
+    <a class="btn btn-link text-light" href="#overview"><i class="fa fa-chevron-circle-down" style="font-size: 400%"></i></a>
+
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+<div id="overview">
+  <div class="contain">
+    <h4 class="section-head">What is OpenDataology?</h4>
+    <p>
+      The mission of OpenDataology is to continue developing and 
+      promoting open standards, processes and tools for open datasets 
+      used in AI, including provenance, license and other related information.
+    </p>
+  </div>
+</div>
+
+<section id="pageContent">
+  <div class="container">
+    <div class="card-deck">
+      <div class="card border-primary-dark">
+        <img
+          src="/docs/images/logos/od-process.png"
+		  class="card-img-top"
+		  draggable="false"
+          style="padding: 2rem;"
+          alt="Prcocess"
+        />
+        <div class="card-body bg-primary-dark">
+          <h5 class="card-title text-white section-head">Datasets compliance process</h5>
+          <p class="card-text text-white">
+            OpenDataology provides a dataset license compliance analysis workflow that ascertains the final 
+            allowed rights and the required obligations associated with using a publicly available 
+            dataset or a dataset that is curated from multiple data sources for any purpose. 
+            Please refer to the <a target="_blank" rel="noopener" href="https://github.com/OpenDataology/OpenDataology/blob/main/Paper_license_compliance.pdf">Paper
+            </a>.
+          </p>
+        </div>
+      </div>
+      <div class="card border-primary-dark">
+        <img
+          src="/docs/images/logos/TensorFlow.png"
+		  class="card-img-top"
+		  draggable="false"
+          style="padding: 2rem;"
+          alt="tensorflow"
+        />
+        <div class="card-body bg-primary-dark">
+          <h5 class="card-title text-white section-head">
+            Data
+          </h5>
+          <p class="card-text text-white">
+            OpenDataology provides a custom <a target="_blank" rel="noopener" href="/docs/components/training/tftraining/">TensorFlow training job operator</a>
+            that you can use to train your ML model. In particular, OpenDataology's job operator can handle distributed TensorFlow training jobs. 
+            Configure the training controller to use CPUs or GPUs and to suit various cluster sizes.
+          </p>
+        </div>
+      </div>
+      <div class="card border-primary-dark">
+        <img
+          src="/docs/images/logos/Models.png"
+		  class="card-img-top"
+		  draggable="false"
+          style="padding: 2rem;"
+          alt="Model serving image"
+        />
+        <div class="card-body bg-primary-dark">
+          <h5 class="card-title text-white section-head">Model serving</h5>
+          <p class="card-text text-white">
+            OpenDataology supports a <a target="_blank" rel="noopener" href="/docs/external-add-ons/serving/tfserving_new/">TensorFlow Serving</a> container to export trained
+            TensorFlow models to Kubernetes. OpenDataology is also integrated with
+            <a target="_blank" rel="noopener" href="/docs/external-add-ons/serving/seldon/">Seldon Core</a>, an open source platform for deploying machine learning
+            models on Kubernetes, <a target="_blank" rel="noopener" href="/docs/external-add-ons/serving/tritoninferenceserver/">NVIDIA Triton Inference Server</a> for
+            maximized GPU utilization when deploying ML/DL models at scale, and <a target="_blank" rel="noopener" href="/docs/external-add-ons/serving/mlrun/">MLRun Serving</a>, an open-source serverless framework for deployment and monitoring of real-time ML/DL pipelines.
+          </p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="card-deck">
+      <div class="card border-primary-dark">
+        <img
+          src="/docs/images/logos/Pipeline.png"
+		  class="card-img-top"
+		  draggable="false"
+          style="padding: 2rem;"
+          alt="Pipelines Logo"
+        />
+        <div class="card-body bg-primary-dark">
+          <h5 class="card-title text-white section-head">Pipelines</h5>
+          <p class="card-text text-white">
+			<a target="_blank" rel="noopener" href="/docs/components/pipelines/introduction/" >OpenDataology Pipelines</a> is a comprehensive solution for deploying
+            and managing end-to-end ML workflows. Use OpenDataology Pipelines for rapid and reliable experimentation.
+            You can schedule and compare runs, and examine detailed reports on each run.
+          </p>
+        </div>
+      </div>
+      <div class="card border-primary-dark">
+        <img
+          src="/docs/images/logos/MultiPlatform.png"
+		  class="card-img-top"
+		  draggable="false"
+          style="padding: 2rem;"
+          alt="Multiple Framework Logos"
+        />
+        <div class="card-body bg-primary-dark">
+          <h5 class="card-title text-white section-head">Multi-framework</h5>
+          <p class="card-text text-white">
+            Our development plans extend beyond TensorFlow. We're working
+			hard to extend the support of 
+			<a target="_blank" rel="noopener" href="/docs/components/training/pytorch/">PyTorch</a>, 
+			<a target="_blank" rel="noopener" href="/docs/components/training/mxnet/"> Apache MXNet</a>, 
+		  	<a target="_blank" rel="noopener" href="/docs/components/training/mpi/"> MPI</a>,
+		  	<a target="_blank" rel="noopener" href="/docs/components/training/xgboost/"> XGBoost</a>,
+			<a target="_blank" rel="noopener" href="/docs/components/training/chainer/"> Chainer</a>, and more. We
+			also integrate with 
+			<a target="_blank" rel="noopener" href="https://istio.io/">Istio</a> and 
+			<a target="_blank" rel="noopener" href="https://www.getambassador.io/">Ambassador</a> for ingress, 
+			<a target="_blank" rel="noopener" href="https://nuclio.io/">Nuclio</a> as a
+            fast multi-purpose serverless framework, and <a target="_blank" rel="noopener" href="https://www.pachyderm.io/">Pachyderm</a> for managing
+            your data science pipelines.
+          </p>
+        </div>
+      </div>
+      <div class="card border-primary-dark">
+        <img
+          src="/docs/images/logos/Community.png"
+		  class="card-img-top"
+		  draggable="false"
+          style="padding: 2rem;"
+          alt="People Icon"
+        />
+        <div class=" card-body bg-primary-dark">
+          <h5 class="card-title text-white section-head">Community</h5>
+          <p class="card-text text-white">
+            We are an open and welcoming community of software developers, data scientists, and organizations!
+            Join our <a target="_blank" rel="noopener" href="/docs/about/community/#slack">Slack Workspace</a>!
+          </p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- For future editors: If you are adding cards not in multiples of 3, wrap them in a 'card-columns' div 
+						instead of card-deck. It will look more pleasing to the eye. -->
+  </div>
+</section>
+
+<div id="community">
+  <div class="contain">
+    <h4 class="section-head">Join our community</h4>
+    <p>
+      Check out the <a href="/docs/about/community/#weekly-community-call">weekly community call</a>, get involved in discussions on the <a href="/docs/about/community/#mailing-list">mailing list</a> or chat with others on the <a href="/docs/about/community/#slack">Slack Workspace</a>!
+    </p>
+
+    <a
+      class="btn btn-lg btn-primary mr-3 mb-4"
+      href="/docs/about/community/"
+    >
+      Join the community <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+    </a>
+  </div>
+</div>
+
+
+
+      </main>
+      
+<footer class="bg-dark pt-3 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="/docs/about/community/#slack" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Mailing list" aria-label="Mailing list">
+    <a class="text-white" target="_blank" rel="noopener" href="/docs/about/community/#mailing-list" aria-label="Mailing list">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Weekly Community Call" aria-label="Weekly Community Call">
+    <a class="text-white" target="_blank" rel="noopener" href="/docs/about/community/#weekly-community-call" aria-label="Weekly Community Call">
+      <i class="fa fa-calendar"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+      </div>
+      <div class="col-12 col-sm-5 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 The OpenDataology Authors. | Documentation Distributed under CC BY 4.0</small>
+        <p><small class="ml-1"><a href="https://www.linuxfoundation.org/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></small></p>
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"></script>
+
+
+
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.aa9f4c5dae6a98b2c46277f4c56f1673a2b000d1756ce4ffae93784cab25e6d5.js" integrity="sha256-qp9MXa5qmLLEYnf0xW8Wc6KwANF1bOT/rpN4TKsl5tU=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

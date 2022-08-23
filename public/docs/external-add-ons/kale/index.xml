@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenDataology – Kale</title>
+    <link>/docs/external-add-ons/kale/</link>
+    <description>Recent content in Kale on OpenDataology</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/docs/external-add-ons/kale/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

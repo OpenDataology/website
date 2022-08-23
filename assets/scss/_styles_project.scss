@@ -34,8 +34,6 @@ footer {
         z-index: 33;
         padding: 10px;
         height: 95px;
-        background: white;
-        border: 2px solid #4279f4;
         border-top: none;
 
         @include media-breakpoint-down(md) {
