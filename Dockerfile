@@ -3,4 +3,4 @@ WORKDIR /app
 COPY ./package.json .
 RUN npm install -D
 COPY . .
-CMD ["hugo", "server", "-D", "--bind", "0.0.0.0", "-p", "1313"]
+CMD ["server", "-D", "--bind", "0.0.0.0", "-p", "1313"]
