@@ -2,7 +2,7 @@
 
 Welcome to the GitHub repository for OpenDataology's public website!
 
-The website is hosted at https://www.opendataology.com.
+The website is hosted at http://www.opendataology.com:30000.
 
 We use [Hugo](https://gohugo.io/) with the [google/docsy](https://github.com/google/docsy)
 theme for styling and site structure, and [Netlify](https://www.netlify.com/) to manage the deployment of the site.

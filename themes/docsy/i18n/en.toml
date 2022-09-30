@@ -29,6 +29,9 @@ other = "All Rights Reserved"
 [footer_privacy_policy]
 other = "Privacy Policy"
 
+[footer_term_of_use]
+other = "Term of use"
+
 
 # Post (blog, articles etc.)
 [post_byline_by]
