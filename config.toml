@@ -87,8 +87,9 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   author = "opendataology.com" # add your company name
   github = "opendataology" # add your github profile name
 
-  copyright = "The OpenDataology Authors."
+  copyright = "OpenDataology a Series of LF Projects, LLC."
   privacy_policy = "https://www.linuxfoundation.org/privacy-policy/"
+  term_of_use = "https://lfprojects.org"
 
   # Google Custom Search Engine ID.
   # gcs_engine_id = "007239566369470735695:624rglujm-w"
